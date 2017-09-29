@@ -11,7 +11,7 @@ stage | name                      | description
 
 ## plan
 
-The plan is to use two lcd's with the backlight removed to create dimmable panels in front of the users eyes and eventually add a camera to make point control to block bright spots like projectors and the sun and dim them to reduce squinting
+The plan is to use two lcd's with the backlight removed to create dimmable panels in front of the users eyes. Then eventually add a camera to make point control to block bright spots like projectors and the sun and dim them to reduce squinting.
 
 # initial mockup of design ![inital mockup image](initial_design.svg)
 
