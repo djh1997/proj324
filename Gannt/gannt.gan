@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-01" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.5" locale="en_GB">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-10-01" view-index="0" gantt-divider-location="375" resource-divider-location="300" version="2.8.5" locale="en_GB">
     <description/>
-    <view zooming-state="default:8" id="gantt-chart">
-        <field id="tpd3" name="Name" width="167" order="0"/>
-        <field id="tpd4" name="Begin date" width="65" order="1"/>
-        <field id="tpd5" name="End date" width="64" order="2"/>
+    <view zooming-state="default:10" id="gantt-chart">
+        <field id="tpd3" name="Name" width="164" order="0"/>
+        <field id="tpd4" name="Begin date" width="79" order="1"/>
+        <field id="tpd5" name="End date" width="63" order="2"/>
+        <field id="tpd6" name="Duration" width="65" order="3"/>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="210" order="0"/>
@@ -33,22 +34,28 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="20" name="project" meeting="false" start="2017-09-28" duration="20" complete="60" expand="true">
+        <task id="20" name="project" meeting="false" start="2017-09-28" duration="127" complete="12" expand="true">
             <depend id="8" type="2" difference="0" hardness="Rubber"/>
             <depend id="10" type="2" difference="0" hardness="Rubber"/>
             <task id="0" name="inital plan" color="#8cb6ce" meeting="false" start="2017-09-28" duration="20" complete="60" expand="true">
                 <depend id="14" type="2" difference="0" hardness="Rubber"/>
+                <task id="29" name="inital ideas" color="#8cb6ce" meeting="false" start="2017-09-28" duration="19" complete="70" expand="true"/>
                 <task id="3" name="inital research" color="#8cb6ce" meeting="false" start="2017-10-02" duration="18" complete="60" expand="true"/>
                 <task id="5" name="initial designs" color="#8cb6ce" meeting="false" start="2017-09-29" duration="19" complete="50" expand="true"/>
-                <task id="29" name="inital ideas" color="#8cb6ce" meeting="false" start="2017-09-28" duration="19" complete="70" expand="true"/>
             </task>
-        </task>
-        <task id="14" name="final plan" color="#8cb6ce" meeting="false" start="2017-10-26" duration="11" complete="0" expand="true">
-            <task id="17" name="gannt" color="#8cb6ce" meeting="false" start="2017-10-26" duration="11" complete="0" expand="true"/>
+            <task id="14" name="final plan" color="#8cb6ce" meeting="false" start="2017-10-26" duration="11" complete="0" expand="true">
+                <depend id="34" type="2" difference="0" hardness="Strong"/>
+                <task id="17" name="gannt" color="#8cb6ce" meeting="false" start="2017-10-26" duration="11" complete="0" expand="true"/>
+            </task>
+            <task id="34" name="prototyping" color="#8cb6ce" meeting="false" start="2017-11-10" duration="30" complete="0" expand="true">
+                <depend id="38" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="38" name="refinement" color="#8cb6ce" meeting="false" start="2017-12-22" duration="30" complete="0" expand="true"/>
+            <task id="32" name="risk assement" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" expand="true"/>
+            <task id="11" name="progress demo" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" priority="2" expand="true"/>
         </task>
         <task id="8" name="viva" color="#8cb6ce" meeting="true" start="2018-05-16" duration="0" complete="0" priority="4" expand="true"/>
         <task id="10" name="logbook" color="#8cb6ce" meeting="true" start="2018-05-21" duration="0" complete="0" priority="4" expand="true"/>
-        <task id="11" name="progress demo" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" priority="2" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
