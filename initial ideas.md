@@ -17,3 +17,5 @@ The plan is to use two lcd's with the backlight removed to create dimmable panel
 # initial mockup of design ![inital mockup image](initial_design.svg)
 
 # hopefull final mockup ![final mockup design image](final_design_plan.svg)
+
+So once i have removed the backlight from the LCD's i can mount them in a frame i can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection this will remove the manual adjust but i will Leave the buttons to set the levels. next i will add a camera to the system so that it can also detect bright points and make a matching point darker on the lens. I will then use the buttons to make it so you can swap between the modes.
