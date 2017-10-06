@@ -1,6 +1,6 @@
 # stage criteria
 
-these are the criteria I would like to meet to feel as thought I have ached a successful project
+These are the criteria I would like to meet to feel as thought I have ached a successful project.
 
 stage | name                        | description
 ----- | --------------------------- | ----------------------------------------------
@@ -18,4 +18,4 @@ The plan is to use two lcd's with the backlight removed to create dimmable panel
 
 # hopefull final mockup ![final mockup design image](final_design_plan.svg)
 
-So once i have removed the backlight from the LCD's i can mount them in a frame i can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection this will remove the manual adjust but i will Leave the buttons to set the levels. next i will add a camera to the system so that it can also detect bright points and make a matching point darker on the lens. I will then use the buttons to make it so you can swap between the modes.
+So once I have removed the backlight from the LCD's I can mount them in a frame I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection this will remove the manual adjust but I will Leave the buttons to set the levels. next I will add a camera to the system so that it can also detect bright points and make a matching point darker on the lens. I will then use the buttons to make it so you can swap between the modes. The final feature addition I would like to add is some intelligence on the camera side to ignore certain circumstances like car tail/headlights
