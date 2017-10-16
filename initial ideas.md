@@ -12,6 +12,16 @@ stage | name                        | description
 
 ## plan
 
+### insperation
+
+<https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/>
+
+<http://www.ctrl-eyewear.com/>
+
+<https://www.youtube.com/watch?v=E5d7ynJXiZc>
+
+this product along with Paul's lectures last year inspired the idea.
+
 The plan is to use two lcd's with the backlight removed to create dimmable panels in front of the users eyes. Then eventually add a camera to make point control to block bright spots like projectors and the sun and dim them to reduce squinting.
 
 # initial mockup of design ![inital mockup image](initial_design.svg)
