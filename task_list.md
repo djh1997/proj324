@@ -1,0 +1,2 @@
+- [ ] find lcds
+- [ ] remove backlight
