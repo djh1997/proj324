@@ -14,11 +14,11 @@ stage | name                        | description
 
 ### insperation
 
-<https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/>
+[indiegogo](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
-<http://www.ctrl-eyewear.com/>
+[ctrl-eyewear](http://www.ctrl-eyewear.com/)
 
-<https://www.youtube.com/watch?v=E5d7ynJXiZc>
+[pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
 
 this product along with Paul's lectures last year inspired the idea.
 
