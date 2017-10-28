@@ -3,13 +3,12 @@
 These are the criteria I would like to meet to feel as thought I have ached a successful project.
 
 stage | name                        | description
------ | --------------------------- | ---------------------------------------------------------
+----- | --------------------------- | ----------------------------------------------
 1     | smart shades                | make a set of smart sun classes
-2     | variable smart shades       | make a set of smart sun classes with controllable opacity
-3     | auto smart shades           | add LDR to control the opacity
-4     | auto smart point shades     | add camera to make dark point over dark points
-5     | controllable smart shades   | add options to swap between modes
-6     | driving/safety improvements | auto react headlights ect.
+2     | auto smart shades           | add LDR to control the opacity
+3     | auto smart point shades     | add camera to make dark point over dark points
+4     | controllable smart shades   | add options to swap between modes
+5     | driving/safety improvements | auto react headlights ect.
 
 ## Inspiration
 
@@ -21,7 +20,7 @@ stage | name                        | description
 
 ## plan
 
-These product's along with Paul's lectures last year inspired the idea.
+this product along with Paul's lectures last year inspired the idea.
 
 The plan is to use two LCD's with the backlight removed to create dimmable panels in front of the users eyes. Then eventually add a camera to make point control to block bright spots like projectors and the sun and dim them to reduce squinting.
 
