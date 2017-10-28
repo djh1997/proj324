@@ -30,8 +30,17 @@ The plan is to use two LCD's with the backlight removed to create dimmable panel
 
 So once I have removed the backlight from the LCD's I can mount them in a frame I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection this will remove the manual adjust but I will Leave the buttons to set the levels. next I will add a camera to the system so that it can also detect bright points and make a matching point darker on the lens. I will then use the buttons to make it so you can swap between the modes. The final feature addition I would like to add is some intelligence on the camera side to ignore certain circumstances like car tail/headlights
 
-# VHDL vs. arm
+# VHDL/FPGA(de o nano) vs. arm(stm32)
 
 I am currently undecided on the compute platform.
 
 I'm leaning towards the arm side since the camera will likely be 30-120 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
+
+component           | quantity | price(£)        | component type
+------------------- | -------- | --------------- | --------------
+stm32               | 1        | 18.11           | compute
+de0nano             | 1        | 67.16 to 84.46  | compute
+MCT0144C6W128128PML | 2        | 7.57            | lens
+DD-12864YO-3A       | 2        | 16.12           | lens
+ov7670              | 1        | 5 to 10         | camera
+ov7720              | 1        | .50 from ps eye | camera
