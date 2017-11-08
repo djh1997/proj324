@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-01" view-index="0" gantt-divider-location="471" resource-divider-location="300" version="2.8.5" locale="en_GB">
+    <description/>
+    <view zooming-state="default:9" id="gantt-chart">
+        <field id="tpd3" name="Name" width="237" order="0"/>
+        <field id="tpd4" name="Begin date" width="100" order="1"/>
+        <field id="tpd5" name="End date" width="70" order="2"/>
+        <field id="tpd6" name="Duration" width="60" order="3"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="20" name="project" meeting="false" start="2017-09-28" duration="158" complete="17" expand="true">
+            <depend id="8" type="2" difference="0" hardness="Rubber"/>
+            <depend id="10" type="2" difference="0" hardness="Rubber"/>
+            <task id="0" name="inital plan" color="#8cb6ce" meeting="false" start="2017-09-28" duration="20" complete="100" expand="true">
+                <depend id="14" type="2" difference="0" hardness="Rubber"/>
+                <task id="29" name="inital ideas" color="#8cb6ce" meeting="false" start="2017-09-28" duration="19" complete="100" expand="true"/>
+                <task id="5" name="initial designs" color="#8cb6ce" meeting="false" start="2017-09-29" duration="19" complete="100" expand="true"/>
+                <task id="3" name="inital research" color="#8cb6ce" meeting="false" start="2017-10-02" duration="18" complete="100" expand="true"/>
+            </task>
+            <task id="73" name="inital proposal submission" color="#8cb6ce" meeting="true" start="2017-10-25" duration="0" complete="0" expand="true"/>
+            <task id="14" name="final plan" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="87" expand="true">
+                <depend id="52" type="2" difference="0" hardness="Strong"/>
+                <task id="17" name="gannt" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="75" expand="true"/>
+                <task id="66" name="final proposal" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="100" expand="true"/>
+            </task>
+            <task id="79" name="final propsal submission" color="#8cb6ce" meeting="true" start="2017-11-08" duration="0" complete="0" expand="true"/>
+            <task id="52" name="initial testing of components" color="#8cb6ce" meeting="false" start="2017-11-10" duration="17" complete="0" expand="true">
+                <depend id="34" type="2" difference="0" hardness="Strong"/>
+                <task id="53" name="order parts" color="#8cb6ce" meeting="false" start="2017-11-10" duration="3" complete="0" expand="true"/>
+                <task id="64" name="test parts" color="#8cb6ce" meeting="false" start="2017-11-10" duration="17" complete="0" expand="true"/>
+            </task>
+            <task id="34" name="prototyping" color="#8cb6ce" meeting="false" start="2017-12-05" duration="30" complete="0" expand="true">
+                <depend id="39" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="39" name="add features" color="#8cb6ce" meeting="false" start="2018-01-16" duration="40" complete="0" expand="true">
+                <depend id="38" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="38" name="refinement" color="#8cb6ce" meeting="false" start="2018-03-13" duration="40" complete="0" expand="true"/>
+            <task id="32" name="risk assement" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" expand="true"/>
+            <task id="11" name="progress demo" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" priority="2" expand="true"/>
+        </task>
+        <task id="8" name="viva" color="#8cb6ce" meeting="true" start="2018-05-16" duration="0" complete="0" priority="4" expand="true"/>
+        <task id="10" name="logbook/report" color="#8cb6ce" meeting="true" start="2018-05-21" duration="0" complete="0" priority="4" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
