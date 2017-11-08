@@ -38,15 +38,16 @@ I'm leaning towards the arm side since the camera will likely be 30-120 fps and 
 
 After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible
 
-component           | quantity | price(£)        | component type
-------------------- | -------- | --------------- | --------------
-pi zero             | 1        | 9.60            | compute
-pi 3                | 1        | 35              | compute
-stm32               | 1        | 18.11           | compute
-de0nano             | 1        | 67.16 to 84.46  | compute
-MCT0144C6W128128PML | 2        | 7.57            | lens
-DD-12864YO-3A       | 2        | 16.12           | lens
-pi zero camera      | 1        | 15              | camera
-pi camera           | 1        | 24              | camera
-ov7670              | 1        | 5 to 10         | camera
-ov7720              | 1        | .50 from ps eye | camera
+component                  | quantity | price(£)        | component type | chosen
+-------------------------- | -------- | --------------- | -------------- | ------
+pi zero                    | 1        | 9.60            | compute        | yes
+pi 3                       | 1        | 35              | compute        | no
+stm32                      | 1        | 18.11           | compute        | no
+de0nano                    | 1        | 67.16 to 84.46  | compute        | no
+MCT0144C6W128128PML        | 2        | 7.57            | lens           | no
+DD-12864YO-3A              | 2        | 16.12           | lens           | no
+AF 1.8" TFT ST7735R driver | 2        | 10              | lens           | yes
+pi zero camera             | 1        | 15              | camera         | yes
+pi camera                  | 1        | 24              | camera         | no
+ov7670                     | 1        | 5 to 10         | camera         | no
+ov7720                     | 1        | .50 from ps eye | camera         | no
