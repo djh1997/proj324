@@ -2,13 +2,13 @@
 
 These are the criteria I would like to meet to feel as thought I have ached a successful project.
 
-stage | name                        | description
------ | --------------------------- | ----------------------------------------------
-1     | smart shades                | make a set of smart sun classes
-2     | auto smart shades           | add LDR to control the opacity
-3     | auto smart point shades     | add camera to make dark point over dark points
-4     | controllable smart shades   | add options to swap between modes
-5     | driving/safety improvements | auto react headlights ect.
+| stage | name                        | description                                    |
+| ----- | --------------------------- | ---------------------------------------------- |
+| 1     | smart shades                | make a set of smart sun classes                |
+| 2     | auto smart shades           | add LDR to control the opacity                 |
+| 3     | auto smart point shades     | add camera to make dark point over dark points |
+| 4     | controllable smart shades   | add options to swap between modes              |
+| 5     | driving/safety improvements | auto react headlights ect.                     |
 
 ## Inspiration
 
@@ -34,20 +34,20 @@ So once I have removed the backlight from the LCD's I can mount them in a frame 
 
 I am currently undecided on the compute platform.
 
-I'm leaning towards the arm side since the camera will likely be 30-120 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue i-o for the LDR and contrast for the LCD
+I'm leaning towards the arm side since the camera will likely be 30-120 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
 
-After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible
+After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fats the pi doesn't have analogue io
 
-component                  | quantity | price(£)        | component type | chosen
--------------------------- | -------- | --------------- | -------------- | ------
-pi zero                    | 1        | 9.60            | compute        | yes
-pi 3                       | 1        | 35              | compute        | no
-stm32                      | 1        | 18.11           | compute        | no
-de0nano                    | 1        | 67.16 to 84.46  | compute        | no
-MCT0144C6W128128PML        | 2        | 7.57            | lens           | no
-DD-12864YO-3A              | 2        | 16.12           | lens           | no
-AF 1.8" TFT ST7735R driver | 2        | 10              | lens           | yes
-pi zero camera             | 1        | 15              | camera         | yes
-pi camera                  | 1        | 24              | camera         | no
-ov7670                     | 1        | 5 to 10         | camera         | no
-ov7720                     | 1        | .50 from ps eye | camera         | no
+| component                  | quantity | price(£)        | component type | chosen |
+| -------------------------- | -------- | --------------- | -------------- | ------ |
+| pi zero                    | 1        | 9.60            | compute        | yes    |
+| pi 3                       | 1        | 35              | compute        | no     |
+| stm32                      | 1        | 18.11           | compute        | no     |
+| de0nano                    | 1        | 67.16 to 84.46  | compute        | no     |
+| MCT0144C6W128128PML        | 2        | 7.57            | lens           | no     |
+| DD-12864YO-3A              | 2        | 16.12           | lens           | no     |
+| AF 1.8" TFT ST7735R driver | 2        | 10              | lens           | yes    |
+| pi zero camera             | 1        | 15              | camera         | yes    |
+| pi camera                  | 1        | 24              | camera         | no     |
+| ov7670                     | 1        | 5 to 10         | camera         | no     |
+| ov7720                     | 1        | .50 from ps eye | camera         | no     |
