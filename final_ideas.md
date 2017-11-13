@@ -34,9 +34,9 @@ So once I have removed the backlight from the LCD's I can mount them in a frame 
 
 I am currently undecided on the compute platform.
 
-I'm leaning towards the arm side since the camera will likely be 30-120 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
+I'm leaning towards the arm side since the camera will likely be 30-60 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
 
-After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fats the pi doesn't have analogue io
+After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fact the pi doesn't have analogue io so the dimming of the lcd will be harder but this should be easily worked around.
 
 | component                  | quantity | price(£)        | component type | chosen |
 | -------------------------- | -------- | --------------- | -------------- | ------ |
