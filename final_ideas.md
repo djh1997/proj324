@@ -51,3 +51,5 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 | pi camera                  | 1        | 24              | camera         | no     |
 | ov7670                     | 1        | 5 to 10         | camera         | no     |
 | ov7720                     | 1        | .50 from ps eye | camera         | no     |
+| DAC 0800                   | 1        | 1.15.           | DAC for lcd    | yes    |
+| ZN439                      | 1        | 2.50            | adc for ldr    | yes    |
