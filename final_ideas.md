@@ -12,7 +12,7 @@ These are the criteria I would like to meet to feel as thought I have ached a su
 
 ## Inspiration
 
-[indiegogo](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
+[indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
 [ctrl-eyewear](http://www.ctrl-eyewear.com/)
 
@@ -24,19 +24,19 @@ this product along with Paul's lectures last year inspired the idea.
 
 The plan is to use two LCD's with the backlight removed to create dimmable panels in front of the users eyes. Then eventually add a camera to make point control to block bright spots like projectors and the sun and dim them to reduce squinting.
 
-# initial mock-up of design ![inital mock-up image](initial_design.svg)
+# initial mock-up of design ![initial mock-up image](initial_design.svg)
 
 # hopeful final mock-up ![final mock-up design image](final_design_plan.svg)
 
 So once I have removed the backlight from the LCD's I can mount them in a frame I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection this will remove the manual adjust but I will Leave the buttons to set the levels. next I will add a camera to the system so that it can also detect bright points and make a matching point darker on the lens. I will then use the buttons to make it so you can swap between the modes. The final feature addition I would like to add is some intelligence on the camera side to ignore certain circumstances like car tail/headlights
 
-# VHDL/FPGA(de o nano) vs. arm(stm32 vs. rpi)
+# VHDL/FPGA(de o nano) vs. arm(stm32 vs. RPI)
 
 I am currently undecided on the compute platform.
 
 I'm leaning towards the arm side since the camera will likely be 30-60 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
 
-After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fact the pi doesn't have analogue io so the dimming of the lcd will be harder but this should be easily worked around.
+After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fact the pi doesn't have analogue io so the dimming of the LCD will be harder but this should be easily worked around.
 
 | component                  | quantity | price(£)        | component type | chosen |
 | -------------------------- | -------- | --------------- | -------------- | ------ |
@@ -51,5 +51,5 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 | pi camera                  | 1        | 24              | camera         | no     |
 | ov7670                     | 1        | 5 to 10         | camera         | no     |
 | ov7720                     | 1        | .50 from ps eye | camera         | no     |
-| DAC 0800                   | 1        | 1.15.           | DAC for lcd    | yes    |
-| ZN439                      | 1        | 2.50            | ADC for ldr    | yes    |
+| DAC 0800                   | 1        | 1.15.           | DAC for LCD    | yes    |
+| ZN439                      | 1        | 2.50            | ADC for LDR    | yes    |
