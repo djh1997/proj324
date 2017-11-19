@@ -8,6 +8,10 @@
 -   [ ] adjust opacity of LCD
 -   [ ] add image inversion
 -   [ ] add options to swap between modes
+
+# Extras
+
+-   [ ] add some form of app to control settings
 -   [ ] add options for dimming colour e.g. tern tint instead of grey tint
 
 # 16/11/2017
@@ -29,4 +33,4 @@ start work with LCD
 -   find c++ library from adafruit [ST7735-c+++](https://github.com/adafruit/Adafruit-ST7735-Library)
 -   find python library [ST7735-micro](https://github.com/hosaka/micropython-st7735), [ST7735-af c++ forked to py](https://github.com/cskau/Python_ST7735)
 
-looking thought the code the ST7735-micro seems cleaner and looks like I will be able to modify it easier since it is broken into more small functions although the other python has image support so I will try both and asses
+looking thought the code the ST7735-micro seems cleaner and looks like I will be able to modify it easier since it is broken into more small functions although the other python has image support so I will try both and access
