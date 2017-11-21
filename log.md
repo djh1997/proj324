@@ -8,6 +8,7 @@
 -   [ ] adjust opacity of LCD
 -   [ ] add image inversion
 -   [ ] add options to swap between modes
+-   [ ] laser cut glasses frame
 
 # Extras
 
