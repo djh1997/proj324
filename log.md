@@ -13,7 +13,7 @@
 # Extras
 
 -   [ ] add some form of app to control settings
--   [ ] add options for dimming colour e.g. tern tint instead of grey tint
+-   [ ] add options for dimming colour e.g. turn tint red instead of grey tint
 
 # 16/11/2017
 
