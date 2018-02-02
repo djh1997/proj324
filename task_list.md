@@ -1,2 +1,8 @@
-- [ ] find lcds
-- [ ] remove backlight
+-   [x] find LCD's
+-   [ ] remove backlight
+-   [ ] get pi connected to WiFi
+-   [x] get camera working
+-   [ ] task
+-   [ ] task
+-   [ ] task
+-   [ ] task
