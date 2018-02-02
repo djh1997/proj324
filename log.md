@@ -38,4 +38,4 @@ looking thought the code the ST7735-micro seems cleaner and looks like I will be
 
 # 02/02/18
 
-start working on project again after exams/coursework and Christmas break but WiFi has stopped working possibly because of certification update but even reslashing the board and rerunning the cat installer didn't work will try to connect when I get home to check the WiFi chip is still working talked to Jake and said he should be able to put it on Plymouth humanoids
+start working on project again after exams/coursework and Christmas break but WiFi has stopped working possibly because of certification update but even reslashing the board and rerunning the cat installer didn't work will try to connect when I get home to check the WiFi chip is still working talked to Jake and said he should be able to put it on Plymouth humanoids humanoid5
