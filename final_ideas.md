@@ -40,7 +40,7 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 
 | component                  | quantity | price(£)        | component type | chosen |
 | -------------------------- | -------- | --------------- | -------------- | ------ |
-| pi zero                    | 1        | 9.60            | compute        | yes    |
+| pi zero w                  | 1        | 9.60            | compute        | yes    |
 | pi 3                       | 1        | 35              | compute        | no     |
 | stm32                      | 1        | 18.11           | compute        | no     |
 | de0nano                    | 1        | 67.16 to 84.46  | compute        | no     |
