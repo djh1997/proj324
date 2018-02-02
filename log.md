@@ -35,3 +35,7 @@ start work with LCD
 -   find python library [ST7735-micro](https://github.com/hosaka/micropython-st7735), [ST7735-af c++ forked to py](https://github.com/cskau/Python_ST7735)
 
 looking thought the code the ST7735-micro seems cleaner and looks like I will be able to modify it easier since it is broken into more small functions although the other python has image support so I will try both and access
+
+# 02/02/18
+
+start working on project again after exams/coursework and christmas break but wifi has stopped working possiably becuse of certification update but even reflashing the board and rerunning the cat installer didnt work 
