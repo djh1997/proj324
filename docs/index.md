@@ -1,6 +1,6 @@
 # Stage criteria
 
-These are the criteria I would like to meet to feel as thought I have ached a successful project.
+These are the criteria I would like to meet to feel as thought I have achieved a successful project.
 
 | stage | name                        | description                                    |
 | ----- | --------------------------- | ---------------------------------------------- |
