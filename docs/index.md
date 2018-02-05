@@ -1,16 +1,16 @@
 # **Final Year Project**
 
-# Stage criteria
+# Stage Criteria
 
-These are the criteria I would like to meet to feel as thought I have achieved a successful project.
+This is the criteria I would like to meet, to feel as though I have created a successful project.
 
-| stage | name                        | description                                    |
-| ----- | --------------------------- | ---------------------------------------------- |
-| 1     | smart shades                | make a set of smart sun classes                |
-| 2     | auto smart shades           | add LDR to control the opacity                 |
-| 3     | auto smart point shades     | add camera to make dark point over dark points |
-| 4     | controllable smart shades   | add options to swap between modes              |
-| 5     | driving/safety improvements | auto react headlights ect.                     |
+| Stage | Name                        | Description                                      |
+| ----- | --------------------------- | ------------------------------------------------ |
+| 1     | Smart shades                | Make a set of smart sun classes                  |
+| 2     | Auto smart shades           | Add LDR to control the opacity                   |
+| 3     | Auto smart point shades     | Add camera to make dark point over bright points |
+| 4     | Controllable smart shades   | Add options to swap between modes                |
+| 5     | Driving/safety improvements | Auto react headlights etc.                       |
 
 ## Inspiration
 
@@ -22,10 +22,10 @@ These are the criteria I would like to meet to feel as thought I have achieved a
 
 ## Plan
 
-These product's along with Paul's lectures last year inspired the idea.
+The product's above, along with Paul's lectures last year inspired my idea.
 
-The plan is to use two LCD's with the backlight removed to create dimmable panels in front of the users eyes. Then eventually add a camera to make point control to block bright spots like projectors and the sun and dim them to reduce squinting.
+The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually I will add a camera to make point control which will block bright spots such as projectors and the sun, and dim them to reduce squinting.
 
-# Hopeful final mock-up ![final mock-up design image](final_design_plan.svg)
+# Final mock-up ![final mock-up design image](final_design_plan.svg)
 
-So once I have removed the backlight from the LCD's I can mount them in a frame I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection this will remove the manual adjust but I will Leave the buttons to set the levels. next I will add a camera to the system so that it can also detect bright points and make a matching point darker on the lens. I will then use the buttons to make it so you can swap between the modes. The final feature addition I would like to add is some intelligence on the camera side to ignore certain circumstances like car tail/headlights
+So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels. Next I will add a camera to the system so that the system can also detect bright points hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights
