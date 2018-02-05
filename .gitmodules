@@ -1,0 +1,3 @@
+[submodule "lcd/lcd driver"]
+	path = lcd/lcd driver
+	url = https://github.com/hosaka/micropython-st7735
