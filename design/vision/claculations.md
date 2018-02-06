@@ -17,3 +17,7 @@ $$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 $$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
 
 $$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
+
+# point maths
+
+[circle equations](https://en.wikipedia.org/wiki/Circle#Equations)

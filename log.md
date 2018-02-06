@@ -46,4 +46,12 @@ work on time management and issue tracking
 
 # 06/02/18
 
-today I finally got the pi0w connected to the uni WiFi and also got the vnc working so that I could work on the pi in uni without brining in a separate screen for the pi once I had done that I started work on the field of view calculations and realised that with out a fisheye camera adapter the lcd has a bigger fov so only the centre will be usable for point adjustment i also calculated the pixels per angle and realise that the only issue with using a fish eye adaper would cause distortion
+today I finally got the pi0w connected to the uni WiFi and also got the vnc working so that I could work on the pi in uni without brining in a separate screen for the pi once I had done that I started work on the field of view calculations and realised that with out a fisheye camera adapter the lcd has a bigger fov so only the centre will be usable for point adjustment i also calculated the pixels per angle and realise that the only issue with using a fish eye adapter would cause distortion
+
+then folowed this [guide](https://www.pyimagesearch.com/2015/12/14/installing-opencv-on-your-raspberry-pi-zero/) to install open cv reach
+
+```bash
+pip install numpy
+```
+
+before running out of time befor space x falcon heavy launch
