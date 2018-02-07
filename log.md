@@ -55,3 +55,10 @@ pip install numpy
 ```
 
 before running out of time befor space x falcon heavy launch
+
+# 07/02/18
+
+spacex falcon heavy launch was a success
+
+- switch to opencv 3.4.0 and finish up install
+- add all dependences to repo
