@@ -62,3 +62,7 @@ spacex falcon heavy launch was a success
 
 - switch to opencv 3.4.0 and finish up install
 - add all dependences to repo
+
+# 08/02/18
+
+install locked at 84%
