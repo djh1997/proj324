@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=telegram
+Type=Application
+Categories=Application
+Exec=/home/pi/telegram.sh
+Terminal=true
+StartupNotify=false
+X-KeepTerminal=true
