@@ -66,3 +66,7 @@ spacex falcon heavy launch was a success
 # 08/02/18
 
 install locked at 84%
+
+# 09/02/18
+
+get lcd and pi0w header soldered and get pin mappings for each
