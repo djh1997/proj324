@@ -1,9 +1,9 @@
-[submodule "lcd/lcd driver"]
-	path = lcd/lcd driver
-	url = https://github.com/hosaka/micropython-st7735
 [submodule "design/vision/camera/opencv"]
 	path = design/vision/camera/opencv
 	url = https://github.com/opencv/opencv
 [submodule "design/vision/camera/opencv_contrib"]
 	path = design/vision/camera/opencv_contrib
 	url = https://github.com/opencv/opencv_contrib
+[submodule "design/vision/lcd/lcd driver 2"]
+	path = design/vision/lcd/lcd driver 2
+	url = https://github.com/cskau/Python_ST7735

@@ -70,3 +70,7 @@ install locked at 84%
 # 09/02/18
 
 get lcd and pi0w header soldered and get pin mappings for each
+
+# 13/02/18
+
+looking throught the code for the lcd drivers again from (19/11/2017) i think the forked adafruit might be better
