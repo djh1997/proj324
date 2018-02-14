@@ -48,13 +48,13 @@ work on time management and issue tracking
 
 today I finally got the pi0w connected to the uni WiFi and also got the vnc working so that I could work on the pi in uni without brining in a separate screen for the pi once I had done that I started work on the field of view calculations and realised that with out a fisheye camera adapter the lcd has a bigger fov so only the centre will be usable for point adjustment i also calculated the pixels per angle and realise that the only issue with using a fish eye adapter would cause distortion
 
-then folowed this [guide](https://www.pyimagesearch.com/2015/12/14/installing-opencv-on-your-raspberry-pi-zero/) to install open cv reach
+then followed this [guide](https://www.pyimagesearch.com/2015/12/14/installing-opencv-on-your-raspberry-pi-zero/) to install open cv reach
 
 ```bash
 pip install numpy
 ```
 
-before running out of time befor space x falcon heavy launch
+before running out of time before space x falcon heavy launch
 
 # 07/02/18
 
@@ -73,4 +73,6 @@ get lcd and pi0w header soldered and get pin mappings for each
 
 # 13/02/18
 
-looking throught the code for the lcd drivers again from (19/11/2017) i think the forked adafruit might be better
+looking through the code for the lcd drivers again from (19/11/2017) i think the forked adafruit might be better
+
+also make new simpler frame prototype ready for laser cutting

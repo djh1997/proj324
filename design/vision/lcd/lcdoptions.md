@@ -18,7 +18,7 @@ lcd pin number | name  | used | colour
 4              | leda  | no   | na
 5              | gnd   | no   | pink
 6              | reset | no   | blue
-7              | rs    | no   | grey
+7              | rs/dc | no   | grey
 8              | sda   | yes  | yellow
 9              | scl   | yes  | green
 10             | vcc   | no   | orange
