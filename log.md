@@ -76,3 +76,11 @@ get lcd and pi0w header soldered and get pin mappings for each
 looking through the code for the lcd drivers again from (19/11/2017) i think the forked adafruit might be better
 
 also make new simpler frame prototype ready for laser cutting
+
+# 14/2/18
+
+had meeting with phil and he seems happy with progress and direction im taking so all good there
+
+# 15/02/18
+
+got lcd working and even got the lcd to output circls based on x,y,radious,opacity
