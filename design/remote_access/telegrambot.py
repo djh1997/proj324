@@ -43,7 +43,7 @@ def help(bot, update):
 
 
 def up(bot, update):
-    update.message.reply_text('Test box {} is up.'.format(test_box))
+    update.message.reply_text('shades {} is up.'.format(test_box))
 
 
 def echo(bot, update):
@@ -66,7 +66,7 @@ def login(bot, update):
     input = update.message.text
     input = input.split('/login ')
     input = input[1].split('@')
-    if input[0] == 'pi' and input[1] == 'pitb1':
+    if input[0] == 'pi' and input[1] == 'shades':
         update.message.reply_text('login successful.')
         user = input[0]
     else:
@@ -82,6 +82,12 @@ def rundmc(bot, update):
     else:
         update.message.reply_text('Please login.')
 
+def halt(bot, update):
+    if user == 'pi':
+        update.message.reply_text('goodbye.')
+        os.system('sudo halt')
+    else:
+        update.message.reply_text('Please login.')
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
@@ -99,6 +105,7 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("login", login))
     dp.add_handler(CommandHandler("rundmc", rundmc))
+    dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("temp", temp))
     dp.add_handler(CommandHandler("uprecords", uprecords))
     dp.add_handler(CommandHandler("up", up))
