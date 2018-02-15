@@ -12,7 +12,8 @@ sudo apt-get install python3-picamera
 ```
 
 ```python
-import picamera from time import sleep
+import picamera
+from time import sleep
 
 camera = picamera.PiCamera()
 
