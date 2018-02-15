@@ -20,3 +20,7 @@ camera.capture('image1.jpg')
 sleep(5)
 camera.capture('image2.jpg')
 ```
+
+opencv failed to install and Phil said i would be better off using a simpler program to reduce compute time so am looking at numpy and [skimage](https://github.com/scikit-image/scikit-image)
+
+[b&w image](https://picamera.readthedocs.io/en/release-1.13/api_camera.html?highlight=black%20and%20white#picamera.PiCamera.color_effects)
