@@ -47,7 +47,7 @@ camera.start_preview()
 disp.begin()
 draw = disp.draw()
 
-for k in range(100):
+for k in range(5):
     print(k)
     timer=[]
     timer.append(time())#t1
@@ -66,7 +66,7 @@ for k in range(100):
 
     points=[]
     for i in range(len(blobs_doh)):#0.0002
-        points.append([blobs_doh[i][0]/scaleFactor,blobs_doh[i][1]/scaleFactor,5,50])#(blobs_doh[i][1]/2)/scaleFactor
+        points.append([blobs_doh[i][0]/scaleFactor,blobs_doh[i][1]/scaleFactor,(blobs_doh[i][1]/3)/scaleFactor,50])
 
     timer.append(time())#t6
 
@@ -89,26 +89,26 @@ for k in range(100):
 
     timer.append(time())#t9
 
-    blobs_list = [blobs_doh,blobs_doh]
-    colors = ['red','lime']
-    titles = ['Determinant of Hessian','doh']
-    sequence = zip(blobs_list, colors, titles)
-
-    fig, axes = plt.subplots(1, 2, figsize=(9, 3), sharex=True, sharey=True,
-                             subplot_kw={'adjustable': 'box-forced'})
-    ax = axes.ravel()
-
-    for idx, (blobs, color, title) in enumerate(sequence):
-        ax[idx].set_title(title)
-        ax[idx].imshow(img1, interpolation='nearest')
-        for blob in blobs:
-            y, x, r = blob
-            c = plt.Circle((x, y), r, color=color, linewidth=2, fill=False)
-            ax[idx].add_patch(c)
-        ax[idx].set_axis_off()
-
-    plt.tight_layout()
-    plt.show()
+    # blobs_list = [blobs_doh,blobs_doh]
+    # colors = ['red','lime']
+    # titles = ['Determinant of Hessian','doh']
+    # sequence = zip(blobs_list, colors, titles)
+    #
+    # fig, axes = plt.subplots(1, 2, figsize=(9, 3), sharex=True, sharey=True,
+    #                          subplot_kw={'adjustable': 'box-forced'})
+    # ax = axes.ravel()
+    #
+    # for idx, (blobs, color, title) in enumerate(sequence):
+    #     ax[idx].set_title(title)
+    #     ax[idx].imshow(img1, interpolation='nearest')
+    #     for blob in blobs:
+    #         y, x, r = blob
+    #         c = plt.Circle((x, y), r, color=color, linewidth=2, fill=False)
+    #         ax[idx].add_patch(c)
+    #     ax[idx].set_axis_off()
+    #
+    # plt.tight_layout()
+    # plt.show()
 
     print(points)
 
