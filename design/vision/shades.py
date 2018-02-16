@@ -19,7 +19,7 @@ WIDTH = 128
 HEIGHT = 160
 SPEED_HZ = 640000000
 
-scaleFactor=4
+scaleFactor=1
 
 # Raspberry Pi configuration.
 DC = 24
