@@ -30,6 +30,7 @@ logger = logging.getLogger(__name__)
 test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
 user = False
+myuserid = 417245494
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 
@@ -60,34 +61,20 @@ def temp(bot, update):
     temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1000.0
     update.message.reply_text('CPU temperature is:{}' .format(temp))
 
-
-def login(bot, update):
-    global user
-    input = update.message.text
-    input = input.split('/login ')
-    input = input[1].split('@')
-    if input[0] == 'pi' and input[1] == 'shades':
-        update.message.reply_text('login successful.')
-        user = input[0]
-    else:
-        user = False
-        update.message.reply_text(input[0])
-
-
 def rundmc(bot, update):
-    if user == 'pi':
+    if update.message.from_user.id == myuserid:
         input = update.message.text
         input = input.split('/rundmc ')
         os.system(input[1])
     else:
-        update.message.reply_text('Please login.')
+        update.message.reply_text('unavaliable for your user id.')
 
 def halt(bot, update):
-    if user == 'pi':
+    if update.message.from_user.id == myuserid:
         update.message.reply_text('goodbye.')
         os.system('sudo halt')
     else:
-        update.message.reply_text('Please login.')
+        update.message.reply_text('unavaliable for your user id.')
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
@@ -103,7 +90,6 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("login", login))
     dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("temp", temp))
