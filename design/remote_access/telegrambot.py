@@ -76,6 +76,15 @@ def halt(bot, update):
     else:
         update.message.reply_text('unavaliable for your user id.')
 
+
+def reboot(bot, update):
+            if update.message.from_user.id == myuserid:
+                update.message.reply_text('see you in a second.')
+                os.system('sudo reboot')
+            else:
+                update.message.reply_text('unavaliable for your user id.')
+
+
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
@@ -92,6 +101,7 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
+    dp.add_handler(CommandHandler("reboot", reboot))
     dp.add_handler(CommandHandler("temp", temp))
     dp.add_handler(CommandHandler("uprecords", uprecords))
     dp.add_handler(CommandHandler("up", up))
