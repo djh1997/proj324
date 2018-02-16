@@ -15,11 +15,13 @@ from skimage import data
 from skimage.feature import blob_doh
 from skimage.io import imread
 
+import matplotlib.pyplot as plt
+
 WIDTH = 128
 HEIGHT = 160
 SPEED_HZ = 640000000
 
-scaleFactor=1
+scaleFactor=.5
 
 # Raspberry Pi configuration.
 DC = 24
@@ -39,7 +41,7 @@ disp = TFT.ST7735(
 
 camera = picamera.PiCamera()
 camera.color_effects=(128,128)
-camera.resolution = (160*scaleFactor,128*scaleFactor)
+camera.resolution = (int(160*scaleFactor),int(128*scaleFactor))
 camera.start_preview()
 
 disp.begin()
@@ -58,13 +60,13 @@ for k in range(100):
 
     timer.append(time())#t3
 
-    blobs_doh = blob_doh(img1, max_sigma=30, threshold=.01)#.44
+    blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)#.44
 
     timer.append(time())#t4
 
     points=[]
     for i in range(len(blobs_doh)):#0.0002
-        points.append([blobs_doh[i][0]/scaleFactor,blobs_doh[i][1]/scaleFactor,(blobs_doh[i][1]/2)/scaleFactor,50])
+        points.append([blobs_doh[i][0]/scaleFactor,blobs_doh[i][1]/scaleFactor,5,50])#(blobs_doh[i][1]/2)/scaleFactor
 
     timer.append(time())#t6
 
@@ -86,6 +88,27 @@ for k in range(100):
     disp.display()#0.13
 
     timer.append(time())#t9
+
+    blobs_list = [blobs_doh,blobs_doh]
+    colors = ['red','lime']
+    titles = ['Determinant of Hessian','doh']
+    sequence = zip(blobs_list, colors, titles)
+
+    fig, axes = plt.subplots(1, 2, figsize=(9, 3), sharex=True, sharey=True,
+                             subplot_kw={'adjustable': 'box-forced'})
+    ax = axes.ravel()
+
+    for idx, (blobs, color, title) in enumerate(sequence):
+        ax[idx].set_title(title)
+        ax[idx].imshow(img1, interpolation='nearest')
+        for blob in blobs:
+            y, x, r = blob
+            c = plt.Circle((x, y), r, color=color, linewidth=2, fill=False)
+            ax[idx].add_patch(c)
+        ax[idx].set_axis_off()
+
+    plt.tight_layout()
+    plt.show()
 
     print(points)
 
