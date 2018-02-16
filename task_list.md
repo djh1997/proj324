@@ -1,8 +1,8 @@
--   [x] find LCD's
--   [ ] remove backlight
--   [ ] get pi connected to WiFi
--   [x] get camera working
--   [ ] task
--   [ ] task
--   [ ] task
--   [ ] task
+- [x] find LCD's
+- [x] remove backlight
+- [x] get pi connected to WiFi
+- [x] get camera working
+- [ ] export DISPLAY=:0.0
+- [ ] telegram intergration
+- [ ] frame
+- [ ] task
