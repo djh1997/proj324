@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=shades
+Type=Application
+Categories=Application
+Exec=/home/pi/shades.sh
+Terminal=true
+StartupNotify=false
+X-KeepTerminal=true
