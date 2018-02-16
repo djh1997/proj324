@@ -26,7 +26,7 @@ DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
-
+process=['take','convert','blob find','blob to point','clear','point maths','diplay']
 points=[]
 
 disp = TFT.ST7735(
@@ -70,8 +70,6 @@ for k in range(100):
 
     disp.clear((255,255,255))#0.036
 
-
-
     timer.append(time())#t7
 
     for i in range(0,len(points)):#0.0019
@@ -92,7 +90,7 @@ for k in range(100):
     print(points)
 
     for t in range(0,len(timer)-1):
-        print(timer[t+1]-timer[t])
+        print('function {} : time {}'.format(process[t],timer[t+1]-timer[t]))
 
     print('total')
     print(timer[len(timer)-1]-timer[0])
