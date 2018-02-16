@@ -10,22 +10,22 @@
 
 ![image](lcd_pinout.png)
 
-lcd pin number | name  | used | colour
--------------- | ----- | ---- | ------
-1              | NC    | no   | na
-2              | gnd   | no   | purple
-3              | ledk  | no   | na
-4              | leda  | no   | na
-5              | gnd   | no   | pink
-6              | reset | no   | blue
-7              | rs/dc | no   | grey
-8              | sda   | yes  | yellow
-9              | scl   | yes  | green
-10             | vcc   | no   | orange
-11             | vcc   | yes  | na
-12             | cs    | no   | white
-13             | gnd   | yes  | black
-14             | NC    | no   | na
+lcd pin number | name  | used | colour | pi pin
+-------------- | ----- | ---- | ------ | ------
+1              | NC    | no   | na     |
+2              | gnd   | ?    | purple | 20
+3              | ledk  | no   | na     |
+4              | leda  | no   | na     |
+5              | gnd   | ?    | pink   | 20
+6              | reset | yes  | blue   | 22
+7              | rs/dc | yes  | grey   | 18
+8              | sda   | yes  | yellow | 19
+9              | scl   | yes  | green  | 23
+10             | vcc   | yes  | orange | 17
+11             | vcc   | yes  | na     |
+12             | cs    | yes  | white  | 24
+13             | gnd   | ?    | black  | 20
+14             | NC    | no   | na     |
 
 # lcd maths
 
