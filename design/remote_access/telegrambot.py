@@ -1,4 +1,4 @@
-#sudo pip install python-telegram-bot --upgrade
+# sudo pip install python-telegram-bot --upgrade
 
 import logging
 import os
@@ -37,7 +37,8 @@ def echo(bot, update):
 
 
 def uprecords(bot, update):
-    p = subprocess.Popen(['uprecords', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(['uprecords', '-a'],
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
     update.message.reply_text(out)
 
@@ -46,6 +47,7 @@ def temp(bot, update):
     temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1000.0
     update.message.reply_text('CPU temperature is:{}' .format(temp))
 
+
 def rundmc(bot, update):
     if update.message.from_user.id == myuserid:
         input = update.message.text
@@ -53,6 +55,7 @@ def rundmc(bot, update):
         os.system(input[1])
     else:
         update.message.reply_text('unavaliable for your user id.')
+
 
 def halt(bot, update):
     if update.message.from_user.id == myuserid:
@@ -63,18 +66,18 @@ def halt(bot, update):
 
 
 def reboot(bot, update):
-            if update.message.from_user.id == myuserid:
-                update.message.reply_text('see you in a second.')
-                os.system('sudo reboot')
-            else:
-                update.message.reply_text('unavaliable for your user id.')
+    if update.message.from_user.id == myuserid:
+        update.message.reply_text('see you in a second.')
+        os.system('sudo reboot')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
 
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
 
-def main():
+def telegramMain():
     # Create the EventHandler and pass it your bot's token.
     updater = Updater(test_box_api_key[test_box])
 
@@ -104,7 +107,3 @@ def main():
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
-
-
-if __name__ == '__main__':
-    main()
