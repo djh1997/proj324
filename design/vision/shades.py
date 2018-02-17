@@ -46,6 +46,13 @@ def initlcd():
     draw = disp.draw()
 
 
+def deinitlcd():
+    global disp
+    disp.clear((255, 255, 255))
+    disp.display()
+    print('lcd cleared')
+
+
 def initcamera():
     global camera
     camera = picamera.PiCamera()
@@ -146,4 +153,5 @@ def sandd():
 
         sleep(1)
 
+    deinitlcd()
     deinitcamera()
