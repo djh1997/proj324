@@ -5,6 +5,7 @@ import os
 import subprocess
 
 from telegram.ext import CommandHandler, Updater
+from shades import runningstateset, runningstateget, tintShadeset, sandd
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -16,35 +17,32 @@ test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
 user = False
 myuserid = 417245494
-runningvar = 1
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 
 
-def running():
-    global runningvar
-    return runningvar
-
-
 def start(bot, update):
-    global runningvar
-    runningvar = 1
-    print(runningvar)
-    update.message.reply_text('started')
+    if update.message.from_user.id == myuserid:
+        runningstateset(1)
+        update.message.reply_text('started')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
 
 
 def stop(bot, update):
-    global runningvar
-    runningvar = 0
-    print(runningvar)
-    update.message.reply_text('stoped')
+    if update.message.from_user.id == myuserid:
+        runningstateset(0)
+        update.message.reply_text('stoped')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
 
 
 def exit(bot, update):
-    global runningvar
-    runningvar = 2
-    print(runningvar)
-    update.message.reply_text('exiting')
+    if update.message.from_user.id == myuserid:
+        runningstateset(2)
+        update.message.reply_text('exiting')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
 
 
 def help(bot, update):
@@ -69,6 +67,18 @@ def uprecords(bot, update):
 def temp(bot, update):
     temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1000.0
     update.message.reply_text('CPU temperature is:{}' .format(temp))
+
+
+def tint(bot, update):
+    if update.message.from_user.id == myuserid:
+        input = update.message.text
+        input = input.split('/tint ')
+        tint = input[1].split(',')
+        for i in range(len(tint)):
+            tint[i] = int(tint[i])
+        tintShadeset(tint)
+    else:
+        update.message.reply_text('unavaliable for your user id.')
 
 
 def rundmc(bot, update):
@@ -101,6 +111,7 @@ def error(bot, update, error):
 
 
 def telegramMain():
+    global updater
     # Create the EventHandler and pass it your bot's token.
     updater = Updater(test_box_api_key[test_box])
 
@@ -112,6 +123,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("stop", stop))
     dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("tint", tint))
     dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))
@@ -120,7 +132,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("up", up))
 
     # on noncommand i.e message - echo the message on Telegram
-    #dp.add_handler(MessageHandler(Filters.text, echo))
+    # dp.add_handler(MessageHandler(Filters.text, echo))
 
     # log all errors
     dp.add_error_handler(error)
@@ -131,4 +143,12 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
+    while runningstateget() != 2:
+        if runningstateget() != 1:
+            runningstateset(1)
+            sandd()
     # updater.idle()
+    updater.stop()
+
+
+telegramMain()
