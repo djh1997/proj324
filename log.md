@@ -86,3 +86,7 @@ had meeting with phil and he seems happy with progress and direction im taking s
 got lcd working and even got the lcd to output circls based on x,y,radious,opacity
 
 got blob detection working 'live'
+
+# 16/02/18
+
+got both lcds working and fine tune timings to work out where the issues are and fine tune the blob detection
