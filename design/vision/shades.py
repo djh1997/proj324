@@ -23,8 +23,9 @@ DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
-process = ['take', 'convert', 'blob find',
-           'blob to point', 'clear', 'point maths', 'diplay']
+processpoint = ['take', 'convert', 'blob find',
+                'blob to point', 'clear', 'point maths', 'diplay']
+processtint = ['clear',  'diplay']
 points = []
 running = 0
 tintShade = [32, 32, 32]
@@ -93,7 +94,8 @@ def sandd():
         while running == 1:
             timer = []
             points = []
-            if pointtoggle == 1:
+            pointtoggleinternal = pointtoggle
+            if pointtoggleinternal == 1:
                 timer.append(time())
 
                 camera.capture('image1.jpg', use_video_port=True)
@@ -114,9 +116,8 @@ def sandd():
 
             disp.clear((tintBack[2], tintBack[1], tintBack[0]))
 
-            timer.append(time())
-
-            if pointtoggle == 1:
+            if pointtoggleinternal == 1:
+                timer.append(time())
                 for i in range(0, len(points)):
                     x1 = int(points[i][0] - points[i][2])
                     x2 = int(points[i][0] + points[i][2])
@@ -131,11 +132,14 @@ def sandd():
 
             timer.append(time())
 
-            print(points)
-
+            print('number of points{}'.format(len(points)))
             for t in range(0, len(timer) - 1):
-                print('function {} : time {}'.format(
-                    process[t], timer[t + 1] - timer[t]))
+                if pointtoggleinternal == 1:
+                    print('function {} : time {}'.format(
+                        processpoint[t], timer[t + 1] - timer[t]))
+                else:
+                    print('function {} : time {}'.format(
+                        processtint[t], timer[t + 1] - timer[t]))
 
             print('total')
             print(timer[len(timer) - 1] - timer[0])
