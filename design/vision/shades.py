@@ -29,6 +29,7 @@ process = ['take', 'convert', 'blob find',
 points = []
 running = 0
 tintShade = [32, 32, 32]
+tintBack = [255, 255, 255]
 
 
 def initlcd():
@@ -69,6 +70,11 @@ def tintShadeset(tint):
     tintShade = tint
 
 
+def tintBackset(tint):
+    global tintBack
+    tintBack = tint
+
+
 def runningstateget():
     global running
     return(running)
@@ -81,6 +87,7 @@ def sandd():
     while running != 2:
         while running == 1:
             print(tintShade)
+            print(tintBack)
             timer = []
             timer.append(time())  # t1
 
@@ -103,7 +110,7 @@ def sandd():
 
             timer.append(time())  # t6
 
-            disp.clear((255, 255, 255))  # 0.036
+            disp.clear((tintBack[2], tintBack[1], tintBack[0]))  # 0.036
 
             timer.append(time())  # t7
 

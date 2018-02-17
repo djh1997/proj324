@@ -5,7 +5,7 @@ import os
 import subprocess
 
 from telegram.ext import CommandHandler, Updater
-from shades import runningstateset, runningstateget, tintShadeset, sandd
+from shades import runningstateset, runningstateget, tintShadeset, tintBackset, sandd
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -72,20 +72,7 @@ def temp(bot, update):
 def tint(bot, update):
     if update.message.from_user.id == myuserid:
         error = False
-        input = update.message.text
-        input = input.split('/tint ')
-        tint = input[1].split(',')
-        for i in range(len(tint)):
-            tint[i] = int(tint[i])
-            if tint[i] not in range(0, 256):
-                error = True
-                print(tint[i])
-                update.message.reply_text(error)
-        if error == False:
-            tintShadeset(tint)
-        else:
-            update.message.reply_text(
-                'valueError please enter rgb in this format /tint 0-255,0-255,0-255')
+        update.message.reply_text(colorSplit(update.message.text))
     else:
         update.message.reply_text('unavaliable for your user id.')
 
@@ -117,6 +104,31 @@ def reboot(bot, update):
 
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
+
+
+def colorSplit(input):
+    error = False
+    input = input.split('/tint ')
+    input = input[1].split('@')
+    tint = input[1].split(',')
+    for i in range(len(tint)):
+        tint[i] = int(tint[i])
+        if tint[i] not in range(0, 256):
+            error = True
+            return(error)
+    if error == False:
+        if input[0] == 'back':
+            tintBackset(tint)
+            return(tint)
+        elif input[0] == 'fore':
+            tintShadeset(tint)
+            return(tint)
+        else:
+            return(
+                'valueError please enter rgb in this format /tint fore-back@0-255,0-255,0-255')
+    else:
+        return(
+            'valueError please enter rgb in this format /tint fore-back@0-255,0-255,0-255')
 
 
 def telegramMain():
