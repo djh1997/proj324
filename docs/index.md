@@ -4,13 +4,13 @@
 
 This is the criteria I would like to meet, to feel as though I have created a successful project.
 
-| Stage | Name                        | Description                                      |
-| ----- | --------------------------- | ------------------------------------------------ |
-| 1     | Smart shades                | Make a set of smart sun classes                  |
-| 2     | Auto smart shades           | Add LDR to control the opacity                   |
-| 3     | Auto smart point shades     | Add camera to make dark point over bright points |
-| 4     | Controllable smart shades   | Add options to swap between modes                |
-| 5     | Driving/safety improvements | Auto react headlights etc.                       |
+Stage | Name                        | Description
+----- | --------------------------- | ------------------------------------------------
+1     | Smart shades                | Make a set of smart sun classes
+2     | Auto smart shades           | Add LDR to control the opacity
+3     | Auto smart point shades     | Add camera to make dark point over bright points
+4     | Controllable smart shades   | Add options to swap between modes
+5     | Driving/safety improvements | Auto react headlights etc.
 
 ## Inspiration
 

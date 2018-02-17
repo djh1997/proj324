@@ -90,3 +90,7 @@ got blob detection working 'live'
 # 16/02/18
 
 got both lcds working and fine tune timings to work out where the issues are and fine tune the blob detection
+
+# 17/02/18
+
+tidied files up and got telegram control integrated into shades with control over weather point detection is on or off and the colour / tint level
