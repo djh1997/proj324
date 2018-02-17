@@ -16,12 +16,35 @@ test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
 user = False
 myuserid = 417245494
+runningvar = 1
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 
 
+def running():
+    global runningvar
+    return runningvar
+
+
 def start(bot, update):
-    update.message.reply_text('Hi!')
+    global runningvar
+    runningvar = 1
+    print(runningvar)
+    update.message.reply_text('started')
+
+
+def stop(bot, update):
+    global runningvar
+    runningvar = 0
+    print(runningvar)
+    update.message.reply_text('stoped')
+
+
+def exit(bot, update):
+    global runningvar
+    runningvar = 2
+    print(runningvar)
+    update.message.reply_text('exiting')
 
 
 def help(bot, update):
@@ -86,6 +109,8 @@ def telegramMain():
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("stop", stop))
+    dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
@@ -106,4 +131,4 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    updater.idle()
+    # updater.idle()

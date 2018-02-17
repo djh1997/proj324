@@ -11,7 +11,7 @@ from time import sleep, time
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
 
-from telegrambot import telegramMain
+from telegrambot import telegramMain, running
 
 import matplotlib.pyplot as plt  # for showing the blobs on image
 
@@ -47,80 +47,81 @@ camera.start_preview()
 
 disp.begin()
 draw = disp.draw()
+while running() != 2:
+    while running() == 1:
+        timer = []
+        timer.append(time())  # t1
 
-for k in range(5):
+        camera.capture('image1.jpg')  # 0.5
 
-    print(k)
-    timer = []
-    timer.append(time())  # t1
+        timer.append(time())  # t2
 
-    camera.capture('image1.jpg')  # 0.5
+        img1 = imread('image1.jpg', as_grey=True)  # 0.06
 
-    timer.append(time())  # t2
+        timer.append(time())  # t3
 
-    img1 = imread('image1.jpg', as_grey=True)  # 0.06
+        blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)  # .44
 
-    timer.append(time())  # t3
+        timer.append(time())  # t4
 
-    blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)  # .44
+        points = []
+        for i in range(len(blobs_doh)):  # 0.0002
+            points.append([blobs_doh[i][0] / scaleFactor, blobs_doh[i]
+                           [1] / scaleFactor, (blobs_doh[i][1] / 3) / scaleFactor, 50])
 
-    timer.append(time())  # t4
+        timer.append(time())  # t6
 
-    points = []
-    for i in range(len(blobs_doh)):  # 0.0002
-        points.append([blobs_doh[i][0] / scaleFactor, blobs_doh[i]
-                       [1] / scaleFactor, (blobs_doh[i][1] / 3) / scaleFactor, 50])
+        disp.clear((255, 255, 255))  # 0.036
 
-    timer.append(time())  # t6
+        timer.append(time())  # t7
 
-    disp.clear((255, 255, 255))  # 0.036
+        for i in range(0, len(points)):  # 0.0019
 
-    timer.append(time())  # t7
+            x1 = int(points[i][0] - points[i][2])
+            x2 = int(points[i][0] + points[i][2])
+            y1 = int(points[i][1] - points[i][2])
+            y2 = int(points[i][1] + points[i][2])
+            colour = int(2.55 * points[i][3])
+            draw.ellipse((x1, y1, x2, y2), fill=(colour, colour, colour))
 
-    for i in range(0, len(points)):  # 0.0019
+        timer.append(time())  # t8
 
-        x1 = int(points[i][0] - points[i][2])
-        x2 = int(points[i][0] + points[i][2])
-        y1 = int(points[i][1] - points[i][2])
-        y2 = int(points[i][1] + points[i][2])
-        colour = int(2.55 * points[i][3])
-        draw.ellipse((x1, y1, x2, y2), fill=(colour, colour, colour))
+        disp.display()  # 0.13
 
-    timer.append(time())  # t8
+        timer.append(time())  # t9
 
-    disp.display()  # 0.13
+        # blobs_list = [blobs_doh,blobs_doh]
+        # colors = ['red','lime']
+        # titles = ['Determinant of Hessian','doh']
+        # sequence = zip(blobs_list, colors, titles)
+        #
+        # fig, axes = plt.subplots(1, 2, figsize=(9, 3), sharex=True, sharey=True,
+        #                          subplot_kw={'adjustable': 'box-forced'})
+        # ax = axes.ravel()
+        #
+        # for idx, (blobs, color, title) in enumerate(sequence):
+        #     ax[idx].set_title(title)
+        #     ax[idx].imshow(img1, interpolation='nearest')
+        #     for blob in blobs:
+        #         y, x, r = blob
+        #         c = plt.Circle((x, y), r, color=color, linewidth=2, fill=False)
+        #         ax[idx].add_patch(c)
+        #     ax[idx].set_axis_off()
+        #
+        # plt.tight_layout()
+        # plt.show()
 
-    timer.append(time())  # t9
+        print(points)
 
-    # blobs_list = [blobs_doh,blobs_doh]
-    # colors = ['red','lime']
-    # titles = ['Determinant of Hessian','doh']
-    # sequence = zip(blobs_list, colors, titles)
-    #
-    # fig, axes = plt.subplots(1, 2, figsize=(9, 3), sharex=True, sharey=True,
-    #                          subplot_kw={'adjustable': 'box-forced'})
-    # ax = axes.ravel()
-    #
-    # for idx, (blobs, color, title) in enumerate(sequence):
-    #     ax[idx].set_title(title)
-    #     ax[idx].imshow(img1, interpolation='nearest')
-    #     for blob in blobs:
-    #         y, x, r = blob
-    #         c = plt.Circle((x, y), r, color=color, linewidth=2, fill=False)
-    #         ax[idx].add_patch(c)
-    #     ax[idx].set_axis_off()
-    #
-    # plt.tight_layout()
-    # plt.show()
+        for t in range(0, len(timer) - 1):
+            print('function {} : time {}'.format(
+                process[t], timer[t + 1] - timer[t]))
 
-    print(points)
+        print('total')
+        print(timer[len(timer) - 1] - timer[0])
+        sleep(1)
 
-    for t in range(0, len(timer) - 1):
-        print('function {} : time {}'.format(
-            process[t], timer[t + 1] - timer[t]))
-
-    print('total')
-    print(timer[len(timer) - 1] - timer[0])
+    # telegramMain.updater.idle()
 
 
 camera.stop_preview()
