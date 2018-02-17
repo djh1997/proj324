@@ -1,0 +1,12 @@
+help - show the help menu
+pointtoggle - toggles the point detection
+tint - percentage
+colourset - fore/back@0/255,0/255,0/255
+start - starts shades
+stop - stop shades
+exit - exit shades
+reboot - reboot shades
+halt - shutdown shades
+up - see if the bot is up
+temp - see the CPU temperature
+uprecords - see up time

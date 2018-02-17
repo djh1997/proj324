@@ -4,7 +4,8 @@ import logging
 import os
 import subprocess
 
-from telegram.ext import CommandHandler, Updater
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import CommandHandler, Updater, CallbackQueryHandler
 from shades import runningstateset, runningstateget, tintShadeset, tintBackset, pointtoggleset, sandd
 
 # Enable logging
@@ -56,8 +57,8 @@ def pointtoggle(bot, update):
 def help(bot, update):
     update.message.reply_text(
         '/pointtoggle toggles the point dettecion\n\r' +
-        '/tint fore-back@0-255,0-255,0-255\n\r' +
-        '/colourset percentage\n\r' +
+        '/tint percentage\n\r' +
+        '/colourset fore-back@0-255,0-255,0-255\n\r' +
         '/start starts shades\n\r' +
         '/stop stop shades\n\r' +
         '/exit exit shades\n\r' +
@@ -134,6 +135,31 @@ def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
 
+def pickcolour(bot, update):
+    keyboard = [[InlineKeyboardButton("10", callback_data=10),
+                 InlineKeyboardButton("20", callback_data=20)],
+                [InlineKeyboardButton("30", callback_data=30)],
+                [InlineKeyboardButton("40", callback_data=40)],
+                [InlineKeyboardButton("50", callback_data=50)],
+                [InlineKeyboardButton("60", callback_data=60)],
+                [InlineKeyboardButton("70", callback_data=70)],
+                [InlineKeyboardButton("80", callback_data=80)],
+                [InlineKeyboardButton("90", callback_data=90)],
+                [InlineKeyboardButton("100", callback_data=100)]]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.message.reply_text('Please choose:', reply_markup=reply_markup)
+
+
+def button(bot, update):
+    query = update.callback_query
+    tint = int(int(query.data) * 2.55)
+    bot.edit_message_text(text="Selected option: {}".format(colorSplit('back@{},{},{}'.format(tint, tint, tint))),
+                          chat_id=query.message.chat_id,
+                          message_id=query.message.message_id)
+
+
 def colorSplit(input):
     error = False
     input = input.split('@')
@@ -174,12 +200,14 @@ def telegramMain():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("tint", tint))
     dp.add_handler(CommandHandler("colourset", colourset))
-    dp.add_handler(CommandHandler("rundmc", rundmc))
+    #dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))
     dp.add_handler(CommandHandler("temp", temp))
     dp.add_handler(CommandHandler("uprecords", uprecords))
     dp.add_handler(CommandHandler("up", up))
+    dp.add_handler(CommandHandler('pickcolour', pickcolour))
+    dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
     # dp.add_handler(MessageHandler(Filters.text, echo))
