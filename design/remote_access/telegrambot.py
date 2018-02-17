@@ -54,7 +54,15 @@ def pointtoggle(bot, update):
 
 
 def help(bot, update):
-    update.message.reply_text('Help me im stuck in a box!')
+    update.message.reply_text(
+        '/pointtoggle toggles the point dettecion\n\r' +
+        '/tint fore-back@0-255,0-255,0-255\n\r' +
+        '/colourset percentage\n\r' +
+        '/start starts shades\n\r' +
+        '/stop stop shades\n\r' +
+        '/exit exit shades\n\r' +
+        '/reboot reboot shades\n\r' +
+        '/halt shutsdown shades')
 
 
 def up(bot, update):
