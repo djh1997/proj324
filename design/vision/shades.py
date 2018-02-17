@@ -85,8 +85,6 @@ def sandd():
     initcamera()
     while running != 2:
         while running == 1:
-            print(tintShade)
-            print(tintBack)
             camera.capture('image1.jpg')
             img1 = imread('image1.jpg', as_grey=True)
             blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)
