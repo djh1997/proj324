@@ -87,34 +87,18 @@ def sandd():
         while running == 1:
             print(tintShade)
             print(tintBack)
-            timer = []
-            timer.append(time())  # t1
-
-            camera.capture('image1.jpg')  # 0.5
-
-            timer.append(time())  # t2
-
-            img1 = imread('image1.jpg', as_grey=True)  # 0.06
-
-            timer.append(time())  # t3
-
-            blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)  # .44
-
-            timer.append(time())  # t4
-
+            camera.capture('image1.jpg')
+            img1 = imread('image1.jpg', as_grey=True)
+            blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)
             points = []
-            for i in range(len(blobs_doh)):  # 0.0002
+
+            for i in range(len(blobs_doh)):
                 points.append([blobs_doh[i][0] / scaleFactor, blobs_doh[i]
                                [1] / scaleFactor, (blobs_doh[i][1] / 3) / scaleFactor, tintShade])
 
-            timer.append(time())  # t6
+            disp.clear((tintBack[2], tintBack[1], tintBack[0]))
 
-            disp.clear((tintBack[2], tintBack[1], tintBack[0]))  # 0.036
-
-            timer.append(time())  # t7
-
-            for i in range(0, len(points)):  # 0.0019
-
+            for i in range(0, len(points)):
                 x1 = int(points[i][0] - points[i][2])
                 x2 = int(points[i][0] + points[i][2])
                 y1 = int(points[i][1] - points[i][2])
@@ -122,19 +106,8 @@ def sandd():
                 draw.ellipse((x1, y1, x2, y2), fill=(
                     points[i][3][2], points[i][3][1], points[i][3][0]))
 
-            timer.append(time())  # t8
+            disp.display()
 
-            disp.display()  # 0.13
-
-            timer.append(time())  # t9
-
-            # print(points)
-            #
-            # for t in range(0, len(timer) - 1):
-            #     print('function {} : time {}'.format(
-            #         process[t], timer[t + 1] - timer[t]))
-
-            print('total')
-            print(timer[len(timer) - 1] - timer[0])
         sleep(1)
+
     deinitcamera()
