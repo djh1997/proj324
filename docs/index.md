@@ -34,7 +34,7 @@ So, once I have removed the backlight from the LCD's I can mount them in a frame
 
 I got the LCD hooked up and displayed some random spots of different opacity on the screen
 
-![random point video](log/IMG_1188.TRIM.MOV)
+[random point video](log/IMG_1188.TRIM.MOV)
 
 I then conneted the camera and started blob detection and got that working ![final mock-up design image](log/IMG_1190.JPG)
 
