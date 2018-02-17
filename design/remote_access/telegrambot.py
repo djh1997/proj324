@@ -5,7 +5,7 @@ import os
 import subprocess
 
 from telegram.ext import CommandHandler, Updater
-from shades import runningstateset, runningstateget, tintShadeset, tintBackset, sandd
+from shades import runningstateset, runningstateget, tintShadeset, tintBackset, pointtoggleset, sandd
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -45,6 +45,14 @@ def exit(bot, update):
         update.message.reply_text('unavaliable for your user id.')
 
 
+def pointtoggle(bot, update):
+    if update.message.from_user.id == myuserid:
+        pointtoggleset()
+        update.message.reply_text('toggling points')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
+
+
 def help(bot, update):
     update.message.reply_text('Help me im stuck in a box!')
 
@@ -69,10 +77,22 @@ def temp(bot, update):
     update.message.reply_text('CPU temperature is:{}' .format(temp))
 
 
+def colourset(bot, update):
+    if update.message.from_user.id == myuserid:
+        update.message.reply_text(colorSplit(
+            update.message.text.split('/colourset ')))
+    else:
+        update.message.reply_text('unavaliable for your user id.')
+
+
 def tint(bot, update):
     if update.message.from_user.id == myuserid:
-        error = False
-        update.message.reply_text(colorSplit(update.message.text))
+        input = update.message.text
+        input = input.split('/tint ')
+        input = 100 - int(input[1])
+        input = 'back@{},{},{}'.format(
+            int(input * 2.55), int(input * 2.55), int(input * 2.55))
+        update.message.reply_text(colorSplit(input))
     else:
         update.message.reply_text('unavaliable for your user id.')
 
@@ -108,8 +128,7 @@ def error(bot, update, error):
 
 def colorSplit(input):
     error = False
-    input = input.split('/tint ')
-    input = input[1].split('@')
+    input = input.split('@')
     tint = input[1].split(',')
     for i in range(len(tint)):
         tint[i] = int(tint[i])
@@ -125,10 +144,10 @@ def colorSplit(input):
             return(tint)
         else:
             return(
-                'valueError please enter rgb in this format /tint fore-back@0-255,0-255,0-255')
+                'valueError please enter rgb in this format fore-back@0-255,0-255,0-255')
     else:
         return(
-            'valueError please enter rgb in this format /tint fore-back@0-255,0-255,0-255')
+            'valueError please enter rgb in this format fore-back@0-255,0-255,0-255')
 
 
 def telegramMain():
@@ -143,8 +162,10 @@ def telegramMain():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("stop", stop))
     dp.add_handler(CommandHandler("exit", exit))
+    dp.add_handler(CommandHandler("pointtoggle", pointtoggle))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("tint", tint))
+    dp.add_handler(CommandHandler("colourset", colourset))
     dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))

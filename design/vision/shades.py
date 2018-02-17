@@ -29,6 +29,7 @@ points = []
 running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
+pointtoggle = 1
 
 
 def initlcd():
@@ -74,6 +75,11 @@ def tintBackset(tint):
     tintBack = tint
 
 
+def pointtoggleset():
+    global pointtoggle
+    pointtoggle ^= 1
+
+
 def runningstateget():
     global running
     return(running)
@@ -85,24 +91,26 @@ def sandd():
     initcamera()
     while running != 2:
         while running == 1:
-            camera.capture('image1.jpg')
-            img1 = imread('image1.jpg', as_grey=True)
-            blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)
-            points = []
+            if pointtoggle == 1:
+                camera.capture('image1.jpg')
+                img1 = imread('image1.jpg', as_grey=True)
+                blobs_doh = blob_doh(img1, max_sigma=15, threshold=.0075)
+                points = []
 
-            for i in range(len(blobs_doh)):
-                points.append([blobs_doh[i][0] / scaleFactor, blobs_doh[i]
-                               [1] / scaleFactor, (blobs_doh[i][1] / 3) / scaleFactor, tintShade])
+                for i in range(len(blobs_doh)):
+                    points.append([blobs_doh[i][0] / scaleFactor, blobs_doh[i]
+                                   [1] / scaleFactor, (blobs_doh[i][1] / 3) / scaleFactor, tintShade])
 
             disp.clear((tintBack[2], tintBack[1], tintBack[0]))
 
-            for i in range(0, len(points)):
-                x1 = int(points[i][0] - points[i][2])
-                x2 = int(points[i][0] + points[i][2])
-                y1 = int(points[i][1] - points[i][2])
-                y2 = int(points[i][1] + points[i][2])
-                draw.ellipse((x1, y1, x2, y2), fill=(
-                    points[i][3][2], points[i][3][1], points[i][3][0]))
+            if pointtoggle == 1:
+                for i in range(0, len(points)):
+                    x1 = int(points[i][0] - points[i][2])
+                    x2 = int(points[i][0] + points[i][2])
+                    y1 = int(points[i][1] - points[i][2])
+                    y2 = int(points[i][1] + points[i][2])
+                    draw.ellipse((x1, y1, x2, y2), fill=(
+                        points[i][3][2], points[i][3][1], points[i][3][0]))
 
             disp.display()
 
