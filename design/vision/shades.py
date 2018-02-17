@@ -114,7 +114,7 @@ def sandd():
                 y1 = int(points[i][1] - points[i][2])
                 y2 = int(points[i][1] + points[i][2])
                 draw.ellipse((x1, y1, x2, y2), fill=(
-                    points[i][3][0], points[i][3][1], points[i][3][2]))
+                    points[i][3][2], points[i][3][1], points[i][3][0]))
 
             timer.append(time())  # t8
 

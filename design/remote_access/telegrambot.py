@@ -71,12 +71,21 @@ def temp(bot, update):
 
 def tint(bot, update):
     if update.message.from_user.id == myuserid:
+        error = False
         input = update.message.text
         input = input.split('/tint ')
         tint = input[1].split(',')
         for i in range(len(tint)):
             tint[i] = int(tint[i])
-        tintShadeset(tint)
+            if tint[i] not in range(0, 256):
+                error = True
+                print(tint[i])
+                update.message.reply_text(error)
+        if error == False:
+            tintShadeset(tint)
+        else:
+            update.message.reply_text(
+                'valueError please enter rgb in this format /tint 0-255,0-255,0-255')
     else:
         update.message.reply_text('unavaliable for your user id.')
 
