@@ -6,16 +6,12 @@ import ST7735 as TFT
 import Adafruit_GPIO as GPIO
 import Adafruit_GPIO.SPI as SPI
 
-from random import randint
-import picamera
-import picamera.array
+import picamera         #camera
 from time import sleep, time
-from math import sqrt
-from skimage import data
-from skimage.feature import blob_doh
-from skimage.io import imread
+from skimage.feature import blob_doh#blob detection
+from skimage.io import imread#convert jpg to np array
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt #for showing the blobs on image
 
 WIDTH = 128
 HEIGHT = 160
