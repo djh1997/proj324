@@ -23,9 +23,9 @@ DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
-processpoint = ['take', 'convert', 'blob find',
+processpoint = ['autoback', 'take', 'convert', 'blob find',
                 'blob to point', 'clear', 'point maths', 'diplay']
-processtint = ['clear',  'diplay']
+processtint = ['autoback', 'clear',  'diplay']
 points = []
 running = 0
 tintShade = [32, 32, 32]
@@ -95,6 +95,14 @@ def runningstateget():
     return(running)
 
 
+def getiso():
+    global camera
+    iso = float(camera.analog_gain)
+    iso = (iso * 16)
+    iso = 127 + iso
+    return(int(iso))
+
+
 def sandd():
     global running, tintShade
     initlcd()
@@ -104,10 +112,15 @@ def sandd():
             timer = []
             points = []
             pointtoggleinternal = pointtoggle
+            timer.append(time())
+            ti = getiso()
+            tintBackset([ti, ti, ti])
+
             if pointtoggleinternal == 1:
                 timer.append(time())
 
-                camera.capture('image1.jpg', use_video_port=True)
+                camera.capture(
+                    'image1.jpg', use_video_port=True, thumbnail=None)
 
                 timer.append(time())
                 img1 = imread('image1.jpg', as_grey=True)

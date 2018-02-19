@@ -6,7 +6,7 @@ import subprocess
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, Updater, CallbackQueryHandler
-from shades import runningstateset, runningstateget, tintShadeset, tintBackset, pointtoggleset, sandd
+from shades import runningstateset, runningstateget, tintShadeset, tintBackset, pointtoggleset, sandd, getiso
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -90,6 +90,16 @@ def colourset(bot, update):
     if update.message.from_user.id == myuserid:
         input = update.message.text.split('/colourset ')
         update.message.reply_text(colorSplit(input[1]))
+    else:
+        update.message.reply_text('unavaliable for your user id.')
+
+
+def autoback(bot, update):
+    if update.message.from_user.id == myuserid:
+        input = getiso()
+        input = 'back@{},{},{}'.format(
+            int(input), int(input), int(input))
+        update.message.reply_text(colorSplit(input))
     else:
         update.message.reply_text('unavaliable for your user id.')
 
@@ -197,6 +207,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("stop", stop))
     dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("pointtoggle", pointtoggle))
+    dp.add_handler(CommandHandler("autoback", autoback))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("tint", tint))
     dp.add_handler(CommandHandler("colourset", colourset))
