@@ -88,8 +88,8 @@ def temp(bot, update):
 
 def colourset(bot, update):
     if update.message.from_user.id == myuserid:
-        update.message.reply_text(colorSplit(
-            update.message.text.split('/colourset ')))
+        input = update.message.text.split('/colourset ')
+        update.message.reply_text(colorSplit(input[1]))
     else:
         update.message.reply_text('unavaliable for your user id.')
 

@@ -44,6 +44,8 @@ def initlcd():
             max_speed_hz=SPEED_HZ))
     disp.begin()
     draw = disp.draw()
+    disp.display(Image.open('pi0toChroma.jpg').rotate(
+        90).resize((WIDTH, HEIGHT)))
 
 
 def deinitlcd():
