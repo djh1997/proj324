@@ -147,8 +147,8 @@ def error(bot, update, error):
 
 
 def pickcolour(bot, update):
-    keyboard = [[InlineKeyboardButton("10", callback_data=10),
-                 InlineKeyboardButton("20", callback_data=20)],
+    keyboard = [[InlineKeyboardButton("10", callback_data=10)],
+                [InlineKeyboardButton("20", callback_data=20)],
                 [InlineKeyboardButton("30", callback_data=30)],
                 [InlineKeyboardButton("40", callback_data=40)],
                 [InlineKeyboardButton("50", callback_data=50)],

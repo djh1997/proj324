@@ -100,7 +100,7 @@ def runningstateget():
 
 def getiso():
     global camera
-    maxtint = 8
+    maxtint = 4
     iso = float(camera.analog_gain)
     iso = (iso * maxtint)
     iso = (255 - (maxtint * 8)) + iso
