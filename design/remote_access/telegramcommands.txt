@@ -1,7 +1,8 @@
 help - show the help menu
-pointtoggle - toggles the point detection
+mode- 0=manual 1=tint 2=points 3=full auto
 tint - percentage
 colourset - fore/back@0/255,0/255,0/255
+pickcolour - pick from list of tints
 start - starts shades
 stop - stop shades
 exit - exit shades

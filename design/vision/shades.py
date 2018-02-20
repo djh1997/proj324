@@ -23,14 +23,17 @@ DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
-processpoint = ['autoback', 'take', 'convert', 'blob find',
-                'blob to point', 'clear', 'point maths', 'diplay']
-processtint = ['autoback', 'clear',  'diplay']
+processpoint = [['clear',  'diplay'],
+                ['autoback', 'clear',  'diplay'],
+                ['take', 'convert', 'blob find',
+                 'blob to point', 'clear', 'point maths', 'diplay'],
+                ['autoback', 'take', 'convert', 'blob find',
+                 'blob to point', 'clear', 'point maths', 'diplay']]
 points = []
 running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
-pointtoggle = 1
+mode = 1
 
 
 def initlcd():
@@ -85,9 +88,9 @@ def tintBackset(tint):
     tintBack = tint
 
 
-def pointtoggleset():
-    global pointtoggle
-    pointtoggle ^= 1
+def modeset(modevar):
+    global mode
+    mode = modevar
 
 
 def runningstateget():
@@ -97,9 +100,10 @@ def runningstateget():
 
 def getiso():
     global camera
+    maxtint = 8
     iso = float(camera.analog_gain)
-    iso = (iso * 16)
-    iso = 127 + iso
+    iso = (iso * maxtint)
+    iso = (255 - (maxtint * 8)) + iso
     return(int(iso))
 
 
@@ -111,12 +115,14 @@ def sandd():
         while running == 1:
             timer = []
             points = []
-            pointtoggleinternal = pointtoggle
-            timer.append(time())
-            ti = getiso()
-            tintBackset([ti, ti, ti])
+            modeinternal = mode
 
-            if pointtoggleinternal == 1:
+            if (modeinternal == 1) or (modeinternal == 3):
+                timer.append(time())
+                ti = getiso()
+                tintBackset([ti, ti, ti])
+
+            if modeinternal >= 2:
                 timer.append(time())
 
                 camera.capture(
@@ -138,7 +144,7 @@ def sandd():
 
             disp.clear((tintBack[2], tintBack[1], tintBack[0]))
 
-            if pointtoggleinternal == 1:
+            if modeinternal >= 2:
                 timer.append(time())
                 for i in range(0, len(points)):
                     x1 = int(points[i][0] - points[i][2])
@@ -156,12 +162,8 @@ def sandd():
 
             print('number of points{}'.format(len(points)))
             for t in range(0, len(timer) - 1):
-                if pointtoggleinternal == 1:
-                    print('function {} : time {}'.format(
-                        processpoint[t], timer[t + 1] - timer[t]))
-                else:
-                    print('function {} : time {}'.format(
-                        processtint[t], timer[t + 1] - timer[t]))
+                print('function {} : time {}'.format(
+                    processpoint[modeinternal][t], timer[t + 1] - timer[t]))
 
             print('total')
             print(timer[len(timer) - 1] - timer[0])

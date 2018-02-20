@@ -6,7 +6,7 @@ import subprocess
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, Updater, CallbackQueryHandler
-from shades import runningstateset, runningstateget, tintShadeset, tintBackset, pointtoggleset, sandd, getiso
+from shades import runningstateset, runningstateget, tintShadeset, tintBackset, modeset, sandd, getiso
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -46,17 +46,18 @@ def exit(bot, update):
         update.message.reply_text('unavaliable for your user id.')
 
 
-def pointtoggle(bot, update):
+def mode(bot, update):
     if update.message.from_user.id == myuserid:
-        pointtoggleset()
-        update.message.reply_text('toggling points')
+        input = update.message.text.split('/mode ')
+        modeset(int(input[1]))
+        update.message.reply_text('mode set to {}'.format(input[1]))
     else:
         update.message.reply_text('unavaliable for your user id.')
 
 
 def help(bot, update):
     update.message.reply_text(
-        '/pointtoggle toggles the point dettecion\n\r' +
+        '/mode 0=manual 1=tint 2=points 3=full auto\n\r' +
         '/tint percentage\n\r' +
         '/colourset fore-back@0-255,0-255,0-255\n\r' +
         '/start starts shades\n\r' +
@@ -206,7 +207,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("stop", stop))
     dp.add_handler(CommandHandler("exit", exit))
-    dp.add_handler(CommandHandler("pointtoggle", pointtoggle))
+    dp.add_handler(CommandHandler("mode", mode))
     dp.add_handler(CommandHandler("autoback", autoback))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("tint", tint))
