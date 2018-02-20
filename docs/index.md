@@ -49,3 +49,19 @@ I then conneted the camera and started blob detection and got that working ![fin
 then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot) this involved more work than I had initially expected since passing variable around wasn't as easy as I had hoped
 
 I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot)
+
+command    | param                                | Description
+---------- | ------------------------------------ | -----------------------------
+help       | na                                   | show the help menu
+mode       | 0=manual 1=tint 2=points 3=full auto | change current mode
+tint       | percentage                           | sets the tint of the lenses
+colourset  | fore/back@0/255,0/255,0/255          | sets the colour of the lenses
+pickcolour | pick from list of tints              | preset tints/colours
+start      | na                                   | starts shades
+stop       | na                                   | stop shades
+exit       | na                                   | exit shades
+reboot     | na                                   | reboot shades
+halt       | na                                   | shutdown shades
+up         | na                                   | see if the bot is up
+temp       | na                                   | see the CPU temperature
+uprecords  | na                                   | see up time
