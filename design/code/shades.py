@@ -16,7 +16,7 @@ WIDTH = 128
 HEIGHT = 160
 SPEED_HZ = 640000000
 
-scaleFactor = .5
+scaleFactor = .25
 
 # Raspberry Pi configuration.
 DC = 24
@@ -34,6 +34,7 @@ running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
 mode = 0
+debug = 0
 
 
 def initlcd():
@@ -66,7 +67,7 @@ def initcamera():
     camera = picamera.PiCamera()
     camera.color_effects = (128, 128)
     camera.resolution = (int(160 * scaleFactor), int(128 * scaleFactor))
-    camera.start_preview()
+    # camera.start_preview()
 
 
 def deinitcamera():
@@ -74,6 +75,15 @@ def deinitcamera():
     camera.stop_preview()
     camera.close()
     print('camera closed')
+
+
+def debugset():
+    global debug
+    if debug == 0:
+        camera.start_preview()
+    else:
+        camera.stop_preview()
+    debug ^= 1
 
 
 def runningstateset(state):
@@ -163,13 +173,19 @@ def sandd():
 
             timer.append(time())
 
-            print('number of points{}'.format(len(points)))
-            for t in range(0, len(timer) - 1):
-                print('function {} : time {}'.format(
-                    processpoint[modeinternal][t], timer[t + 1] - timer[t]))
+            if debug == 1:
 
-            print('total')
-            print(timer[len(timer) - 1] - timer[0])
+                print('number of points: {}'.format(len(points)))
+                print('background tint: {}'.format(tintBack))
+                print('foreground tint: {}'.format(tintShade))
+                for t in range(0, len(timer) - 1):
+                    print('function {} : time {}'.format(
+                        processpoint[modeinternal][t], timer[t + 1] - timer[t]))
+
+                totaltime = timer[len(timer) - 1] - timer[0]
+
+                print('total={:4.2f} fps={:4.2f}'.format(
+                    totaltime, 1 / totaltime))
 
         sleep(1)
 

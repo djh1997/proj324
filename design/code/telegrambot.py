@@ -6,7 +6,7 @@ import subprocess
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, Updater, CallbackQueryHandler
-from shades import runningstateset, runningstateget, tintShadeset, tintBackset, modeset, sandd, getiso
+from shades import runningstateset, runningstateget, tintShadeset, tintBackset, modeset, sandd, getiso, debugset
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -134,6 +134,14 @@ def halt(bot, update):
         update.message.reply_text('unavaliable for your user id.')
 
 
+def debug(bot, update):
+    if update.message.from_user.id == myuserid:
+        debugset()
+        update.message.reply_text('debug toggled')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
+
+
 def reboot(bot, update):
     if update.message.from_user.id == myuserid:
         update.message.reply_text('see you in a second.')
@@ -229,6 +237,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("uprecords", uprecords))
     dp.add_handler(CommandHandler("up", up))
     dp.add_handler(CommandHandler('pickcolour', pickcolour))
+    dp.add_handler(CommandHandler('debug', debug))
     dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
