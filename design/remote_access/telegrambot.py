@@ -148,15 +148,14 @@ def error(bot, update, error):
 
 def pickcolour(bot, update):
     keyboard = [[InlineKeyboardButton("10", callback_data=10)],
-                [InlineKeyboardButton("20", callback_data=20)],
-                [InlineKeyboardButton("30", callback_data=30)],
-                [InlineKeyboardButton("40", callback_data=40)],
                 [InlineKeyboardButton("50", callback_data=50)],
-                [InlineKeyboardButton("60", callback_data=60)],
-                [InlineKeyboardButton("70", callback_data=70)],
                 [InlineKeyboardButton("80", callback_data=80)],
                 [InlineKeyboardButton("90", callback_data=90)],
-                [InlineKeyboardButton("100", callback_data=100)]]
+                [InlineKeyboardButton("100", callback_data=100)],
+                [InlineKeyboardButton("red", callback_data=101)],
+                [InlineKeyboardButton("green", callback_data=102)],
+                [InlineKeyboardButton("blue", callback_data=103)],
+                [InlineKeyboardButton("gold", callback_data=104)]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -165,8 +164,19 @@ def pickcolour(bot, update):
 
 def button(bot, update):
     query = update.callback_query
-    tint = int(int(query.data) * 2.55)
-    bot.edit_message_text(text="Selected option: {}".format(colorSplit('back@{},{},{}'.format(tint, tint, tint))),
+    tint = int(query.data)
+    if tint <= 100:
+        tint = int(tint * 2.55)
+        tint = '{},{},{}'.format(tint, tint, tint)
+    elif tint == 101:
+        tint = '255, 200, 200'
+    elif tint == 102:
+        tint = '200, 255, 200'
+    elif tint == 103:
+        tint = '200, 200, 255'
+    elif tint == 104:
+        tint = '255, 223, 0'
+    bot.edit_message_text(text="Selected option: {}".format(colorSplit('back@{}'.format(tint))),
                           chat_id=query.message.chat_id,
                           message_id=query.message.message_id)
 

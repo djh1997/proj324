@@ -33,7 +33,7 @@ points = []
 running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
-mode = 1
+mode = 0
 
 
 def initlcd():
@@ -53,6 +53,9 @@ def initlcd():
 
 def deinitlcd():
     global disp
+    disp.display(Image.open('close.jpg').rotate(
+        90).resize((WIDTH, HEIGHT)))
+    sleep(.5)
     disp.clear((255, 255, 255))
     disp.display()
     print('lcd cleared')
