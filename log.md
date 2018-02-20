@@ -94,3 +94,7 @@ got both lcds working and fine tune timings to work out where the issues are and
 # 17/02/18
 
 tidied files up and got telegram control integrated into shades with control over weather point detection is on or off and the colour / tint level
+
+# 20/02/18
+
+finalized remote control(4 modes, more colours and toggle-able debug ) and begin optimizing code to try to improve fps
