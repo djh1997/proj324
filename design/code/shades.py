@@ -3,7 +3,6 @@ from PIL import ImageDraw
 from PIL import ImageFont
 
 import ST7735 as TFT
-import Adafruit_GPIO as GPIO
 import Adafruit_GPIO.SPI as SPI
 
 import picamera  # camera
@@ -14,7 +13,7 @@ from skimage.io import imread  # convert jpg to np array
 
 WIDTH = 128
 HEIGHT = 160
-SPEED_HZ = 640000000
+SPEED_HZ = 125000000
 
 scaleFactor = .25
 
