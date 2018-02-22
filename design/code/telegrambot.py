@@ -5,7 +5,7 @@ import os
 import subprocess
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CommandHandler, Updater, CallbackQueryHandler
+from telegram.ext import CommandHandler, Updater, CallbackQueryHandler, MessageHandler, Filters
 from shades import runningstateset, runningstateget, tintShadeset, tintBackset, modeset, sandd, getiso, debugset
 
 # Enable logging
@@ -72,7 +72,8 @@ def up(bot, update):
 
 
 def echo(bot, update):
-    update.message.reply_text(update.message.text)
+    update.message.reply_text(
+        'command {} not recognised.'.format(update.message.text))
 
 
 def uprecords(bot, update):
@@ -241,7 +242,7 @@ def telegramMain():
     dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
-    # dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.text, echo))
 
     # log all errors
     dp.add_error_handler(error)

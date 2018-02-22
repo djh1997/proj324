@@ -11,3 +11,4 @@ halt - shutdown shades
 up - see if the bot is up
 temp - see the CPU temperature
 uprecords - see up time
+debug - toggle debug
