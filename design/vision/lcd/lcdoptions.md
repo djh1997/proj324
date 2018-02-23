@@ -34,3 +34,12 @@ lcd pin number | name  | used | colour | pi pin
 $$ { \frac {128} {86.05}} = 1.48 \text{ vertical degrees per pixel}$$
 
 $$ { \frac {160} {98.8}} = 1.62 \text{ vertical degrees per pixel}$$
+
+# pi points
+
+colour | pi pins chip side | pi pin | colour
+------ | ----------------- | ------ | ------
+orange | 17                | 18     | grey
+yellow | 19                | 20     | black
+nc     | 21                | 22     | blue
+green  | 23                | 24     | white
