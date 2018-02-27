@@ -98,3 +98,7 @@ tidied files up and got telegram control integrated into shades with control ove
 # 20/02/18
 
 finalized remote control(4 modes, more colours and toggle-able debug ) and begin optimizing code to try to improve fps
+
+# 27/02/18
+
+investigate [capacitve](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337) control of system and mount the lenses into the frame and add price list
