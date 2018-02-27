@@ -66,6 +66,8 @@ def initcamera():
     camera = picamera.PiCamera()
     camera.color_effects = (128, 128)
     camera.resolution = (int(160 * scaleFactor), int(128 * scaleFactor))
+    camera.rotation = 270
+    camera.vflip = True
     # camera.start_preview()
 
 
