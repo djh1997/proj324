@@ -1,15 +1,12 @@
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
-
-import ST7735 as TFT
-import Adafruit_GPIO.SPI as SPI
-
-from picamera import PiCamera  # camera
 from time import sleep, time
+
+from PIL import Image, ImageDraw, ImageFont
+
+import Adafruit_GPIO.SPI as SPI
+import ST7735 as TFT
+from picamera import PiCamera  # camera
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
-
 
 WIDTH = 128
 HEIGHT = 160

@@ -5,8 +5,11 @@ import os
 import subprocess
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CommandHandler, Updater, CallbackQueryHandler, MessageHandler, Filters
-from shades import runningstateset, runningstateget, tintShadeset, tintBackset, modeset, sandd, getiso, debugset
+from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
+                          MessageHandler, Updater)
+
+from shades import (debugset, getiso, modeset, runningstateget,
+                    runningstateset, sandd, tintBackset, tintShadeset)
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
