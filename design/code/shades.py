@@ -5,7 +5,7 @@ from PIL import ImageFont
 import ST7735 as TFT
 import Adafruit_GPIO.SPI as SPI
 
-import picamera  # camera
+from picamera import PiCamera  # camera
 from time import sleep, time
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
@@ -63,7 +63,7 @@ def deinitlcd():
 
 def initcamera():
     global camera
-    camera = picamera.PiCamera()
+    camera = PiCamera()
     camera.color_effects = (128, 128)
     camera.resolution = (int(160 * scaleFactor), int(128 * scaleFactor))
     camera.rotation = 270
