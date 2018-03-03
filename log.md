@@ -114,3 +114,5 @@ raspistill -o cam.jpg -cfx 128:128 -ifx negative -w 160 -h 128 -rot 270 --thumb 
 ```bash
 raspistill -t 1000 -tl 0 -o - > img.jpg -cfx 128:128 -ifx negative -w 160 -h 128 -rot 270 --thumb none
 ```
+
+find [raspicam](http://www.uco.es/investiga/grupos/ava/node/40) cpp api for the camera
