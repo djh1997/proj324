@@ -102,3 +102,15 @@ finalized remote control(4 modes, more colours and toggle-able debug ) and begin
 # 27/02/18
 
 investigate [capacitve](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337) control of system and mount the lenses into the frame and add price list
+
+# 03/03/18
+
+begin investigating conversion to c/c++ command
+
+```bash
+raspistill -o cam.jpg -cfx 128:128 -ifx negative -w 160 -h 128 -rot 270 --thumb none -l
+```
+
+```bash
+raspistill -t 1000 -tl 0 -o - > img.jpg -cfx 128:128 -ifx negative -w 160 -h 128 -rot 270 --thumb none
+```
