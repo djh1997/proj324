@@ -98,6 +98,7 @@ tidied files up and got telegram control integrated into shades with control ove
 # 20/02/18
 
 finalized remote control(4 modes, more colours and toggle-able debug ) and begin optimizing code to try to improve fps
+f
 
 # 27/02/18
 
@@ -117,3 +118,7 @@ raspistill -t 1000 -tl 0 -o - > img.jpg -cfx 128:128 -ifx negative -w 160 -h 128
 
 find [raspicam](http://www.uco.es/investiga/grupos/ava/node/40) cpp api for the camera
 possiable [st7735R](https://github.com/vinodstanur/raspberry-pi-frame-buffer-mapping-to-160x128-ST7735R-LCD) library although might be screen output
+
+[blob](https://github.com/keenerd/quickblob)
+
+achive 30 fps image stream although the new blob detection might be able to deal with video stream
