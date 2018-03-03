@@ -1,19 +1,19 @@
 # Tasks
 
-- [x] get camera working
-- [x] get pi connected over WiFi
-- [ ] get LCD connected
-- [ ] get raw data from camera for processing
-- [ ] get raw brightness from LDR or camera
-- [ ] adjust opacity of LCD
-- [ ] add image inversion
-- [ ] add options to swap between modes
-- [ ] laser cut glasses frame
+-   [x] get camera working
+-   [x] get pi connected over WiFi
+-   [ ] get LCD connected
+-   [ ] get raw data from camera for processing
+-   [ ] get raw brightness from LDR or camera
+-   [ ] adjust opacity of LCD
+-   [ ] add image inversion
+-   [ ] add options to swap between modes
+-   [ ] laser cut glasses frame
 
 # Extras
 
-- [ ] add some form of app to control settings
-- [ ] add options for dimming colour e.g. turn tint red instead of grey tint
+-   [ ] add some form of app to control settings
+-   [ ] add options for dimming colour e.g. turn tint red instead of grey tint
 
 # 16/11/2017
 
@@ -31,8 +31,8 @@ start designing the frame
 
 start work with LCD
 
-- find c++ library from adafruit [ST7735-c+++](https://github.com/adafruit/Adafruit-ST7735-Library)
-- find python library [ST7735-micro](https://github.com/hosaka/micropython-st7735), [ST7735-af c++ forked to py](https://github.com/cskau/Python_ST7735)
+-   find c++ library from adafruit [ST7735-c+++](https://github.com/adafruit/Adafruit-ST7735-Library)
+-   find python library [ST7735-micro](https://github.com/hosaka/micropython-st7735), [ST7735-af c++ forked to py](https://github.com/cskau/Python_ST7735)
 
 looking thought the code the ST7735-micro seems cleaner and looks like I will be able to modify it easier since it is broken into more small functions although the other python has image support so I will try both and access
 
@@ -60,8 +60,8 @@ before running out of time before space x falcon heavy launch
 
 spacex falcon heavy launch was a success
 
-- switch to opencv 3.4.0 and finish up install
-- add all dependences to repo
+-   switch to opencv 3.4.0 and finish up install
+-   add all dependences to repo
 
 # 08/02/18
 
@@ -116,3 +116,4 @@ raspistill -t 1000 -tl 0 -o - > img.jpg -cfx 128:128 -ifx negative -w 160 -h 128
 ```
 
 find [raspicam](http://www.uco.es/investiga/grupos/ava/node/40) cpp api for the camera
+possiable [st7735R](https://github.com/vinodstanur/raspberry-pi-frame-buffer-mapping-to-160x128-ST7735R-LCD) library although might be screen output
