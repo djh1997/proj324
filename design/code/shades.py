@@ -1,6 +1,6 @@
 from time import sleep, time
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 import Adafruit_GPIO.SPI as SPI
 import ST7735 as TFT
@@ -19,19 +19,22 @@ DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
-processpoint = [['clear',  'diplay'],
-                ['autoback', 'clear',  'diplay'],
-                ['take', 'convert', 'blob find',
-                 'blob to point', 'clear', 'point maths', 'diplay'],
-                ['autoback', 'take', 'convert', 'blob find',
-                 'blob to point', 'clear', 'point maths', 'diplay']]
-points = []
+processpoint = [['clear', 'diplay'], ['autoback', 'clear', 'diplay'], [
+    'take', 'convert', 'blob find', 'blob to point', 'clear', 'point maths',
+    'diplay'
+], [
+    'autoback', 'take', 'convert', 'blob find', 'blob to point', 'clear',
+    'point maths', 'diplay'
+]]
 averageFps = []
 running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
 mode = 0
 debug = 0
+disp = 0
+draw = 0
+camera = 0
 
 
 def initlcd():
@@ -39,24 +42,20 @@ def initlcd():
     disp = TFT.ST7735(
         DC,
         rst=RST,
-        spi=SPI.SpiDev(
-            SPI_PORT,
-            SPI_DEVICE,
-            max_speed_hz=SPEED_HZ))
+        spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=SPEED_HZ))
     disp.begin()
     draw = disp.draw()
-    disp.display(Image.open('pi0toChroma.jpg').rotate(
-        90).resize((WIDTH, HEIGHT)))
+    disp.display(
+        Image.open('pi0toChroma.jpg').rotate(90).resize((WIDTH, HEIGHT)))
 
 
 def deinitlcd():
     global disp
-    disp.display(Image.open('close.jpg').rotate(
-        90).resize((WIDTH, HEIGHT)))
+    disp.display(Image.open('close.jpg').rotate(90).resize((WIDTH, HEIGHT)))
     sleep(.5)
     disp.clear((255, 255, 255))
     disp.display()
-    print('lcd cleared')
+    print 'lcd cleared'
 
 
 def initcamera():
@@ -74,7 +73,7 @@ def deinitcamera():
     global camera
     camera.stop_preview()
     camera.close()
-    print('camera closed')
+    print 'camera closed'
 
 
 def debugset():
@@ -85,7 +84,7 @@ def debugset():
         else:
             camera.stop_preview()
     except NameError:
-        print('camera not defined yet')
+        print 'camera not defined yet'
 
     debug ^= 1
 
@@ -113,7 +112,7 @@ def modeset(modevar):
 
 def runningstateget():
     global running
-    return(running)
+    return running
 
 
 def getiso():
@@ -122,11 +121,11 @@ def getiso():
     iso = float(camera.analog_gain)
     iso = (iso * maxtint)
     iso = (255 - (maxtint * 8)) + iso
-    return(int(iso))
+    return int(iso)
 
 
 def sandd():
-    global running, tintShade, averageFps
+    global averageFps
     initlcd()
     initcamera()
     while running != 2:
@@ -155,8 +154,11 @@ def sandd():
                 timer.append(time())
 
                 for i in range(len(blobs_doh)):
-                    points.append([blobs_doh[i][0] / scaleFactor, blobs_doh[i]
-                                   [1] / scaleFactor, (blobs_doh[i][1] / 3) / scaleFactor, tintShade])
+                    points.append([
+                        blobs_doh[i][0] / scaleFactor,
+                        blobs_doh[i][1] / scaleFactor,
+                        (blobs_doh[i][1] / 3) / scaleFactor, tintShade
+                    ])
 
             timer.append(time())
 
@@ -169,8 +171,10 @@ def sandd():
                     x2 = int(points[i][0] + points[i][2])
                     y1 = int(points[i][1] - points[i][2])
                     y2 = int(points[i][1] + points[i][2])
-                    draw.ellipse((x1, y1, x2, y2), fill=(
-                        points[i][3][2], points[i][3][1], points[i][3][0]))
+                    draw.ellipse(
+                        (x1, y1, x2, y2),
+                        fill=(points[i][3][2], points[i][3][1],
+                              points[i][3][0]))
 
             timer.append(time())
 
@@ -180,20 +184,22 @@ def sandd():
 
             if debug == 1:
 
-                print('number of points: {}'.format(len(points)))
-                print('background tint: {}'.format(tintBack))
-                print('foreground tint: {}'.format(tintShade))
+                print 'number of points: {}\n\r'.format(len(points))
+                print 'background tint: {}\n\r'.format(tintBack)
+                print 'foreground tint: {}\n\r'.format(tintShade)
                 for t in range(0, len(timer) - 1):
-                    print('function {} : time {}'.format(
-                        processpoint[modeinternal][t], timer[t + 1] - timer[t]))
+                    print 'function {} : time {}\n\r'.format(
+                        processpoint[modeinternal][t], timer[t + 1] - timer[t])
 
                 totaltime = timer[len(timer) - 1] - timer[0]
                 averageFps.append(1 / totaltime)
                 if len(averageFps) >= 61:
                     averageFps.pop(0)
-                print(len(averageFps))
-                print('total={:4.2f} averagefps ={:4.2f} fps={:4.2f}'.format(totaltime,
-                                                                             sum(averageFps) / len(averageFps), averageFps[len(averageFps) - 1]))
+                print len(averageFps)
+                print 'total = {: 4.2f} average fps = {: 4.2f} fps = {: 4.2f}\n\r'.format(
+                    totaltime,
+                    sum(averageFps) / len(averageFps),
+                    averageFps[len(averageFps) - 1])
 
         sleep(1)
 
