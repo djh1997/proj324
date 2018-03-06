@@ -78,12 +78,12 @@ def deinitcamera():
 
 def debugset():
     global debug
-    try:
+    if camera != 0:
         if debug == 0:
             camera.start_preview()
         else:
             camera.stop_preview()
-    except NameError:
+    else:
         print 'camera not defined yet'
 
     debug ^= 1
