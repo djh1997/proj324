@@ -122,6 +122,7 @@ def sandd():
     global running, tintShade
     initlcd()
     initcamera()
+    avrerageFps = []
     while running != 2:
         while running == 1:
             timer = []
@@ -181,9 +182,12 @@ def sandd():
                         processpoint[modeinternal][t], timer[t + 1] - timer[t]))
 
                 totaltime = timer[len(timer) - 1] - timer[0]
-
-                print('total={:4.2f} fps={:4.2f}'.format(
-                    totaltime, 1 / totaltime))
+                avrerageFps.append(1 / totaltime)
+                if len(avrerageFps) >= 60:
+                    avrerageFps.pop(0)
+                print(len(avrerageFps))
+                print('total={:4.2f} averagefps ={:4.2f} fps={:4.2f}'.format(totaltime,
+                                                                             sum(avrerageFps) / len(avrerageFps), avrerageFps[len(avrerageFps) - 1]))
 
         sleep(1)
 
