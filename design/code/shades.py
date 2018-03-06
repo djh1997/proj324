@@ -26,6 +26,7 @@ processpoint = [['clear',  'diplay'],
                 ['autoback', 'take', 'convert', 'blob find',
                  'blob to point', 'clear', 'point maths', 'diplay']]
 points = []
+averageFps = []
 running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
@@ -65,7 +66,8 @@ def initcamera():
     camera.resolution = (int(160 * scaleFactor), int(128 * scaleFactor))
     camera.rotation = 270
     camera.vflip = True
-    # camera.start_preview()
+    if debug == 1:
+        camera.start_preview()
 
 
 def deinitcamera():
@@ -77,10 +79,14 @@ def deinitcamera():
 
 def debugset():
     global debug
-    if debug == 0:
-        camera.start_preview()
-    else:
-        camera.stop_preview()
+    try:
+        if debug == 0:
+            camera.start_preview()
+        else:
+            camera.stop_preview()
+    except NameError:
+        print('camera not defined yet')
+
     debug ^= 1
 
 
@@ -100,8 +106,9 @@ def tintBackset(tint):
 
 
 def modeset(modevar):
-    global mode
+    global mode, averageFps
     mode = modevar
+    averageFps = []
 
 
 def runningstateget():
@@ -119,10 +126,9 @@ def getiso():
 
 
 def sandd():
-    global running, tintShade
+    global running, tintShade, averageFps
     initlcd()
     initcamera()
-    avrerageFps = []
     while running != 2:
         while running == 1:
             timer = []
@@ -182,12 +188,12 @@ def sandd():
                         processpoint[modeinternal][t], timer[t + 1] - timer[t]))
 
                 totaltime = timer[len(timer) - 1] - timer[0]
-                avrerageFps.append(1 / totaltime)
-                if len(avrerageFps) >= 60:
-                    avrerageFps.pop(0)
-                print(len(avrerageFps))
+                averageFps.append(1 / totaltime)
+                if len(averageFps) >= 61:
+                    averageFps.pop(0)
+                print(len(averageFps))
                 print('total={:4.2f} averagefps ={:4.2f} fps={:4.2f}'.format(totaltime,
-                                                                             sum(avrerageFps) / len(avrerageFps), avrerageFps[len(avrerageFps) - 1]))
+                                                                             sum(averageFps) / len(averageFps), averageFps[len(averageFps) - 1]))
 
         sleep(1)
 
