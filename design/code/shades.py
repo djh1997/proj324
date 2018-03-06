@@ -184,22 +184,22 @@ def sandd():
 
             if debug == 1:
 
-                print 'number of points: {}\n\r'.format(len(points))
-                print 'background tint: {}\n\r'.format(tintBack)
-                print 'foreground tint: {}\n\r'.format(tintShade)
+                print 'number of points: {}\n'.format(len(points))
+                print 'background tint: {}\n'.format(tintBack)
+                print 'foreground tint: {}\n'.format(tintShade)
                 for t in range(0, len(timer) - 1):
-                    print 'function {} : time {}\n\r'.format(
+                    print 'function {} : time {}\n'.format(
                         processpoint[modeinternal][t], timer[t + 1] - timer[t])
 
                 totaltime = timer[len(timer) - 1] - timer[0]
                 averageFps.append(1 / totaltime)
-                if len(averageFps) >= 61:
-                    averageFps.pop(0)
-                print len(averageFps)
-                print 'total = {: 4.2f} average fps = {: 4.2f} fps = {: 4.2f}\n\r'.format(
-                    totaltime,
-                    sum(averageFps) / len(averageFps),
-                    averageFps[len(averageFps) - 1])
+                if len(averageFps) >= 11:
+                    if len(averageFps) >= 61:
+                        averageFps.pop(0)
+                    print 'average fps = {: 4.2f}\n'.format(
+                        sum(averageFps) / len(averageFps))
+                print 'total = {: 4.2f}  fps = {: 4.2f}\n'.format(
+                    totaltime, averageFps[len(averageFps) - 1])
 
         sleep(1)
 
