@@ -81,8 +81,8 @@ def echo(bot, update):
 def uprecords(bot, update):
     p = subprocess.Popen(
         ['uprecords', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    update.message.reply_text(out)
+    out = p.communicate()
+    update.message.reply_text(out[0])
 
 
 def temp(bot, update):
@@ -200,7 +200,7 @@ def colorSplit(usrin):
         tint[i] = int(tint[i])
         if tint[i] not in range(0, 256):
             error = True
-            return (error)
+            return error
     if error is False:
         if usrin[0] == 'back':
             tintBackset(tint)
@@ -209,13 +209,10 @@ def colorSplit(usrin):
             tintShadeset(tint)
             return (tint)
         else:
-            return (
-                'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
-            )
+            return 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
+
     else:
-        return (
-            'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
-        )
+        return 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
 
 
 def telegramMain():
