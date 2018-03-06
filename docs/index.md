@@ -6,13 +6,13 @@
 
 This is the criteria I would like to meet, to feel as though I have created a successful project.
 
-Stage | Name                        | Description
------ | --------------------------- | ------------------------------------------------
-1     | Smart shades                | Make a set of smart sun classes
-2     | Auto smart shades           | Add LDR to control the opacity
-3     | Auto smart point shades     | Add camera to make dark point over bright points
-4     | Controllable smart shades   | Add options to swap between modes
-5     | Driving/safety improvements | Auto react headlights etc.
+| Stage | Name                        | Description                                      |
+| ----- | --------------------------- | ------------------------------------------------ |
+| 1     | Smart shades                | Make a set of smart sun classes                  |
+| 2     | Auto smart shades           | Add LDR to control the opacity                   |
+| 3     | Auto smart point shades     | Add camera to make dark point over bright points |
+| 4     | Controllable smart shades   | Add options to swap between modes                |
+| 5     | Driving/safety improvements | Auto react headlights etc.                       |
 
 ## Inspiration
 
@@ -50,18 +50,18 @@ then I started to convert the shades.py (the file that controls the lcd and came
 
 I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot)
 
-command    | param                                | Description
----------- | ------------------------------------ | -----------------------------
-help       | na                                   | show the help menu
-mode       | 0=manual 1=tint 2=points 3=full auto | change current mode
-tint       | percentage                           | sets the tint of the lenses
-colourset  | fore/back@0/255,0/255,0/255          | sets the colour of the lenses
-pickcolour | pick from list of tints              | preset tints/colours
-start      | na                                   | starts shades
-stop       | na                                   | stop shades
-exit       | na                                   | exit shades
-reboot     | na                                   | reboot shades
-halt       | na                                   | shutdown shades
-up         | na                                   | see if the bot is up
-temp       | na                                   | see the CPU temperature
-uprecords  | na                                   | see up time
+| command    | param                                | Description                   |
+| ---------- | ------------------------------------ | ----------------------------- |
+| help       | na                                   | show the help menu            |
+| pickmode   | pick manual,tint,points or full auto | change current mode           |
+| tint       | percentage                           | sets the tint of the lenses   |
+| colourset  | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
+| pickcolour | pick from list of tints              | preset tints/colours          |
+| start      | na                                   | starts shades                 |
+| stop       | na                                   | stop shades                   |
+| exit       | na                                   | exit shades                   |
+| reboot     | na                                   | reboot shades                 |
+| halt       | na                                   | shutdown shades               |
+| up         | na                                   | see if the bot is up          |
+| temp       | na                                   | see the CPU temperature       |
+| uprecords  | na                                   | see up time                   |

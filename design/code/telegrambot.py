@@ -172,24 +172,43 @@ def pickcolour(bot, update):
     update.message.reply_text('Please choose:', reply_markup=reply_markup)
 
 
+def pickmode(bot, update):
+    keyboard = [[InlineKeyboardButton("manual", callback_data=0)], [
+        InlineKeyboardButton("tint", callback_data=1)
+    ], [InlineKeyboardButton("point", callback_data=2)],
+                [InlineKeyboardButton("full auto", callback_data=3)]]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.message.reply_text('Please choose:', reply_markup=reply_markup)
+
+
 def button(bot, update):
     query = update.callback_query
     tint = int(query.data)
-    if tint <= 100:
-        tint = int(tint * 2.55)
-        tint = '{},{},{}'.format(tint, tint, tint)
-    elif tint == 101:
-        tint = '255, 200, 200'
-    elif tint == 102:
-        tint = '200, 255, 200'
-    elif tint == 103:
-        tint = '200, 200, 255'
-    elif tint == 104:
-        tint = '255, 223, 0'
-    bot.edit_message_text(
-        text="Selected option: {}".format(colorSplit('back@{}'.format(tint))),
-        chat_id=query.message.chat_id,
-        message_id=query.message.message_id)
+    if tint <= 3:
+        modeset(tint)
+        bot.edit_message_text(
+            text="mode set to {}".format(tint),
+            chat_id=query.message.chat_id,
+            message_id=query.message.message_id)
+    else:
+        if tint <= 100:
+            tint = int(tint * 2.55)
+            tint = '{},{},{}'.format(tint, tint, tint)
+        elif tint == 101:
+            tint = '255, 200, 200'
+        elif tint == 102:
+            tint = '200, 255, 200'
+        elif tint == 103:
+            tint = '200, 200, 255'
+        elif tint == 104:
+            tint = '255, 223, 0'
+        bot.edit_message_text(
+            text="Selected option: {}".format(
+                colorSplit('back@{}'.format(tint))),
+            chat_id=query.message.chat_id,
+            message_id=query.message.message_id)
 
 
 def colorSplit(usrin):
@@ -204,10 +223,10 @@ def colorSplit(usrin):
     if error is False:
         if usrin[0] == 'back':
             tintBackset(tint)
-            return (tint)
+            return tint
         elif usrin[0] == 'fore':
             tintShadeset(tint)
-            return (tint)
+            return tint
         else:
             return 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
 
@@ -239,6 +258,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("uprecords", uprecords))
     dp.add_handler(CommandHandler("up", up))
     dp.add_handler(CommandHandler('pickcolour', pickcolour))
+    dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('debug', debug))
     dp.add_handler(CallbackQueryHandler(button))
 

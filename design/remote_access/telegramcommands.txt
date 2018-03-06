@@ -1,5 +1,5 @@
 help - show the help menu
-mode- 0=manual 1=tint 2=points 3=full auto
+pickmode- manual,tint,points or full auto
 tint - percentage
 colourset - fore/back@0/255,0/255,0/255
 pickcolour - pick from list of tints
