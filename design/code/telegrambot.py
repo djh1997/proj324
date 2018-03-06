@@ -157,15 +157,17 @@ def error(bot, update, error):
 
 
 def pickcolour(bot, update):
-    keyboard = [[InlineKeyboardButton("10", callback_data=10)], [
-        InlineKeyboardButton("50", callback_data=50)
-    ], [InlineKeyboardButton("80", callback_data=80)], [
-        InlineKeyboardButton("90", callback_data=90)
-    ], [InlineKeyboardButton("100", callback_data=100)], [
-        InlineKeyboardButton("red", callback_data=101)
-    ], [InlineKeyboardButton("green", callback_data=102)],
-                [InlineKeyboardButton("blue", callback_data=103)],
-                [InlineKeyboardButton("gold", callback_data=104)]]
+    keyboard = [[
+        InlineKeyboardButton("50", callback_data=50),
+        InlineKeyboardButton("80", callback_data=80),
+        InlineKeyboardButton("90", callback_data=90),
+        InlineKeyboardButton("100", callback_data=100)
+    ], [
+        InlineKeyboardButton("red", callback_data=101),
+        InlineKeyboardButton("green", callback_data=102),
+        InlineKeyboardButton("blue", callback_data=103),
+        InlineKeyboardButton("gold", callback_data=104)
+    ]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
