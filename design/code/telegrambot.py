@@ -175,10 +175,12 @@ def pickcolour(bot, update):
 
 
 def pickmode(bot, update):
-    keyboard = [[InlineKeyboardButton("manual", callback_data=0)], [
-        InlineKeyboardButton("tint", callback_data=1)
-    ], [InlineKeyboardButton("point", callback_data=2)],
-                [InlineKeyboardButton("full auto", callback_data=3)]]
+    keyboard = [[
+        InlineKeyboardButton("manual", callback_data=0),
+        InlineKeyboardButton("tint", callback_data=1),
+        InlineKeyboardButton("point", callback_data=2),
+        InlineKeyboardButton("full auto", callback_data=3)
+    ]]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
