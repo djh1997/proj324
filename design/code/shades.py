@@ -1,3 +1,4 @@
+import os
 from time import sleep, time
 
 from PIL import Image
@@ -40,7 +41,7 @@ camera = 0
 
 buttonTint = Button(2)
 buttonMode = Button(3)
-buttonDebug = Button(4)
+buttonDebug = Button(4, hold_time=5)
 
 
 def initlcd():
@@ -145,17 +146,22 @@ def getiso():
     return int(iso)
 
 
+def halt():
+    os.system('sudo halt')
+
+
 def initbuttons():
     buttonTint.when_pressed = tintButton
     buttonMode.when_pressed = modeset
-    buttonDebug.when.pressed = debugset
+    buttonDebug.when_pressed = debugset
+    buttonDebug.when_held = halt
 
 
 def sandd():
     global averageFps
     initlcd()
-    initcamera()
     initbuttons()
+    initcamera()
     while running != 2:
         while running == 1:
             timer = []
