@@ -122,3 +122,5 @@ possiable [st7735R](https://github.com/vinodstanur/raspberry-pi-frame-buffer-map
 [blob](https://github.com/keenerd/quickblob)
 
 achive 30 fps image stream although the new blob detection might be able to deal with video stream
+\#08/03/18
+recive parts and measure current draw at .2/.3 A and start coding for capacitive buttons
