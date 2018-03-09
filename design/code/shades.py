@@ -4,6 +4,7 @@ from PIL import Image
 
 import Adafruit_GPIO.SPI as SPI
 import ST7735 as TFT
+from gpiozero import Button
 from picamera import PiCamera  # camera
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
@@ -30,11 +31,16 @@ averageFps = []
 running = 0
 tintShade = [32, 32, 32]
 tintBack = [255, 255, 255]
+tintbuttonvar = 255
 mode = 0
 debug = 0
 disp = 0
 draw = 0
 camera = 0
+
+buttonTint = Button(2)
+buttonMode = Button(3)
+buttonDebug = Button(4)
 
 
 def initlcd():
@@ -104,9 +110,24 @@ def tintBackset(tint):
     tintBack = tint
 
 
-def modeset(modevar):
+def tintButton():
+    global tintBack, tintbuttonvar
+    if tintbuttonvar >= 0:
+        tintbuttonvar -= 64
+    else:
+        tintbuttonvar = 255
+    tintBack = [tintbuttonvar, tintbuttonvar, tintbuttonvar]
+
+
+def modeset(modevar=4):  # 0 manual 1 tint 2 point 3 auto 4 increment
     global mode, averageFps
-    mode = modevar
+    if modevar == 4:
+        if mode < 3:
+            mode += 1
+        else:
+            mode = 0
+    else:
+        mode = modevar
     averageFps = []
 
 
@@ -124,10 +145,17 @@ def getiso():
     return int(iso)
 
 
+def initbuttons():
+    buttonTint.when_pressed = tintButton
+    buttonMode.when_pressed = modeset
+    buttonDebug.when.pressed = debugset
+
+
 def sandd():
     global averageFps
     initlcd()
     initcamera()
+    initbuttons()
     while running != 2:
         while running == 1:
             timer = []
