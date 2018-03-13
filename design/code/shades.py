@@ -46,6 +46,7 @@ buttonDebug = Button(4, hold_time=5)
 
 def initlcd():
     global disp, draw
+    print 'initilizing lcd'
     disp = TFT.ST7735(
         DC,
         rst=RST,
@@ -54,6 +55,7 @@ def initlcd():
     draw = disp.draw()
     disp.display(
         Image.open('pi0toChroma.jpg').rotate(90).resize((WIDTH, HEIGHT)))
+    print 'lcd initilized'
 
 
 def deinitlcd():
@@ -67,6 +69,7 @@ def deinitlcd():
 
 def initcamera():
     global camera
+    print 'initilizing camera'
     camera = PiCamera()
     camera.color_effects = (128, 128)
     camera.resolution = (int(160 * scaleFactor), int(128 * scaleFactor))
@@ -74,6 +77,7 @@ def initcamera():
     camera.vflip = True
     if debug == 1:
         camera.start_preview()
+    print 'camera initilized'
 
 
 def deinitcamera():
