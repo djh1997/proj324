@@ -42,6 +42,8 @@ camera = 0
 buttonTint = Button(2)
 buttonMode = Button(3)
 buttonDebug = Button(4, hold_time=5)
+buttonReset = Button(14, hold_time=2)
+buttonexit = Button(15, hold_time=5)
 
 
 def initlcd():
@@ -102,6 +104,17 @@ def debugset():
 
 def runningstateset(state):
     global running
+    try:
+        if state.pin.number == 14 and state.is_held:
+            state = 1
+        elif state.pin.number == 14:
+            state = 0
+        elif state.pin.number == 15 and state.is_held:
+            state = 2
+    except:
+        print 'error'
+        state = runningstateget()
+    print state
     running = state
 
 
@@ -159,6 +172,9 @@ def initbuttons():
     buttonMode.when_pressed = modeset
     buttonDebug.when_pressed = debugset
     buttonDebug.when_held = halt
+    buttonReset.when_pressed = runningstateset
+    buttonReset.when_held = runningstateset
+    buttonexit.when_held = runningstateset
 
 
 def sandd():
