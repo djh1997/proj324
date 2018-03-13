@@ -112,8 +112,7 @@ def runningstateset(state):
         elif state.pin.number == 15 and state.is_held:
             state = 2
     except:
-        print 'error'
-        state = runningstateget()
+        print 'not button'
     print state
     running = state
 
