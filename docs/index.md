@@ -68,10 +68,10 @@ I decided to use telegram to add remote control so that you could adjust the col
 
 After I had all of the system working I bought a 5 button capacitive touch sensor and started adding that into the code so that I would be able to control the glasses with out having to have it connected to the internet
 
-| button | pressed      | held     |
-| ------ | ------------ | -------- |
-| 1      | scroll tints | na       |
-| 2      | scroll modes | na       |
-| 3      | debug        | turn off |
-| 4      | stop         | start    |
-| 5      | na           | exit     |
+| button | pressed      | held                |
+| ------ | ------------ | ------------------- |
+| 1      | scroll tints | reset tint to clear |
+| 2      | scroll modes | reset to manual     |
+| 3      | debug        | turn off            |
+| 4      | stop         | start               |
+| 5      | na           | exit                |

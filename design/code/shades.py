@@ -111,7 +111,7 @@ def runningstateset(state):
             state = 0
         elif state.pin.number == 15 and state.is_held:
             state = 2
-    except:
+    except AttributeError:
         print 'not button'
     print state
     running = state
@@ -127,24 +127,30 @@ def tintBackset(tint):
     tintBack = tint
 
 
-def tintButton():
+def tintButton(buttonTint):
     global tintBack, tintbuttonvar
-    if tintbuttonvar >= 0:
+    if buttonTint.is_held:
+        tintbuttonvar = 255
+    elif tintbuttonvar >= 0:
         tintbuttonvar -= 64
     else:
         tintbuttonvar = 255
     tintBack = [tintbuttonvar, tintbuttonvar, tintbuttonvar]
 
 
-def modeset(modevar=4):  # 0 manual 1 tint 2 point 3 auto 4 increment
+def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
     global mode, averageFps
-    if modevar == 4:
-        if mode < 3:
-            mode += 1
-        else:
-            mode = 0
-    else:
-        mode = modevar
+    try:
+        if modevar.pin.number == 3 and modevar.is_held:
+            modevar = 0
+        elif modevar.pin.number == 3:
+            if mode > 3:
+                modevar = 0
+            else:
+                modevar = mode + 1
+    except AttributeError:
+        print 'not button'
+    mode = modevar
     averageFps = []
 
 
@@ -168,7 +174,9 @@ def halt():
 
 def initbuttons():
     buttonTint.when_pressed = tintButton
+    buttonTint.when_held = tintButton
     buttonMode.when_pressed = modeset
+    buttonMode.when_held = modeset
     buttonDebug.when_pressed = debugset
     buttonDebug.when_held = halt
     buttonReset.when_pressed = runningstateset
