@@ -36,15 +36,15 @@ start work with LCD
 
 looking thought the code the ST7735-micro seems cleaner and looks like I will be able to modify it easier since it is broken into more small functions although the other python has image support so I will try both and access
 
-# 02/02/18
+# 02/02/2018
 
 start working on project again after exams/coursework and Christmas break but WiFi has stopped working possibly because of certification update but even reslashing the board and rerunning the cat installer didn't work will try to connect when I get home to check the WiFi chip is still working talked to Jake and said he should be able to put it on Plymouth humanoids humanoid5
 
-# 05/02/18
+# 05/02/2018
 
 work on time management and issue tracking
 
-# 06/02/18
+# 06/02/2018
 
 today I finally got the pi0w connected to the uni WiFi and also got the vnc working so that I could work on the pi in uni without brining in a separate screen for the pi once I had done that I started work on the field of view calculations and realised that with out a fisheye camera adapter the lcd has a bigger fov so only the centre will be usable for point adjustment i also calculated the pixels per angle and realise that the only issue with using a fish eye adapter would cause distortion
 
@@ -56,55 +56,55 @@ pip install numpy
 
 before running out of time before space x falcon heavy launch
 
-# 07/02/18
+# 07/02/2018
 
 spacex falcon heavy launch was a success
 
 -   switch to opencv 3.4.0 and finish up install
 -   add all dependences to repo
 
-# 08/02/18
+# 08/02/2018
 
 install locked at 84%
 
-# 09/02/18
+# 09/02/2018
 
 get lcd and pi0w header soldered and get pin mappings for each
 
-# 13/02/18
+# 13/02/2018
 
 looking through the code for the lcd drivers again from (19/11/2017) i think the forked adafruit might be better
 
 also make new simpler frame prototype ready for laser cutting
 
-# 14/2/18
+# 14/2/2018
 
 had meeting with phil and he seems happy with progress and direction im taking so all good there
 
-# 15/02/18
+# 15/02/2018
 
 got lcd working and even got the lcd to output circls based on x,y,radious,opacity
 
 got blob detection working 'live'
 
-# 16/02/18
+# 16/02/2018
 
 got both lcds working and fine tune timings to work out where the issues are and fine tune the blob detection
 
-# 17/02/18
+# 17/02/2018
 
 tidied files up and got telegram control integrated into shades with control over weather point detection is on or off and the colour / tint level
 
-# 20/02/18
+# 20/02/2018
 
 finalized remote control(4 modes, more colours and toggle-able debug ) and begin optimizing code to try to improve fps
 f
 
-# 27/02/18
+# 27/02/2018
 
 investigate [capacitve](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337) control of system and mount the lenses into the frame and add price list
 
-# 03/03/18
+# 03/03/2018
 
 begin investigating conversion to c/c++ command
 
@@ -122,5 +122,19 @@ possiable [st7735R](https://github.com/vinodstanur/raspberry-pi-frame-buffer-map
 [blob](https://github.com/keenerd/quickblob)
 
 achive 30 fps image stream although the new blob detection might be able to deal with video stream
-\#08/03/18
+
+# 08/03/2018
+
 recive parts and measure current draw at .2/.3 A and start coding for capacitive buttons
+
+# 12/03/2018
+
+finish initial coding for capactiive buttons
+
+# 13/03/2018
+
+fully implement hold for extra functionality
+
+# 14/03/2018
+
+tidy button code and start thinking about mounting
