@@ -54,9 +54,10 @@ def initlcd():
         rst=RST,
         spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=SPEED_HZ))
     disp.begin()
-    draw = disp.draw()
     disp.display(
-        Image.open('pi0toChroma.jpg').rotate(90).resize((WIDTH, HEIGHT)))
+        Image.open('pi0toChroma.jpg').rotate(270).transpose(
+            Image.FLIP_TOP_BOTTOM).resize((WIDTH, HEIGHT)))
+    draw = disp.draw()
     print 'lcd initilized'
 
 
@@ -80,6 +81,7 @@ def initcamera():
     if debug == 1:
         camera.start_preview()
     print 'camera initilized'
+    sleep(3)  # wait for camera to stabilise
 
 
 def deinitcamera():
