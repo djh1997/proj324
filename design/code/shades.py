@@ -113,7 +113,7 @@ def runningstateset(state):
             state = 2
     except AttributeError:
         print 'not button'
-    print state
+    print 'state' + str(state)
     running = state
 
 
@@ -144,13 +144,14 @@ def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
         if modevar.pin.number == 3 and modevar.is_held:
             modevar = 0
         elif modevar.pin.number == 3:
-            if mode > 3:
+            if mode >= 3:
                 modevar = 0
             else:
                 modevar = mode + 1
     except AttributeError:
         print 'not button'
     mode = modevar
+    print 'mode' + str(mode)
     averageFps = []
 
 
@@ -173,6 +174,11 @@ def halt():
 
 
 def initbuttons():
+    buttonTint.wait_for_release()
+    buttonMode.wait_for_release()
+    buttonDebug.wait_for_release()
+    buttonReset.wait_for_release()
+    buttonexit.wait_for_release()
     buttonTint.when_pressed = tintButton
     buttonTint.when_held = tintButton
     buttonMode.when_pressed = modeset
