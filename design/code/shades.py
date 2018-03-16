@@ -31,7 +31,7 @@ processpoint = [['clear', 'diplay'], ['autoback', 'clear', 'diplay'], [
 averageFps = []
 running = 0
 tintShade = [32, 32, 32]
-tintBack = [255, 255, 255]
+tintBack = [256, 256, 256]
 tintbuttonvar = 255
 mode = 0
 debug = 0
@@ -65,7 +65,7 @@ def deinitlcd():
     global disp
     disp.display(Image.open('close.jpg').rotate(90).resize((WIDTH, HEIGHT)))
     sleep(.5)
-    disp.clear((255, 255, 255))
+    disp.clear((256, 256, 256))
     disp.display()
     print 'lcd cleared'
 
@@ -132,12 +132,13 @@ def tintBackset(tint):
 def tintButton(buttonTint):
     global tintBack, tintbuttonvar
     if buttonTint.is_held:
-        tintbuttonvar = 255
-    elif tintbuttonvar >= 0:
+        tintbuttonvar = 256
+    elif tintbuttonvar >= 64:
         tintbuttonvar -= 64
     else:
-        tintbuttonvar = 255
+        tintbuttonvar = 256
     tintBack = [tintbuttonvar, tintbuttonvar, tintbuttonvar]
+    print tintBack
 
 
 def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
@@ -167,7 +168,7 @@ def getiso():
     maxtint = 4
     iso = float(camera.analog_gain)
     iso = (iso * maxtint)
-    iso = (255 - (maxtint * 8)) + iso
+    iso = (256 - (maxtint * 8)) + iso
     return int(iso)
 
 

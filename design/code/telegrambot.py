@@ -113,7 +113,7 @@ def tint(bot, update):
         usrin = usrin.split('/tint ')
         usrin = 100 - int(usrin[1])
         usrin = 'back@{},{},{}'.format(
-            int(usrin * 2.55), int(usrin * 2.55), int(usrin * 2.55))
+            int(usrin * 2.56), int(usrin * 2.56), int(usrin * 2.56))
         update.message.reply_text(colorSplit(usrin))
     else:
         update.message.reply_text('unavaliable for your user id.')
