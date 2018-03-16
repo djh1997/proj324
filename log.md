@@ -46,7 +46,7 @@ work on time management and issue tracking
 
 # 06/02/2018
 
-today I finally got the pi0w connected to the uni WiFi and also got the vnc working so that I could work on the pi in uni without brining in a separate screen for the pi once I had done that I started work on the field of view calculations and realised that with out a fisheye camera adapter the lcd has a bigger fov so only the centre will be usable for point adjustment i also calculated the pixels per angle and realise that the only issue with using a fish eye adapter would cause distortion
+today I finally got the pi0w connected to the uni WiFi and also got the vnc working so that I could work on the pi in uni without brining in a separate screen for the pi once I had done that I started work on the field of view calculations and realised that with out a fisheye camera adapter the lcd has a bigger fov so only the centre will be usable for point adjustment I also calculated the pixels per angle and realise that the only issue with using a fish eye adapter would cause distortion
 
 then followed this [guide](https://www.pyimagesearch.com/2015/12/14/installing-opencv-on-your-raspberry-pi-zero/) to install open cv reach
 
@@ -73,17 +73,17 @@ get lcd and pi0w header soldered and get pin mappings for each
 
 # 13/02/2018
 
-looking through the code for the lcd drivers again from (19/11/2017) i think the forked adafruit might be better
+looking through the code for the lcd drivers again from (19/11/2017) I think the forked adafruit might be better
 
 also make new simpler frame prototype ready for laser cutting
 
 # 14/2/2018
 
-had meeting with phil and he seems happy with progress and direction im taking so all good there
+had meeting with Phil and he seems happy with progress and direction I'm taking so all good there
 
 # 15/02/2018
 
-got lcd working and even got the lcd to output circls based on x,y,radious,opacity
+got lcd working and even got the lcd to output circles based on x,y,radius,opacity
 
 got blob detection working 'live'
 
@@ -117,19 +117,19 @@ raspistill -t 1000 -tl 0 -o - > img.jpg -cfx 128:128 -ifx negative -w 160 -h 128
 ```
 
 find [raspicam](http://www.uco.es/investiga/grupos/ava/node/40) cpp api for the camera
-possiable [st7735R](https://github.com/vinodstanur/raspberry-pi-frame-buffer-mapping-to-160x128-ST7735R-LCD) library although might be screen output
+possible [st7735R](https://github.com/vinodstanur/raspberry-pi-frame-buffer-mapping-to-160x128-ST7735R-LCD) library although might be screen output
 
 [blob](https://github.com/keenerd/quickblob)
 
-achive 30 fps image stream although the new blob detection might be able to deal with video stream
+achieve 30 fps image stream although the new blob detection might be able to deal with video stream
 
 # 08/03/2018
 
-recive parts and measure current draw at .2/.3 A and start coding for capacitive buttons
+receive parts and measure current draw at .2/.3 A and start coding for capacitive buttons
 
 # 12/03/2018
 
-finish initial coding for capactiive buttons
+finish initial coding for capacitive buttons
 
 # 13/03/2018
 
@@ -138,3 +138,7 @@ fully implement hold for extra functionality
 # 14/03/2018
 
 tidy button code and start thinking about mounting
+
+# 16/03/2018
+
+record progress and prep for progress demonstration
