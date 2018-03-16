@@ -75,3 +75,9 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 | 3      | debug        | turn off            |
 | 4      | stop         | start               |
 | 5      | na           | exit                |
+
+# capacitive touch control
+
+[mode change](log/capmode.MOV)
+[tint change](log/tint.MOV)
+[debug toggle](log/debug.MOV)
