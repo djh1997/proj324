@@ -24,8 +24,8 @@ user = False
 myuserid = 417245494
 allowAll = True
 
-# Define a few command handlers. These usually take the two arguments bot and
-# update. Error handlers also receive the raised TelegramError object in error.
+# Create the EventHandler and pass it your bot's token.
+updater = Updater(test_box_api_key[test_box])
 
 
 def start(bot, update):
@@ -255,8 +255,6 @@ def colorSplit(usrin):
 
 def telegramMain():
     global updater
-    # Create the EventHandler and pass it your bot's token.
-    updater = Updater(test_box_api_key[test_box])
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
