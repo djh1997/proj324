@@ -79,6 +79,9 @@ def up(bot, update):
 def echo(bot, update):
     update.message.reply_text('command {} not recognised.'.format(
         update.message.text))
+    f = open('log.txt', 'a')
+    f.write('{}\n\r'.format(update.message.text))
+    f.close()
 
 
 def uprecords(bot, update):
