@@ -45,9 +45,11 @@ I tried to install opencv to do the image processing built the install failed an
 So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(doh) blob detection which should be quick enough the only issue I then had was getting the image from the camera into the right format since the doh blob need a numpy array as luck would have it skimage has a built in converter.
 
 With this working a passed it an image from the camera and save the image with a circle around the blob.
+
 ![blob circle](log/blobbounding2.png)
 
 I then connected the LCD and got blob detection working with that.
+
 ![blob lcd](log/IMG_1190.JPG)
 
 Then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot) this involved more work than I had initially expected since passing variable around wasn't as easy as I had hoped
