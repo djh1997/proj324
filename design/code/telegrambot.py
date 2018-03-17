@@ -165,15 +165,17 @@ def tellmeajoke(bot, update):
         'I cannot think of a joke currently',
         'My friend told me how electricity is measured and I was like Watt! ',
         'Two antennas get married. The wedding was boring, but the reception was great.',
-        ' Why was the robot mad? People kept pushing its buttons.',
+        'Why was the robot mad? People kept pushing its buttons.',
         'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
         'What kind of car does an electrician drive?\n\r A Volts-wagon',
         'What is a robots favourite kind of music? \n\r Heavy Metal.',
-        'If only DEAD people understand hexadecimal, how many people understand hexadecimal?\n\r57,005.',
+        'If only DEAD people understand hexadecimal, how many dead people are there?\n\r57,005.',
         'What is FACE value in decimal? 64206',
-        'I turned on the radio this morning I think its broken all I heard was FFFFFF it turns out it was White Noise!'
+        'I turned on the radio this morning all I heard was FFFFFF it turns out it was White Noise!'
     ]
-    update.message.reply_text(choice(jokelist))
+    joke = choice(jokelist)
+    update.message.reply_text(joke)
+    print joke
 
 
 def reboot(bot, update):
