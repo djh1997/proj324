@@ -45,7 +45,7 @@ def stop(bot, update):
 
 
 def exit(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id == myuserid:
         runningstateset(2)
         update.message.reply_text('exiting')
     else:
@@ -130,7 +130,7 @@ def rundmc(bot, update):
 
 
 def halt(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id == myuserid:
         update.message.reply_text('goodbye.')
         os.system('sudo halt')
     else:
@@ -159,7 +159,7 @@ def allowAllIds(bot, update):
 
 
 def reboot(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id == myuserid:
         update.message.reply_text('see you in a second.')
         os.system('sudo reboot')
     else:
