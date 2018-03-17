@@ -233,23 +233,24 @@ def colorSplit(usrin):
     error = False
     usrin = usrin.split('@')
     tint = usrin[1].split(',')
+    reply = ''
     for i in range(len(tint)):
         tint[i] = int(tint[i])
         if tint[i] not in range(0, 256):
-            error = True
-            return error
+            reply = 'tint out of spec'
     if error is False:
         if usrin[0] == 'back':
             tintBackset(tint)
-            return tint
+            reply = tint
         elif usrin[0] == 'fore':
             tintShadeset(tint)
-            return tint
+            reply = tint
         else:
-            return 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
+            reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
 
     else:
-        return 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
+        reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
+    return reply
 
 
 def telegramMain():
