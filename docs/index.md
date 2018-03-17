@@ -44,27 +44,32 @@ I tried to install opencv to do the image processing built the install failed an
 
 so I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(doh) blob detection which should be quick enough the only issue I then had was getting the image from the camera into the right format since the doh blob need a numpy array as luck would have it skimage has a built in converter
 
-I then connected the camera and started blob detection and got that working ![final mock-up design image](log/IMG_1190.JPG)
+with this working a passed it an image from the camera and save the image with a circle around the blob ![blob circle](log/blobbounding2.png)
+
+I then connected the LCD and got blob detection working with that ![blob lcd](log/IMG_1190.JPG)
 
 then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot) this involved more work than I had initially expected since passing variable around wasn't as easy as I had hoped
 
 I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot)
 
-| command    | param                                | Description                   |
-| ---------- | ------------------------------------ | ----------------------------- |
-| help       | na                                   | show the help menu            |
-| pickmode   | pick manual,tint,points or full auto | change current mode           |
-| tint       | percentage                           | sets the tint of the lenses   |
-| colourset  | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
-| pickcolour | pick from list of tints              | preset tints/colours          |
-| start      | na                                   | starts shades                 |
-| stop       | na                                   | stop shades                   |
-| exit       | na                                   | exit shades                   |
-| reboot     | na                                   | reboot shades                 |
-| halt       | na                                   | shutdown shades               |
-| up         | na                                   | see if the bot is up          |
-| temp       | na                                   | see the CPU temperature       |
-| uprecords  | na                                   | see up time                   |
+| command     | param                                | Description                   |
+| ----------- | ------------------------------------ | ----------------------------- |
+| help        | na                                   | show the help menu            |
+| pickcolour  | pick from list of tints              | preset tints/colours          |
+| pickmode    | pick manual,tint,points or full auto | change current mode           |
+| tellmeajoke | na                                   | tells a joke                  |
+| tint        | percentage                           | sets the tint of the lenses   |
+| up          | na                                   | see if the bot is up          |
+| temp        | na                                   | see the CPU temperature       |
+| start       | na                                   | starts shades                 |
+| stop        | na                                   | stop shades                   |
+| exit        | na                                   | exit shades                   |
+| reboot      | na                                   | reboot shades                 |
+| halt        | na                                   | shutdown shades               |
+| uprecords   | na                                   | see up time                   |
+| debug       | na                                   | toggles debug                 |
+| colourset   | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
+| allowAllIds | na                                   | toggles if user id is needed  |
 
 After I had all of the system working I bought a 5 button capacitive touch sensor and started adding that into the code so that I would be able to control the glasses with out having to have it connected to the internet
 

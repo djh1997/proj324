@@ -1,8 +1,8 @@
-- [x] find LCD's
-- [x] remove backlight
-- [x] get pi connected to WiFi
-- [x] get camera working
-- [ ] export DISPLAY=:0.0
-- [x] telegram intergration [inline keyboard](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/inlinekeyboard.py)
-- [ ] frame
-- [ ] task
+-   [x] find LCD's
+-   [x] remove backlight
+-   [x] get pi connected to WiFi
+-   [x] get camera working
+-   [x] export DISPLAY=:0.0
+-   [x] telegram intergration [inline keyboard](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/inlinekeyboard.py)
+-   [ ] frame
+-   [ ] task

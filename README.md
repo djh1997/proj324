@@ -50,21 +50,24 @@ then I started to convert the shades.py (the file that controls the lcd and came
 
 I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot)
 
-| command    | param                                | Description                   |
-| ---------- | ------------------------------------ | ----------------------------- |
-| help       | na                                   | show the help menu            |
-| pickmode   | pick manual,tint,points or full auto | change current mode           |
-| tint       | percentage                           | sets the tint of the lenses   |
-| colourset  | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
-| pickcolour | pick from list of tints              | preset tints/colours          |
-| start      | na                                   | starts shades                 |
-| stop       | na                                   | stop shades                   |
-| exit       | na                                   | exit shades                   |
-| reboot     | na                                   | reboot shades                 |
-| halt       | na                                   | shutdown shades               |
-| up         | na                                   | see if the bot is up          |
-| temp       | na                                   | see the CPU temperature       |
-| uprecords  | na                                   | see up time                   |
+| command     | param                                | Description                   |
+| ----------- | ------------------------------------ | ----------------------------- |
+| help        | na                                   | show the help menu            |
+| pickcolour  | pick from list of tints              | preset tints/colours          |
+| pickmode    | pick manual,tint,points or full auto | change current mode           |
+| tellmeajoke | na                                   | tells a joke                  |
+| tint        | percentage                           | sets the tint of the lenses   |
+| up          | na                                   | see if the bot is up          |
+| temp        | na                                   | see the CPU temperature       |
+| start       | na                                   | starts shades                 |
+| stop        | na                                   | stop shades                   |
+| exit        | na                                   | exit shades                   |
+| reboot      | na                                   | reboot shades                 |
+| halt        | na                                   | shutdown shades               |
+| uprecords   | na                                   | see up time                   |
+| debug       | na                                   | toggles debug                 |
+| colourset   | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
+| allowAllIds | na                                   | toggles if user id is needed  |
 
 After I had all of the system working I bought a 5 button capacitive touch sensor and started adding that into the code so that I would be able to control the glasses with out having to have it connected to the internet
 
