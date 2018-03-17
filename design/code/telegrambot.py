@@ -30,6 +30,10 @@ updater = Updater(test_box_api_key[test_box])
 
 
 def start(bot, update):
+    f = open('log.txt', 'a')
+    f.write('{}\n\r'.format(update.message.from_user.id))
+    f.write('{}\n\r'.format(update.message.from_user))
+    f.close()
     if update.message.from_user.id == myuserid or allowAll:
         runningstateset(1)
         update.message.reply_text('started')
