@@ -80,8 +80,8 @@ def initcamera():
     camera.vflip = True
     if debug == 1:
         camera.start_preview()
-    print 'camera initilized'
     sleep(3)  # wait for camera to stabilise
+    print 'camera initilized'
 
 
 def deinitcamera():
@@ -115,7 +115,7 @@ def runningstateset(state):
             state = 2
     except AttributeError:
         print 'not button'
-    print 'state' + str(state)
+    print 'state ' + str(state)
     running = state
 
 
@@ -154,7 +154,7 @@ def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
     except AttributeError:
         print 'not button'
     mode = modevar
-    print 'mode' + str(mode)
+    print 'mode ' + str(mode)
     averageFps = []
 
 
@@ -187,7 +187,7 @@ def initbuttons():
     buttonMode.when_pressed = modeset
     buttonMode.when_held = modeset
     buttonDebug.when_pressed = debugset
-    buttonDebug.when_held = halt
+    # buttonDebug.when_held = halt
     buttonReset.when_pressed = runningstateset
     buttonReset.when_held = runningstateset
     buttonexit.when_held = runningstateset
