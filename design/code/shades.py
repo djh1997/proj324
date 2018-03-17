@@ -10,6 +10,7 @@ from picamera import PiCamera  # camera
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
 
+# screen variables
 WIDTH = 128
 HEIGHT = 160
 SPEED_HZ = 125000000
@@ -21,12 +22,14 @@ DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
-processpoint = [['clear', 'diplay'], ['autoback', 'clear', 'diplay'], [
+
+# program variables
+processpoint = [['clear', 'display'], ['autoback', 'clear', 'display'], [
     'take', 'convert', 'blob find', 'blob to point', 'clear', 'point maths',
-    'diplay'
+    'display'
 ], [
     'autoback', 'take', 'convert', 'blob find', 'blob to point', 'clear',
-    'point maths', 'diplay'
+    'point maths', 'display'
 ]]
 averageFps = []
 running = 0
@@ -39,6 +42,7 @@ disp = 0
 draw = 0
 camera = 0
 
+# button connection
 buttonTint = Button(2)
 buttonMode = Button(3)
 buttonDebug = Button(4, hold_time=5)
@@ -46,97 +50,101 @@ buttonReset = Button(14, hold_time=2)
 buttonexit = Button(15, hold_time=5)
 
 
-def initlcd():
+def initlcd():  # initilize the lcd's
     global disp, draw
-    print 'initilizing lcd'
+    print 'initializing LCD'
     disp = TFT.ST7735(
         DC,
         rst=RST,
-        spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=SPEED_HZ))
-    disp.begin()
+        spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE,
+                       max_speed_hz=SPEED_HZ))  # setup SPI port
+    disp.begin()  # start screen class
     disp.display(
         Image.open('pi0toChroma.jpg').rotate(270).transpose(
-            Image.FLIP_TOP_BOTTOM).resize((WIDTH, HEIGHT)))
-    draw = disp.draw()
-    print 'lcd initilized'
+            Image.FLIP_TOP_BOTTOM).resize((WIDTH,
+                                           HEIGHT)))  # draw splash screen
+    draw = disp.draw()  # put splash screen on LCD's
+    print 'LCD initialized'
 
 
 def deinitlcd():
     global disp
-    disp.display(Image.open('close.jpg').rotate(90).resize((WIDTH, HEIGHT)))
+    disp.display(Image.open('close.jpg').rotate(90).resize(
+        (WIDTH, HEIGHT)))  # display close screen
     sleep(.5)
-    disp.clear((256, 256, 256))
+    disp.clear((256, 256, 256))  # set LCD to clear
     disp.display()
-    print 'lcd cleared'
+    print 'LCD cleared'
 
 
 def initcamera():
     global camera
-    print 'initilizing camera'
-    camera = PiCamera()
-    camera.color_effects = (128, 128)
-    camera.resolution = (int(160 * scaleFactor), int(128 * scaleFactor))
-    camera.rotation = 270
+    print 'initializing camera'
+    camera = PiCamera()  # open camera
+    camera.color_effects = (128, 128)  # set camera to grey scale
+    camera.resolution = (int(160 * scaleFactor),
+                         int(128 * scaleFactor))  # set resolution to screens
+    camera.rotation = 270  # correct orinetation
     camera.vflip = True
-    if debug == 1:
-        camera.start_preview()
+    if debug == 1:  # in-case debug was called before camera initialization was run
+        camera.start_preview()  # start camera preview
     sleep(3)  # wait for camera to stabilise
-    print 'camera initilized'
+    print 'camera initialized'
 
 
 def deinitcamera():
     global camera
     camera.stop_preview()
-    camera.close()
+    camera.close()  # disconnect camera
     print 'camera closed'
 
 
 def debugset():
     global debug
-    if camera != 0:
-        if debug == 0:
+    if camera != 0:  # check if camera initialization has been run
+        if debug == 0:  # toggle preview
             camera.start_preview()
         else:
             camera.stop_preview()
     else:
-        print 'camera not defined yet'
+        print 'camera not defined yet'  # if camera initialization hasn't  been run print warning
 
     debug ^= 1
 
 
 def runningstateset(state):
     global running
-    try:
-        if state.pin.number == 14 and state.is_held:
-            state = 1
-        elif state.pin.number == 14:
-            state = 0
-        elif state.pin.number == 15 and state.is_held:
-            state = 2
-    except AttributeError:
-        print 'not button'
-    print 'state ' + str(state)
-    running = state
+    try:  # try assuming state is a button
+        if state.pin.number == 14 and state.is_held:  # if button 4 is held
+            state = 1  # set state to running
+        elif state.pin.number == 14:  # if button 4 is pressed
+            state = 0  # set state to stopped
+        elif state.pin.number == 15 and state.is_held:  # if button 5 is pressed
+            state = 2  # set state to exit
+    except AttributeError:  # catch not button error
+        print 'not button'  # print warning
+    print 'state ' + str(state)  # print new state
+    running = state  # set state
 
 
 def tintShadeset(tint):
     global tintShade
-    tintShade = tint
+    tintShade = tint  # set tint level for active shade points
 
 
 def tintBackset(tint):
     global tintBack
-    tintBack = tint
+    tintBack = tint  # set tint level for background
 
 
 def tintButton(buttonTint):
     global tintBack, tintbuttonvar
-    if buttonTint.is_held:
-        tintbuttonvar = 256
-    elif tintbuttonvar >= 64:
+    if buttonTint.is_held:  # if tint button is held reset tint to clear
+        tintbuttonvar = 256  # set tint to clear
+    elif tintbuttonvar >= 64:  # increment tint if not at limit
         tintbuttonvar -= 64
-    else:
-        tintbuttonvar = 256
+    else:  # else must be at limit so set to clear
+        tintbuttonvar = 256  # set tint to clear
     tintBack = [tintbuttonvar, tintbuttonvar, tintbuttonvar]
     print tintBack
 
