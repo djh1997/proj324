@@ -163,7 +163,8 @@ def tellmeajoke(bot, update):
     jokelist = [
         'I cannot think of a joke currently',
         'My friend told me how electricity is measured and I was like Watt! ',
-        'Two antennas get married. The wedding was boring, but the reception was great.'
+        'Two antennas get married. The wedding was boring, but the reception was great.',
+        ' Why was the robot mad? People kept pushing its buttons.'
     ]
     update.message.reply_text(choice(jokelist))
 

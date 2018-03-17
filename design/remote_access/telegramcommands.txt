@@ -1,15 +1,15 @@
 help - show the help menu
-pickmode- manual,tint,points or full auto
-tint - percentage
-colourset - fore/back@0/255,0/255,0/255
 pickcolour - pick from list of tints
+pickmode- manual,tint,points or full auto
+tellmeajoke - tells you a joke
+tint - percentage
+up - see if the bot is up
+temp - see the CPU temperature
 start - starts shades
 stop - stop shades
 exit - exit shades
 reboot - reboot shades
 halt - shutdown shades
-up - see if the bot is up
-temp - see the CPU temperature
 uprecords - see up time
 debug - toggle debug
-tellmeajoke - tells you a joke
+colourset - fore/back@0/255,0/255,0/255
