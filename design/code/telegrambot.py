@@ -22,13 +22,14 @@ test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
 user = False
 myuserid = 417245494
+allowAll = True
 
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 
 
 def start(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         runningstateset(1)
         update.message.reply_text('started')
     else:
@@ -36,7 +37,7 @@ def start(bot, update):
 
 
 def stop(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         runningstateset(0)
         update.message.reply_text('stoped')
     else:
@@ -44,7 +45,7 @@ def stop(bot, update):
 
 
 def exit(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         runningstateset(2)
         update.message.reply_text('exiting')
     else:
@@ -52,7 +53,7 @@ def exit(bot, update):
 
 
 def mode(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         usrin = update.message.text.split('/mode ')
         modeset(int(usrin[1]))
         update.message.reply_text('mode set to {}'.format(usrin[1]))
@@ -91,7 +92,7 @@ def temp(bot, update):
 
 
 def colourset(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         usrin = update.message.text.split('/colourset ')
         update.message.reply_text(colorSplit(usrin[1]))
     else:
@@ -99,7 +100,7 @@ def colourset(bot, update):
 
 
 def autoback(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         usrin = getiso()
         usrin = 'back@{},{},{}'.format(int(usrin), int(usrin), int(usrin))
         update.message.reply_text(colorSplit(usrin))
@@ -108,7 +109,7 @@ def autoback(bot, update):
 
 
 def tint(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         usrin = update.message.text
         usrin = usrin.split('/tint ')
         usrin = 100 - int(usrin[1])
@@ -120,7 +121,7 @@ def tint(bot, update):
 
 
 def rundmc(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         usrin = update.message.text
         usrin = usrin.split('/rundmc ')
         os.system(usrin[1])
@@ -129,7 +130,7 @@ def rundmc(bot, update):
 
 
 def halt(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         update.message.reply_text('goodbye.')
         os.system('sudo halt')
     else:
@@ -137,15 +138,28 @@ def halt(bot, update):
 
 
 def debug(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id == myuserid or allowAll:
         debugset()
         update.message.reply_text('debug toggled')
     else:
         update.message.reply_text('unavaliable for your user id.')
 
 
-def reboot(bot, update):
+def allowAllIds(bot, update):
+    global allowAll
     if update.message.from_user.id == myuserid:
+        if allowAll:
+            allowAll = False
+            update.message.reply_text('allowing restricted ids.')
+        else:
+            allowAll = True
+            update.message.reply_text('allowing all ids.')
+    else:
+        update.message.reply_text('unavaliable for your user id.')
+
+
+def reboot(bot, update):
+    if update.message.from_user.id == myuserid or allowAll:
         update.message.reply_text('see you in a second.')
         os.system('sudo reboot')
     else:
@@ -264,6 +278,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickcolour', pickcolour))
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('debug', debug))
+    dp.add_handler(CommandHandler('allowAllIds', allowAllIds))
     dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
