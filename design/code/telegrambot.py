@@ -34,15 +34,15 @@ def start(bot, update):
         runningstateset(1)
         update.message.reply_text('started')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def stop(bot, update):
     if update.message.from_user.id == myuserid or allowAll:
         runningstateset(0)
-        update.message.reply_text('stoped')
+        update.message.reply_text('stopped')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def exit(bot, update):
@@ -50,7 +50,7 @@ def exit(bot, update):
         runningstateset(2)
         update.message.reply_text('exiting')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def mode(bot, update):
@@ -59,11 +59,12 @@ def mode(bot, update):
         modeset(int(usrin[1]))
         update.message.reply_text('mode set to {}'.format(usrin[1]))
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def help(bot, update):
     update.message.reply_text(
+        'help im stuck in a box \n\r' +
         '/mode 0=manual 1=tint 2=points 3=full auto\n\r' +
         '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
         '/start starts shades\n\r' + '/stop stop shades\n\r' +
@@ -97,7 +98,7 @@ def colourset(bot, update):
         usrin = update.message.text.split('/colourset ')
         update.message.reply_text(colorSplit(usrin[1]))
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def autoback(bot, update):
@@ -106,7 +107,7 @@ def autoback(bot, update):
         usrin = 'back@{},{},{}'.format(int(usrin), int(usrin), int(usrin))
         update.message.reply_text(colorSplit(usrin))
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def tint(bot, update):
@@ -118,7 +119,7 @@ def tint(bot, update):
             int(usrin * 2.56), int(usrin * 2.56), int(usrin * 2.56))
         update.message.reply_text(colorSplit(usrin))
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def rundmc(bot, update):
@@ -127,7 +128,7 @@ def rundmc(bot, update):
         usrin = usrin.split('/rundmc ')
         os.system(usrin[1])
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def halt(bot, update):
@@ -135,7 +136,7 @@ def halt(bot, update):
         update.message.reply_text('goodbye.')
         os.system('sudo halt')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def debug(bot, update):
@@ -143,7 +144,7 @@ def debug(bot, update):
         debugset()
         update.message.reply_text('debug toggled')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def allowAllIds(bot, update):
@@ -156,7 +157,7 @@ def allowAllIds(bot, update):
             allowAll = True
             update.message.reply_text('allowing all ids.')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def tellmeajoke(bot, update):
@@ -164,7 +165,13 @@ def tellmeajoke(bot, update):
         'I cannot think of a joke currently',
         'My friend told me how electricity is measured and I was like Watt! ',
         'Two antennas get married. The wedding was boring, but the reception was great.',
-        ' Why was the robot mad? People kept pushing its buttons.'
+        ' Why was the robot mad? People kept pushing its buttons.',
+        'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
+        'What kind of car does an electrician drive?\n\r A Volts-wagon',
+        'What is a robots favourite kind of music? \n\r Heavy Metal.',
+        'If only DEAD people understand hexadecimal, how many people understand hexadecimal?\n\r57,005.',
+        'What is FACE value in decimal? 64206',
+        'I turned on the radio this morning I think its broken all I heard was FFFFFF it turns out it was White Noise!'
     ]
     update.message.reply_text(choice(jokelist))
 
@@ -174,7 +181,7 @@ def reboot(bot, update):
         update.message.reply_text('see you in a second.')
         os.system('sudo reboot')
     else:
-        update.message.reply_text('unavaliable for your user id.')
+        update.message.reply_text('unavailable for your user id.')
 
 
 def error(bot, update, error):
