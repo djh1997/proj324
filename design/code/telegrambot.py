@@ -3,6 +3,7 @@
 import logging
 import os
 import subprocess
+from random import choice
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
@@ -158,6 +159,15 @@ def allowAllIds(bot, update):
         update.message.reply_text('unavaliable for your user id.')
 
 
+def tellmeajoke(bot, update):
+    jokelist = [
+        'I cannot think of a joke currently',
+        'My friend told me how electricity is measured and I was like Watt! ',
+        'Two antennas get married. The wedding was boring, but the reception was great.'
+    ]
+    update.message.reply_text(choice(jokelist))
+
+
 def reboot(bot, update):
     if update.message.from_user.id == myuserid:
         update.message.reply_text('see you in a second.')
@@ -278,6 +288,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('debug', debug))
     dp.add_handler(CommandHandler('allowAllIds', allowAllIds))
+    dp.add_handler(CommandHandler('tellmeajoke', tellmeajoke))
     dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
