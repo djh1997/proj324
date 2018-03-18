@@ -201,8 +201,11 @@ def reboot(bot, update):
 
 
 def image(bot, update):
-    chat_id = update.message.chat_id
-    bot.send_photo(chat_id=chat_id, photo=open('image1.jpg', 'rb'))
+    if update.message.from_user.id in admins:
+        chat_id = update.message.chat_id
+        bot.send_photo(chat_id=chat_id, photo=open('image1.jpg', 'rb'))
+    else:
+        update.message.reply_text('unavailable for your user id.')
 
 
 def error(bot, update, error):

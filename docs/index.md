@@ -61,8 +61,10 @@ I decided to use telegram to add remote control so that you could adjust the col
 | help        | na                                   | show the help menu            |
 | pickcolour  | pick from list of tints              | preset tints/colours          |
 | pickmode    | pick manual,tint,points or full auto | change current mode           |
-| tellmeajoke | na                                   | tells a joke                  |
+| joke        | na                                   | tells a joke                  |
+| meme        | na                                   | shows a meme                  |
 | tint        | percentage                           | sets the tint of the lenses   |
+| image       | na                                   | shows you the current image   |
 | up          | na                                   | see if the bot is up          |
 | temp        | na                                   | see the CPU temperature       |
 | start       | na                                   | starts shades                 |

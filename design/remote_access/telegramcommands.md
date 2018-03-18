@@ -4,6 +4,7 @@ pickmode- manual,tint,points or full auto
 joke - tells you a joke
 meme - shows you a meme
 tint - percentage
+image - shows you the current image
 up - see if the bot is up
 temp - see the CPU temperature
 start - starts shades
@@ -23,6 +24,7 @@ colourset - fore/back@0/255,0/255,0/255
 | joke        | na                                   | tells a joke                  |
 | meme        | na                                   | shows a meme                  |
 | tint        | percentage                           | sets the tint of the lenses   |
+| image       | na                                   | shows you the current image   |
 | up          | na                                   | see if the bot is up          |
 | temp        | na                                   | see the CPU temperature       |
 | start       | na                                   | starts shades                 |
