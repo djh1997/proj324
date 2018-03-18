@@ -27,6 +27,7 @@ allowAll = True
 
 # Create the EventHandler and pass it your bot's token.
 updater = Updater(test_box_api_key[test_box])
+jbq = updater.job_queue
 
 
 def start(bot, update):
@@ -125,6 +126,14 @@ def tint(bot, update):
         usrin = 'back@{},{},{}'.format(
             int(usrin * 2.56), int(usrin * 2.56), int(usrin * 2.56))
         update.message.reply_text(colorSplit(usrin))
+    else:
+        update.message.reply_text('unavailable for your user id.')
+
+
+def spam(bot, update, args):
+    if update.message.from_user.id in admins:
+        print args
+        jbq.run_once(sendMessage, 0, context=[int(args[0]), args[1]])
     else:
         update.message.reply_text('unavailable for your user id.')
 
@@ -295,6 +304,10 @@ def colorSplit(usrin):
     return reply
 
 
+def sendMessage(bot, job):
+    bot.send_message(chat_id=job.context[0], text=job.context[1])
+
+
 def telegramMain():
     global updater
 
@@ -320,6 +333,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
+    dp.add_handler(CommandHandler('spam', spam, pass_args=True))
     dp.add_handler(CommandHandler('allowallids', allowallids))
     dp.add_handler(CommandHandler('joke', joke))
     dp.add_handler(CommandHandler('meme', meme))
@@ -338,6 +352,8 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
+    # jbq.run_repeating(
+    #     sendMessage, interval=3600, first=0, context=[544794734, 'ruler'])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
