@@ -31,7 +31,6 @@ updater = Updater(test_box_api_key[test_box])
 
 def start(bot, update):
     f = open('log.txt', 'a')
-    f.write('{}\n\r'.format(update.message.from_user.id))
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
     if update.message.from_user.id in admins or allowAll:
@@ -84,7 +83,8 @@ def echo(bot, update):
     update.message.reply_text('command {} not recognised.'.format(
         update.message.text))
     f = open('log.txt', 'a')
-    f.write('{}\n\r'.format(update.message.text))
+    f.write('{} : '.format(update.message.text))
+    f.write('{}\n\r'.format(update.message.from_user))
     f.close()
 
 
@@ -327,6 +327,7 @@ def telegramMain():
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.command, echo))
 
     # log all errors
     dp.add_error_handler(error)
