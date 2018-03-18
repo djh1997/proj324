@@ -1,7 +1,8 @@
 help - show the help menu
 pickcolour - pick from list of tints
 pickmode- manual,tint,points or full auto
-tellmeajoke - tells you a joke
+joke - tells you a joke
+meme - shows you a meme
 tint - percentage
 up - see if the bot is up
 temp - see the CPU temperature
@@ -13,14 +14,14 @@ halt - shutdown shades
 uprecords - see up time
 debug - toggle debug
 colourset - fore/back@0/255,0/255,0/255
-allowAllIds - allow anyone to send commands
 
 | command     | param                                | Description                   |
 | ----------- | ------------------------------------ | ----------------------------- |
 | help        | na                                   | show the help menu            |
 | pickcolour  | pick from list of tints              | preset tints/colours          |
 | pickmode    | pick manual,tint,points or full auto | change current mode           |
-| tellmeajoke | na                                   | tells a joke                  |
+| joke        | na                                   | tells a joke                  |
+| meme        | na                                   | shows a meme                  |
 | tint        | percentage                           | sets the tint of the lenses   |
 | up          | na                                   | see if the bot is up          |
 | temp        | na                                   | see the CPU temperature       |

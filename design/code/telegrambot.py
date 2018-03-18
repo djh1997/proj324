@@ -3,7 +3,7 @@
 import logging
 import os
 import subprocess
-from random import choice
+from random import choice, randint
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
@@ -167,7 +167,7 @@ def allowAllIds(bot, update):
         update.message.reply_text('unavailable for your user id.')
 
 
-def tellmeajoke(bot, update):
+def joke(bot, update):
     jokelist = [
         'I cannot think of a joke currently',
         'My friend told me how electricity is measured and I was like Watt! ',
@@ -185,12 +185,24 @@ def tellmeajoke(bot, update):
     print joke
 
 
+def meme(bot, update):
+    chat_id = update.message.chat_id
+    memeid = randint(1, 17)
+    bot.send_photo(
+        chat_id=chat_id, photo=open('memes/{}.jpg'.format(memeid), 'rb'))
+
+
 def reboot(bot, update):
     if update.message.from_user.id in admins:
         update.message.reply_text('see you in a second.')
         os.system('sudo reboot')
     else:
         update.message.reply_text('unavailable for your user id.')
+
+
+def image(bot, update):
+    chat_id = update.message.chat_id
+    bot.send_photo(chat_id=chat_id, photo=open('image1.jpg', 'rb'))
 
 
 def error(bot, update, error):
@@ -303,9 +315,11 @@ def telegramMain():
     dp.add_handler(CommandHandler("up", up))
     dp.add_handler(CommandHandler('pickcolour', pickcolour))
     dp.add_handler(CommandHandler('pickmode', pickmode))
+    dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
     dp.add_handler(CommandHandler('allowAllIds', allowAllIds))
-    dp.add_handler(CommandHandler('tellmeajoke', tellmeajoke))
+    dp.add_handler(CommandHandler('joke', joke))
+    dp.add_handler(CommandHandler('meme', meme))
     dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
