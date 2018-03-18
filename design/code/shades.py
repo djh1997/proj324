@@ -132,6 +132,13 @@ def tintShadeset(tint):
     tintShade = tint  # set tint level for active shade points
 
 
+def autoshadeset(tintdifference):
+    global tintShade
+    for i in range(len(tintShade)):
+        tintShade[
+            i] = tintBack[i] - tintdifference  # set tint difference points
+
+
 def tintBackset(tint):
     global tintBack
     tintBack = tint  # set tint level for background
@@ -233,6 +240,8 @@ def sandd():
                     img1, max_sigma=15, threshold=.0075)  # find blobs
 
                 timer.append(time())  # add timer point
+
+                autoshadeset(50)
 
                 for i in range(len(blobs_doh)):  # calculate points from blobs
                     points.append([
