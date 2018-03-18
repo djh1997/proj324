@@ -15,6 +15,7 @@ halt - shutdown shades
 uprecords - see up time
 debug - toggle debug
 colourset - fore/back@0/255,0/255,0/255
+allowallids - toggles if admin id is required
 
 | command     | param                                | Description                   |
 | ----------- | ------------------------------------ | ----------------------------- |
@@ -35,4 +36,4 @@ colourset - fore/back@0/255,0/255,0/255
 | uprecords   | na                                   | see up time                   |
 | debug       | na                                   | toggles debug                 |
 | colourset   | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
-| allowAllIds | na                                   | toggles if user id is needed  |
+| allowAllids | na                                   | toggles if admin id is needed |

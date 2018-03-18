@@ -154,7 +154,7 @@ def debug(bot, update):
         update.message.reply_text('unavailable for your user id.')
 
 
-def allowAllIds(bot, update):
+def allowallids(bot, update):
     global allowAll
     if update.message.from_user.id in admins:
         if allowAll:
@@ -320,7 +320,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
-    dp.add_handler(CommandHandler('allowAllIds', allowAllIds))
+    dp.add_handler(CommandHandler('allowallids', allowallids))
     dp.add_handler(CommandHandler('joke', joke))
     dp.add_handler(CommandHandler('meme', meme))
     dp.add_handler(CallbackQueryHandler(button))

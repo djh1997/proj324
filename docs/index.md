@@ -75,7 +75,7 @@ I decided to use telegram to add remote control so that you could adjust the col
 | uprecords   | na                                   | see up time                   |
 | debug       | na                                   | toggles debug                 |
 | colourset   | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
-| allowAllIds | na                                   | toggles if user id is needed  |
+| allowallids | na                                   | toggles if admin id is needed |
 
 After I had all of the system working I bought a 5 button capacitive touch sensor and started adding that into the code so that I would be able to control the glasses with out having to have it connected to the internet
 
