@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
 user = False
-myuserid = 417245494
+admins = [417245494]
 allowAll = True
 
 # Create the EventHandler and pass it your bot's token.
@@ -34,7 +34,7 @@ def start(bot, update):
     f.write('{}\n\r'.format(update.message.from_user.id))
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         runningstateset(1)
         update.message.reply_text('started')
     else:
@@ -42,7 +42,7 @@ def start(bot, update):
 
 
 def stop(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         runningstateset(0)
         update.message.reply_text('stopped')
     else:
@@ -50,7 +50,7 @@ def stop(bot, update):
 
 
 def exit(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id in admins:
         runningstateset(2)
         update.message.reply_text('exiting')
     else:
@@ -58,7 +58,7 @@ def exit(bot, update):
 
 
 def mode(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         usrin = update.message.text.split('/mode ')
         modeset(int(usrin[1]))
         update.message.reply_text('mode set to {}'.format(usrin[1]))
@@ -101,7 +101,7 @@ def temp(bot, update):
 
 
 def colourset(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         usrin = update.message.text.split('/colourset ')
         update.message.reply_text(colorSplit(usrin[1]))
     else:
@@ -109,7 +109,7 @@ def colourset(bot, update):
 
 
 def autoback(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         usrin = getiso()
         usrin = 'back@{},{},{}'.format(int(usrin), int(usrin), int(usrin))
         update.message.reply_text(colorSplit(usrin))
@@ -118,7 +118,7 @@ def autoback(bot, update):
 
 
 def tint(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         usrin = update.message.text
         usrin = usrin.split('/tint ')
         usrin = 100 - int(usrin[1])
@@ -130,7 +130,7 @@ def tint(bot, update):
 
 
 def rundmc(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         usrin = update.message.text
         usrin = usrin.split('/rundmc ')
         os.system(usrin[1])
@@ -139,7 +139,7 @@ def rundmc(bot, update):
 
 
 def halt(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id in admins:
         update.message.reply_text('goodbye.')
         os.system('sudo halt')
     else:
@@ -147,7 +147,7 @@ def halt(bot, update):
 
 
 def debug(bot, update):
-    if update.message.from_user.id == myuserid or allowAll:
+    if update.message.from_user.id in admins or allowAll:
         debugset()
         update.message.reply_text('debug toggled')
     else:
@@ -156,7 +156,7 @@ def debug(bot, update):
 
 def allowAllIds(bot, update):
     global allowAll
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id in admins:
         if allowAll:
             allowAll = False
             update.message.reply_text('allowing restricted ids.')
@@ -186,7 +186,7 @@ def tellmeajoke(bot, update):
 
 
 def reboot(bot, update):
-    if update.message.from_user.id == myuserid:
+    if update.message.from_user.id in admins:
         update.message.reply_text('see you in a second.')
         os.system('sudo reboot')
     else:
