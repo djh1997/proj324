@@ -139,12 +139,10 @@ def tintBackset(tint):
 
 def tintButton(buttonTint):
     global tintBack, tintbuttonvar
-    if buttonTint.is_held:  # if tint button is held reset tint to clear
+    if buttonTint.is_held or tintbuttonvar < 64:  # if tint button is held reset tint to clear
         tintbuttonvar = 256  # set tint to clear
     elif tintbuttonvar >= 64:  # increment tint if not at limit
         tintbuttonvar -= 64
-    else:  # else must be at limit so set to clear ???????
-        tintbuttonvar = 256  # set tint to clear
     tintBack = [tintbuttonvar, tintbuttonvar,
                 tintbuttonvar]  # format tint correctly
     print tintBack
@@ -156,7 +154,7 @@ def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
         if modevar.pin.number == 3 and modevar.is_held:  # if mode button is held
             modevar = 0  # reset mode to manual
         elif modevar.pin.number == 3:  # if mode button is pressed
-            if mode >= 3:  # if at limit the reset to manual ??????
+            if mode >= 3:  # if at limit the reset to manual
                 modevar = 0
             else:  # else increment
                 modevar = mode + 1
