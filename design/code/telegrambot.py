@@ -69,7 +69,8 @@ def mode(bot, update):
 def help(bot, update):
     update.message.reply_text(
         'help im stuck in a box \n\r' +
-        '/mode 0=manual 1=tint 2=points 3=full auto\n\r' +
+        '/pickcolour - pick from list of tints\n\r' +
+        '/pickmode- manual,tint,points or full auto\n\r' +
         '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
         '/start starts shades\n\r' + '/stop stop shades\n\r' +
         '/exit exit shades\n\r' + '/reboot reboot shades\n\r' +
@@ -133,7 +134,14 @@ def tint(bot, update):
 def spam(bot, update, args):
     if update.message.from_user.id in admins:
         print args
-        jbq.run_once(sendMessage, 0, context=[int(args[0]), args[1]])
+        if int(args[0]) == 0:
+            jbq.run_once(sendMessage, 0, context=[int(args[1]), args[2]])
+        else:
+            jbq.run_repeating(
+                sendMessage,
+                interval=int(args[0]),
+                first=0,
+                context=[int(args[1]), args[2]])
     else:
         update.message.reply_text('unavailable for your user id.')
 
