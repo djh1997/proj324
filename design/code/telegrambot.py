@@ -49,7 +49,7 @@ def stop(bot, update):  # function to stop/pause glasses
         update.message.reply_text('unavailable for your user id.')
 
 
-def exit(bot, update):
+def exit(bot, update):  # function to exit the program
     if update.message.from_user.id in admins:  # restrict access
         runningstateset(2)  # set sate to exit
         update.message.reply_text('exiting')  # echo exiting back to user
@@ -57,16 +57,17 @@ def exit(bot, update):
         update.message.reply_text('unavailable for your user id.')
 
 
-def mode(bot, update):
+def mode(bot, update):  # function to manually change the mode
     if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text.split('/mode ')
-        modeset(int(usrin[1]))
-        update.message.reply_text('mode set to {}'.format(usrin[1]))
+        usrin = update.message.text.split('/mode ')  # remove command
+        modeset(int(usrin[1]))  # set mode
+        update.message.reply_text('mode set to {}'.format(
+            usrin[1]))  # echo mode back to user
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def help(bot, update):
+def help(bot, update):  # display help menu
     update.message.reply_text(
         'help im stuck in a box \n\r' +
         '/pickcolour - pick from list of tints\n\r' +
@@ -77,56 +78,61 @@ def help(bot, update):
         '/halt shutsdown shades')
 
 
-def up(bot, update):
-    update.message.reply_text('shades {} is up.'.format(test_box))
+def up(bot, update):  # check if glasses are online
+    update.message.reply_text('shades {} are online.'.format(test_box))
 
 
-def echo(bot, update):
+def echo(bot, update):  # catch all for unrecognised commands
     update.message.reply_text('command {} not recognised.'.format(
-        update.message.text))
-    f = open('log.txt', 'a')
+        update.message.text))  # echo that the command was unrecognised
+    f = open('log.txt', 'a')  # log the user id and message
     f.write('{} : '.format(update.message.text))
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
 
 
-def uprecords(bot, update):
+def uprecords(bot, update):  # run the uprecords command and echo results
     p = subprocess.Popen(
-        ['uprecords', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out = p.communicate()
-    update.message.reply_text(out[0])
+        ['uprecords', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )  # open subprocess in thread and pipe back results
+    out = p.communicate()  # collect results
+    update.message.reply_text(out[0])  # echo results
 
 
-def temp(bot, update):
+def temp(bot, update):  # get cpu temperature
     temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1000.0
     update.message.reply_text('CPU temperature is:{}'.format(temp))
 
 
-def colourset(bot, update):
+def colourset(bot, update):  # set the colour of the lenses
     if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text.split('/colourset ')
-        update.message.reply_text(colorSplit(usrin[1]))
+        usrin = update.message.text.split(
+            '/colourset ')  # split off command string
+        update.message.reply_text(colorSplit(
+            usrin[1]))  # pass  colour information to handler
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def autoback(bot, update):
+def autoback(bot, update):  # calculate the background tint in manual mode
     if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = getiso()
-        usrin = 'back@{},{},{}'.format(int(usrin), int(usrin), int(usrin))
-        update.message.reply_text(colorSplit(usrin))
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def tint(bot, update):
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text
-        usrin = usrin.split('/tint ')
-        usrin = 100 - int(usrin[1])
+        usrin = getiso()  # get ambient light level
         usrin = 'back@{},{},{}'.format(
-            int(usrin * 2.56), int(usrin * 2.56), int(usrin * 2.56))
-        update.message.reply_text(colorSplit(usrin))
+            int(usrin), int(usrin),
+            int(usrin))  # format string to be passed to handler
+        update.message.reply_text(colorSplit(usrin))  # pass string to handler
+    else:  # if not user with access inform user of missing privileges
+        update.message.reply_text('unavailable for your user id.')
+
+
+def tint(bot, update):  # set background tint percentage
+    if update.message.from_user.id in admins or allowAll:  # restrict access
+        usrin = update.message.text.split('/tint ')  # split off command string
+        usrin = 100 - int(usrin[1])  # invert percentage
+        usrin = 'back@{},{},{}'.format(
+            int(usrin * 2.56), int(usrin * 2.56),
+            int(usrin * 2.56))  # format string to be passed to handler
+        update.message.reply_text(colorSplit(usrin))  # pass string to handler
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
@@ -142,15 +148,6 @@ def spam(bot, update, args):
                 interval=int(args[0]),
                 first=0,
                 context=[int(args[1]), args[2]])
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def rundmc(bot, update):
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text
-        usrin = usrin.split('/rundmc ')
-        os.system(usrin[1])
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
@@ -331,7 +328,6 @@ def telegramMain():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("tint", tint))
     dp.add_handler(CommandHandler("colourset", colourset))
-    # dp.add_handler(CommandHandler("rundmc", rundmc))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))
     dp.add_handler(CommandHandler("temp", temp))
