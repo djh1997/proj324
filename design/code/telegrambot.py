@@ -102,6 +102,12 @@ def allowallids(bot, update):  # toggle restriction level
         update.message.reply_text('allowing all ids.')
 
 
+@restricted2
+def exit(bot, update):  # function to exit the program
+    runningstateset(2)  # set sate to exit
+    update.message.reply_text('exiting')  # echo exiting back to user
+
+
 @restricted1
 def image(bot, update):  # send mose recent image from camera
     bot.send_photo(
@@ -122,12 +128,6 @@ def start(bot, update):  # function to start the glasses
 def stop(bot, update):  # function to stop/pause glasses
     runningstateset(0)  # set running state to stopped
     update.message.reply_text('stopped')  # echo stopped back to user
-
-
-@restricted1
-def exit(bot, update):  # function to exit the program
-    runningstateset(2)  # set sate to exit
-    update.message.reply_text('exiting')  # echo exiting back to user
 
 
 @restricted1
@@ -311,17 +311,16 @@ def telegramMain():
 
     # on different commands - answer in Telegram
     # all
-    dp.add_handler(CommandHandler('joke', joke))
-    dp.add_handler(CommandHandler('meme', meme))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("uprecords", uprecords))
     dp.add_handler(CommandHandler("up", up))
     dp.add_handler(CommandHandler("temp", temp))
+    dp.add_handler(CommandHandler('joke', joke))
+    dp.add_handler(CommandHandler('meme', meme))
 
     # togglable
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("stop", stop))
-    dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("mode", mode, pass_args=True))
     dp.add_handler(CommandHandler("autoback", autoback))
     dp.add_handler(CommandHandler("tint", tint, pass_args=True))
@@ -332,6 +331,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('debug', debug))
 
     # admins only
+    dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler('spam', spam, pass_args=True))
     dp.add_handler(CommandHandler('allowallids', allowallids))
     # dp.add_handler(CommandHandler("halt", halt))
