@@ -92,3 +92,5 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 [mode change](log/capmode.MOV)
 [tint change](log/tint.MOV)
 [debug toggle](log/debug.MOV)
+
+**\<>** by jo hawkins using atom and github
