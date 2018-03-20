@@ -334,8 +334,8 @@ def telegramMain():
     dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler('spam', spam, pass_args=True))
     dp.add_handler(CommandHandler('allowallids', allowallids))
-    # dp.add_handler(CommandHandler("halt", halt))
-    # dp.add_handler(CommandHandler("reboot", reboot))
+    dp.add_handler(CommandHandler("halt", halt))
+    dp.add_handler(CommandHandler("reboot", reboot))
 
     # keyboard handler
     dp.add_handler(CallbackQueryHandler(button))
@@ -350,8 +350,7 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    # jbq.run_repeating(
-    # sendMessage, interval=3600, first=0, context=[544794734, 'ruler'])
+    jbq.run_once(sendMessage, 0, context=[admins[0], 'shades booting'])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
