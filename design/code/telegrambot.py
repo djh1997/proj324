@@ -1,8 +1,8 @@
 # sudo pip install python-telegram-bot --upgrade
 
-import logging
 import os
 import subprocess
+from functools import wraps
 from random import choice, randint
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -11,13 +11,6 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
 
 from shades import (debugset, getiso, modeset, runningstateget,
                     runningstateset, sandd, tintBackset, tintShadeset)
-
-# Enable logging
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO)
-
-logger = logging.getLogger(__name__)
 
 test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
@@ -38,70 +31,145 @@ jokelist = [
     'I turned on the radio this morning all I heard was FFFFFF it turns out it was White Noise!'
 ]
 
-# Create the EventHandler and pass it your bot's token.
+# Create the EventHandler and  it your bot's token.
 updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
 
 
+def restricted1(func):
+    @wraps(func)
+    def wrapped(bot, update, *args, **kwargs):
+        user_id = update.effective_user.id
+        if allowAll or user_id in admins:
+            return func(bot, update, *args, **kwargs)
+        update.message.reply_text("Unauthorized access denied for {}.".format(
+            user_id))  # echo started back to user
+        return 'error'
+
+    print wrapped
+    return wrapped
+
+
+def restricted2(func):
+    @wraps(func)
+    def wrapped(bot, update, *args, **kwargs):
+        user_id = update.effective_user.id
+        if user_id in admins:
+            return func(bot, update, *args, **kwargs)
+        update.message.reply_text("Unauthorized access denied for {}.".format(
+            user_id))  # echo started back to user
+        return 'error'
+
+    return wrapped
+
+
+@restricted2
+def spam(bot, update, args):  # reppetive messages for debug
+    if int(args[0]) == 0:  # if interval = 0
+        jbq.run_once(
+            sendMessage, 0, context=[int(args[1]),
+                                     args[2]])  # initiate job to reply
+    else:  # for reppetive jobs
+        jbq.run_repeating(
+            sendMessage,
+            interval=int(args[0]),
+            first=0,
+            context=[int(args[1]), args[2]])  # initiate job to repeat
+
+
+@restricted2
+def halt(bot, update):  # turn of glasses
+    update.message.reply_text('goodbye.')  # echo goodbye
+    os.system('sudo halt')  # send shutdown command
+
+
+@restricted2
+def reboot(bot, update):  # reboot glasses
+    update.message.reply_text(
+        'see you in a second.')  # echo that command was received
+    os.system('sudo reboot')  # send reboot command
+
+
+@restricted2
+def allowallids(bot, update):  # toggle restriction level
+    global allowAll  # pull allowAll in so function can edit
+
+    if allowAll:  # toggle
+        allowAll = False
+        update.message.reply_text('allowing restricted ids.')
+    else:
+        allowAll = True
+        update.message.reply_text('allowing all ids.')
+
+
+@restricted1
+def image(bot, update):  # send mose recent image from camera
+    bot.send_photo(
+        chat_id=update.message.chat_id, photo=open('image1.jpg',
+                                                   'rb'))  # send image
+
+
+@restricted1
 def start(bot, update):  # function to start the glasses
     f = open('log.txt', 'a')  # currently debugging by logging new users
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        runningstateset(1)  # set state to running
-        update.message.reply_text('started')  # echo started back to user
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
+    runningstateset(1)  # set state to running
+    update.message.reply_text('started')  # echo started back to user
 
 
+@restricted1
 def stop(bot, update):  # function to stop/pause glasses
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        runningstateset(0)  # set running state to stopped
-        update.message.reply_text('stopped')  # echo stopped back to user
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
+    runningstateset(0)  # set running state to stopped
+    update.message.reply_text('stopped')  # echo stopped back to user
 
 
+@restricted1
 def exit(bot, update):  # function to exit the program
-    if update.message.from_user.id in admins:  # restrict access
-        runningstateset(2)  # set sate to exit
-        update.message.reply_text('exiting')  # echo exiting back to user
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
+    runningstateset(2)  # set sate to exit
+    update.message.reply_text('exiting')  # echo exiting back to user
 
 
+@restricted1
 def mode(bot, update):  # function to manually change the mode
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text.split('/mode ')  # remove command
-        modeset(int(usrin[1]))  # set mode
-        update.message.reply_text('mode set to {}'.format(
-            usrin[1]))  # echo mode back to user
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
+    usrin = update.message.text.split('/mode ')  # remove command
+    modeset(int(usrin[1]))  # set mode
+    update.message.reply_text('mode set to {}'.format(
+        usrin[1]))  # echo mode back to user
 
 
-def help(bot, update):  # display help menu
+@restricted1
+def colourset(bot, update):  # set the colour of the lenses
+    usrin = update.message.text.split(
+        '/colourset ')  # split off command string
+    update.message.reply_text(colorSplit(
+        usrin[1]))  # colour information to handler
+
+
+@restricted1
+def autoback(bot, update):  # calculate the background tint in manual mode
+    usrin = getiso()  # get ambient light level
+    usrin = 'back@{},{},{}'.format(
+        int(usrin), int(usrin),
+        int(usrin))  # format string to be ed to handler
+    update.message.reply_text(colorSplit(usrin))  # string to handler
+
+
+@restricted1
+def tint(bot, update):  # set background tint percentage
+    usrin = update.message.text.split('/tint ')  # split off command string
+    usrin = 100 - int(usrin[1])  # invert percentage
+    usrin = 'back@{},{},{}'.format(
+        int(usrin * 2.56), int(usrin * 2.56),
+        int(usrin * 2.56))  # format string to be ed to handler
+    update.message.reply_text(colorSplit(usrin))  # string to handler
+
+
+@restricted1
+def debug(bot, update):  # toggle command line debug
+    debugset()  # toggle command line debug
     update.message.reply_text(
-        'help im stuck in a box \n\r' +
-        '/pickcolour - pick from list of tints\n\r' +
-        '/pickmode- manual,tint,points or full auto\n\r' +
-        '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
-        '/start starts shades\n\r' + '/stop stop shades\n\r' +
-        '/exit exit shades\n\r' + '/reboot reboot shades\n\r' +
-        '/halt shutsdown shades')
-
-
-def up(bot, update):  # check if glasses are online
-    update.message.reply_text('shades {} are online.'.format(test_box))
-
-
-def echo(bot, update):  # catch all for unrecognised commands
-    update.message.reply_text('command {} not recognised.'.format(
-        update.message.text))  # echo that the command was unrecognised
-    f = open('log.txt', 'a')  # log the user id and message
-    f.write('{} : '.format(update.message.text))
-    f.write('{}\n\r'.format(update.message.from_user))
-    f.close()
+        'debug toggled')  # echo that the debug has been toggled back to user
 
 
 def uprecords(bot, update):  # run the uprecords command and echo results
@@ -117,86 +185,6 @@ def temp(bot, update):  # get cpu temperature
     update.message.reply_text('CPU temperature is:{}'.format(temp))
 
 
-def colourset(bot, update):  # set the colour of the lenses
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text.split(
-            '/colourset ')  # split off command string
-        update.message.reply_text(colorSplit(
-            usrin[1]))  # pass  colour information to handler
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def autoback(bot, update):  # calculate the background tint in manual mode
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = getiso()  # get ambient light level
-        usrin = 'back@{},{},{}'.format(
-            int(usrin), int(usrin),
-            int(usrin))  # format string to be passed to handler
-        update.message.reply_text(colorSplit(usrin))  # pass string to handler
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def tint(bot, update):  # set background tint percentage
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        usrin = update.message.text.split('/tint ')  # split off command string
-        usrin = 100 - int(usrin[1])  # invert percentage
-        usrin = 'back@{},{},{}'.format(
-            int(usrin * 2.56), int(usrin * 2.56),
-            int(usrin * 2.56))  # format string to be passed to handler
-        update.message.reply_text(colorSplit(usrin))  # pass string to handler
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def spam(bot, update, args):  # reppetive messages for debug
-    if update.message.from_user.id in admins:  # restrict access
-        if int(args[0]) == 0:  # if interval = 0
-            jbq.run_once(
-                sendMessage, 0, context=[int(args[1]),
-                                         args[2]])  # initiate job to reply
-        else:  # for reppetive jobs
-            jbq.run_repeating(
-                sendMessage,
-                interval=int(args[0]),
-                first=0,
-                context=[int(args[1]), args[2]])  # initiate job to repeat
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def halt(bot, update):  # turn of glasses
-    if update.message.from_user.id in admins:  # restrict access
-        update.message.reply_text('goodbye.')  # echo goodbye
-        os.system('sudo halt')  # send shutdown command
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def debug(bot, update):  # toggle command line debug
-    if update.message.from_user.id in admins or allowAll:  # restrict access
-        debugset()  # toggle command line debug
-        update.message.reply_text(
-            'debug toggled'
-        )  # echo that the debug has been toggled back to user
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
-def allowallids(bot, update):  # toggle restriction level
-    global allowAll  # pull allowAll in so function can edit
-    if update.message.from_user.id in admins:  # restrict access
-        if allowAll:  # toggle
-            allowAll = False
-            update.message.reply_text('allowing restricted ids.')
-        else:
-            allowAll = True
-            update.message.reply_text('allowing all ids.')
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
-
-
 def joke(bot, update):  # sned a joke
     update.message.reply_text(choice(jokelist))  # pick random joke and send
 
@@ -208,26 +196,28 @@ def meme(bot, update):  # send a meme
         photo=open('memes/{}.jpg'.format(memeid), 'rb'))  # send image
 
 
-def reboot(bot, update):  # reboot glasses
-    if update.message.from_user.id in admins:  # restrict access
-        update.message.reply_text(
-            'see you in a second.')  # echo that command was received
-        os.system('sudo reboot')  # send reboot command
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
+def help(bot, update):  # display help menu
+    update.message.reply_text(
+        'help im stuck in a box \n\r' +
+        '/pickcolour - pick from list of tints\n\r' +
+        '/pickmode- manual,tint,points or full auto\n\r' +
+        '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
+        '/start starts shades\n\r' + '/stop stop shades\n\r' +
+        '/exit exit shades\n\r' + '/reboot reboot shades\n\r' +
+        '/halt shutsdown shades')
 
 
-def image(bot, update):  # send mose recent image from camera
-    if update.message.from_user.id in admins:  # restrict access
-        bot.send_photo(
-            chat_id=update.message.chat_id, photo=open('image1.jpg',
-                                                       'rb'))  # send image
-    else:  # if not user with access inform user of missing privileges
-        update.message.reply_text('unavailable for your user id.')
+def up(bot, update):  # check if glasses are online
+    update.message.reply_text('shades {} is online.'.format(test_box))
 
 
-def error(bot, update, error):  # log any errors
-    logger.warn('Update "%s" caused error "%s"' % (update, error))
+def echo(bot, update):  # catch all for unrecognised commands
+    update.message.reply_text('command {} not recognised.'.format(
+        update.message.text))  # echo that the command was unrecognised
+    f = open('log.txt', 'a')  # log the user id and message
+    f.write('{} : '.format(update.message.text))
+    f.write('{}\n\r'.format(update.message.from_user))
+    f.close()
 
 
 def pickcolour(bot, update):  # setup inline keyboard to pick a preset colour
@@ -303,10 +293,10 @@ def colorSplit(usrin):  # colour handler
             error = True  # trigger error
     if error is False:  # if all values in spec
         if usrin[0] == 'back':  # set background tint
-            tintBackset(tint)  # pass data to handler
+            tintBackset(tint)  # data to handler
             reply = tint  # echo back the rgb values
         elif usrin[0] == 'fore':  # set foreground tint
-            tintShadeset(tint)  # pass data to handler
+            tintShadeset(tint)  # data to handler
             reply = tint  # echo back the rgb values
         else:  # if not fore or back warn user and show formating
             reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
@@ -327,35 +317,39 @@ def telegramMain():
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
+    # all
+    dp.add_handler(CommandHandler('joke', joke))
+    dp.add_handler(CommandHandler('meme', meme))
+    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("uprecords", uprecords))
+    dp.add_handler(CommandHandler("up", up))
+    dp.add_handler(CommandHandler("temp", temp))
+
+    # togglable
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("stop", stop))
     dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("mode", mode))
     dp.add_handler(CommandHandler("autoback", autoback))
-    dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("tint", tint))
     dp.add_handler(CommandHandler("colourset", colourset))
-    dp.add_handler(CommandHandler("halt", halt))
-    dp.add_handler(CommandHandler("reboot", reboot))
-    dp.add_handler(CommandHandler("temp", temp))
-    dp.add_handler(CommandHandler("uprecords", uprecords))
-    dp.add_handler(CommandHandler("up", up))
     dp.add_handler(CommandHandler('pickcolour', pickcolour))
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
+
+    # admins only
     dp.add_handler(CommandHandler('spam', spam, pass_args=True))
     dp.add_handler(CommandHandler('allowallids', allowallids))
-    dp.add_handler(CommandHandler('joke', joke))
-    dp.add_handler(CommandHandler('meme', meme))
+    # dp.add_handler(CommandHandler("halt", halt))
+    # dp.add_handler(CommandHandler("reboot", reboot))
+
+    # keyboard handler
     dp.add_handler(CallbackQueryHandler(button))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.command, echo))
-
-    # log all errors
-    dp.add_error_handler(error)
 
     # Start the Bot
     updater.start_polling()
@@ -364,7 +358,7 @@ def telegramMain():
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
     # jbq.run_repeating(
-    #     sendMessage, interval=3600, first=0, context=[544794734, 'ruler'])
+    # sendMessage, interval=3600, first=0, context=[544794734, 'ruler'])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
