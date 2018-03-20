@@ -30,39 +30,39 @@ updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
 
 
-def start(bot, update):
-    f = open('log.txt', 'a')
+def start(bot, update):  # function to start the glasses
+    f = open('log.txt', 'a')  # currently debugging by logging new users
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
-    if update.message.from_user.id in admins or allowAll:
-        runningstateset(1)
-        update.message.reply_text('started')
-    else:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
+        runningstateset(1)  # set state to running
+        update.message.reply_text('started')  # echo started back to user
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def stop(bot, update):
-    if update.message.from_user.id in admins or allowAll:
-        runningstateset(0)
-        update.message.reply_text('stopped')
-    else:
+def stop(bot, update):  # function to stop/pause glasses
+    if update.message.from_user.id in admins or allowAll:  # restrict access
+        runningstateset(0)  # set running state to stopped
+        update.message.reply_text('stopped')  # echo stopped back to user
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def exit(bot, update):
-    if update.message.from_user.id in admins:
-        runningstateset(2)
-        update.message.reply_text('exiting')
-    else:
+    if update.message.from_user.id in admins:  # restrict access
+        runningstateset(2)  # set sate to exit
+        update.message.reply_text('exiting')  # echo exiting back to user
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def mode(bot, update):
-    if update.message.from_user.id in admins or allowAll:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
         usrin = update.message.text.split('/mode ')
         modeset(int(usrin[1]))
         update.message.reply_text('mode set to {}'.format(usrin[1]))
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
@@ -103,36 +103,36 @@ def temp(bot, update):
 
 
 def colourset(bot, update):
-    if update.message.from_user.id in admins or allowAll:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
         usrin = update.message.text.split('/colourset ')
         update.message.reply_text(colorSplit(usrin[1]))
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def autoback(bot, update):
-    if update.message.from_user.id in admins or allowAll:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
         usrin = getiso()
         usrin = 'back@{},{},{}'.format(int(usrin), int(usrin), int(usrin))
         update.message.reply_text(colorSplit(usrin))
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def tint(bot, update):
-    if update.message.from_user.id in admins or allowAll:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
         usrin = update.message.text
         usrin = usrin.split('/tint ')
         usrin = 100 - int(usrin[1])
         usrin = 'back@{},{},{}'.format(
             int(usrin * 2.56), int(usrin * 2.56), int(usrin * 2.56))
         update.message.reply_text(colorSplit(usrin))
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def spam(bot, update, args):
-    if update.message.from_user.id in admins:
+    if update.message.from_user.id in admins:  # restrict access
         print args
         if int(args[0]) == 0:
             jbq.run_once(sendMessage, 0, context=[int(args[1]), args[2]])
@@ -142,45 +142,45 @@ def spam(bot, update, args):
                 interval=int(args[0]),
                 first=0,
                 context=[int(args[1]), args[2]])
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def rundmc(bot, update):
-    if update.message.from_user.id in admins or allowAll:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
         usrin = update.message.text
         usrin = usrin.split('/rundmc ')
         os.system(usrin[1])
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def halt(bot, update):
-    if update.message.from_user.id in admins:
+    if update.message.from_user.id in admins:  # restrict access
         update.message.reply_text('goodbye.')
         os.system('sudo halt')
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def debug(bot, update):
-    if update.message.from_user.id in admins or allowAll:
+    if update.message.from_user.id in admins or allowAll:  # restrict access
         debugset()
         update.message.reply_text('debug toggled')
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def allowallids(bot, update):
     global allowAll
-    if update.message.from_user.id in admins:
+    if update.message.from_user.id in admins:  # restrict access
         if allowAll:
             allowAll = False
             update.message.reply_text('allowing restricted ids.')
         else:
             allowAll = True
             update.message.reply_text('allowing all ids.')
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
@@ -210,18 +210,18 @@ def meme(bot, update):
 
 
 def reboot(bot, update):
-    if update.message.from_user.id in admins:
+    if update.message.from_user.id in admins:  # restrict access
         update.message.reply_text('see you in a second.')
         os.system('sudo reboot')
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
 def image(bot, update):
-    if update.message.from_user.id in admins:
+    if update.message.from_user.id in admins:  # restrict access
         chat_id = update.message.chat_id
         bot.send_photo(chat_id=chat_id, photo=open('image1.jpg', 'rb'))
-    else:
+    else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
