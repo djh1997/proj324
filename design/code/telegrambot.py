@@ -117,7 +117,7 @@ def image(bot, update):  # send mose recent image from camera
 
 @restricted1
 def start(bot, update):  # function to start the glasses
-    f = open('log.txt', 'a')  # currently debugging by logging new users
+    f = open('users.txt', 'a')  # currently debugging by logging new users
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
     runningstateset(1)  # set state to running
