@@ -131,19 +131,16 @@ def exit(bot, update):  # function to exit the program
 
 
 @restricted1
-def mode(bot, update):  # function to manually change the mode
-    usrin = update.message.text.split('/mode ')  # remove command
-    modeset(int(usrin[1]))  # set mode
+def mode(bot, update, args):  # function to manually change the mode
+    modeset(int(args[0]))  # set mode
     update.message.reply_text('mode set to {}'.format(
-        usrin[1]))  # echo mode back to user
+        args[0]))  # echo mode back to user
 
 
 @restricted1
-def colourset(bot, update):  # set the colour of the lenses
-    usrin = update.message.text.split(
-        '/colourset ')  # split off command string
+def colourset(bot, update, args):  # set the colour of the lenses
     update.message.reply_text(colorSplit(
-        usrin[1]))  # colour information to handler
+        args[0]))  # colour information to handler
 
 
 @restricted1
@@ -151,17 +148,16 @@ def autoback(bot, update):  # calculate the background tint in manual mode
     usrin = getiso()  # get ambient light level
     usrin = 'back@{},{},{}'.format(
         int(usrin), int(usrin),
-        int(usrin))  # format string to be ed to handler
+        int(usrin))  # format string to be passed to handler
     update.message.reply_text(colorSplit(usrin))  # string to handler
 
 
 @restricted1
-def tint(bot, update):  # set background tint percentage
-    usrin = update.message.text.split('/tint ')  # split off command string
-    usrin = 100 - int(usrin[1])  # invert percentage
+def tint(bot, update, args):  # set background tint percentage
+    usrin = 100 - int(args[0])  # invert percentage
     usrin = 'back@{},{},{}'.format(
         int(usrin * 2.56), int(usrin * 2.56),
-        int(usrin * 2.56))  # format string to be ed to handler
+        int(usrin * 2.56))  # format string to be passed to handler
     update.message.reply_text(colorSplit(usrin))  # string to handler
 
 
@@ -288,8 +284,8 @@ def colorSplit(usrin):  # colour handler
     reply = ''
     for i in range(len(tint)):  # iterate over rgb values
         tint[i] = int(tint[i])  # convert to int
-        if tint[i] not in range(0, 256):  # check value is in valid range
-            reply = 'tint out of spec'  # warn user of error
+        if tint[i] not in range(0, 257):  # check value is in valid range
+            reply = 'rgb out of range'  # warn user of error
             error = True  # trigger error
     if error is False:  # if all values in spec
         if usrin[0] == 'back':  # set background tint
@@ -299,10 +295,7 @@ def colorSplit(usrin):  # colour handler
             tintShadeset(tint)  # data to handler
             reply = tint  # echo back the rgb values
         else:  # if not fore or back warn user and show formating
-            reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
-
-    else:  # if values are out of spec warn user and show formating
-        reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
+            reply = 'valueError please enter location in this format fore-back@0-255,0-255,0-255'
     return reply
 
 
@@ -329,10 +322,10 @@ def telegramMain():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("stop", stop))
     dp.add_handler(CommandHandler("exit", exit))
-    dp.add_handler(CommandHandler("mode", mode))
+    dp.add_handler(CommandHandler("mode", mode, pass_args=True))
     dp.add_handler(CommandHandler("autoback", autoback))
-    dp.add_handler(CommandHandler("tint", tint))
-    dp.add_handler(CommandHandler("colourset", colourset))
+    dp.add_handler(CommandHandler("tint", tint, pass_args=True))
+    dp.add_handler(CommandHandler("colourset", colourset, pass_args=True))
     dp.add_handler(CommandHandler('pickcolour', pickcolour))
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
