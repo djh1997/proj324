@@ -11,4 +11,5 @@
 | [usb ampmeter](https://www.rapidonline.com/voltcraft-pm-37-digital-usb-power-meter-64-2822)                                     | 7.26  | 1        | 7.26  |
 | [capacitve sensor](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337)         | 7.48  | 1        | 7.48  |
 | veroboard                                                                                                                       | 3.60  | 1/4      | .90   |
-| total                                                                                                                           |       |          | 70.30 |
+| 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 23.95 | 1        | 23.95 |
+| total                                                                                                                           |       |          | 94.25 |
