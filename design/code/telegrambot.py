@@ -25,6 +25,19 @@ user = False
 admins = [417245494]
 allowAll = True
 
+jokelist = [
+    'I cannot think of a joke currently',
+    'My friend told me how electricity is measured and I was like Watt! ',
+    'Two antennas get married. The wedding was boring, but the reception was great.',
+    'Why was the robot mad? People kept pushing its buttons.',
+    'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
+    'What kind of car does an electrician drive?\n\r A Volts-wagon',
+    'What is a robots favourite kind of music? \n\r Heavy Metal.',
+    'If only DEAD people understand hexadecimal, how many dead people are there?\n\r57,005.',
+    'What is FACE value in decimal? 64206',
+    'I turned on the radio this morning all I heard was FFFFFF it turns out it was White Noise!'
+]
+
 # Create the EventHandler and pass it your bot's token.
 updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
@@ -137,41 +150,44 @@ def tint(bot, update):  # set background tint percentage
         update.message.reply_text('unavailable for your user id.')
 
 
-def spam(bot, update, args):
+def spam(bot, update, args):  # reppetive messages for debug
     if update.message.from_user.id in admins:  # restrict access
-        print args
-        if int(args[0]) == 0:
-            jbq.run_once(sendMessage, 0, context=[int(args[1]), args[2]])
-        else:
+        if int(args[0]) == 0:  # if interval = 0
+            jbq.run_once(
+                sendMessage, 0, context=[int(args[1]),
+                                         args[2]])  # initiate job to reply
+        else:  # for reppetive jobs
             jbq.run_repeating(
                 sendMessage,
                 interval=int(args[0]),
                 first=0,
-                context=[int(args[1]), args[2]])
+                context=[int(args[1]), args[2]])  # initiate job to repeat
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def halt(bot, update):
+def halt(bot, update):  # turn of glasses
     if update.message.from_user.id in admins:  # restrict access
-        update.message.reply_text('goodbye.')
-        os.system('sudo halt')
+        update.message.reply_text('goodbye.')  # echo goodbye
+        os.system('sudo halt')  # send shutdown command
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def debug(bot, update):
+def debug(bot, update):  # toggle command line debug
     if update.message.from_user.id in admins or allowAll:  # restrict access
-        debugset()
-        update.message.reply_text('debug toggled')
+        debugset()  # toggle command line debug
+        update.message.reply_text(
+            'debug toggled'
+        )  # echo that the debug has been toggled back to user
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def allowallids(bot, update):
-    global allowAll
+def allowallids(bot, update):  # toggle restriction level
+    global allowAll  # pull allowAll in so function can edit
     if update.message.from_user.id in admins:  # restrict access
-        if allowAll:
+        if allowAll:  # toggle
             allowAll = False
             update.message.reply_text('allowing restricted ids.')
         else:
@@ -181,52 +197,40 @@ def allowallids(bot, update):
         update.message.reply_text('unavailable for your user id.')
 
 
-def joke(bot, update):
-    jokelist = [
-        'I cannot think of a joke currently',
-        'My friend told me how electricity is measured and I was like Watt! ',
-        'Two antennas get married. The wedding was boring, but the reception was great.',
-        'Why was the robot mad? People kept pushing its buttons.',
-        'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
-        'What kind of car does an electrician drive?\n\r A Volts-wagon',
-        'What is a robots favourite kind of music? \n\r Heavy Metal.',
-        'If only DEAD people understand hexadecimal, how many dead people are there?\n\r57,005.',
-        'What is FACE value in decimal? 64206',
-        'I turned on the radio this morning all I heard was FFFFFF it turns out it was White Noise!'
-    ]
-    joke = choice(jokelist)
-    update.message.reply_text(joke)
-    print joke
+def joke(bot, update):  # sned a joke
+    update.message.reply_text(choice(jokelist))  # pick random joke and send
 
 
-def meme(bot, update):
-    chat_id = update.message.chat_id
-    memeid = randint(1, 17)
+def meme(bot, update):  # send a meme
+    memeid = randint(1, 17)  # pick random image
     bot.send_photo(
-        chat_id=chat_id, photo=open('memes/{}.jpg'.format(memeid), 'rb'))
+        chat_id=update.message.chat_id,
+        photo=open('memes/{}.jpg'.format(memeid), 'rb'))  # send image
 
 
-def reboot(bot, update):
+def reboot(bot, update):  # reboot glasses
     if update.message.from_user.id in admins:  # restrict access
-        update.message.reply_text('see you in a second.')
-        os.system('sudo reboot')
+        update.message.reply_text(
+            'see you in a second.')  # echo that command was received
+        os.system('sudo reboot')  # send reboot command
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def image(bot, update):
+def image(bot, update):  # send mose recent image from camera
     if update.message.from_user.id in admins:  # restrict access
-        chat_id = update.message.chat_id
-        bot.send_photo(chat_id=chat_id, photo=open('image1.jpg', 'rb'))
+        bot.send_photo(
+            chat_id=update.message.chat_id, photo=open('image1.jpg',
+                                                       'rb'))  # send image
     else:  # if not user with access inform user of missing privileges
         update.message.reply_text('unavailable for your user id.')
 
 
-def error(bot, update, error):
+def error(bot, update, error):  # log any errors
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
 
-def pickcolour(bot, update):
+def pickcolour(bot, update):  # setup inline keyboard to pick a preset colour
     keyboard = [[
         InlineKeyboardButton("50", callback_data=50),
         InlineKeyboardButton("80", callback_data=80),
@@ -237,79 +241,82 @@ def pickcolour(bot, update):
         InlineKeyboardButton("green", callback_data=102),
         InlineKeyboardButton("blue", callback_data=103),
         InlineKeyboardButton("gold", callback_data=104)
-    ]]
+    ]]  # setup layout
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)  # create keyboard
 
-    update.message.reply_text('Please choose:', reply_markup=reply_markup)
+    update.message.reply_text(
+        'Please choose:', reply_markup=reply_markup)  # send keyboard
 
 
-def pickmode(bot, update):
+def pickmode(bot, update):  # setup inline keyboard to pick mode
     keyboard = [[
         InlineKeyboardButton("manual", callback_data=0),
         InlineKeyboardButton("tint", callback_data=1),
         InlineKeyboardButton("point", callback_data=2),
         InlineKeyboardButton("full auto", callback_data=3)
-    ]]
+    ]]  # setup layout
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)  # create keyboard
 
-    update.message.reply_text('Please choose:', reply_markup=reply_markup)
+    update.message.reply_text(
+        'Please choose:', reply_markup=reply_markup)  # send keyboard
 
 
-def button(bot, update):
+def button(bot, update):  # create handler for inline keyboard
     query = update.callback_query
-    tint = int(query.data)
-    if tint <= 3:
-        modeset(tint)
+    tint = int(query.data)  # convert button id to int
+    if tint <= 3:  # if mode button
+        modeset(tint)  # set mode
         bot.edit_message_text(
             text="mode set to {}".format(tint),
             chat_id=query.message.chat_id,
-            message_id=query.message.message_id)
-    else:
-        if tint <= 100:
-            tint = int(tint * 2.55)
-            tint = '{},{},{}'.format(tint, tint, tint)
-        elif tint == 101:
-            tint = '255, 200, 200'
+            message_id=query.message.message_id)  # echo new mode
+    else:  # if tint setting
+        if tint <= 100:  # if standard tint
+            tint = int(tint * 2.55)  # format tint
+            tint = '{},{},{}'.format(tint, tint, tint)  # format tint
+        elif tint == 101:  # if colour tint
+            tint = '255, 200, 200'  # red
         elif tint == 102:
-            tint = '200, 255, 200'
+            tint = '200, 255, 200'  # green
         elif tint == 103:
-            tint = '200, 200, 255'
+            tint = '200, 200, 255'  # blue
         elif tint == 104:
-            tint = '255, 223, 0'
+            tint = '255, 223, 0'  # gold
         bot.edit_message_text(
             text="Selected option: {}".format(
                 colorSplit('back@{}'.format(tint))),
             chat_id=query.message.chat_id,
-            message_id=query.message.message_id)
+            message_id=query.message.message_id)  # set tint and echo result
 
 
-def colorSplit(usrin):
+def colorSplit(usrin):  # colour handler
     error = False
-    usrin = usrin.split('@')
-    tint = usrin[1].split(',')
+    usrin = usrin.split('@')  # split colour and location
+    tint = usrin[1].split(',')  # split colours
     reply = ''
-    for i in range(len(tint)):
-        tint[i] = int(tint[i])
-        if tint[i] not in range(0, 256):
-            reply = 'tint out of spec'
-    if error is False:
-        if usrin[0] == 'back':
-            tintBackset(tint)
-            reply = tint
-        elif usrin[0] == 'fore':
-            tintShadeset(tint)
-            reply = tint
-        else:
+    for i in range(len(tint)):  # iterate over rgb values
+        tint[i] = int(tint[i])  # convert to int
+        if tint[i] not in range(0, 256):  # check value is in valid range
+            reply = 'tint out of spec'  # warn user of error
+            error = True  # trigger error
+    if error is False:  # if all values in spec
+        if usrin[0] == 'back':  # set background tint
+            tintBackset(tint)  # pass data to handler
+            reply = tint  # echo back the rgb values
+        elif usrin[0] == 'fore':  # set foreground tint
+            tintShadeset(tint)  # pass data to handler
+            reply = tint  # echo back the rgb values
+        else:  # if not fore or back warn user and show formating
             reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
 
-    else:
+    else:  # if values are out of spec warn user and show formating
         reply = 'valueError please enter rgb in this format fore-back@0-255,0-255,0-255'
     return reply
 
 
-def sendMessage(bot, job):
+def sendMessage(bot, job):  # send message handler for job_queue
     bot.send_message(chat_id=job.context[0], text=job.context[1])
 
 
