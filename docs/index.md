@@ -40,6 +40,15 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 
 [random point video](log/IMG_1188.TRIM.MOV)
 
+## LCD wiring
+
+| function | colour | pi pins chip side | pi pin | colour  | function |
+| -------- | ------ | ----------------- | ------ | ------- | -------- |
+| vcc      | orange | 17                | 18     | grey    | rs       |
+| sda      | yellow | 19                | 20     | black/p | gnd      |
+|          | nc     | 21                | 22     | blue    | reset    |
+| scl      | green  | 23                | 24     | white   | cs       |
+
 I tried to install opencv to do the image processing built the install failed and after I spoke to my supervisor he confirmed my suspicion that opencv was too over powered for my project.
 
 So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(doh) blob detection which should be quick enough the only issue I then had was getting the image from the camera into the right format since the doh blob need a numpy array as luck would have it skimage has a built in converter.
@@ -55,6 +64,8 @@ I then connected the LCD and got blob detection working with that.
 Then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot) this involved more work than I had initially expected since passing variable around wasn't as easy as I had hoped
 
 I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot)
+
+## commands
 
 | command     | param                                | Description                   |
 | ----------- | ------------------------------------ | ----------------------------- |
@@ -78,6 +89,18 @@ I decided to use telegram to add remote control so that you could adjust the col
 | allowallids | na                                   | toggles if admin id is needed |
 
 After I had all of the system working I bought a 5 button capacitive touch sensor and started adding that into the code so that I would be able to control the glasses with out having to have it connected to the internet
+
+## capacitive touch sensor wiring
+
+| function | colour | pi pins chip side | pi pin | colour | function |
+| -------- | ------ | ----------------- | ------ | ------ | -------- |
+| 3.3v     | nc     | 1                 | 2      | nc     | 5v       |
+| button 1 | orange | 3                 | 4      | red    | 5v       |
+| button 2 | yellow | 5                 | 6      | black  | gnd      |
+| button 3 | green  | 7                 | 8      | blues  | button 4 |
+| gnd      | nc     | 9                 | 10     | purple | button 5 |
+
+## buttons
 
 | button | pressed      | held                |
 | ------ | ------------ | ------------------- |
