@@ -224,6 +224,8 @@ def sandd():
                 timer.append(time())  # add timer point
                 ti = getiso()  # get light level
                 tintBackset([ti, ti, ti])  # calculate background tint
+                if modeinternal == 3:
+                    autoshadeset(50)
 
             if modeinternal >= 2:  # if active point shading mode
                 timer.append(time())  # add timer point
@@ -240,8 +242,6 @@ def sandd():
                     img1, max_sigma=15, threshold=.0075)  # find blobs
 
                 timer.append(time())  # add timer point
-
-                autoshadeset(50)
 
                 for i in range(len(blobs_doh)):  # calculate points from blobs
                     points.append([
