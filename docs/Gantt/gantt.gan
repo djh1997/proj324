@@ -34,7 +34,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="20" name="project" meeting="false" start="2017-09-28" duration="158" complete="17" expand="true">
+        <task id="20" name="project" meeting="false" start="2017-09-28" duration="158" complete="75" expand="true">
             <depend id="8" type="2" difference="0" hardness="Rubber"/>
             <depend id="10" type="2" difference="0" hardness="Rubber"/>
             <task id="0" name="inital plan" color="#8cb6ce" meeting="false" start="2017-09-28" duration="20" complete="100" expand="true">
@@ -44,24 +44,24 @@
                 <task id="3" name="inital research" color="#8cb6ce" meeting="false" start="2017-10-02" duration="18" complete="100" expand="true"/>
             </task>
             <task id="73" name="inital proposal submission" color="#8cb6ce" meeting="true" start="2017-10-25" duration="0" complete="0" expand="true"/>
-            <task id="14" name="final plan" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="87" expand="true">
+            <task id="14" name="final plan" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="100" expand="true">
                 <depend id="52" type="2" difference="0" hardness="Strong"/>
-                <task id="17" name="gannt" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="75" expand="true"/>
+                <task id="17" name="gannt" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="100" expand="true"/>
                 <task id="66" name="final proposal" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="100" expand="true"/>
             </task>
             <task id="79" name="final propsal submission" color="#8cb6ce" meeting="true" start="2017-11-08" duration="0" complete="0" expand="true"/>
-            <task id="52" name="initial testing of components" color="#8cb6ce" meeting="false" start="2017-11-10" duration="17" complete="0" expand="true">
+            <task id="52" name="initial testing of components" color="#8cb6ce" meeting="false" start="2017-11-10" duration="17" complete="100" expand="true">
                 <depend id="34" type="2" difference="0" hardness="Strong"/>
-                <task id="53" name="order parts" color="#8cb6ce" meeting="false" start="2017-11-10" duration="3" complete="0" expand="true"/>
-                <task id="64" name="test parts" color="#8cb6ce" meeting="false" start="2017-11-10" duration="17" complete="0" expand="true"/>
+                <task id="53" name="order parts" color="#8cb6ce" meeting="false" start="2017-11-10" duration="3" complete="100" expand="true"/>
+                <task id="64" name="test parts" color="#8cb6ce" meeting="false" start="2017-11-10" duration="17" complete="100" expand="true"/>
             </task>
-            <task id="34" name="prototyping" color="#8cb6ce" meeting="false" start="2017-12-05" duration="30" complete="0" expand="true">
+            <task id="34" name="prototyping" color="#8cb6ce" meeting="false" start="2017-12-05" duration="30" complete="100" expand="true">
                 <depend id="39" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="39" name="add features" color="#8cb6ce" meeting="false" start="2018-01-16" duration="40" complete="0" expand="true">
+            <task id="39" name="add features" color="#8cb6ce" meeting="false" start="2018-01-16" duration="40" complete="100" expand="true">
                 <depend id="38" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="38" name="refinement" color="#8cb6ce" meeting="false" start="2018-03-13" duration="40" complete="0" expand="true"/>
+            <task id="38" name="refinement" color="#8cb6ce" meeting="false" start="2018-03-13" duration="40" complete="10" expand="true"/>
             <task id="32" name="risk assement" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" expand="true"/>
             <task id="11" name="progress demo" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" priority="2" expand="true"/>
         </task>
