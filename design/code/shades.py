@@ -225,7 +225,7 @@ def sandd():
                 ti = getiso()  # get light level
                 tintBackset([ti, ti, ti])  # calculate background tint
                 if modeinternal == 3:
-                    autoshadeset(50)
+                    autoshadeset(ti)
 
             if modeinternal >= 2:  # if active point shading mode
                 timer.append(time())  # add timer point
