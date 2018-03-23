@@ -116,4 +116,10 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 [Tint change](log/tint.MOV)
 [Debug toggle](log/debug.MOV)
 
+## future development
+
+my setup is mostly a proof of concept for a full prototype/production model I would use an FPGA with a low quality, high frame rate camera and a bare LCD so that I can increase the communication speed since the io is the limiting factor on the current setup
+
+adding [prescription](https://www.ttp.com/case-studies/electronic_lenses) while taking to course mates about my project one of them mentioned this research which could be a cool addition
+
 **\<>** by Jo Hawkins using Atom and GitHub
