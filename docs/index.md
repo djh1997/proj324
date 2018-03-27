@@ -49,6 +49,28 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 |          | nc     | 21                | 22     | blue    | reset    |
 | scl      | green  | 23                | 24     | white   | cs       |
 
+### LCD maths
+
+![image](lcd/lcdfovcalc.png) 160x128 pixels
+
+98.8 degrees horizontal, 86.05 degrees vertical field of view
+
+$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
+
+$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
+
+### camera maths
+
+2592x1944 pixels
+
+53.50 degrees horizontal, 41.41 degrees vertical field of view
+
+$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
+
+$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
+
+So this will cause issues since the dot placed on the LCD will end up then the wrong place with out scaling
+
 I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too over powered for my project.
 
 So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(doh) blob detection. this was lightweight meaning it should be quick enough the only issue I then had was getting the image from the camera into the right format. Since the doh blob need a numpy array as luck would have it skimage has a built in converter.
