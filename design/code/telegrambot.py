@@ -116,9 +116,15 @@ def addwifi(bot, update, args):  # colour handler
     print psk
     f = open('textfile.txt',
              'a')  # open file /etc/wpa_supplicant/wpa_supplicant.conf
-    f.write('\n\rnetwork={\n\rssid={}'.format(str(ssid)))
-    f.write('\n\rpsk={}\n\r}'.format(str(psk)))
+    print 'opened'
+    f.write('\n\rnetwork={\n\r    ssid="')
+    f.write(ssid)
+    f.write('"\n\r    psk="')
+    f.write(psk)
+    f.write('"\n\r}')
+    print 'wrote'
     f.close()
+    print 'closed'
     update.message.reply_text(
         'added {} to wifi'.format(ssid))  # echo exiting back to user
 
