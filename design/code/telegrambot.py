@@ -108,6 +108,21 @@ def exit(bot, update):  # function to exit the program
     update.message.reply_text('exiting')  # echo exiting back to user
 
 
+@restricted2
+def addwifi(bot, update, args):  # colour handler
+    ssid = args[0]
+    psk = args[1]
+    print ssid
+    print psk
+    f = open('textfile.txt',
+             'a')  # open file /etc/wpa_supplicant/wpa_supplicant.conf
+    f.write('\n\rnetwork={\n\rssid={}'.format(str(ssid)))
+    f.write('\n\rpsk={}\n\r}'.format(str(psk)))
+    f.close()
+    update.message.reply_text(
+        'added {} to wifi'.format(ssid))  # echo exiting back to user
+
+
 @restricted1
 def image(bot, update):  # send most recent image from camera
     bot.send_photo(
@@ -336,6 +351,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('allowallids', allowallids))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))
+    dp.add_handler(CommandHandler("addwifi", addwifi, pass_args=True))
 
     # keyboard handler
     dp.add_handler(CallbackQueryHandler(button))
