@@ -144,4 +144,4 @@ My setup is mostly a proof of concept for a full prototype/production model I wo
 
 Adding [prescription](https://www.ttp.com/case-studies/electronic_lenses) while taking to course mates about my project one of them mentioned this research which could be a cool addition.
 
-**\<>** by Jo Hawkins using Atom and GitHub
+**\<>** by Jo Hawkins using **Atom** and **GitHub**

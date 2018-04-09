@@ -109,7 +109,7 @@ def exit(bot, update):  # function to exit the program
 
 
 @restricted1
-def image(bot, update):  # send mose recent image from camera
+def image(bot, update):  # send most recent image from camera
     bot.send_photo(
         chat_id=update.message.chat_id, photo=open('image1.jpg',
                                                    'rb'))  # send image
@@ -294,7 +294,7 @@ def colorSplit(usrin):  # colour handler
         elif usrin[0] == 'fore':  # set foreground tint
             tintShadeset(tint)  # data to handler
             reply = tint  # echo back the rgb values
-        else:  # if not fore or back warn user and show formating
+        else:  # if not fore or back warn user and show formatting
             reply = 'valueError please enter location in this format fore-back@0-255,0-255,0-255'
     return reply
 
