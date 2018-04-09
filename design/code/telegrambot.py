@@ -112,16 +112,14 @@ def exit(bot, update):  # function to exit the program
 def addwifi(bot, update, args):  # colour handler
     ssid = args[0]
     psk = args[1]
-    print ssid
-    print psk
-    f = open('textfile.txt',
-             'a')  # open file /etc/wpa_supplicant/wpa_supplicant.conf
+    print 'adding wifi'
+    f = open('/etc/wpa_supplicant/wpa_supplicant.conf', 'a')  # open file
     print 'opened'
-    f.write('\n\rnetwork={\n\r    ssid="')
+    f.write('\nnetwork={\n        ssid="')
     f.write(ssid)
-    f.write('"\n\r    psk="')
+    f.write('"\n        psk="')
     f.write(psk)
-    f.write('"\n\r}')
+    f.write('"\n}\n')
     print 'wrote'
     f.close()
     print 'closed'
