@@ -19,7 +19,7 @@ admins = [417245494]
 allowAll = True
 
 jokelist = [
-    'I cannot think of a joke currently',
+    'I cannot think of an ample joke currently',
     'My friend told me how electricity is measured and I was like Watt! ',
     'Two antennas get married. The wedding was boring, but the reception was great.',
     'Why was the robot mad? People kept pushing its buttons.',
@@ -42,8 +42,9 @@ def restricted1(func):
         user_id = update.effective_user.id
         if allowAll or user_id in admins:
             return func(bot, update, *args, **kwargs)
-        update.message.reply_text("Unauthorized access denied for {}.".format(
-            user_id))  # echo started back to user
+        update.message.reply_text(
+            "Unauthorized access denied for {}. Please ask Jo for access.".
+            format(user_id))  # echo started back to user
         return 'error'
 
     print wrapped
@@ -112,17 +113,13 @@ def exit(bot, update):  # function to exit the program
 def addwifi(bot, update, args):  # colour handler
     ssid = args[0]
     psk = args[1]
-    print 'adding wifi'
     f = open('/etc/wpa_supplicant/wpa_supplicant.conf', 'a')  # open file
-    print 'opened'
     f.write('\nnetwork={\n        ssid="')
     f.write(ssid)
     f.write('"\n        psk="')
     f.write(psk)
     f.write('"\n}\n')
-    print 'wrote'
     f.close()
-    print 'closed'
     update.message.reply_text(
         'added {} to wifi'.format(ssid))  # echo exiting back to user
 
@@ -217,9 +214,7 @@ def help(bot, update):  # display help menu
         '/pickcolour - pick from list of tints\n\r' +
         '/pickmode- manual,tint,points or full auto\n\r' +
         '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
-        '/start starts shades\n\r' + '/stop stop shades\n\r' +
-        '/exit exit shades\n\r' + '/reboot reboot shades\n\r' +
-        '/halt shutsdown shades')
+        '/start starts shades\n\r' + '/stop stop shades\n\r')
 
 
 def up(bot, update):  # check if glasses are online
