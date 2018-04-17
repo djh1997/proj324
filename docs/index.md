@@ -124,13 +124,13 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 
 ## Buttons
 
-| Button | Pressed      | Held                |
-| ------ | ------------ | ------------------- |
-| 1      | scroll tints | reset tint to clear |
-| 2      | scroll modes | reset to manual     |
-| 3      | debug        | turn off            |
-| 4      | stop         | start               |
-| 5      | na           | exit                |
+| Button | colour | Pressed      | Held                |
+| ------ | ------ | ------------ | ------------------- |
+| 1      | orange | scroll tints | reset tint to clear |
+| 2      | yellow | scroll modes | reset to manual     |
+| 3      | green  | debug        | turn off            |
+| 4      | blue   | stop         | start               |
+| 5      | purple | na           | exit                |
 
 ## Capacitive touch control
 
