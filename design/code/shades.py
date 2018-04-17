@@ -93,9 +93,9 @@ def initcamera():
 
 
 def deinitcamera():
+    # disconnect camera so the next instance of the program can access it
     global camera
-    camera.stop_preview()
-    camera.close()  # disconnect camera
+    camera.close()
     print 'camera closed'
 
 
