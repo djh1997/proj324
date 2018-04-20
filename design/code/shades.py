@@ -110,6 +110,10 @@ def debugset():
         print 'camera not defined yet'  # if camera initialization hasn't  been run print warning
 
     debug ^= 1
+    if debug == 1:
+        print 'debug on'
+    else:
+        print 'debug off'
 
 
 def runningstateset(state):
@@ -205,7 +209,7 @@ def initbuttons():
     # buttonDebug.when_held = halt
     buttonReset.when_pressed = runningstateset
     buttonReset.when_held = runningstateset
-    buttonexit.when_held = runningstateset
+    # buttonexit.when_held = runningstateset
 
 
 def sandd():
