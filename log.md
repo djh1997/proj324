@@ -75,6 +75,8 @@ get lcd and pi0w header soldered and get pin mappings for each
 
 looking through the code for the lcd drivers again from (19/11/2017) I think the forked adafruit might be better
 
+found skimage and think it will work well with camera 
+
 also make new simpler frame prototype ready for laser cutting
 
 # 14/2/2018
