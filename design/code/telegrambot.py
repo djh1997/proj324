@@ -28,8 +28,8 @@ jokelist = [
     'What kind of car does an electrician drive?\n\r A Volts-wagon',
     'What is a robots favourite kind of music? \n\r Heavy Metal.',
     'If only DEAD people understand hexadecimal, how many dead people are there?\n\r57,005.',
-    'What is FACE value in decimal? 64206',
-    'I turned on the radio this morning all I heard was FFFFFF it turns out it was White Noise!'
+    'What is FACE value in decimal?\n\r64206',
+    'I turned on the radio this morning all I heard was FFFFFF\n\r it turns out it was White Noise!'
 ]
 
 # Create the EventHandler and  it your bot's token.
