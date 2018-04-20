@@ -59,8 +59,11 @@ def restricted2(func):  # add re-stricter for admin only access
         user_id = update.effective_user.id  # get user id
         if user_id in admins:  # if  admin id
             return func(bot, update, *args, **kwargs)  # run function
-        update.message.reply_text("Unauthorized access denied for {}.".format(
-            user_id))  # else echo access denied back to user
+        update.message.reply_text(
+            "Access denied for {}. Please ask [Jo](tg://user?id=417245494) for access.".
+            format(user_id),
+            parse_mode=ParseMode.MARKDOWN
+        )  # else echo access denied back to user
         return 'error'
 
     return wrapped
@@ -216,7 +219,9 @@ def help(bot, update):  # display help menu
         '/pickcolour - pick from list of tints\n\r' +
         '/pickmode- manual,tint,points or full auto\n\r' +
         '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
-        '/start starts shades\n\r' + '/stop stop shades\n\r')
+        '/start starts shades\n\r' + '/stop stop shades\n\r' +
+        'for more info check the [site](git.djh1997.uk)',
+        parse_mode=ParseMode.MARKDOWN)
 
 
 def up(bot, update):  # check if glasses are online
