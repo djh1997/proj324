@@ -109,8 +109,8 @@ def debugset():
     else:
         print 'camera not defined yet'  # if camera initialization hasn't  been run print warning
 
-    debug ^= 1
-    if debug == 1:
+    debug ^= 1  # toggle debug
+    if debug == 1:  # print new debug state
         print 'debug on'
     else:
         print 'debug off'

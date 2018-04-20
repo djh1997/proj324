@@ -12,6 +12,7 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
 from shades import (debugset, getiso, modeset, runningstateget,
                     runningstateset, sandd, tintBackset, tintShadeset)
 
+# program variables
 test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
 test_box = 0
 user = False
@@ -36,36 +37,35 @@ updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
 
 
-def restricted1(func):
+def restricted1(func):  # add re-stricter for access
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
-        user_id = update.effective_user.id
-        if allowAll or user_id in admins:
-            return func(bot, update, *args, **kwargs)
+        user_id = update.effective_user.id  # get user id
+        if allowAll or user_id in admins:  # if in open mode or admin id
+            return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text(
             "Unauthorized access denied for {}. Please ask Jo for access.".
-            format(user_id))  # echo started back to user
+            format(user_id))  # else echo access denied back to user
         return 'error'
 
-    print wrapped
     return wrapped
 
 
-def restricted2(func):
+def restricted2(func):  # add re-stricter for admin only access
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
-        user_id = update.effective_user.id
-        if user_id in admins:
-            return func(bot, update, *args, **kwargs)
+        user_id = update.effective_user.id  # get user id
+        if user_id in admins:  # if  admin id
+            return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text("Unauthorized access denied for {}.".format(
-            user_id))  # echo started back to user
+            user_id))  # else echo access denied back to user
         return 'error'
 
     return wrapped
 
 
 @restricted2
-def spam(bot, update, args):  # reppetive messages for debug
+def spam(bot, update, args):  # repetitive messages for debug
     if int(args[0]) == 0:  # if interval = 0
         jbq.run_once(
             sendMessage, 0, context=[int(args[1]),
@@ -110,18 +110,18 @@ def exit(bot, update):  # function to exit the program
 
 
 @restricted2
-def addwifi(bot, update, args):  # colour handler
+def addwifi(bot, update, args):  # add WiFi network
     ssid = args[0]
     psk = args[1]
     f = open('/etc/wpa_supplicant/wpa_supplicant.conf', 'a')  # open file
-    f.write('\nnetwork={\n        ssid="')
+    f.write('\nnetwork={\n        ssid="')  # format and store network
     f.write(ssid)
     f.write('"\n        psk="')
     f.write(psk)
     f.write('"\n}\n')
-    f.close()
+    f.close()  # close file
     update.message.reply_text(
-        'added {} to wifi'.format(ssid))  # echo exiting back to user
+        'added {} to wifi'.format(ssid))  # echo added WiFi back to user
 
 
 @restricted1
