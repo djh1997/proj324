@@ -5,7 +5,7 @@ import subprocess
 from functools import wraps
 from random import choice, randint
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
 
@@ -44,8 +44,10 @@ def restricted1(func):  # add re-stricter for access
         if allowAll or user_id in admins:  # if in open mode or admin id
             return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text(
-            "Unauthorized access denied for {}. Please ask Jo for access.".
-            format(user_id))  # else echo access denied back to user
+            "Access denied for {}. Please ask [Jo](tg://user?id=417245494) for access.".
+            format(user_id),
+            parse_mode=ParseMode.MARKDOWN
+        )  # else echo access denied back to user
         return 'error'
 
     return wrapped
