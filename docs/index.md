@@ -138,7 +138,7 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 [Tint change](log/tint.MOV)
 [Debug toggle](log/debug.MOV)
 
-## Future development
+# Future development
 
 My setup is mostly a proof of concept for a full prototype/production model I would use an FPGA with a low quality, high frame rate camera and a bare LCD. With that I would be able to increase the communication speed since the io is the limiting factor on the current setup.
 
