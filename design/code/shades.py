@@ -281,6 +281,7 @@ def sandd():
             if debug == 1:  # if debug is on the print timings
 
                 print 'number of points: {}\n'.format(len(points))
+                print 'points:{}\n'.format(points)
                 print 'background tint: {}\n'.format(tintBack)
                 print 'foreground tint: {}\n'.format(tintShade)
                 for t in range(0,
