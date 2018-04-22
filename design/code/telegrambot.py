@@ -1,6 +1,7 @@
 # sudo pip install python-telegram-bot --upgrade
 
 import os
+from time import strftime, gmtime
 import subprocess
 from functools import wraps
 from random import choice, randint
@@ -92,7 +93,7 @@ def halt(bot, update):  # turn of glasses
 @restricted2
 def reboot(bot, update):  # reboot glasses
     update.message.reply_text(
-        'see you in a second.')  # echo that command was received
+        'see you in a second. at {}'.format(str(strftime('%d/%m/%Y %H:%M:%S'))))  # echo that command was received
     os.system('sudo reboot')  # send reboot command
 
 
@@ -372,7 +373,7 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    jbq.run_once(sendMessage, 0, context=[admins[0], 'shades booting'])
+    jbq.run_once(sendMessage, 0, context=[admins[0], 'shades booting at {}'.format(str(strftime('%d/%m/%Y %H:%M:%S')))])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
