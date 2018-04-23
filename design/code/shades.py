@@ -1,3 +1,4 @@
+"""Pi0to chromic control file."""
 import os
 from time import sleep, time
 
@@ -51,7 +52,8 @@ buttonReset = Button(14, hold_time=2)
 buttonexit = Button(15, hold_time=5)
 
 
-def initlcd():  # initilize the lcd's
+def initlcd():
+    """Initilize the lcd's."""
     global disp, draw
     print 'initializing LCD'
     disp = TFT.ST7735(
@@ -69,6 +71,7 @@ def initlcd():  # initilize the lcd's
 
 
 def deinitlcd():
+    """Deinitilise the lcd."""
     global disp
     disp.display(Image.open('close.jpg').rotate(90).resize(
         (WIDTH, HEIGHT)))  # display close screen
@@ -79,6 +82,7 @@ def deinitlcd():
 
 
 def initcamera():
+    """Initilize the camera."""
     global camera
     print 'initializing camera'
     camera = PiCamera()  # open camera
@@ -94,13 +98,14 @@ def initcamera():
 
 
 def deinitcamera():
-    # disconnect camera so the next instance of the program can access it
+    """Disconnect camera so the next instance of the program can access."""
     global camera
     camera.close()
     print 'camera closed'
 
 
 def debugset():
+    """Toggle debug."""
     global debug
     if camera != 0:  # check if camera initialization has been run
         if debug == 0:  # toggle preview
@@ -119,6 +124,7 @@ def debugset():
 
 
 def runningstateset(state):
+    """Set running state."""
     global running
     try:  # try assuming state is a button
         if state.pin.number == 14 and state.is_held:  # if button is held
@@ -134,11 +140,13 @@ def runningstateset(state):
 
 
 def tintShadeset(tint):
+    """Set Shade tint."""
     global tintShade
     tintShade = tint  # set tint level for active shade points
 
 
 def autoshadeset(tintdifference):
+    """Set shade point tint unsing background and difference."""
     global tintShade
     for i in range(len(tintShade)):
         tintShade[
@@ -146,12 +154,14 @@ def autoshadeset(tintdifference):
 
 
 def tintBackset(tint):
+    """Set background tint."""
     global tintBack, new
     tintBack = tint  # set tint level for background
     new = 1
 
 
 def tintButton(buttonTint):
+    """Set the background tint based on button presses."""
     global tintBack, tintbuttonvar
     if buttonTint.is_held or tintbuttonvar < 64:  # if button is held reset
         tintbuttonvar = 256  # set tint to clear
@@ -161,7 +171,8 @@ def tintButton(buttonTint):
     print tintBack
 
 
-def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
+def modeset(modevar):
+    """0 manual 1 tint 2 point 3 auto 4 increment."""
     global mode, averageFps
     try:  # try assuming modevar is a button
         if modevar.pin.number == 3 and modevar.is_held:  # if button is held
@@ -178,12 +189,14 @@ def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
     averageFps = []  # reset average fps array
 
 
-def runningstateget():  # function for telegram to retrieve current state
+def runningstateget():
+    """Return current state."""
     global running
     return running
 
 
 def getiso():
+    """Get iso level of sensor.."""
     global camera
     maxtint = 4
     iso = float(camera.analog_gain)  # get current ambient brightness 0..8
@@ -193,10 +206,16 @@ def getiso():
 
 
 def halt():
+    """Halt the system."""
     os.system('sudo halt')  # send halt command to terminal
 
 
 def initbuttons():
+    """Initilize buttons.
+
+    Wait for all button to be released
+    Then asign to correct function.
+    """
     buttonTint.wait_for_release(
     )  # wait incase any of the buttons are locked high
     buttonMode.wait_for_release()
@@ -215,6 +234,13 @@ def initbuttons():
 
 
 def sandd():
+    """Pi0t0 chromic main function.
+
+    This handles the main running of the shades.
+    This is done by having nested while loops to control different states.
+    Then there is if statments to control weather the system reactes to the
+    camera or not, and how to update the lenses
+    """
     global averageFps, new
     initlcd()  # initialize peripherals
     initbuttons()
@@ -280,7 +306,7 @@ def sandd():
 
             timer.append(time())  # add timer point
 
-            if mode = 0:  # if in mode 0 then toggle new
+            if mode == 0:  # if in mode 0 then toggle new
                 new = 0
 
             if debug == 1:  # if debug is on the print timings

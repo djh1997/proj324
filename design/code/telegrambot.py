@@ -1,5 +1,4 @@
-# sudo pip install python-telegram-bot --upgrade
-
+"""Telegram control file."""
 import os
 import subprocess
 from functools import wraps
@@ -41,7 +40,8 @@ updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
 
 
-def restricted1(func):  # add re-stricter for access
+def restricted1(func):
+    """Add re-stricter for access."""
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
         user_id = update.effective_user.id  # get user id
@@ -57,7 +57,8 @@ def restricted1(func):  # add re-stricter for access
     return wrapped
 
 
-def restricted2(func):  # add re-stricter for admin only access
+def restricted2(func):
+    """Add re-stricter for admin only access."""
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
         user_id = update.effective_user.id  # get user id
@@ -74,11 +75,13 @@ def restricted2(func):  # add re-stricter for admin only access
 
 
 def time():
+    """Return time in fortaed string."""
     return str(strftime('%d/%m/%Y %H:%M:%S'))
 
 
 @restricted2
-def spam(bot, update, args):  # repetitive messages for debug
+def spam(bot, update, args):
+    """Repetitive messages for debug."""
     if int(args[0]) == 0:  # if interval = 0
         jbq.run_once(
             sendMessage, 0, context=[int(args[1]),
@@ -92,13 +95,15 @@ def spam(bot, update, args):  # repetitive messages for debug
 
 
 @restricted2
-def halt(bot, update):  # turn of glasses
+def halt(bot, update):
+    """Turn off glasses."""
     update.message.reply_text('goodbye.')  # echo goodbye
     os.system('sudo halt')  # send shutdown command
 
 
 @restricted2
-def reboot(bot, update):  # reboot glasses
+def reboot(bot, update):
+    """Reboot glasses."""
     update.message.reply_text(
         'see you in a second. at {}'
         .format(time()))  # echo that command was received
@@ -106,7 +111,8 @@ def reboot(bot, update):  # reboot glasses
 
 
 @restricted2
-def allowallids(bot, update):  # toggle restriction level
+def allowallids(bot, update):
+    """Toggle restriction level."""
     global allowAll  # pull allowAll in so function can edit
 
     if allowAll:  # toggle
@@ -118,13 +124,15 @@ def allowallids(bot, update):  # toggle restriction level
 
 
 @restricted2
-def exit(bot, update):  # function to exit the program
+def exit(bot, update):
+    """Exit the program cleanly."""
     runningstateset(2)  # set sate to exit
     update.message.reply_text('exiting')  # echo exiting back to user
 
 
 @restricted2
-def addwifi(bot, update, args):  # add WiFi network
+def addwifi(bot, update, args):
+    """Add WiFi network."""
     ssid = args[0]
     psk = args[1]
     f = open('/etc/wpa_supplicant/wpa_supplicant.conf', 'a')  # open file
@@ -139,14 +147,16 @@ def addwifi(bot, update, args):  # add WiFi network
 
 
 @restricted1
-def image(bot, update):  # send most recent image from camera
+def image(bot, update):
+    """Send most recent image from camera."""
     bot.send_photo(
         chat_id=update.message.chat_id, photo=open('image1.jpg',
                                                    'rb'))  # send image
 
 
 @restricted1
-def start(bot, update):  # function to start the glasses
+def start(bot, update):
+    """Start the glasses cleanly."""
     f = open('users.txt', 'a')  # currently debugging by logging new users
     f.write('{}\n\r'.format(update.message.from_user))
     f.close()
@@ -155,26 +165,30 @@ def start(bot, update):  # function to start the glasses
 
 
 @restricted1
-def stop(bot, update):  # function to stop/pause glasses
+def stop(bot, update):
+    """Stop/pause glasses."""
     runningstateset(0)  # set running state to stopped
     update.message.reply_text('stopped')  # echo stopped back to user
 
 
 @restricted1
-def mode(bot, update, args):  # function to manually change the mode
+def mode(bot, update, args):
+    """Manually change the mode."""
     modeset(int(args[0]))  # set mode
     update.message.reply_text('mode set to {}'.format(
         args[0]))  # echo mode back to user
 
 
 @restricted1
-def colourset(bot, update, args):  # set the colour of the lenses
+def colourset(bot, update, args):
+    """Set the colour of the lenses."""
     update.message.reply_text(colorSplit(
         args[0]))  # colour information to handler
 
 
 @restricted1
-def autoback(bot, update):  # calculate the background tint in manual mode
+def autoback(bot, update):
+    """Calculate the background tint in manual mode."""
     usrin = getiso()  # get ambient light level
     usrin = 'back@{},{},{}'.format(
         int(usrin), int(usrin),
@@ -183,7 +197,8 @@ def autoback(bot, update):  # calculate the background tint in manual mode
 
 
 @restricted1
-def tint(bot, update, args):  # set background tint percentage
+def tint(bot, update, args):
+    """Set background tint percentage."""
     usrin = 100 - int(args[0])  # invert percentage
     usrin = 'back@{},{},{}'.format(
         int(usrin * 2.56), int(usrin * 2.56),
@@ -192,13 +207,15 @@ def tint(bot, update, args):  # set background tint percentage
 
 
 @restricted1
-def debug(bot, update):  # toggle command line debug
+def debug(bot, update):
+    """Toggle command line debug."""
     debugset()  # toggle command line debug
     update.message.reply_text(
         'debug toggled')  # echo that the debug has been toggled back to user
 
 
-def uprecords(bot, update):  # run the uprecords command and echo results
+def uprecords(bot, update):
+    """Run the uprecords command and echo results."""
     p = subprocess.Popen(
         ['uprecords', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )  # open subprocess in thread and pipe back results
@@ -206,23 +223,27 @@ def uprecords(bot, update):  # run the uprecords command and echo results
     update.message.reply_text(out[0])  # echo results
 
 
-def temp(bot, update):  # get cpu temperature
+def temp(bot, update):
+    """Get cpu temperature."""
     temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1000.0
     update.message.reply_text('CPU temperature is:{}'.format(temp))
 
 
-def joke(bot, update):  # sned a joke
+def joke(bot, update):
+    """Send a joke."""
     update.message.reply_text(choice(jokelist))  # pick random joke and send
 
 
-def meme(bot, update):  # send a meme
+def meme(bot, update):
+    """Send a meme."""
     memeid = randint(1, 17)  # pick random image
     bot.send_photo(
         chat_id=update.message.chat_id,
         photo=open('memes/{}.jpg'.format(memeid), 'rb'))  # send image
 
 
-def help(bot, update):  # display help menu
+def help(bot, update):
+    """Display help menu."""
     update.message.reply_text(
         'help im stuck in a box \n\r' +
         '/pickcolour - pick from list of tints\n\r' +
@@ -233,11 +254,13 @@ def help(bot, update):  # display help menu
         parse_mode=ParseMode.MARKDOWN)
 
 
-def up(bot, update):  # check if glasses are online
+def up(bot, update):
+    """Check if glasses are online."""
     update.message.reply_text('shades {} is online.'.format(test_box))
 
 
-def echo(bot, update):  # catch all for unrecognised commands
+def echo(bot, update):
+    """Catch all for unrecognised commands."""
     update.message.reply_text('command {} not recognised.'.format(
         update.message.text))  # echo that the command was unrecognised
     f = open('log.txt', 'a')  # log the user id and message
@@ -246,7 +269,8 @@ def echo(bot, update):  # catch all for unrecognised commands
     f.close()
 
 
-def pickcolour(bot, update):  # setup inline keyboard to pick a preset colour
+def pickcolour(bot, update):
+    """Inline keyboard to pick a preset colour."""
     keyboard = [[
         InlineKeyboardButton("50", callback_data=50),
         InlineKeyboardButton("80", callback_data=80),
@@ -265,7 +289,8 @@ def pickcolour(bot, update):  # setup inline keyboard to pick a preset colour
         'Please choose:', reply_markup=reply_markup)  # send keyboard
 
 
-def pickmode(bot, update):  # setup inline keyboard to pick mode
+def pickmode(bot, update):
+    """Inline keyboard to pick mode."""
     keyboard = [[
         InlineKeyboardButton("manual", callback_data=0),
         InlineKeyboardButton("tint", callback_data=1),
@@ -279,7 +304,8 @@ def pickmode(bot, update):  # setup inline keyboard to pick mode
         'Please choose:', reply_markup=reply_markup)  # send keyboard
 
 
-def button(bot, update):  # create handler for inline keyboard
+def button(bot, update):
+    """Create handler for inline keyboard."""
     query = update.callback_query
     tint = int(query.data)  # convert button id to int
     if tint <= 3:  # if mode button
@@ -307,7 +333,8 @@ def button(bot, update):  # create handler for inline keyboard
             message_id=query.message.message_id)  # set tint and echo result
 
 
-def colorSplit(usrin):  # colour handler
+def colorSplit(usrin):
+    """Colour handler."""
     error = False
     usrin = usrin.split('@')  # split colour and location
     tint = usrin[1].split(',')  # split colours
@@ -329,11 +356,13 @@ def colorSplit(usrin):  # colour handler
     return reply
 
 
-def sendMessage(bot, job):  # send message handler for job_queue
+def sendMessage(bot, job):
+    """Send message handler for job_queue."""
     bot.send_message(chat_id=job.context[0], text=job.context[1])
 
 
 def telegramMain():
+    """Telegram main function."""
     global updater
 
     # Get the dispatcher to register handlers
