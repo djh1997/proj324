@@ -70,6 +70,10 @@ def restricted2(func):  # add re-stricter for admin only access
     return wrapped
 
 
+def time():
+    return str(strftime('%d/%m/%Y %H:%M:%S'))
+
+
 @restricted2
 def spam(bot, update, args):  # repetitive messages for debug
     if int(args[0]) == 0:  # if interval = 0
@@ -93,7 +97,7 @@ def halt(bot, update):  # turn of glasses
 @restricted2
 def reboot(bot, update):  # reboot glasses
     update.message.reply_text(
-        'see you in a second. at {}'.format(str(strftime('%d/%m/%Y %H:%M:%S'))))  # echo that command was received
+        'see you in a second. at {}'.format(time()))  # echo that command was received
     os.system('sudo reboot')  # send reboot command
 
 
@@ -373,7 +377,7 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    jbq.run_once(sendMessage, 0, context=[admins[0], 'shades booting at {}'.format(str(strftime('%d/%m/%Y %H:%M:%S')))])
+    jbq.run_once(sendMessage, 0, context=[admins[0], 'shades booting at {}'.format(time())])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
