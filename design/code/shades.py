@@ -42,7 +42,7 @@ debug = 0
 disp = 0
 draw = 0
 camera = 0
-new = 1
+new = True
 
 # button connection
 buttonTint = Button(2)
@@ -157,7 +157,7 @@ def tintBackset(tint):
     """Set background tint."""
     global tintBack, new
     tintBack = tint  # set tint level for background
-    new = 1
+    new = True
 
 
 def tintButton(buttonTint):
@@ -246,7 +246,7 @@ def sandd():
     initbuttons()
     initcamera()
     while running != 2:  # exit state
-        while running == 1 or new != 0:  # running state and new
+        while running == 1 and new:  # running state and new
             timer = []  # reset internal variables
             points = []
             modeinternal = mode
@@ -307,7 +307,7 @@ def sandd():
             timer.append(time())  # add timer point
 
             if mode == 0:  # if in mode 0 then toggle new
-                new = 0
+                new = False
 
             if debug == 1:  # if debug is on the print timings
 
