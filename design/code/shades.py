@@ -41,6 +41,7 @@ debug = 0
 disp = 0
 draw = 0
 camera = 0
+new = 1
 
 # button connection
 buttonTint = Button(2)
@@ -86,7 +87,7 @@ def initcamera():
                          int(128 * scaleFactor))  # set resolution to screens
     camera.rotation = 270  # correct orinetation
     camera.vflip = True
-    if debug == 1:  # incase debug was called before camera initialization was run
+    if debug == 1:  # if debug was called before camera initialization was run
         camera.start_preview()  # start camera preview
     sleep(3)  # wait for camera to stabilise
     print 'camera initialized'
@@ -107,7 +108,8 @@ def debugset():
         else:
             camera.stop_preview()
     else:
-        print 'camera not defined yet'  # if camera initialization hasn't  been run print warning
+        # if camera initialization hasn't  been run print warning
+        print 'camera not defined yet'
 
     debug ^= 1  # toggle debug
     if debug == 1:  # print new debug state
@@ -119,11 +121,11 @@ def debugset():
 def runningstateset(state):
     global running
     try:  # try assuming state is a button
-        if state.pin.number == 14 and state.is_held:  # if state button is held
+        if state.pin.number == 14 and state.is_held:  # if button is held
             state = 1  # set state to running
         elif state.pin.number == 14:  # if state button is pressed
             state = 0  # set state to stopped
-        elif state.pin.number == 15 and state.is_held:  # if exit button is held
+        elif state.pin.number == 15 and state.is_held:  # if button is held
             state = 2  # set state to exit
     except AttributeError:  # catch not button error
         print 'not button'  # print warning
@@ -144,25 +146,25 @@ def autoshadeset(tintdifference):
 
 
 def tintBackset(tint):
-    global tintBack
+    global tintBack, new
     tintBack = tint  # set tint level for background
+    new = 1
 
 
 def tintButton(buttonTint):
     global tintBack, tintbuttonvar
-    if buttonTint.is_held or tintbuttonvar < 64:  # if tint button is held reset tint to clear
+    if buttonTint.is_held or tintbuttonvar < 64:  # if button is held reset
         tintbuttonvar = 256  # set tint to clear
     elif tintbuttonvar >= 64:  # increment tint if not at limit
         tintbuttonvar -= 64
-    tintBack = [tintbuttonvar, tintbuttonvar,
-                tintbuttonvar]  # format tint correctly
+    tintBackset(tintbuttonvar)  # set tint
     print tintBack
 
 
 def modeset(modevar):  # 0 manual 1 tint 2 point 3 auto 4 increment
     global mode, averageFps
     try:  # try assuming modevar is a button
-        if modevar.pin.number == 3 and modevar.is_held:  # if mode button is held
+        if modevar.pin.number == 3 and modevar.is_held:  # if button is held
             modevar = 0  # reset mode to manual
         elif modevar.pin.number == 3:  # if mode button is pressed
             if mode >= 3:  # if at limit the reset to manual
@@ -201,7 +203,7 @@ def initbuttons():
     buttonDebug.wait_for_release()
     buttonReset.wait_for_release()
     buttonexit.wait_for_release()
-    buttonTint.when_pressed = tintButton  # set button state to correct function
+    buttonTint.when_pressed = tintButton  # set button state to function
     buttonTint.when_held = tintButton
     buttonMode.when_pressed = modeset
     buttonMode.when_held = modeset
@@ -213,12 +215,12 @@ def initbuttons():
 
 
 def sandd():
-    global averageFps
+    global averageFps, new
     initlcd()  # initialize peripherals
     initbuttons()
     initcamera()
     while running != 2:  # exit state
-        while running == 1:  # running state
+        while running == 1 or new != 0:  # running state and new
             timer = []  # reset internal variables
             points = []
             modeinternal = mode
@@ -277,6 +279,9 @@ def sandd():
             disp.display()  # put the drawing on the the LCD's
 
             timer.append(time())  # add timer point
+
+            if mode = 0:  # if in mode 0 then toggle new
+                new = 0
 
             if debug == 1:  # if debug is on the print timings
 
