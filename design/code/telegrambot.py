@@ -1,10 +1,10 @@
 # sudo pip install python-telegram-bot --upgrade
 
 import os
-from time import strftime, gmtime
 import subprocess
 from functools import wraps
 from random import choice, randint
+from time import gmtime, strftime
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
@@ -23,14 +23,17 @@ allowAll = True
 jokelist = [
     'I cannot think of an ample joke currently',
     'My friend told me how electricity is measured and I was like Watt! ',
-    'Two antennas get married. The wedding was boring, but the reception was great.',
+    'Two antennas get married. The wedding was boring,' +
+    ' but the reception was great.',
     'Why was the robot mad? People kept pushing its buttons.',
     'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
     'What kind of car does an electrician drive?\n\r A Volts-wagon',
     'What is a robots favourite kind of music? \n\r Heavy Metal.',
-    'If only DEAD people understand hexadecimal, how many dead people are there?\n\r57,005.',
+    'If only DEAD people understand hexadecimal,' +
+    ' how many dead people are there?\n\r57,005.',
     'What is FACE value in decimal?\n\r64206',
-    'I turned on the radio this morning all I heard was FFFFFF\n\r it turns out it was White Noise!'
+    'I turned on the radio this morning all I heard was FFFFFF' +
+    '\n\r it turns out it was White Noise!'
 ]
 
 # Create the EventHandler and  it your bot's token.
@@ -45,8 +48,8 @@ def restricted1(func):  # add re-stricter for access
         if allowAll or user_id in admins:  # if in open mode or admin id
             return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text(
-            "Access denied for {}. Please ask [Jo](tg://user?id=417245494) for access.".
-            format(user_id),
+            "Access denied for {}.Ask [Jo](tg://user?id={}) for access.".
+            format(user_id, admin[0]),
             parse_mode=ParseMode.MARKDOWN
         )  # else echo access denied back to user
         return 'error'
@@ -61,8 +64,8 @@ def restricted2(func):  # add re-stricter for admin only access
         if user_id in admins:  # if  admin id
             return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text(
-            "Access denied for {}. Please ask [Jo](tg://user?id=417245494) for access.".
-            format(user_id),
+            "Access denied for {}.Ask [Jo](tg://user?id={}) for access.".
+            format(user_id, admin[0]),
             parse_mode=ParseMode.MARKDOWN
         )  # else echo access denied back to user
         return 'error'
@@ -97,7 +100,8 @@ def halt(bot, update):  # turn of glasses
 @restricted2
 def reboot(bot, update):  # reboot glasses
     update.message.reply_text(
-        'see you in a second. at {}'.format(time()))  # echo that command was received
+        'see you in a second. at {}'
+        .format(time()))  # echo that command was received
     os.system('sudo reboot')  # send reboot command
 
 
@@ -321,7 +325,7 @@ def colorSplit(usrin):  # colour handler
             tintShadeset(tint)  # data to handler
             reply = tint  # echo back the rgb values
         else:  # if not fore or back warn user and show formatting
-            reply = 'valueError please enter location in this format fore-back@0-255,0-255,0-255'
+            reply = 'valueError format like this fore-back@0-255,0-255,0-255'
     return reply
 
 
@@ -377,7 +381,8 @@ def telegramMain():
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    jbq.run_once(sendMessage, 0, context=[admins[0], 'shades booting at {}'.format(time())])
+    jbq.run_once(sendMessage, 0, context=[
+                 admins[0], 'shades booting at {}'.format(time())])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
