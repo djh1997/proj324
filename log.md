@@ -75,7 +75,7 @@ get lcd and pi0w header soldered and get pin mappings for each
 
 looking through the code for the lcd drivers again from (19/11/2017) I think the forked adafruit might be better
 
-found skimage and think it will work well with camera 
+found skimage and think it will work well with camera
 
 also make new simpler frame prototype ready for laser cutting
 
@@ -145,4 +145,28 @@ record progress and prep for progress demonstration
 
 # 9/04/2018
 
-implement addwifi so i can add wifi AP's easier using Telegram
+implement addwifi so I can add wifi AP's easier using Telegram
+
+# 12/04/2018
+
+tidy debugging prints and improve access error text
+
+# 17/04/2018
+
+redesign the fame for capacitive board and tidy deinitialization of camera
+
+# 20/04/2018
+
+add print to debug toggle, add commenting, add link to access error reply, start making install script to install dependencies
+
+# 22/04/2018
+
+add time to boot and reboot reply to calculate reboot time
+
+# 23/04/2018
+
+tidy code and make pep257 compliant, only update LCD on value change in manual mode
+
+# 24/04/2018
+
+work on report and get new arms cut
