@@ -126,7 +126,7 @@ def allowallids(bot, update):
 @restricted2
 def exit(bot, update, args):
     """Exit the program cleanly."""
-    if args[0] == 'r':
+    if len(args) >= 1:
         f = open('run.txt', 'w+')  # open file
         f.write('no')
         f.close()  # close file
