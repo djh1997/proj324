@@ -173,7 +173,7 @@ def tintButton(buttonTint):
 
 def modeset(modevar):
     """0 manual 1 tint 2 point 3 auto 4 increment."""
-    global mode, averageFps
+    global mode, averageFps, new
     try:  # try assuming modevar is a button
         if modevar.pin.number == 3 and modevar.is_held:  # if button is held
             modevar = 0  # reset mode to manual
@@ -187,6 +187,7 @@ def modeset(modevar):
     mode = modevar  # set mode
     print 'mode ' + str(mode)  # display new mode
     averageFps = []  # reset average fps array
+    new = True
 
 
 def runningstateget():
@@ -306,8 +307,10 @@ def sandd():
 
             timer.append(time())  # add timer point
 
-            if mode == 0:  # if in mode 0 then toggle new
+            if modeinternal == 0:  # if in mode 0 then toggle new
                 new = False
+            else:
+                new = True
 
             if debug == 1:  # if debug is on the print timings
 
