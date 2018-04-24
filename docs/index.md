@@ -55,9 +55,9 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
-$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
+$$ { \\frac {128} {86.05}} = 1.48 \\text{ vertical pixels per degree}$$
 
-$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
+$$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
 
 ### camera maths
 
@@ -65,11 +65,23 @@ $$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 
 53.50 degrees horizontal, 41.41 degrees vertical field of view
 
-$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
+$$ { \\frac {1944} {41.41}} = 46.95 \\text{ vertical pixels per degree}$$
 
-$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
+$$ { \\frac {160} {98.8}} = 48.45 \\text{ vertical pixels per degree}$$
 
 So this will cause issues since the dot placed on the LCD will end up then the wrong place with out scaling
+
+### frame
+
+I decided to laser cut the frame since this would be more cost/time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can the the design iterations.
+Starting with a concept where I would heat the acrylic and bend at the red line meaning that you wouldn't be able to fold them.
+After that you can see another fixed design but with a simpler shape this was the first iteration that actually got cut. I found that the lens was going to be to close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the 3rd iteration by making the distance between the top of the frame and the top of the nose support forcing the user to wear the glasses further down their nose.
+After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the fame I cut and used for most of the prototyping phase of the project.
+For the next two design's I was contemplating adding a backing plate to the pi mount and also added a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers and the backing might have added to much weight. Furthering the design of the hinge buy squaring of one end to make it more ridged and adding a hole to hold it together
+
+![image](frame/devcycle.png)
+
+### blob detection
 
 I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too over powered for my project.
 
