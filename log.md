@@ -2,18 +2,18 @@
 
 -   [x] get camera working
 -   [x] get pi connected over WiFi
--   [ ] get LCD connected
--   [ ] get raw data from camera for processing
--   [ ] get raw brightness from LDR or camera
--   [ ] adjust opacity of LCD
--   [ ] add image inversion
--   [ ] add options to swap between modes
--   [ ] laser cut glasses frame
+-   [x] get LCD connected
+-   [x] get raw data from camera for processing
+-   [x] get raw brightness from LDR or camera
+-   [x] adjust opacity of LCD
+-   [x] add image inversion
+-   [x] add options to swap between modes
+-   [x] laser cut glasses frame
 
 # Extras
 
--   [ ] add some form of app to control settings
--   [ ] add options for dimming colour e.g. turn tint red instead of grey tint
+-   [x] add some form of app to control settings
+-   [x] add options for dimming colour e.g. turn tint red instead of grey tint
 
 # 16/11/2017
 
