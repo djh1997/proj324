@@ -3,7 +3,7 @@ import os
 import subprocess
 from functools import wraps
 from random import choice, randint
-from time import gmtime, strftime
+from time import strftime
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
@@ -49,7 +49,7 @@ def restricted1(func):
             return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text(
             "Access denied for {}.Ask [Jo](tg://user?id={}) for access.".
-            format(user_id, admin[0]),
+            format(user_id, admins[0]),
             parse_mode=ParseMode.MARKDOWN
         )  # else echo access denied back to user
         return 'error'
@@ -66,7 +66,7 @@ def restricted2(func):
             return func(bot, update, *args, **kwargs)  # run function
         update.message.reply_text(
             "Access denied for {}.Ask [Jo](tg://user?id={}) for access.".
-            format(user_id, admin[0]),
+            format(user_id, admins[0]),
             parse_mode=ParseMode.MARKDOWN
         )  # else echo access denied back to user
         return 'error'
@@ -75,7 +75,7 @@ def restricted2(func):
 
 
 def time():
-    """Return time in fortaed string."""
+    """Return time in formated string."""
     return str(strftime('%d/%m/%Y %H:%M:%S'))
 
 
@@ -124,10 +124,15 @@ def allowallids(bot, update):
 
 
 @restricted2
-def exit(bot, update):
+def exit(bot, update, args):
     """Exit the program cleanly."""
+    if args[0] == 'r':
+        f = open('run.txt', 'w+')  # open file
+        f.write('no')
+        f.close()  # close file
     runningstateset(2)  # set sate to exit
-    update.message.reply_text('exiting')  # echo exiting back to user
+    update.message.reply_text('exiting at {}'
+                              .format(time()))  # echo exiting back to user
 
 
 @restricted2
@@ -390,7 +395,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('debug', debug))
 
     # admins only
-    dp.add_handler(CommandHandler("exit", exit))
+    dp.add_handler(CommandHandler("exit", exit, pass_args=True))
     dp.add_handler(CommandHandler('spam', spam, pass_args=True))
     dp.add_handler(CommandHandler('allowallids', allowallids))
     dp.add_handler(CommandHandler("halt", halt))
