@@ -169,4 +169,4 @@ tidy code and make pep257 compliant, only update LCD on value change in manual m
 
 # 24/04/2018
 
-work on report and get new arms cut
+work on report and get new arms cut,fix error #29 ,and add exit functionality so reopen program
