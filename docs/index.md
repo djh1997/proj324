@@ -40,7 +40,9 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 
 [random point video](log/IMG_1188.TRIM.MOV)
 
-## LCD wiring
+## LCD
+
+### Wiring
 
 | Function | Colour | Pi pins chip side | Pi pin | Colour  | Function |
 | -------- | ------ | ----------------- | ------ | ------- | -------- |
@@ -49,29 +51,31 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 |          | nc     | 21                | 22     | blue    | reset    |
 | scl      | green  | 23                | 24     | white   | cs       |
 
-### LCD maths
+## FOV
+
+### LCD
 
 ![image](lcd/lcdfovcalc.png) 160x128 pixels
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
-$$ { \\frac {128} {86.05}} = 1.48 \\text{ vertical pixels per degree}$$
+$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
 
-$$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
+$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 
-### camera maths
+### Camera
 
 2592x1944 pixels
 
 53.50 degrees horizontal, 41.41 degrees vertical field of view
 
-$$ { \\frac {1944} {41.41}} = 46.95 \\text{ vertical pixels per degree}$$
+$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
 
-$$ { \\frac {160} {98.8}} = 48.45 \\text{ vertical pixels per degree}$$
+$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
 
 So this will cause issues since the dot placed on the LCD will end up then the wrong place with out scaling
 
-### frame
+## Frame
 
 I decided to laser cut the frame since this would be more cost/time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can the the design iterations.
 Starting with a concept where I would heat the acrylic and bend at the red line meaning that you wouldn't be able to fold them.
@@ -81,7 +85,7 @@ For the next two design's I was contemplating adding a backing plate to the pi m
 
 ![image](frame/devcycle.png)
 
-### blob detection
+## Blob detection
 
 I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too over powered for my project.
 
@@ -95,11 +99,13 @@ I then connected the LCD and got blob detection working with that.
 
 ![blob lcd](log/IMG_1190.JPG)
 
+## Telegram
+
 Then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot) this involved more work than I had initially expected since passing variable around wasn't as easy as I had hoped.
 
 I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
 
-## Commands
+### Commands
 
 | Command     | Parameters                           | Description                   |
 | ----------- | ------------------------------------ | ----------------------------- |
@@ -124,7 +130,9 @@ I decided to use telegram to add remote control so that you could adjust the col
 
 After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, So that I would be able to control the glasses with out having to have it connected to the internet.
 
-## Capacitive touch sensor wiring
+## Capacitive touch sensor
+
+### Wiring
 
 | Function | Colour | Pi pins chip side | Pi pin | Colour | Function |
 | -------- | ------ | ----------------- | ------ | ------ | -------- |
@@ -134,9 +142,9 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 | button 3 | green  | 7                 | 8      | blues  | button 4 |
 | gnd      | nc     | 9                 | 10     | purple | button 5 |
 
-## Buttons
+### Buttons
 
-| Button | colour | Pressed      | Held                |
+| Button | Colour | Pressed      | Held                |
 | ------ | ------ | ------------ | ------------------- |
 | 1      | orange | scroll tints | reset tint to clear |
 | 2      | yellow | scroll modes | reset to manual     |
@@ -144,7 +152,7 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 | 4      | blue   | stop         | start               |
 | 5      | purple | na           | exit                |
 
-## Capacitive touch control
+### Capacitive touch control
 
 [Mode change](log/capmode.MOV)
 [Tint change](log/tint.MOV)
