@@ -13,10 +13,10 @@ from shades import (debugset, getiso, modeset, runningstateget,
                     runningstateset, sandd, tintBackset, tintShadeset)
 
 # program variables
-test_box_api_key = ['514877936:AAH1p-_zloWkXoJC4j8dVYTf05NNBYOQ5e8']
+test_box_api_key = []
 test_box = 0
 user = False
-admins = [417245494]
+admins = []
 allowAll = True
 
 jokelist = [
@@ -37,7 +37,11 @@ jokelist = [
 
 # retrive telegram keys
 f = open('telegramkeys.txt', 'r')
-test_box_api_key.append(f.readline().split('\n'))
+test_box_api_key.append(f.readline().split('\n')[0])
+admins.append(int(f.readline().split('\n')[0]))
+f.close()
+print test_box_api_key
+print admins
 
 # Create the EventHandler and  it your bot's token.
 updater = Updater(test_box_api_key[test_box])
