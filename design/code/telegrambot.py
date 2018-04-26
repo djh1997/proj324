@@ -35,6 +35,10 @@ jokelist = [
     '\n\r it turns out it was White Noise!'
 ]
 
+# retrive telegram keys
+f = open('telegramkeys.txt', 'r')
+test_box_api_key.append(f.readline().split('\n'))
+
 # Create the EventHandler and  it your bot's token.
 updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
