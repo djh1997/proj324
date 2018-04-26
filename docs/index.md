@@ -2,7 +2,7 @@
 
 ![pi0toChroma logo](pi0toChroma.svg)
 
-by David Joseph Hawkins
+By David Joseph Hawkins
 
 A report submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
 
@@ -40,7 +40,7 @@ So, once I have removed the backlight from the LCD's I can mount them in a frame
 
 # Report
 
-I got the LCD hooked up and displayed some random spots of different opacity on the screen.
+I connected the LCD and displayed some random(size and location) spots of different opacity on the screen.
 
 [random point video](log/IMG_1188.TRIM.MOV)
 
@@ -111,24 +111,24 @@ I decided to use telegram to add remote control so that you could adjust the col
 
 ### Commands
 
-| Command     | Parameters                           | Description                   |
-| ----------- | ------------------------------------ | ----------------------------- |
-| help        | na                                   | show the help menu            |
-| pickcolour  | pick from list of tints              | preset tints/colours          |
-| pickmode    | pick manual,tint,points or full auto | change current mode           |
-| tint        | percentage                           | sets the tint of the lenses   |
-| image       | na                                   | shows you the current image   |
-| up          | na                                   | see if the bot is up          |
-| temp        | na                                   | see the CPU temperature       |
-| start       | na                                   | starts shades                 |
-| stop        | na                                   | stop shades                   |
-| exit        | admin only                           | exit shades                   |
-| reboot      | admin only                           | reboot shades                 |
-| halt        | admin only                           | shutdown shades               |
-| uprecords   | na                                   | see up time                   |
-| debug       | na                                   | toggles debug                 |
-| colourset   | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
-| allowallids | admin only                           | toggles if admin id is needed |
+| Command     | Parameters                           | Description                    |
+| ----------- | ------------------------------------ | ------------------------------ |
+| help        | n/a                                  | Show the help menu.            |
+| pickcolour  | pick from list of tints              | Preset tints/colours.          |
+| pickmode    | pick manual,tint,points or full auto | Change current mode.           |
+| tint        | percentage                           | Sets the tint of the lenses.   |
+| image       | n/a                                  | Shows you the current image.   |
+| up          | n/a                                  | See if the bot is up.          |
+| temp        | n/a                                  | See the CPU temperature.       |
+| start       | n/a                                  | Starts shades.                 |
+| stop        | n/a                                  | Stop shades.                   |
+| exit        | admin only                           | Exit shades.                   |
+| reboot      | admin only                           | Reboot shades.                 |
+| halt        | admin only                           | Shutdown shades.               |
+| uprecords   | n/a                                  | See up time.                   |
+| debug       | n/a                                  | Toggles debug.                 |
+| colourset   | fore/back@0/255,0/255,0/255          | Sets the colour of the lenses. |
+| allowallids | admin only                           | Toggles if admin id is needed. |
 
 After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, So that I would be able to control the glasses with out having to have it connected to the internet.
 
@@ -152,7 +152,7 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 | 2      | yellow | scroll modes | reset to manual     |
 | 3      | green  | debug        | turn off            |
 | 4      | blue   | stop         | start               |
-| 5      | purple | na           | exit                |
+| 5      | purple | n/a          | exit                |
 
 ### Capacitive touch control
 
