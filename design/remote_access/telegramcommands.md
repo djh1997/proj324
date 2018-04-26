@@ -1,8 +1,6 @@
 help - show the help menu
 pickcolour - pick from list of tints
 pickmode- manual,tint,points or full auto
-joke - tells you a joke
-meme - shows you a meme
 tint - percentage
 image - shows you the current image
 up - see if the bot is up
@@ -22,8 +20,6 @@ allowallids - toggles if admin id is required
 | help        | na                                   | show the help menu            |
 | pickcolour  | pick from list of tints              | preset tints/colours          |
 | pickmode    | pick manual,tint,points or full auto | change current mode           |
-| joke        | na                                   | tells a joke                  |
-| meme        | na                                   | shows a meme                  |
 | tint        | percentage                           | sets the tint of the lenses   |
 | image       | na                                   | shows you the current image   |
 | up          | na                                   | see if the bot is up          |
