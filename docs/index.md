@@ -112,21 +112,19 @@ I decided to use telegram to add remote control so that you could adjust the col
 | help        | na                                   | show the help menu            |
 | pickcolour  | pick from list of tints              | preset tints/colours          |
 | pickmode    | pick manual,tint,points or full auto | change current mode           |
-| joke        | na                                   | tells a joke                  |
-| meme        | na                                   | shows a meme                  |
 | tint        | percentage                           | sets the tint of the lenses   |
 | image       | na                                   | shows you the current image   |
 | up          | na                                   | see if the bot is up          |
 | temp        | na                                   | see the CPU temperature       |
 | start       | na                                   | starts shades                 |
 | stop        | na                                   | stop shades                   |
-| exit        | na                                   | exit shades                   |
-| reboot      | na                                   | reboot shades                 |
-| halt        | na                                   | shutdown shades               |
+| exit        | admin only                           | exit shades                   |
+| reboot      | admin only                           | reboot shades                 |
+| halt        | admin only                           | shutdown shades               |
 | uprecords   | na                                   | see up time                   |
 | debug       | na                                   | toggles debug                 |
 | colourset   | fore/back@0/255,0/255,0/255          | sets the colour of the lenses |
-| allowallids | na                                   | toggles if admin id is needed |
+| allowallids | admin only                           | toggles if admin id is needed |
 
 After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, So that I would be able to control the glasses with out having to have it connected to the internet.
 
