@@ -63,9 +63,9 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
-$$ { \\frac {128} {86.05}} = 1.48 \\text{ vertical pixels per degree}$$
+$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
 
-$$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
+$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 
 ### Camera
 
@@ -73,9 +73,9 @@ $$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
 
 53.50 degrees horizontal, 41.41 degrees vertical field of view
 
-$$ { \\frac {1944} {41.41}} = 46.95 \\text{ vertical pixels per degree}$$
+$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
 
-$$ { \\frac {160} {98.8}} = 48.45 \\text{ vertical pixels per degree}$$
+$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
 
 So this will cause issues since the dot placed on the LCD will end up then the wrong place with out scaling
 
@@ -161,6 +161,14 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 [Debug toggle](log/debug.MOV)
 
 # Criteria met
+
+-   [x] Make a set of smart sun classes.
+-   [x] Add automatic to control the opacity.
+-   [x] Add camera to make dark point over bright points.
+-   [x] Add options to swap between modes.
+-   [ ] Auto react headlight/Safety improvements.
+
+I met all of my stage criteria except the reacting to headlights which I decided wasn't a good idea since this could interfere with the drivers sight so will leave that mode out but I added other safety features like resetting of you hold the mode button and except for an catastrophic error the system is fail safe not deadly meaning it clears the LCD before exiting
 
 I believe my project has meet at least level technology readiness level 4, Even pushing some level 5 criteria as defined by the European Commission.
 
