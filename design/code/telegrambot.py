@@ -97,7 +97,9 @@ def spam(bot, update, args):
 @restricted2
 def halt(bot, update):
     """Turn off glasses."""
-    update.message.reply_text('goodbye.')  # echo goodbye
+    update.message.reply_text(
+        'Halting at {}'
+        .format(time()))  # echo that command was received
     os.system('sudo halt')  # send shutdown command
 
 
@@ -105,7 +107,7 @@ def halt(bot, update):
 def reboot(bot, update):
     """Reboot glasses."""
     update.message.reply_text(
-        'see you in a second. at {}'
+        'Rebooting at {}'
         .format(time()))  # echo that command was received
     os.system('sudo reboot')  # send reboot command
 
@@ -131,7 +133,7 @@ def exit(bot, update, args):
         f.write('no')
         f.close()  # close file
     runningstateset(2)  # set sate to exit
-    update.message.reply_text('exiting at {}'
+    update.message.reply_text('Exiting at {}'
                               .format(time()))  # echo exiting back to user
 
 
@@ -416,7 +418,7 @@ def telegramMain():
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
     jbq.run_once(sendMessage, 0, context=[
-                 admins[0], 'shades booting at {}'.format(time())])
+                 admins[0], 'Shades booting at {}'.format(time())])
     while runningstateget() != 2:
         if runningstateget() != 1:
             runningstateset(1)
