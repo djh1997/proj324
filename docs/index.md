@@ -2,6 +2,10 @@
 
 ![pi0toChroma logo](pi0toChroma.svg)
 
+by David Joseph Hawkins
+
+A report submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
+
 # Stage Criteria
 
 This is the criteria I would like to meet, to feel as though I have created a successful project.
@@ -59,9 +63,9 @@ I got the LCD hooked up and displayed some random spots of different opacity on 
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
-$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
+$$ { \\frac {128} {86.05}} = 1.48 \\text{ vertical pixels per degree}$$
 
-$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
+$$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
 
 ### Camera
 
@@ -69,9 +73,9 @@ $$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 
 53.50 degrees horizontal, 41.41 degrees vertical field of view
 
-$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
+$$ { \\frac {1944} {41.41}} = 46.95 \\text{ vertical pixels per degree}$$
 
-$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
+$$ { \\frac {160} {98.8}} = 48.45 \\text{ vertical pixels per degree}$$
 
 So this will cause issues since the dot placed on the LCD will end up then the wrong place with out scaling
 
@@ -155,6 +159,29 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 [Mode change](log/capmode.MOV)
 [Tint change](log/tint.MOV)
 [Debug toggle](log/debug.MOV)
+
+# Criteria met
+
+I believe my project has meet at least level technology readiness level 4, Even pushing some level 5 criteria as defined by the European Commission.
+
+| level  | definition                                                                                                                        |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| TRL 1. | basic principles observed                                                                                                         |
+| TRL 2. | technology concept formulated                                                                                                     |
+| TRL 3. | experimental proof of concept                                                                                                     |
+| TRL 4. | technology validated in lab                                                                                                       |
+| TRL 5. | technology validated in relevant environment (industrially relevant environment in the case of key enabling technologies)         |
+| TRL 6. | technology demonstrated in relevant environment (industrially relevant environment in the case of key enabling technologies)      |
+| TRL 7. | system prototype demonstration in operational environment                                                                         |
+| TRL 8. | system complete and qualified                                                                                                     |
+| TRL 9. | actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space) |
+
+The European Association of Research and Technology Organisations (EARTO)
+have a slightly more relevant scale of TRL.
+
+![trl](TRLPROPODESED.png)
+
+I still believe I'm level 4 with aspects of level 5 with this scale.
 
 # Future development
 
