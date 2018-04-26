@@ -198,3 +198,796 @@ My setup is mostly a proof of concept for a full prototype/production model I wo
 Adding [prescription](https://www.ttp.com/case-studies/electronic_lenses) while taking to course mates about my project one of them mentioned this research which could be a cool addition.
 
 **\<>** by Jo Hawkins using **Atom** and **GitHub**
+
+# Appendix
+
+## telegrambot.py
+
+```python
+"""Telegram control file."""
+import os
+import subprocess
+from functools import wraps
+from random import choice, randint
+from time import strftime
+
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
+from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
+                          MessageHandler, Updater)
+
+from shades import (debugset, getiso, modeset, runningstateget,
+                    runningstateset, sandd, tintBackset, tintShadeset)
+
+# program variables
+test_box_api_key = []
+test_box = 0
+user = False
+admins = []
+allowAll = True
+
+jokelist = [
+    'I cannot think of an ample joke currently',
+    'My friend told me how electricity is measured and I was like Watt! ',
+    'Two antennas get married. The wedding was boring,' +
+    ' but the reception was great.',
+    'Why was the robot mad? People kept pushing its buttons.',
+    'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
+    'What kind of car does an electrician drive?\n\r A Volts-wagon',
+    'What is a robots favourite kind of music? \n\r Heavy Metal.',
+    'If only DEAD people understand hexadecimal,' +
+    ' how many dead people are there?\n\r57,005.',
+    'What is FACE value in decimal?\n\r64206',
+    'I turned on the radio this morning all I heard was FFFFFF' +
+    '\n\r it turns out it was White Noise!'
+]
+
+# retrive telegram keys
+f = open('telegramkeys.txt', 'r')
+test_box_api_key.append(f.readline().split('\n')[0])
+admins.append(int(f.readline().split('\n')[0]))
+f.close()
+print test_box_api_key
+print admins
+
+# Create the EventHandler and  it your bot's token.
+updater = Updater(test_box_api_key[test_box])
+jbq = updater.job_queue
+
+
+def restricted1(func):
+    """Add re-stricter for access."""
+    @wraps(func)
+    def wrapped(bot, update, *args, **kwargs):
+        user_id = update.effective_user.id  # get user id
+        if allowAll or user_id in admins:  # if in open mode or admin id
+            return func(bot, update, *args, **kwargs)  # run function
+        update.message.reply_text(
+            "Access denied for {}.Ask [Jo](tg://user?id={}) for access.".
+            format(user_id, admins[0]),
+            parse_mode=ParseMode.MARKDOWN
+        )  # else echo access denied back to user
+        return 'error'
+
+    return wrapped
+
+
+def restricted2(func):
+    """Add re-stricter for admin only access."""
+    @wraps(func)
+    def wrapped(bot, update, *args, **kwargs):
+        user_id = update.effective_user.id  # get user id
+        if user_id in admins:  # if  admin id
+            return func(bot, update, *args, **kwargs)  # run function
+        update.message.reply_text(
+            "Access denied for {}.Ask [Jo](tg://user?id={}) for access.".
+            format(user_id, admins[0]),
+            parse_mode=ParseMode.MARKDOWN
+        )  # else echo access denied back to user
+        return 'error'
+
+    return wrapped
+
+
+def time():
+    """Return time in formated string."""
+    return str(strftime('%d/%m/%Y %H:%M:%S'))
+
+
+@restricted2
+def spam(bot, update, args):
+    """Repetitive messages for debug."""
+    if int(args[0]) == 0:  # if interval = 0
+        jbq.run_once(
+            sendMessage, 0, context=[int(args[1]),
+                                     args[2]])  # initiate job to reply
+    else:  # for reppetive jobs
+        jbq.run_repeating(
+            sendMessage,
+            interval=int(args[0]),
+            first=0,
+            context=[int(args[1]), args[2]])  # initiate job to repeat
+
+
+@restricted2
+def halt(bot, update):
+    """Turn off glasses."""
+    update.message.reply_text(
+        'Halting at {}'
+        .format(time()))  # echo that command was received
+    os.system('sudo halt')  # send shutdown command
+
+
+@restricted2
+def reboot(bot, update):
+    """Reboot glasses."""
+    update.message.reply_text(
+        'Rebooting at {}'
+        .format(time()))  # echo that command was received
+    os.system('sudo reboot')  # send reboot command
+
+
+@restricted2
+def allowallids(bot, update):
+    """Toggle restriction level."""
+    global allowAll  # pull allowAll in so function can edit
+
+    if allowAll:  # toggle
+        allowAll = False
+        update.message.reply_text('allowing restricted ids.')
+    else:
+        allowAll = True
+        update.message.reply_text('allowing all ids.')
+
+
+@restricted2
+def exit(bot, update, args):
+    """Exit the program cleanly."""
+    if len(args) >= 1:
+        f = open('run.txt', 'w+')  # open file
+        f.write('no')
+        f.close()  # close file
+    runningstateset(2)  # set sate to exit
+    update.message.reply_text('Exiting at {}'
+                              .format(time()))  # echo exiting back to user
+
+
+@restricted2
+def addwifi(bot, update, args):
+    """Add WiFi network."""
+    ssid = args[0]
+    psk = args[1]
+    f = open('/etc/wpa_supplicant/wpa_supplicant.conf', 'a')  # open file
+    f.write('\nnetwork={\n        ssid="')  # format and store network
+    f.write(ssid)
+    f.write('"\n        psk="')
+    f.write(psk)
+    f.write('"\n}\n')
+    f.close()  # close file
+    update.message.reply_text(
+        'added {} to wifi'.format(ssid))  # echo added WiFi back to user
+
+
+@restricted1
+def image(bot, update):
+    """Send most recent image from camera."""
+    bot.send_photo(
+        chat_id=update.message.chat_id, photo=open('image1.jpg',
+                                                   'rb'))  # send image
+
+
+@restricted1
+def start(bot, update):
+    """Start the glasses cleanly."""
+    f = open('users.txt', 'a')  # currently debugging by logging new users
+    f.write('{}\n\r'.format(update.message.from_user))
+    f.close()
+    runningstateset(1)  # set state to running
+    update.message.reply_text('started')  # echo started back to user
+
+
+@restricted1
+def stop(bot, update):
+    """Stop/pause glasses."""
+    runningstateset(0)  # set running state to stopped
+    update.message.reply_text('stopped')  # echo stopped back to user
+
+
+@restricted1
+def mode(bot, update, args):
+    """Manually change the mode."""
+    modeset(int(args[0]))  # set mode
+    update.message.reply_text('mode set to {}'.format(
+        args[0]))  # echo mode back to user
+
+
+@restricted1
+def colourset(bot, update, args):
+    """Set the colour of the lenses."""
+    update.message.reply_text(colorSplit(
+        args[0]))  # colour information to handler
+
+
+@restricted1
+def autoback(bot, update):
+    """Calculate the background tint in manual mode."""
+    usrin = getiso()  # get ambient light level
+    usrin = 'back@{},{},{}'.format(
+        int(usrin), int(usrin),
+        int(usrin))  # format string to be passed to handler
+    update.message.reply_text(colorSplit(usrin))  # string to handler
+
+
+@restricted1
+def tint(bot, update, args):
+    """Set background tint percentage."""
+    usrin = 100 - int(args[0])  # invert percentage
+    usrin = 'back@{},{},{}'.format(
+        int(usrin * 2.56), int(usrin * 2.56),
+        int(usrin * 2.56))  # format string to be passed to handler
+    update.message.reply_text(colorSplit(usrin))  # string to handler
+
+
+@restricted1
+def debug(bot, update):
+    """Toggle command line debug."""
+    debugset()  # toggle command line debug
+    update.message.reply_text(
+        'debug toggled')  # echo that the debug has been toggled back to user
+
+
+def uprecords(bot, update):
+    """Run the uprecords command and echo results."""
+    p = subprocess.Popen(
+        ['uprecords', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )  # open subprocess in thread and pipe back results
+    out = p.communicate()  # collect results
+    update.message.reply_text(out[0])  # echo results
+
+
+def temp(bot, update):
+    """Get cpu temperature."""
+    temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1000.0
+    update.message.reply_text('CPU temperature is:{}'.format(temp))
+
+
+def joke(bot, update):
+    """Send a joke."""
+    update.message.reply_text(choice(jokelist))  # pick random joke and send
+
+
+def meme(bot, update):
+    """Send a meme."""
+    memeid = randint(1, 17)  # pick random image
+    bot.send_photo(
+        chat_id=update.message.chat_id,
+        photo=open('memes/{}.jpg'.format(memeid), 'rb'))  # send image
+
+
+def help(bot, update):
+    """Display help menu."""
+    update.message.reply_text(
+        'help im stuck in a box \n\r' +
+        '/pickcolour - pick from list of tints\n\r' +
+        '/pickmode- manual,tint,points or full auto\n\r' +
+        '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
+        '/start starts shades\n\r' + '/stop stop shades\n\r' +
+        'for more info check the [site](git.djh1997.uk)',
+        parse_mode=ParseMode.MARKDOWN)
+
+
+def up(bot, update):
+    """Check if glasses are online."""
+    update.message.reply_text('shades {} is online.'.format(test_box))
+
+
+def echo(bot, update):
+    """Catch all for unrecognised commands."""
+    update.message.reply_text('command {} not recognised.'.format(
+        update.message.text))  # echo that the command was unrecognised
+    f = open('log.txt', 'a')  # log the user id and message
+    f.write('{} : '.format(update.message.text))
+    f.write('{}\n\r'.format(update.message.from_user))
+    f.close()
+
+
+def pickcolour(bot, update):
+    """Inline keyboard to pick a preset colour."""
+    keyboard = [[
+        InlineKeyboardButton("50", callback_data=50),
+        InlineKeyboardButton("80", callback_data=80),
+        InlineKeyboardButton("90", callback_data=90),
+        InlineKeyboardButton("100", callback_data=100)
+    ], [
+        InlineKeyboardButton("red", callback_data=101),
+        InlineKeyboardButton("green", callback_data=102),
+        InlineKeyboardButton("blue", callback_data=103),
+        InlineKeyboardButton("gold", callback_data=104)
+    ]]  # setup layout
+
+    reply_markup = InlineKeyboardMarkup(keyboard)  # create keyboard
+
+    update.message.reply_text(
+        'Please choose:', reply_markup=reply_markup)  # send keyboard
+
+
+def pickmode(bot, update):
+    """Inline keyboard to pick mode."""
+    keyboard = [[
+        InlineKeyboardButton("manual", callback_data=0),
+        InlineKeyboardButton("tint", callback_data=1),
+        InlineKeyboardButton("point", callback_data=2),
+        InlineKeyboardButton("full auto", callback_data=3)
+    ]]  # setup layout
+
+    reply_markup = InlineKeyboardMarkup(keyboard)  # create keyboard
+
+    update.message.reply_text(
+        'Please choose:', reply_markup=reply_markup)  # send keyboard
+
+
+def button(bot, update):
+    """Create handler for inline keyboard."""
+    query = update.callback_query
+    tint = int(query.data)  # convert button id to int
+    if tint <= 3:  # if mode button
+        modeset(tint)  # set mode
+        bot.edit_message_text(
+            text="mode set to {}".format(tint),
+            chat_id=query.message.chat_id,
+            message_id=query.message.message_id)  # echo new mode
+    else:  # if tint setting
+        if tint <= 100:  # if standard tint
+            tint = int(tint * 2.55)  # format tint
+            tint = '{},{},{}'.format(tint, tint, tint)  # format tint
+        elif tint == 101:  # if colour tint
+            tint = '255, 200, 200'  # red
+        elif tint == 102:
+            tint = '200, 255, 200'  # green
+        elif tint == 103:
+            tint = '200, 200, 255'  # blue
+        elif tint == 104:
+            tint = '255, 223, 0'  # gold
+        bot.edit_message_text(
+            text="Selected option: {}".format(
+                colorSplit('back@{}'.format(tint))),
+            chat_id=query.message.chat_id,
+            message_id=query.message.message_id)  # set tint and echo result
+
+
+def colorSplit(usrin):
+    """Colour handler."""
+    error = False
+    usrin = usrin.split('@')  # split colour and location
+    tint = usrin[1].split(',')  # split colours
+    reply = ''
+    for i in range(len(tint)):  # iterate over rgb values
+        tint[i] = int(tint[i])  # convert to int
+        if tint[i] not in range(0, 257):  # check value is in valid range
+            reply = 'rgb out of range'  # warn user of error
+            error = True  # trigger error
+    if error is False:  # if all values in spec
+        if usrin[0] == 'back':  # set background tint
+            tintBackset(tint)  # data to handler
+            reply = tint  # echo back the rgb values
+        elif usrin[0] == 'fore':  # set foreground tint
+            tintShadeset(tint)  # data to handler
+            reply = tint  # echo back the rgb values
+        else:  # if not fore or back warn user and show formatting
+            reply = 'valueError format like this fore-back@0-255,0-255,0-255'
+    return reply
+
+
+def sendMessage(bot, job):
+    """Send message handler for job_queue."""
+    bot.send_message(chat_id=job.context[0], text=job.context[1])
+
+
+def telegramMain():
+    """Telegram main function."""
+    global updater
+
+    # Get the dispatcher to register handlers
+    dp = updater.dispatcher
+
+    # on different commands - answer in Telegram
+    # all
+    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("uprecords", uprecords))
+    dp.add_handler(CommandHandler("up", up))
+    dp.add_handler(CommandHandler("temp", temp))
+    dp.add_handler(CommandHandler('joke', joke))
+    dp.add_handler(CommandHandler('meme', meme))
+
+    # togglable
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("stop", stop))
+    dp.add_handler(CommandHandler("mode", mode, pass_args=True))
+    dp.add_handler(CommandHandler("autoback", autoback))
+    dp.add_handler(CommandHandler("tint", tint, pass_args=True))
+    dp.add_handler(CommandHandler("colourset", colourset, pass_args=True))
+    dp.add_handler(CommandHandler('pickcolour', pickcolour))
+    dp.add_handler(CommandHandler('pickmode', pickmode))
+    dp.add_handler(CommandHandler('image', image))
+    dp.add_handler(CommandHandler('debug', debug))
+
+    # admins only
+    dp.add_handler(CommandHandler("exit", exit, pass_args=True))
+    dp.add_handler(CommandHandler('spam', spam, pass_args=True))
+    dp.add_handler(CommandHandler('allowallids', allowallids))
+    dp.add_handler(CommandHandler("halt", halt))
+    dp.add_handler(CommandHandler("reboot", reboot))
+    dp.add_handler(CommandHandler("addwifi", addwifi, pass_args=True))
+
+    # keyboard handler
+    dp.add_handler(CallbackQueryHandler(button))
+
+    # on noncommand i.e message - echo the message on Telegram
+    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.command, echo))
+
+    # Start the Bot
+    updater.start_polling()
+
+    # Run the bot until you press Ctrl-C or the process receives SIGINT,
+    # SIGTERM or SIGABRT. This should be used most of the time, since
+    # start_polling() is non-blocking and will stop the bot gracefully.
+    jbq.run_once(sendMessage, 0, context=[
+                 admins[0], 'Shades booting at {}'.format(time())])
+    while runningstateget() != 2:
+        if runningstateget() != 1:
+            runningstateset(1)
+            sandd()
+    # updater.idle()
+    updater.stop()
+
+
+telegramMain()
+```
+
+## shades.py
+
+```python
+"""Pi0to chromic control file."""
+import os
+from time import sleep, time
+
+from PIL import Image
+
+import Adafruit_GPIO.SPI as SPI
+import ST7735 as TFT
+from gpiozero import Button
+from picamera import PiCamera  # camera
+from skimage.feature import blob_doh  # blob detection
+from skimage.io import imread  # convert jpg to np array
+
+# screen variables
+WIDTH = 128
+HEIGHT = 160
+SPEED_HZ = 125000000
+
+scaleFactor = .25
+
+# Raspberry Pi configuration.
+DC = 24
+RST = 25
+SPI_PORT = 0
+SPI_DEVICE = 0
+
+# program variables
+processpoint = [['clear', 'display'], ['autoback', 'clear', 'display'], [
+    'take', 'convert', 'blob find', 'blob to point', 'clear', 'point maths',
+    'display'
+], [
+    'autoback', 'take', 'convert', 'blob find', 'blob to point', 'clear',
+    'point maths', 'display'
+]]
+averageFps = []
+running = 0
+tintShade = [32, 32, 32]
+tintBack = [256, 256, 256]
+tintbuttonvar = 255
+mode = 0
+debug = 0
+disp = 0
+draw = 0
+camera = 0
+new = True
+
+# button connection
+buttonTint = Button(2)
+buttonMode = Button(3)
+buttonDebug = Button(4, hold_time=5)
+buttonReset = Button(14, hold_time=2)
+buttonexit = Button(15, hold_time=5)
+
+
+def initlcd():
+    """Initilize the lcd's."""
+    global disp, draw
+    print 'initializing LCD'
+    disp = TFT.ST7735(
+        DC,
+        rst=RST,
+        spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE,
+                       max_speed_hz=SPEED_HZ))  # setup SPI port
+    disp.begin()  # start screen class
+    disp.display(
+        Image.open('pi0toChroma.jpg').rotate(270).transpose(
+            Image.FLIP_TOP_BOTTOM).resize((WIDTH,
+                                           HEIGHT)))  # draw splash screen
+    draw = disp.draw()  # put splash screen on LCD's
+    print 'LCD initialized'
+
+
+def deinitlcd():
+    """Deinitilise the lcd."""
+    global disp
+    disp.display(Image.open('close.jpg').rotate(90).resize(
+        (WIDTH, HEIGHT)))  # display close screen
+    sleep(.5)
+    disp.clear((256, 256, 256))  # set LCD to clear
+    disp.display()
+    print 'LCD cleared'
+
+
+def initcamera():
+    """Initilize the camera."""
+    global camera
+    print 'initializing camera'
+    camera = PiCamera()  # open camera
+    camera.color_effects = (128, 128)  # set camera to grey scale
+    camera.resolution = (int(160 * scaleFactor),
+                         int(128 * scaleFactor))  # set resolution to screens
+    camera.rotation = 270  # correct orinetation
+    camera.vflip = True
+    if debug == 1:  # if debug was called before camera initialization was run
+        camera.start_preview()  # start camera preview
+    sleep(3)  # wait for camera to stabilise
+    print 'camera initialized'
+
+
+def deinitcamera():
+    """Disconnect camera so the next instance of the program can access."""
+    global camera
+    camera.close()
+    print 'camera closed'
+
+
+def debugset():
+    """Toggle debug."""
+    global debug
+    if camera != 0:  # check if camera initialization has been run
+        if debug == 0:  # toggle preview
+            camera.start_preview()
+        else:
+            camera.stop_preview()
+    else:
+        # if camera initialization hasn't  been run print warning
+        print 'camera not defined yet'
+
+    debug ^= 1  # toggle debug
+    if debug == 1:  # print new debug state
+        print 'debug on'
+    else:
+        print 'debug off'
+
+
+def runningstateset(state):
+    """Set running state."""
+    global running
+    try:  # try assuming state is a button
+        if state.pin.number == 14 and state.is_held:  # if button is held
+            state = 1  # set state to running
+        elif state.pin.number == 14:  # if state button is pressed
+            state = 0  # set state to stopped
+        elif state.pin.number == 15 and state.is_held:  # if button is held
+            state = 2  # set state to exit
+    except AttributeError:  # catch not button error
+        print 'not button'  # print warning
+    print 'state ' + str(state)  # print new state
+    running = state  # set state
+
+
+def tintShadeset(tint):
+    """Set Shade tint."""
+    global tintShade
+    tintShade = tint  # set tint level for active shade points
+
+
+def autoshadeset(tintdifference):
+    """Set shade point tint unsing background and difference."""
+    global tintShade
+    for i in range(len(tintShade)):
+        tintShade[
+            i] = tintBack[i] - tintdifference  # set tint difference points
+
+
+def tintBackset(tint):
+    """Set background tint."""
+    global tintBack, new
+    tintBack = tint  # set tint level for background
+    new = True
+
+
+def tintButton(buttonTint):
+    """Set the background tint based on button presses."""
+    global tintBack, tintbuttonvar
+    if buttonTint.is_held or tintbuttonvar < 64:  # if button is held reset
+        tintbuttonvar = 256  # set tint to clear
+    elif tintbuttonvar >= 64:  # increment tint if not at limit
+        tintbuttonvar -= 64
+    tintBackset(tintbuttonvar)  # set tint
+    print tintBack
+
+
+def modeset(modevar):
+    """0 manual 1 tint 2 point 3 auto 4 increment."""
+    global mode, averageFps, new
+    try:  # try assuming modevar is a button
+        if modevar.pin.number == 3 and modevar.is_held:  # if button is held
+            modevar = 0  # reset mode to manual
+        elif modevar.pin.number == 3:  # if mode button is pressed
+            if mode >= 3:  # if at limit the reset to manual
+                modevar = 0
+            else:  # else increment
+                modevar = mode + 1
+    except AttributeError:  # catch not button error
+        print 'not button'  # print warning
+    mode = modevar  # set mode
+    print 'mode ' + str(mode)  # display new mode
+    averageFps = []  # reset average fps array
+    new = True
+
+
+def runningstateget():
+    """Return current state."""
+    global running
+    return running
+
+
+def getiso():
+    """Get iso level of sensor.."""
+    global camera
+    maxtint = 4
+    iso = float(camera.analog_gain)  # get current ambient brightness 0..8
+    iso = (iso * maxtint)  # adjust buy max tint level
+    iso = (256 - (maxtint * 8)) + iso  # clear - max tint + ISO tint
+    return int(iso)
+
+
+def halt():
+    """Halt the system."""
+    os.system('sudo halt')  # send halt command to terminal
+
+
+def initbuttons():
+    """Initilize buttons.
+
+    Wait for all button to be released
+    Then asign to correct function.
+    """
+    buttonTint.wait_for_release(
+    )  # wait incase any of the buttons are locked high
+    buttonMode.wait_for_release()
+    buttonDebug.wait_for_release()
+    buttonReset.wait_for_release()
+    buttonexit.wait_for_release()
+    buttonTint.when_pressed = tintButton  # set button state to function
+    buttonTint.when_held = tintButton
+    buttonMode.when_pressed = modeset
+    buttonMode.when_held = modeset
+    buttonDebug.when_pressed = debugset
+    # buttonDebug.when_held = halt
+    buttonReset.when_pressed = runningstateset
+    buttonReset.when_held = runningstateset
+    # buttonexit.when_held = runningstateset
+
+
+def sandd():
+    """Pi0t0 chromic main function.
+
+    This handles the main running of the shades.
+    This is done by having nested while loops to control different states.
+    Then there is if statments to control weather the system reactes to the
+    camera or not, and how to update the lenses
+    """
+    global averageFps, new
+    initlcd()  # initialize peripherals
+    initbuttons()
+    initcamera()
+    while running != 2:  # exit state
+        while running == 1 and new:  # running state and new
+            timer = []  # reset internal variables
+            points = []
+            modeinternal = mode
+
+            if (modeinternal == 1) or (
+                    modeinternal == 3):  # if mode with auto background tint
+                timer.append(time())  # add timer point
+                ti = getiso()  # get light level
+                tintBackset([ti, ti, ti])  # calculate background tint
+                if modeinternal == 3:
+                    autoshadeset(ti)
+
+            if modeinternal >= 2:  # if active point shading mode
+                timer.append(time())  # add timer point
+
+                camera.capture(
+                    'image1.jpg', use_video_port=True,
+                    thumbnail=None)  # capture image
+
+                timer.append(time())  # add timer point
+                img1 = imread('image1.jpg', as_grey=True)
+
+                timer.append(time())  # add timer point
+                blobs_doh = blob_doh(
+                    img1, max_sigma=15, threshold=.0075)  # find blobs
+
+                timer.append(time())  # add timer point
+
+                for i in range(len(blobs_doh)):  # calculate points from blobs
+                    points.append([
+                        blobs_doh[i][0] / scaleFactor,
+                        blobs_doh[i][1] / scaleFactor,
+                        (blobs_doh[i][1] / 3) / scaleFactor, tintShade
+                    ])  # x,y,r,tint
+
+            timer.append(time())  # add timer point
+
+            disp.clear((tintBack[2], tintBack[1],
+                        tintBack[0]))  # set background tint
+
+            if modeinternal >= 2:  # if active point shading mode
+                timer.append(time())  # add timer point
+                for i in range(0,
+                               len(points)):  # convert x,y,r to bounding box
+                    x1 = int(points[i][0] - points[i][2])
+                    x2 = int(points[i][0] + points[i][2])
+                    y1 = int(points[i][1] - points[i][2])
+                    y2 = int(points[i][1] + points[i][2])
+                    draw.ellipse(
+                        (x1, y1, x2, y2),
+                        fill=(points[i][3][2], points[i][3][1],
+                              points[i][3][0]))  # draw
+
+            timer.append(time())  # add timer point
+
+            disp.display()  # put the drawing on the the LCD's
+
+            timer.append(time())  # add timer point
+
+            if modeinternal == 0:  # if in mode 0 then toggle new
+                new = False
+            else:
+                new = True
+
+            if debug == 1:  # if debug is on the print timings
+
+                print 'number of points: {}\n'.format(len(points))
+                print 'points:{}\n'.format(points)
+                print 'background tint: {}\n'.format(tintBack)
+                print 'foreground tint: {}\n'.format(tintShade)
+                for t in range(0,
+                               len(timer) -
+                               1):  # iterate over timing list to get timings
+                    print 'function {} : time {}\n'.format(
+                        processpoint[modeinternal][t],
+                        timer[t + 1] - timer[t])  # print function and time
+
+                totaltime = timer[len(timer)
+                                  - 1] - timer[0]  # calculate total time
+                averageFps.append(1 / totaltime)  # calculate fps and append
+                if len(averageFps) >= 11:  # buffer has min number of values
+                    if len(averageFps) >= 61:  # buffer full then remove oldest
+                        averageFps.pop(0)
+                    print 'average fps = {: 4.2f}\n'.format(
+                        sum(averageFps) / len(averageFps))  # print average fps
+                print 'total = {: 4.2f}  fps = {: 4.2f}\n'.format(
+                    totaltime, averageFps[len(averageFps)
+                                          - 1])  # print total time and fps
+
+        sleep(1)
+
+    deinitlcd()  # close peripherals
+    deinitcamera()
+```
