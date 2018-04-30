@@ -239,30 +239,19 @@ test_box = 0
 user = False
 admins = []
 allowAll = True
-
-jokelist = [
-    'I cannot think of an ample joke currently',
-    'My friend told me how electricity is measured and I was like Watt! ',
-    'Two antennas get married. The wedding was boring,' +
-    ' but the reception was great.',
-    'Why was the robot mad? People kept pushing its buttons.',
-    'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
-    'What kind of car does an electrician drive?\n\r A Volts-wagon',
-    'What is a robots favourite kind of music? \n\r Heavy Metal.',
-    'If only DEAD people understand hexadecimal,' +
-    ' how many dead people are there?\n\r57,005.',
-    'What is FACE value in decimal?\n\r64206',
-    'I turned on the radio this morning all I heard was FFFFFF' +
-    '\n\r it turns out it was White Noise!'
-]
+jokelist = []
 
 # retrive telegram keys
 f = open('telegramkeys.txt', 'r')
 test_box_api_key.append(f.readline().split('\n')[0])
 admins.append(int(f.readline().split('\n')[0]))
 f.close()
-print test_box_api_key
-print admins
+
+# retrive jokes
+f = open('jokes.txt', 'r')
+for line in f:
+    jokelist.append(line)
+f.close()
 
 # Create the EventHandler and  it your bot's token.
 updater = Updater(test_box_api_key[test_box])
@@ -791,11 +780,11 @@ def runningstateset(state):
     """Set running state."""
     global running
     try:  # try assuming state is a button
-        if state.pin.number == 14 and state.is_held:  # if button is held
+        if state.pin.number == buttonReset.pin.number and state.is_held:
             state = 1  # set state to running
-        elif state.pin.number == 14:  # if state button is pressed
+        elif state.pin.number == buttonReset.pin.number:
             state = 0  # set state to stopped
-        elif state.pin.number == 15 and state.is_held:  # if button is held
+        elif state.pin.number == buttonexit.pin.number and state.is_held:
             state = 2  # set state to exit
     except AttributeError:  # catch not button error
         print 'not button'  # print warning
@@ -839,9 +828,9 @@ def modeset(modevar):
     """0 manual 1 tint 2 point 3 auto 4 increment."""
     global mode, averageFps, new
     try:  # try assuming modevar is a button
-        if modevar.pin.number == 3 and modevar.is_held:  # if button is held
+        if modevar.pin.number == buttonMode.pin.number and modevar.is_held:
             modevar = 0  # reset mode to manual
-        elif modevar.pin.number == 3:  # if mode button is pressed
+        elif modevar.pin.number == buttonMode.pin.number:
             if mode >= 3:  # if at limit the reset to manual
                 modevar = 0
             else:  # else increment
