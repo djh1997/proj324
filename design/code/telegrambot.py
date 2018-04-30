@@ -18,30 +18,19 @@ test_box = 0
 user = False
 admins = []
 allowAll = True
-
-jokelist = [
-    'I cannot think of an ample joke currently',
-    'My friend told me how electricity is measured and I was like Watt! ',
-    'Two antennas get married. The wedding was boring,' +
-    ' but the reception was great.',
-    'Why was the robot mad? People kept pushing its buttons.',
-    'Why did Mr Ohm marry Mrs. Ohm? \n\r Because he couldnt resistor!',
-    'What kind of car does an electrician drive?\n\r A Volts-wagon',
-    'What is a robots favourite kind of music? \n\r Heavy Metal.',
-    'If only DEAD people understand hexadecimal,' +
-    ' how many dead people are there?\n\r57,005.',
-    'What is FACE value in decimal?\n\r64206',
-    'I turned on the radio this morning all I heard was FFFFFF' +
-    '\n\r it turns out it was White Noise!'
-]
+jokelist = []
 
 # retrive telegram keys
 f = open('telegramkeys.txt', 'r')
 test_box_api_key.append(f.readline().split('\n')[0])
 admins.append(int(f.readline().split('\n')[0]))
 f.close()
-print test_box_api_key
-print admins
+
+# retrive jokes
+f = open('jokes.txt', 'r')
+for line in f:
+    jokelist.append(line)
+f.close()
 
 # Create the EventHandler and  it your bot's token.
 updater = Updater(test_box_api_key[test_box])
