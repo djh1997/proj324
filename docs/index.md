@@ -49,11 +49,11 @@ I will be using LCD's to reduce the amount of light reaching the users eyes.
 ![lcd workings](lcd/lcdworkings.png)
 In this diagram from Paul Davey's lecture on LCD's last year, you can see the inner working of an individual pixel.
 
-1. Light enters the panel through the rear polarizer. The light becomes vertically polarized.
-2. The polarized light then passes through the transparent backplane electrode.
-3. As the polarized light passes through the Liquid Crystal fluid it gets twisted into the horizontal plane.
-4. The polarized light passes through the transparent pixel electrode.
-5. Because the light is  polarized in the horizontal plane, it passes through the front horizontal polarizer.
+1.  Light enters the panel through the rear polarizer. The light becomes vertically polarized.
+2.  The polarized light then passes through the transparent backplane electrode.
+3.  As the polarized light passes through the Liquid Crystal fluid it gets twisted into the horizontal plane.
+4.  The polarized light passes through the transparent pixel electrode.
+5.  Because the light is  polarized in the horizontal plane, it passes through the front horizontal polarizer.
 
 I will be using this effect to reduce the amount of light reaching the users eyes.
 
