@@ -170,3 +170,11 @@ tidy code and make pep257 compliant, only update LCD on value change in manual m
 # 24/04/2018
 
 work on report and get new arms cut,fix error #29 ,and add exit functionality so reopen program
+
+# 26/04/2018
+
+do paper work and move telegram API keys to separate file
+
+# 30/04/2018
+
+tidy code by moving jokes and making buttons more dynamic
