@@ -177,4 +177,4 @@ do paper work and move telegram API keys to separate file
 
 # 30/04/2018
 
-tidy code by moving jokes and making buttons more dynamic
+tidy code by moving jokes, making buttons more dynamic and work on report

@@ -28,7 +28,7 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 ## Plan
 
-The product's above, along with Paul's lectures last year inspired my idea.
+The product's above, along with Paul Davey's lectures last year inspired my idea.
 
 The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually I will add a camera to make point control which will block bright spots such as projectors and the sun, and dim them to reduce squinting.
 
@@ -40,11 +40,22 @@ So, once I have removed the backlight from the LCD's I can mount them in a frame
 
 # Report
 
-I connected the LCD and displayed some random(size and location) spots of different opacity on the screen.
-
-[random point video](log/IMG_1188.TRIM.MOV)
-
 ## LCD
+
+I will be using LCD's to reduce the amount of light reaching the users eyes.
+
+### Theory
+
+![lcd workings](lcd/lcdworkings.png)
+In this diagram from Paul Davey's lecture on LCD's last year, you can see the inner working of an individual pixel.
+
+1. Light enters the panel through the rear polarizer. The light becomes vertically polarized.
+2. The polarized light then passes through the transparent backplane electrode.
+3. As the polarized light passes through the Liquid Crystal fluid it gets twisted into the horizontal plane.
+4. The polarized light passes through the transparent pixel electrode.
+5. Because the light is  polarized in the horizontal plane, it passes through the front horizontal polarizer.
+
+I will be using this effect to reduce the amount of light reaching the users eyes.
 
 ### Wiring
 
@@ -54,6 +65,10 @@ I connected the LCD and displayed some random(size and location) spots of differ
 | sda      | yellow | 19                | 20     | black/p | gnd      |
 |          | nc     | 21                | 22     | blue    | reset    |
 | scl      | green  | 23                | 24     | white   | cs       |
+
+I connected the LCD and displayed some random(size and location) spots of different opacity on the screen.
+
+[random point video](log/IMG_1188.TRIM.MOV)
 
 ## FOV
 
