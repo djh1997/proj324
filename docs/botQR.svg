@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -2797,13 +2797,13 @@
   </g>
   <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:30.60058022px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.76501447px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="0.76346147"
-     y="225.13484"
+     style="font-style:normal;font-weight:normal;font-size:29.59651756px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.73991293px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="3.4025176"
+     y="224.34369"
      id="text350"><tspan
        sodipodi:role="line"
        id="tspan348"
-       x="0.76346147"
-       y="225.13484"
-       style="stroke-width:0.76501447px">Telegram Bot</tspan></text>
+       x="3.4025176"
+       y="224.34369"
+       style="stroke-width:0.73991293px">Telegram Bot</tspan></text>
 </svg>
