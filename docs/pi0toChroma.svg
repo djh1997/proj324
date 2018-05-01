@@ -10,15 +10,15 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="200"
-   height="120.95703"
-   viewBox="0 0 52.916666 32.003216"
+   height="109.34753"
+   viewBox="0 0 52.916666 28.931534"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="pi0toChroma.svg"
    inkscape:export-filename="/home/jo/Documents/uni/year 3/proj324/docs/pi0toChroma.svg.png"
-   inkscape:export-xdpi="90.25"
-   inkscape:export-ydpi="90.25">
+   inkscape:export-xdpi="405.85001"
+   inkscape:export-ydpi="405.85001">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -29,14 +29,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4.53125"
-     inkscape:cx="60.002042"
-     inkscape:cy="31.428696"
+     inkscape:cx="112.57505"
+     inkscape:cy="72.232089"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1366"
-     inkscape:window-height="744"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -65,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -73,37 +73,44 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(5.3474762,-256.37894)">
+     transform="translate(5.8569871,-257.31572)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.52948666px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26323715px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="21.254805"
-       y="268.3392"
+       style="font-style:normal;font-weight:normal;font-size:10.52948666px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26323715px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-1.1594667"
+       y="279.37701"
        id="text817"
-       transform="scale(0.99491214,1.0051139)"><tspan
+       transform="scale(0.99491212,1.0051139)"><tspan
          sodipodi:role="line"
-         id="tspan815"
-         x="21.254805"
-         y="268.3392"
-         style="text-align:center;text-anchor:middle;fill:#586e75;fill-opacity:1;stroke-width:0.26323715px">Pi0to</tspan><tspan
-         sodipodi:role="line"
-         x="21.254805"
-         y="281.50107"
-         style="text-align:center;text-anchor:middle;stroke-width:0.26323715px"
+         x="-1.1594667"
+         y="279.37701"
+         style="text-align:start;text-anchor:start;stroke-width:0.26323715px"
          id="tspan819"><tspan
-           style="text-align:center;text-anchor:middle;fill:#dc322f;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#dc322f;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan821">C</tspan><tspan
-           style="text-align:center;text-anchor:middle;fill:#d33682;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#d33682;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan863">h</tspan><tspan
-           style="text-align:center;text-anchor:middle;fill:#6c71c4;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#6c71c4;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan869">r</tspan><tspan
-           style="text-align:center;text-anchor:middle;fill:#268bd2;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#268bd2;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan875">o</tspan><tspan
-           style="text-align:center;text-anchor:middle;fill:#2aa198;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#2aa198;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan881">m</tspan><tspan
-           style="text-align:center;text-anchor:middle;fill:#859900;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#859900;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan887">i</tspan><tspan
-           style="text-align:center;text-anchor:middle;fill:#b58900;fill-opacity:1;stroke-width:0.26323715px"
+           style="text-align:start;text-anchor:start;fill:#b58900;fill-opacity:1;stroke-width:0.26323715px"
            id="tspan825">c</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.52948666px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26323715px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="7.3732715"
+       y="269.27121"
+       id="text817-3"
+       transform="scale(0.99491212,1.0051139)"><tspan
+         sodipodi:role="line"
+         x="7.3732715"
+         y="269.27121"
+         style="text-align:start;text-anchor:start;fill:#586e75;fill-opacity:1;stroke-width:0.26323715px"
+         id="tspan819-7">Pi0to</tspan></text>
   </g>
 </svg>
