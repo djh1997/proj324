@@ -36,7 +36,9 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![final mock-up design image](final_design_plan.svg)
 
-So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels. Next I will add a camera to the system so that the system can also detect bright points hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
+So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels.
+
+Next I will add a camera to the system so that the system can also detect bright points hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
 
 # Report
 
@@ -74,7 +76,8 @@ I connected the LCD and displayed some random(size and location) spots of differ
 
 ### LCD
 
-![image](lcd/lcdfovcalc.png) 160x128 pixels
+![image](lcd/lcdfovcalc.png)
+160x128 pixels
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
@@ -151,9 +154,10 @@ I decided to use telegram to add remote control so that you could adjust the col
 | colourset   | fore/back@0/255,0/255,0/255          | Sets the colour of the lenses. |
 | allowallids | admin only                           | Toggles if admin id is needed. |
 
-After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, So that I would be able to control the glasses with out having to have it connected to the internet.
 
 ## Capacitive touch sensor
+
+After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, So that I would be able to control the glasses with out having to have it connected to the internet.
 
 ### Wiring
 
