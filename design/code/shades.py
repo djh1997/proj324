@@ -167,7 +167,7 @@ def tintButton(buttonTint):
         tintbuttonvar = 256  # set tint to clear
     elif tintbuttonvar >= 64:  # increment tint if not at limit
         tintbuttonvar -= 64
-    tintBackset(tintbuttonvar)  # set tint
+    tintBackset([tintbuttonvar, tintbuttonvar, tintbuttonvar])  # set tint
     print tintBack
 
 
@@ -175,9 +175,9 @@ def modeset(modevar):
     """0 manual 1 tint 2 point 3 auto 4 increment."""
     global mode, averageFps, new
     try:  # try assuming modevar is a button
-        if modevar.pin.number == buttonMode.pin.number and modevar.is_held:
+        if modevar.pin.number == 3 and modevar.is_held:
             modevar = 0  # reset mode to manual
-        elif modevar.pin.number == buttonMode.pin.number:
+        elif modevar.pin.number == 3:
             if mode >= 3:  # if at limit the reset to manual
                 modevar = 0
             else:  # else increment
