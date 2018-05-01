@@ -42,6 +42,7 @@ debug = 0
 disp = 0
 draw = 0
 camera = 0
+buttons = 1
 new = True
 
 # button connection
@@ -232,6 +233,32 @@ def initbuttons():
     buttonReset.when_pressed = runningstateset
     buttonReset.when_held = runningstateset
     # buttonexit.when_held = runningstateset
+
+
+def deinitbuttons():
+    """Deinitilize buttons.
+
+    Release button from function.
+    """
+    buttonTint.when_pressed = None  # set button state to function
+    buttonTint.when_held = None
+    buttonMode.when_pressed = None
+    buttonMode.when_held = None
+    buttonDebug.when_pressed = None
+    # buttonDebug.when_held = None
+    buttonReset.when_pressed = None
+    buttonReset.when_held = None
+    # buttonexit.when_held = None
+
+
+def toggle():
+    """Toggle buttons."""
+    global buttons
+    if buttons == 1:
+        deinitbuttons()
+    else:
+        initbuttons()
+    buttons ^= buttons
 
 
 def sandd():

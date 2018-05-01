@@ -9,7 +9,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
 
-from shades import (debugset, getiso, modeset, runningstateget,
+from shades import (buttons, debugset, getiso, modeset, runningstateget,
                     runningstateset, sandd, tintBackset, tintShadeset)
 
 # program variables
@@ -142,6 +142,13 @@ def exit(bot, update, args):
     runningstateset(2)  # set sate to exit
     update.message.reply_text('Exiting at {}'
                               .format(time()))  # echo exiting back to user
+
+
+@restricted2
+def togglebuttons(bot, update):
+    """Toggle if the buttons are enabled."""
+    buttons()
+    update.message.reply_text('Toggled buttons.')  # echo toggled back to user
 
 
 @restricted2
@@ -409,6 +416,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('allowallids', allowallids))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))
+    dp.add_handler(CommandHandler("togglebuttons", togglebuttons))
     dp.add_handler(CommandHandler("addwifi", addwifi, pass_args=True))
 
     # keyboard handler
