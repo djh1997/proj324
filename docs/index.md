@@ -242,16 +242,26 @@ allowAll = True
 jokelist = []
 
 # retrive telegram keys
-f = open('telegramkeys.txt', 'r')
-test_box_api_key.append(f.readline().split('\n')[0])
-admins.append(int(f.readline().split('\n')[0]))
-f.close()
+try:
+    f = open('telegramkeys.txt', 'r')
+    test_box_api_key.append(f.readline().split('\n')[0])
+    admins.append(int(f.readline().split('\n')[0]))
+    f.close()
+except IOError:
+    print 'telgram import fail'
+    exit()
+
 
 # retrive jokes
-f = open('jokes.txt', 'r')
-for line in f:
-    jokelist.append(line)
-f.close()
+try:
+    f = open('jokes.txt', 'r')
+    for line in f:
+        jokelist.append(line)
+    f.close()
+except IOError:
+    jokelist = ['joke import failed']
+    print jokelist[0]
+
 
 # Create the EventHandler and  it your bot's token.
 updater = Updater(test_box_api_key[test_box])
