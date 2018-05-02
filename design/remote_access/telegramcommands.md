@@ -12,6 +12,7 @@ reboot - reboot shades
 halt - shutdown shades
 uprecords - see up time
 debug - toggle debug
+buttons - toggle buttons
 colourset - fore/back@0/255,0/255,0/255
 allowallids - toggles if admin id is required
 

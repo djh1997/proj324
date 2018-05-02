@@ -151,6 +151,7 @@ I decided to use telegram to add remote control so that you could adjust the col
 | halt        | admin only                           | Shutdown shades.               |
 | uprecords   | n/a                                  | See up time.                   |
 | debug       | n/a                                  | Toggles debug.                 |
+| buttons     | admin only                           | Toggles buttons.               |
 | colourset   | fore/back@0/255,0/255,0/255          | Sets the colour of the lenses. |
 | allowallids | admin only                           | Toggles if admin id is needed. |
 
