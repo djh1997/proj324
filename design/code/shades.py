@@ -218,6 +218,7 @@ def initbuttons():
     Wait for all button to be released
     Then asign to correct function.
     """
+    print 'initializing butoons'
     buttonTint.wait_for_release(
     )  # wait incase any of the buttons are locked high
     buttonMode.wait_for_release()
@@ -233,6 +234,7 @@ def initbuttons():
     buttonReset.when_pressed = runningstateset
     buttonReset.when_held = runningstateset
     # buttonexit.when_held = runningstateset
+    print 'buttons initialized'
 
 
 def deinitbuttons():
@@ -240,6 +242,7 @@ def deinitbuttons():
 
     Release button from function.
     """
+    print 'Deinitializing buttons'
     buttonTint.when_pressed = None  # set button state to function
     buttonTint.when_held = None
     buttonMode.when_pressed = None
@@ -249,16 +252,17 @@ def deinitbuttons():
     buttonReset.when_pressed = None
     buttonReset.when_held = None
     # buttonexit.when_held = None
+    print 'Deinitilized buttons'
 
 
-def toggle():
+def buttonstoggle():
     """Toggle buttons."""
     global buttons
-    if buttons == 1:
+    buttons ^= 1
+    if buttons == 0:
         deinitbuttons()
     else:
         initbuttons()
-    buttons ^= buttons
 
 
 def sandd():
