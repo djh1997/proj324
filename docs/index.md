@@ -219,7 +219,11 @@ I still believe I'm level 4 with aspects of level 5 with this scale.
 
 # Future development
 
-My setup is mostly a proof of concept for a full prototype/production model I would use an FPGA with a low quality, high frame rate camera and a bare LCD. With that I would be able to increase the communication speed since the io is the limiting factor on the current setup.
+My setup is mostly a proof of concept for a full prototype/production model I would use a chip with high IO rates like a DSLR image processing chip, with a low quality, high frame rate camera and a bare LCD.
+
+With that I would be able to increase the communication speed since the IO is the limiting factor on the current setup.
+
+The biggest IO limit at the moment is the LCD and this is because the only reasonably prices LCD at this size I could find uses an SPI communication link and the LCD driver chip is fairly slow using this link.
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
 
