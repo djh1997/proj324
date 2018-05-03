@@ -247,7 +247,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
 
-from shades import (debugset, getiso, modeset, runningstateget,
+from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
                     runningstateset, sandd, tintBackset, tintShadeset)
 
 # program variables
@@ -380,6 +380,13 @@ def exit(bot, update, args):
     runningstateset(2)  # set sate to exit
     update.message.reply_text('Exiting at {}'
                               .format(time()))  # echo exiting back to user
+
+
+@restricted2
+def buttons(bot, update):
+    """Toggle if the buttons are enabled."""
+    buttonstoggle()
+    update.message.reply_text('Toggled buttons.')  # echo toggled back to user
 
 
 @restricted2
@@ -647,6 +654,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('allowallids', allowallids))
     dp.add_handler(CommandHandler("halt", halt))
     dp.add_handler(CommandHandler("reboot", reboot))
+    dp.add_handler(CommandHandler("buttons", buttons))
     dp.add_handler(CommandHandler("addwifi", addwifi, pass_args=True))
 
     # keyboard handler
@@ -722,6 +730,7 @@ debug = 0
 disp = 0
 draw = 0
 camera = 0
+buttons = 1
 new = True
 
 # button connection
@@ -847,7 +856,7 @@ def tintButton(buttonTint):
         tintbuttonvar = 256  # set tint to clear
     elif tintbuttonvar >= 64:  # increment tint if not at limit
         tintbuttonvar -= 64
-    tintBackset(tintbuttonvar)  # set tint
+    tintBackset([tintbuttonvar, tintbuttonvar, tintbuttonvar])  # set tint
     print tintBack
 
 
@@ -855,9 +864,9 @@ def modeset(modevar):
     """0 manual 1 tint 2 point 3 auto 4 increment."""
     global mode, averageFps, new
     try:  # try assuming modevar is a button
-        if modevar.pin.number == buttonMode.pin.number and modevar.is_held:
+        if modevar.pin.number == 3 and modevar.is_held:
             modevar = 0  # reset mode to manual
-        elif modevar.pin.number == buttonMode.pin.number:
+        elif modevar.pin.number == 3:
             if mode >= 3:  # if at limit the reset to manual
                 modevar = 0
             else:  # else increment
@@ -897,6 +906,7 @@ def initbuttons():
     Wait for all button to be released
     Then asign to correct function.
     """
+    print 'initializing butoons'
     buttonTint.wait_for_release(
     )  # wait incase any of the buttons are locked high
     buttonMode.wait_for_release()
@@ -912,6 +922,35 @@ def initbuttons():
     buttonReset.when_pressed = runningstateset
     buttonReset.when_held = runningstateset
     # buttonexit.when_held = runningstateset
+    print 'buttons initialized'
+
+
+def deinitbuttons():
+    """Deinitilize buttons.
+
+    Release button from function.
+    """
+    print 'Deinitializing buttons'
+    buttonTint.when_pressed = None  # set button state to function
+    buttonTint.when_held = None
+    buttonMode.when_pressed = None
+    buttonMode.when_held = None
+    buttonDebug.when_pressed = None
+    # buttonDebug.when_held = None
+    buttonReset.when_pressed = None
+    buttonReset.when_held = None
+    # buttonexit.when_held = None
+    print 'Deinitilized buttons'
+
+
+def buttonstoggle():
+    """Toggle buttons."""
+    global buttons
+    buttons ^= 1
+    if buttons == 0:
+        deinitbuttons()
+    else:
+        initbuttons()
 
 
 def sandd():

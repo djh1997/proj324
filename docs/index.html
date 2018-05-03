@@ -653,7 +653,7 @@ have a slightly more relevant scale of TRL.</p>
 <span class="token keyword">from</span> telegram<span class="token punctuation">.</span>ext <span class="token keyword">import</span> <span class="token punctuation">(</span>CallbackQueryHandler<span class="token punctuation">,</span> CommandHandler<span class="token punctuation">,</span> Filters<span class="token punctuation">,</span>
                           MessageHandler<span class="token punctuation">,</span> Updater<span class="token punctuation">)</span>
 
-<span class="token keyword">from</span> shades <span class="token keyword">import</span> <span class="token punctuation">(</span>debugset<span class="token punctuation">,</span> getiso<span class="token punctuation">,</span> modeset<span class="token punctuation">,</span> runningstateget<span class="token punctuation">,</span>
+<span class="token keyword">from</span> shades <span class="token keyword">import</span> <span class="token punctuation">(</span>buttonstoggle<span class="token punctuation">,</span> debugset<span class="token punctuation">,</span> getiso<span class="token punctuation">,</span> modeset<span class="token punctuation">,</span> runningstateget<span class="token punctuation">,</span>
                     runningstateset<span class="token punctuation">,</span> sandd<span class="token punctuation">,</span> tintBackset<span class="token punctuation">,</span> tintShadeset<span class="token punctuation">)</span>
 
 <span class="token comment"># program variables</span>
@@ -786,6 +786,13 @@ jbq <span class="token operator">=</span> updater<span class="token punctuation"
     runningstateset<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment"># set sate to exit</span>
     update<span class="token punctuation">.</span>message<span class="token punctuation">.</span>reply_text<span class="token punctuation">(</span><span class="token string">'Exiting at {}'</span>
                               <span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># echo exiting back to user</span>
+
+
+@restricted2
+<span class="token keyword">def</span> <span class="token function">buttons</span><span class="token punctuation">(</span>bot<span class="token punctuation">,</span> update<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Toggle if the buttons are enabled."""</span>
+    buttonstoggle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    update<span class="token punctuation">.</span>message<span class="token punctuation">.</span>reply_text<span class="token punctuation">(</span><span class="token string">'Toggled buttons.'</span><span class="token punctuation">)</span>  <span class="token comment"># echo toggled back to user</span>
 
 
 @restricted2
@@ -1053,6 +1060,7 @@ jbq <span class="token operator">=</span> updater<span class="token punctuation"
     dp<span class="token punctuation">.</span>add_handler<span class="token punctuation">(</span>CommandHandler<span class="token punctuation">(</span><span class="token string">'allowallids'</span><span class="token punctuation">,</span> allowallids<span class="token punctuation">)</span><span class="token punctuation">)</span>
     dp<span class="token punctuation">.</span>add_handler<span class="token punctuation">(</span>CommandHandler<span class="token punctuation">(</span><span class="token string">"halt"</span><span class="token punctuation">,</span> halt<span class="token punctuation">)</span><span class="token punctuation">)</span>
     dp<span class="token punctuation">.</span>add_handler<span class="token punctuation">(</span>CommandHandler<span class="token punctuation">(</span><span class="token string">"reboot"</span><span class="token punctuation">,</span> reboot<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    dp<span class="token punctuation">.</span>add_handler<span class="token punctuation">(</span>CommandHandler<span class="token punctuation">(</span><span class="token string">"buttons"</span><span class="token punctuation">,</span> buttons<span class="token punctuation">)</span><span class="token punctuation">)</span>
     dp<span class="token punctuation">.</span>add_handler<span class="token punctuation">(</span>CommandHandler<span class="token punctuation">(</span><span class="token string">"addwifi"</span><span class="token punctuation">,</span> addwifi<span class="token punctuation">,</span> pass_args<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
     <span class="token comment"># keyboard handler</span>
@@ -1125,6 +1133,7 @@ debug <span class="token operator">=</span> <span class="token number">0</span>
 disp <span class="token operator">=</span> <span class="token number">0</span>
 draw <span class="token operator">=</span> <span class="token number">0</span>
 camera <span class="token operator">=</span> <span class="token number">0</span>
+buttons <span class="token operator">=</span> <span class="token number">1</span>
 new <span class="token operator">=</span> <span class="token boolean">True</span>
 
 <span class="token comment"># button connection</span>
@@ -1250,7 +1259,7 @@ buttonexit <span class="token operator">=</span> Button<span class="token punctu
         tintbuttonvar <span class="token operator">=</span> <span class="token number">256</span>  <span class="token comment"># set tint to clear</span>
     <span class="token keyword">elif</span> tintbuttonvar <span class="token operator">>=</span> <span class="token number">64</span><span class="token punctuation">:</span>  <span class="token comment"># increment tint if not at limit</span>
         tintbuttonvar <span class="token operator">-=</span> <span class="token number">64</span>
-    tintBackset<span class="token punctuation">(</span>tintbuttonvar<span class="token punctuation">)</span>  <span class="token comment"># set tint</span>
+    tintBackset<span class="token punctuation">(</span><span class="token punctuation">[</span>tintbuttonvar<span class="token punctuation">,</span> tintbuttonvar<span class="token punctuation">,</span> tintbuttonvar<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># set tint</span>
     <span class="token keyword">print</span> tintBack
 
 
@@ -1258,9 +1267,9 @@ buttonexit <span class="token operator">=</span> Button<span class="token punctu
     <span class="token triple-quoted-string string">"""0 manual 1 tint 2 point 3 auto 4 increment."""</span>
     <span class="token keyword">global</span> mode<span class="token punctuation">,</span> averageFps<span class="token punctuation">,</span> new
     <span class="token keyword">try</span><span class="token punctuation">:</span>  <span class="token comment"># try assuming modevar is a button</span>
-        <span class="token keyword">if</span> modevar<span class="token punctuation">.</span>pin<span class="token punctuation">.</span>number <span class="token operator">==</span> buttonMode<span class="token punctuation">.</span>pin<span class="token punctuation">.</span>number <span class="token operator">and</span> modevar<span class="token punctuation">.</span>is_held<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> modevar<span class="token punctuation">.</span>pin<span class="token punctuation">.</span>number <span class="token operator">==</span> <span class="token number">3</span> <span class="token operator">and</span> modevar<span class="token punctuation">.</span>is_held<span class="token punctuation">:</span>
             modevar <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># reset mode to manual</span>
-        <span class="token keyword">elif</span> modevar<span class="token punctuation">.</span>pin<span class="token punctuation">.</span>number <span class="token operator">==</span> buttonMode<span class="token punctuation">.</span>pin<span class="token punctuation">.</span>number<span class="token punctuation">:</span>
+        <span class="token keyword">elif</span> modevar<span class="token punctuation">.</span>pin<span class="token punctuation">.</span>number <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
             <span class="token keyword">if</span> mode <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">:</span>  <span class="token comment"># if at limit the reset to manual</span>
                 modevar <span class="token operator">=</span> <span class="token number">0</span>
             <span class="token keyword">else</span><span class="token punctuation">:</span>  <span class="token comment"># else increment</span>
@@ -1300,6 +1309,7 @@ buttonexit <span class="token operator">=</span> Button<span class="token punctu
     Wait for all button to be released
     Then asign to correct function.
     """</span>
+    <span class="token keyword">print</span> <span class="token string">'initializing butoons'</span>
     buttonTint<span class="token punctuation">.</span>wait_for_release<span class="token punctuation">(</span>
     <span class="token punctuation">)</span>  <span class="token comment"># wait incase any of the buttons are locked high</span>
     buttonMode<span class="token punctuation">.</span>wait_for_release<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1315,6 +1325,35 @@ buttonexit <span class="token operator">=</span> Button<span class="token punctu
     buttonReset<span class="token punctuation">.</span>when_pressed <span class="token operator">=</span> runningstateset
     buttonReset<span class="token punctuation">.</span>when_held <span class="token operator">=</span> runningstateset
     <span class="token comment"># buttonexit.when_held = runningstateset</span>
+    <span class="token keyword">print</span> <span class="token string">'buttons initialized'</span>
+
+
+<span class="token keyword">def</span> <span class="token function">deinitbuttons</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Deinitilize buttons.
+
+    Release button from function.
+    """</span>
+    <span class="token keyword">print</span> <span class="token string">'Deinitializing buttons'</span>
+    buttonTint<span class="token punctuation">.</span>when_pressed <span class="token operator">=</span> <span class="token boolean">None</span>  <span class="token comment"># set button state to function</span>
+    buttonTint<span class="token punctuation">.</span>when_held <span class="token operator">=</span> <span class="token boolean">None</span>
+    buttonMode<span class="token punctuation">.</span>when_pressed <span class="token operator">=</span> <span class="token boolean">None</span>
+    buttonMode<span class="token punctuation">.</span>when_held <span class="token operator">=</span> <span class="token boolean">None</span>
+    buttonDebug<span class="token punctuation">.</span>when_pressed <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token comment"># buttonDebug.when_held = None</span>
+    buttonReset<span class="token punctuation">.</span>when_pressed <span class="token operator">=</span> <span class="token boolean">None</span>
+    buttonReset<span class="token punctuation">.</span>when_held <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token comment"># buttonexit.when_held = None</span>
+    <span class="token keyword">print</span> <span class="token string">'Deinitilized buttons'</span>
+
+
+<span class="token keyword">def</span> <span class="token function">buttonstoggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Toggle buttons."""</span>
+    <span class="token keyword">global</span> buttons
+    buttons <span class="token operator">^</span><span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> buttons <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        deinitbuttons<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        initbuttons<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 
 <span class="token keyword">def</span> <span class="token function">sandd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
