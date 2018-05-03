@@ -186,9 +186,11 @@ def modeset(modevar):
     except AttributeError:  # catch not button error
         print 'not button'  # print warning
     mode = modevar  # set mode
-    print 'mode ' + str(mode)  # display new mode
     averageFps = []  # reset average fps array
+    tintBackset([256, 256, 256])
+    tintShadeset([32, 32, 32])
     new = True
+    print 'mode ' + str(mode)  # display new mode
 
 
 def runningstateget():
