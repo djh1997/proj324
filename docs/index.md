@@ -14,17 +14,21 @@ This is the criteria I would like to meet, to feel as though I have created a su
 | ----- | --------------------------- | ------------------------------------------------ |
 | 1     | Smart shades                | Make a set of smart sun classes                  |
 | 2     | Auto smart shades           | Add LDR to control the opacity                   |
-| 3     | Auto smart point shades     | Add camera to make dark point over bright points |
+| 3     | Auto smart point shades     | Add camera to make darks point over bright points |
 | 4     | Controllable smart shades   | Add options to swap between modes                |
 | 5     | Driving/safety improvements | Auto react headlights etc.                       |
 
 ## Inspiration
 
+[pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
+
+I saw this pc case and got the idea for reactice sun glsses while i was reashing to see if this had alred been done i found thses.
+
 [indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
 [ctrl-eyewear](http://www.ctrl-eyewear.com/)
 
-[pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
+which start down the path i would like to take but are binary and i aould like different levels of tining and active shading.
 
 ## Plan
 
@@ -32,13 +36,13 @@ The product's above, along with Paul Davey's lectures last year inspired my idea
 
 The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually I will add a camera to make point control which will block bright spots such as projectors and the sun, and dim them to reduce squinting.
 
-# Final mock-up
+# Final Mock-up
 
 ![final mock-up design image](final_design_plan.svg)
 
 So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels.
 
-Next I will add a camera to the system so that the system can also detect bright points hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
+Next I will add a camera to the system so that the system can detect bright points, hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the different modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
 
 # Report
 
@@ -49,11 +53,14 @@ I will be using LCD's to reduce the amount of light reaching the users eyes.
 ### Theory
 
 ![lcd workings](lcd/lcdworkings.png)
+
 In this diagram from Paul Davey's lecture on LCD's last year, you can see the inner working of an individual pixel.
+
+This works like so;
 
 1.  Light enters the panel through the rear polarizer. The light becomes vertically polarized.
 2.  The polarized light then passes through the transparent backplane electrode.
-3.  As the polarized light passes through the Liquid Crystal fluid it gets twisted into the horizontal plane.
+3.  As the polarized light passes through the Liquid crystal fluid it gets twisted into the horizontal plane.
 4.  The polarized light passes through the transparent pixel electrode.
 5.  Because the light is  polarized in the horizontal plane, it passes through the front horizontal polarizer.
 
@@ -63,12 +70,12 @@ I will be using this effect to reduce the amount of light reaching the users eye
 
 | Function | Colour | Pi pins chip side | Pi pin | Colour  | Function |
 | -------- | ------ | ----------------- | ------ | ------- | -------- |
-| vcc      | orange | 17                | 18     | grey    | rs       |
-| sda      | yellow | 19                | 20     | black/p | gnd      |
-|          | nc     | 21                | 22     | blue    | reset    |
-| scl      | green  | 23                | 24     | white   | cs       |
+| vcc      | Orange | 17                | 18     | Grey    | rs       |
+| sda      | Yellow | 19                | 20     | Black/P | gnd      |
+| N/A         | nc     | 21                | 22     | Blue    | reset    |
+| scl      | Green  | 23                | 24     | White   | cs       |
 
-I connected the LCD and displayed some random(size and location) spots of different opacity on the screen.
+I connected the LCD and displayed some random size and location spots of different opacity on the screen.
 
 [random point video](log/IMG_1188.TRIM.MOV)
 
@@ -95,31 +102,31 @@ $$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
 
 $$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
 
-So this will cause issues since the dot placed on the LCD will end up then the wrong place with out scaling
+So, this will cause issues since the dot placed on the LCD will end up in the the wrong place without scaling.
 
 ## Frame
 
-I decided to laser cut the frame since this would be more cost/time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can the the design iterations.
-
-Starting with a concept where I would heat the acrylic and bend at the red line meaning that you wouldn't be able to fold them.
-
-After that you can see another fixed design but with a simpler shape this was the first iteration that actually got cut. I found that the lens was going to be to close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the 3rd iteration by making the distance between the top of the frame and the top of the nose support forcing the user to wear the glasses further down their nose.
-
-After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the fame I cut and used for most of the prototyping phase of the project.
-
-For the next two design's I was contemplating adding a backing plate to the pi mount and also added a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers and the backing might have added to much weight. Furthering the design of the hinge buy squaring of one end to make it more ridged and adding a hole to hold it together
+I decided to laser cut the frame since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can the the design iterations.
 
 ![image](frame/devcycle.png)
 
-## Blob detection
+Initially my idea was to heat the acrylic and bend at the red line, meaning that you wouldn't be able to fold them.
 
-My initial idea for blob detection was to import the grey scale image as a matrix of values. Then iterate over it looking for a difference in values or checking against a threshold value. But I struggled getting the image in as a matrix and even using an example matrix the code wasn't running very quickly or reliably.
+The next idea had was another fixed design, but with a simpler shape. I decided to go wth this idea rather than the former so this was the first iteration that actually got cut. I found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the third iteration by making the increacing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
+
+After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the fame I cut and used for most of the prototyping phase of the project.
+
+For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added to much weight. I furthered the design of the hinge by squaring off one end to make it more ridged and adding a hole to hold it together
+
+## Blob Detection
+
+My initial idea for blob detection was to import the grey scale image as a matrix of values. Then to iterate over it, looking for a difference in values or checking against a threshold value. However, I struggled getting the image in as a matrix and even using an example matrix because the code wasn't running very quickly or reliably.
 
 I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too over powered for my project.
 
-So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(doh) blob detection. this was lightweight meaning it should be quick enough the only issue I then had was getting the image from the camera into the right format. Since the doh blob need a numpy array as luck would have it skimage has a built in converter.
+So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it should be quick enough. The only issue I had then was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the doh blob detection needs a numpy array to function.
 
-With this working a passed it an image from the camera and save the image with a circle around the blob.
+With this working I passed it an image from the camera and saved the image with a circle around the blob.
 
 ![blob circle](log/blobbounding2.png)
 
@@ -129,107 +136,107 @@ I then connected the LCD and got blob detection working with that.
 
 ## Telegram
 
-Then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot) this involved more work than I had initially expected since passing variable around wasn't as easy as I had hoped.
+Then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot). This involved more work than I had initially anticipated since passing variables around wasn't as easy as I had hoped.
 
-I decided to use telegram to add remote control so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
+I decided to use telegram to add remote control, so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
 
 ### Commands
 
 | Command     | Parameters                           | Description                    |
 | ----------- | ------------------------------------ | ------------------------------ |
-| help        | n/a                                  | Show the help menu.            |
-| pickcolour  | pick from list of tints              | Preset tints/colours.          |
-| pickmode    | pick manual,tint,points or full auto | Change current mode.           |
-| tint        | percentage                           | Sets the tint of the lenses.   |
-| image       | n/a                                  | Shows you the current image.   |
-| up          | n/a                                  | See if the bot is up.          |
-| temp        | n/a                                  | See the CPU temperature.       |
-| start       | n/a                                  | Starts shades.                 |
-| stop        | n/a                                  | Stop shades.                   |
-| exit        | admin only                           | Exit shades.                   |
-| reboot      | admin only                           | Reboot shades.                 |
-| halt        | admin only                           | Shutdown shades.               |
-| uprecords   | n/a                                  | See up time.                   |
-| debug       | n/a                                  | Toggles debug.                 |
-| buttons     | admin only                           | Toggles buttons.               |
+| help        | N/A                                  | Show the help menu.            |
+| pickcolour  | Pick from list of tints              | Preset tints/colours.          |
+| pickmode    | Pick manual,tint,points or full auto | Change current mode.           |
+| tint        | Percentage                           | Sets the tint of the lenses.   |
+| image       | N/A                                  | Shows you the current image.   |
+| up          | N/A                                  | See if the bot is up.          |
+| temp        | N/A                                  | See the CPU temperature.       |
+| start       | N/A                                  | Starts shades.                 |
+| stop        | N/A                                  | Stop shades.                   |
+| exit        | Admin only                           | Exit shades.                   |
+| reboot      | Admin only                           | Reboot shades.                 |
+| halt        | Admin only                           | Shutdown shades.               |
+| uprecords   | N/A                                  | See up time.                   |
+| debug       | N/A                                  | Toggles debug.                 |
+| buttons     | Admin only                           | Toggles buttons.               |
 | colourset   | fore/back@0/255,0/255,0/255          | Sets the colour of the lenses. |
-| allowallids | admin only                           | Toggles if admin id is needed. |
+| allowallids | Admin only                           | Toggles if admin ID is needed. |
 
 
-## Capacitive touch sensor
+## Capacitive Touch Sensor
 
-After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, So that I would be able to control the glasses with out having to have it connected to the internet.
+After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, so that I would be able to control the glasses without having to have it connected to the internet.
 
 ### Wiring
 
 | Function | Colour | Pi pins chip side | Pi pin | Colour | Function |
 | -------- | ------ | ----------------- | ------ | ------ | -------- |
 | 3.3v     | nc     | 1                 | 2      | nc     | 5v       |
-| button 1 | orange | 3                 | 4      | red    | 5v       |
-| button 2 | yellow | 5                 | 6      | black  | gnd      |
-| button 3 | green  | 7                 | 8      | blues  | button 4 |
-| gnd      | nc     | 9                 | 10     | purple | button 5 |
+| Button 1 | Orange | 3                 | 4      | Red    | 5v       |
+| Button 2 | Yellow | 5                 | 6      | Black  | gnd      |
+| Button 3 | Green  | 7                 | 8      | Blues  | Button 4 |
+| gnd      | nc     | 9                 | 10     | Purple | Button 5 |
 
 ### Buttons
 
 | Button | Colour | Pressed      | Held                |
 | ------ | ------ | ------------ | ------------------- |
-| 1      | orange | scroll tints | reset tint to clear |
-| 2      | yellow | scroll modes | reset to manual     |
-| 3      | green  | debug        | turn off            |
-| 4      | blue   | stop         | start               |
-| 5      | purple | n/a          | exit                |
+| 1      | Orange | Scroll tints | Reset tint to clear |
+| 2      | Yellow | Scroll modes | Reset to manual     |
+| 3      | Green  | Debug        | Turn off            |
+| 4      | Blue   | Stop         | Start               |
+| 5      | Purple | N/A          | Exit                |
 
-### Capacitive touch control
+### Capacitive Touch Control
 
 [Mode change](log/capmode.MOV)
 [Tint change](log/tint.MOV)
 [Debug toggle](log/debug.MOV)
 
-# Criteria met
+# Criteria Met
 
 -   [x] Make a set of smart sun classes.
 -   [x] Add automatic to control the opacity.
--   [x] Add camera to make dark point over bright points.
+-   [x] Add camera to make dark points over bright points.
 -   [x] Add options to swap between modes.
--   [ ] Auto react headlight/Safety improvements.
+-   [ ] Auto react headlight/safety improvements.
 
-I met all of my stage criteria except the reacting to headlights which I decided wasn't a good idea since this could interfere with the drivers sight so will leave that mode out but I added other safety features like resetting of you hold the mode button and except for an catastrophic error the system is fail safe not deadly meaning it clears the LCD before exiting
+I met all of my stage criteria, except the reacting to headlights. Which I decided wasn't a good idea, since this could interfere with the drivers sight, so I will leave that mode out. I added other safety features like resetting when you hold the mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
 
-I believe my project has meet at least level technology readiness level 4, Even pushing some level 5 criteria as defined by the European Commission.
+I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission.
 
-| level  | definition                                                                                                                        |
+| Level  | Definition                                                                                                                        |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| TRL 1. | basic principles observed                                                                                                         |
-| TRL 2. | technology concept formulated                                                                                                     |
-| TRL 3. | experimental proof of concept                                                                                                     |
-| TRL 4. | technology validated in lab                                                                                                       |
-| TRL 5. | technology validated in relevant environment (industrially relevant environment in the case of key enabling technologies)         |
-| TRL 6. | technology demonstrated in relevant environment (industrially relevant environment in the case of key enabling technologies)      |
-| TRL 7. | system prototype demonstration in operational environment                                                                         |
-| TRL 8. | system complete and qualified                                                                                                     |
-| TRL 9. | actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space) |
+| TRL 1. | Basic principles observed.                                                                                                         |
+| TRL 2. | Technology concept formulated.                                                                                                     |
+| TRL 3. | Experimental proof of concept.                                                                                                     |
+| TRL 4. | Technology validated in lab.                                                                                                       |
+| TRL 5. | Technology validated in relevant environment (industrially relevant environment in the case of key enabling technologies).         |
+| TRL 6. | Technology demonstrated in relevant environment (industrially relevant environment in the case of key enabling technologies).      |
+| TRL 7. | System prototype demonstration in operational environment.                                                                         |
+| TRL 8. | System complete and qualified.                                                                                                     |
+| TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
 The European Association of Research and Technology Organisations (EARTO)
-have a slightly more relevant scale of TRL.
+has a slightly more relevant scale of TRL.
 
 ![trl](TRLPROPODESED.png)
 
-I still believe I'm level 4 with aspects of level 5 with this scale.
+I still believe I'm level 4, with aspects of level 5 acording to this scale.
 
-# Future development
+# Future Development
 
-My setup is mostly a proof of concept for a full prototype/production model I would use a chip with high IO rates like a DSLR image processing chip, with a low quality, high frame rate camera and a bare LCD.
+My setup is mostly a proof of concept. For a full prototype/production model, I would use a chip with high IO rates like a DSLR image processing chip, with a low quality and high frame rate camera with a bare LCD.
 
-With that I would be able to increase the communication speed since the IO is the limiting factor on the current setup.
+Becuse of the image processing chip I would be able to increase the communication speed, since the IO is the limiting factor on the current setup.
 
-The biggest IO limit at the moment is the LCD and this is because the only reasonably prices LCD at this size I could find uses an SPI communication link and the LCD driver chip is fairly slow using this link.
+The biggest IO limit at the moment is the LCD, this is because the only reasonably priced LCD at this size that I could find use an SPI communication link. Also the LCD driver chip is fairly slow using this link.
 
-The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
+The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
 
-Adding [prescription](https://www.ttp.com/case-studies/electronic_lenses) while taking to course mates about my project one of them mentioned this research which could be a cool addition.
+While talking to other students on the course about my project, one individual mentioned research which could add dynamic [prescription](https://www.ttp.com/case-studies/electronic_lenses). I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
-**\<>** by Jo Hawkins using **Atom** and **GitHub**
+**\<>** By Jo Hawkins using **Atom** and **GitHub**
 
 # Appendix
 
