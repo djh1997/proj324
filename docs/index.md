@@ -10,13 +10,13 @@ A report submitted to the University of Plymouth in partial fulfilment for the d
 
 This is the criteria I would like to meet, to feel as though I have created a successful project.
 
-| Stage | Name                        | Description                                      |
-| ----- | --------------------------- | ------------------------------------------------ |
-| 1     | Smart shades                | Make a set of smart sun classes                  |
-| 2     | Auto smart shades           | Add LDR to control the opacity                   |
-| 3     | Auto smart point shades     | Add camera to make darks point over bright points |
-| 4     | Controllable smart shades   | Add options to swap between modes                |
-| 5     | Driving/safety improvements | Auto react headlights etc.                       |
+| Stage | Name                        | Description                                        |
+| ----- | --------------------------- | -------------------------------------------------- |
+| 1     | Smart shades                | Make a set of smart sun classes                    |
+| 2     | Auto smart shades           | Add LDR to control the opacity                     |
+| 3     | Auto smart point shades     | Add camera to make darks points over bright points |
+| 4     | Controllable smart shades   | Add options to swap between modes                  |
+| 5     | Driving/safety improvements | Auto react headlights etc.                         |
 
 ## Inspiration
 
@@ -62,7 +62,7 @@ This works like so;
 2.  The polarized light then passes through the transparent backplane electrode.
 3.  As the polarized light passes through the Liquid crystal fluid it gets twisted into the horizontal plane.
 4.  The polarized light passes through the transparent pixel electrode.
-5.  Because the light is  polarized in the horizontal plane, it passes through the front horizontal polarizer.
+5.  Because the light is polarized in the horizontal plane, it passes through the front horizontal polarizer.
 
 I will be using this effect to reduce the amount of light reaching the users eyes.
 
@@ -72,7 +72,7 @@ I will be using this effect to reduce the amount of light reaching the users eye
 | -------- | ------ | ----------------- | ------ | ------- | -------- |
 | vcc      | Orange | 17                | 18     | Grey    | rs       |
 | sda      | Yellow | 19                | 20     | Black/P | gnd      |
-| N/A         | nc     | 21                | 22     | Blue    | reset    |
+| N/A      | nc     | 21                | 22     | Blue    | reset    |
 | scl      | Green  | 23                | 24     | White   | cs       |
 
 I connected the LCD and displayed some random size and location spots of different opacity on the screen.
@@ -162,7 +162,6 @@ I decided to use telegram to add remote control, so that you could adjust the co
 | colourset   | fore/back@0/255,0/255,0/255          | Sets the colour of the lenses. |
 | allowallids | Admin only                           | Toggles if admin ID is needed. |
 
-
 ## Capacitive Touch Sensor
 
 After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, so that I would be able to control the glasses without having to have it connected to the internet.
@@ -205,8 +204,8 @@ I met all of my stage criteria, except the reacting to headlights. Which I decid
 
 I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission.
 
-| Level  | Definition                                                                                                                        |
-| ------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| Level  | Definition                                                                                                                         |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | TRL 1. | Basic principles observed.                                                                                                         |
 | TRL 2. | Technology concept formulated.                                                                                                     |
 | TRL 3. | Experimental proof of concept.                                                                                                     |
@@ -217,8 +216,7 @@ I believe my project has meet at least technology readiness level 4, even pushin
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO)
-has a slightly more relevant scale of TRL.
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL.
 
 ![trl](TRLPROPODESED.png)
 
