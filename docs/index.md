@@ -22,13 +22,13 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 [pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
 
-I saw this pc case and got the idea for reactice sun glsses while i was reashing to see if this had alred been done i found thses.
+I saw this pc case and got the idea for reactive sun glasses while i was researching to see if this had already been done I found theses.
 
 [indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
 [ctrl-eyewear](http://www.ctrl-eyewear.com/)
 
-which start down the path i would like to take but are binary and i aould like different levels of tining and active shading.
+which start down the path i would like to take but are binary and i would like different levels of tinting and active shading.
 
 ## Plan
 
@@ -112,7 +112,7 @@ I decided to laser cut the frame since this would be more cost and time effectiv
 
 Initially my idea was to heat the acrylic and bend at the red line, meaning that you wouldn't be able to fold them.
 
-The next idea had was another fixed design, but with a simpler shape. I decided to go wth this idea rather than the former so this was the first iteration that actually got cut. I found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the third iteration by making the increacing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
+The next idea had was another fixed design, but with a simpler shape. I decided to go with this idea rather than the former so this was the first iteration that actually got cut. I found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
 
 After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the fame I cut and used for most of the prototyping phase of the project.
 
@@ -136,7 +136,7 @@ I then connected the LCD and got blob detection working with that.
 
 ## Telegram
 
-Then I started to convert the shades.py (the file that controls the lcd and camera) and telegrambot.py (the script that enables remote control via a chat client bot). This involved more work than I had initially anticipated since passing variables around wasn't as easy as I had hoped.
+Then I started to convert the shades.py (the file that controls the LCD and camera) and telegrambot.py (the script that enables remote control via a chat client bot). This involved more work than I had initially anticipated since passing variables around wasn't as easy as I had hoped.
 
 I decided to use telegram to add remote control, so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
 
@@ -220,13 +220,13 @@ The European Association of Research and Technology Organisations (EARTO) has a 
 
 ![trl](TRLPROPODESED.png)
 
-I still believe I'm level 4, with aspects of level 5 acording to this scale.
+I still believe I'm level 4, with aspects of level 5 according to this scale.
 
 # Future Development
 
 My setup is mostly a proof of concept. For a full prototype/production model, I would use a chip with high IO rates like a DSLR image processing chip, with a low quality and high frame rate camera with a bare LCD.
 
-Becuse of the image processing chip I would be able to increase the communication speed, since the IO is the limiting factor on the current setup.
+Because of the image processing chip I would be able to increase the communication speed, since the IO is the limiting factor on the current setup.
 
 The biggest IO limit at the moment is the LCD, this is because the only reasonably priced LCD at this size that I could find use an SPI communication link. Also the LCD driver chip is fairly slow using this link.
 
