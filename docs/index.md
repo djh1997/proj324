@@ -12,23 +12,23 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 | Stage | Name                        | Description                                        |
 | ----- | --------------------------- | -------------------------------------------------- |
-| 1     | Smart shades                | Make a set of smart sun classes                    |
+| 1     | Smart shades                | Make a set of smart sun glasses                    |
 | 2     | Auto smart shades           | Add LDR to control the opacity                     |
 | 3     | Auto smart point shades     | Add camera to make darks points over bright points |
 | 4     | Controllable smart shades   | Add options to swap between modes                  |
-| 5     | Driving/safety improvements | Auto react headlights etc.                         |
+| 5     | Driving/safety improvements | Auto react to headlights etc.                      |
 
 ## Inspiration
 
 [pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
 
-I saw this pc case and got the idea for reactive sun glasses while i was researching to see if this had already been done I found theses.
+I saw this pc case and got the idea for reactive sun glasses while I was researching to see if this had already been done I found theses.
 
 [indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
 [ctrl-eyewear](http://www.ctrl-eyewear.com/)
 
-which start down the path i would like to take but are binary and i would like different levels of tinting and active shading.
+Which start down the path I would like to take but are binary and I would like different levels of tinting and active shading.
 
 ## Plan
 
@@ -81,6 +81,10 @@ I connected the LCD and displayed some random size and location spots of differe
 
 ## FOV
 
+![image](lcd/fov.svg)
+
+Field of view(FoV) is the area that you can can see this is normally measured in degrees. This means for simple mapping I need the FoV of the camera and LCD to be the same the other issues would be aspect ratio and distortion.
+
 ### LCD
 
 ![image](lcd/lcdfovcalc.png)
@@ -112,21 +116,21 @@ I decided to laser cut the frame since this would be more cost and time effectiv
 
 Initially my idea was to heat the acrylic and bend at the red line, meaning that you wouldn't be able to fold them.
 
-The next idea had was another fixed design, but with a simpler shape. I decided to go with this idea rather than the former so this was the first iteration that actually got cut. I found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
+The next idea I had was another fixed design, but with a simpler shape. I decided to go with this idea rather than the former so this was the first iteration that actually got cut. I found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
 
-After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the fame I cut and used for most of the prototyping phase of the project.
+After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the frame I cut and used for most of the prototyping phase of the project.
 
-For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added to much weight. I furthered the design of the hinge by squaring off one end to make it more ridged and adding a hole to hold it together
+For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. I furthered the design of the hinge by squaring off one end to make it more ridged and adding a hole to hold it together.
 
 ## Blob Detection
 
 My initial idea for blob detection was to import the grey scale image as a matrix of values. Then to iterate over it, looking for a difference in values or checking against a threshold value. However, I struggled getting the image in as a matrix and even using an example matrix because the code wasn't running very quickly or reliably.
 
-I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too over powered for my project.
+I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too overpowered for my project.
 
-So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it should be quick enough. The only issue I had then was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the doh blob detection needs a numpy array to function.
+So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it should be quick enough. The only issue I had then was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
 
-With this working I passed it an image from the camera and saved the image with a circle around the blob.
+With this working I passed the program an image from the camera and saved the image with a circle around the blob.
 
 ![blob circle](log/blobbounding2.png)
 
@@ -194,11 +198,11 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 
 # Criteria Met
 
--   [x] Make a set of smart sun classes.
--   [x] Add automatic to control the opacity.
+-   [x] Make a set of smart sun glasses.
+-   [x] Add automatic of control the opacity.
 -   [x] Add camera to make dark points over bright points.
 -   [x] Add options to swap between modes.
--   [ ] Auto react headlight/safety improvements.
+-   [ ] Auto react to headlight/safety improvements.
 
 I met all of my stage criteria, except the reacting to headlights. Which I decided wasn't a good idea, since this could interfere with the drivers sight, so I will leave that mode out. I added other safety features like resetting when you hold the mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
 
