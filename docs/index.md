@@ -12,7 +12,7 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 | Stage | Name                        | Description                                        |
 | ----- | --------------------------- | -------------------------------------------------- |
-| 1     | Smart shades                | Make a set of smart sun glasses                    |
+| 1     | Smart shades                | Make a set of smart sunglasses                    |
 | 2     | Auto smart shades           | Add LDR to control the opacity                     |
 | 3     | Auto smart point shades     | Add camera to make darks points over bright points |
 | 4     | Controllable smart shades   | Add options to swap between modes                  |
@@ -22,17 +22,17 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 [pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
 
-I saw this pc case and got the idea for reactive sun glasses while I was researching to see if this had already been done I found theses.
+I saw this pc case and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses.
 
 [indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
 [ctrl-eyewear](http://www.ctrl-eyewear.com/)
 
-Which start down the path I would like to take but are binary and I would like different levels of tinting and active shading.
+This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading.
 
 ## Plan
 
-The product's above, along with Paul Davey's lectures last year inspired my idea.
+The products above, along with Paul Davey's lectures last year inspired my idea.
 
 The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually I will add a camera to make point control which will block bright spots such as projectors and the sun, and dim them to reduce squinting.
 
@@ -40,7 +40,7 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![final mock-up design image](final_design_plan.svg)
 
-So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add a LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels.
+So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add an LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels.
 
 Next I will add a camera to the system so that the system can detect bright points, hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the different modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
 
@@ -106,11 +106,11 @@ $$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
 
 $$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
 
-So, this will cause issues since the dot placed on the LCD will end up in the the wrong place without scaling.
+So, this will cause issues since the dot placed on the LCD will end up in the wrong place without scaling.
 
 ## Frame
 
-I decided to laser cut the frame since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can the the design iterations.
+I decided to laser cut the frame since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can see the design iterations.
 
 ![image](frame/devcycle.png)
 
@@ -198,7 +198,7 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 
 # Criteria Met
 
--   [x] Make a set of smart sun glasses.
+-   [x] Make a set of smart sunglasses.
 -   [x] Add automatic of control the opacity.
 -   [x] Add camera to make dark points over bright points.
 -   [x] Add options to swap between modes.
@@ -238,7 +238,7 @@ The other main issue is the fact this system assumes your eyes are always direct
 
 While talking to other students on the course about my project, one individual mentioned research which could add dynamic [prescription](https://www.ttp.com/case-studies/electronic_lenses). I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
-**\<>** By Jo Hawkins using **Atom** and **GitHub**
+**\<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
 # Appendix
 
@@ -1031,7 +1031,7 @@ def sandd():
 
             timer.append(time())  # add timer point
 
-            disp.display()  # put the drawing on the the LCD's
+            disp.display()  # put the drawing on the LCD's
 
             timer.append(time())  # add timer point
 
