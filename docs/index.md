@@ -12,7 +12,7 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 | Stage | Name                        | Description                                        |
 | ----- | --------------------------- | -------------------------------------------------- |
-| 1     | Smart shades                | Make a set of smart sunglasses                    |
+| 1     | Smart shades                | Make a set of smart sunglasses                     |
 | 2     | Auto smart shades           | Add LDR to control the opacity                     |
 | 3     | Auto smart point shades     | Add camera to make darks points over bright points |
 | 4     | Controllable smart shades   | Add options to swap between modes                  |
@@ -83,7 +83,13 @@ I connected the LCD and displayed some random size and location spots of differe
 
 ![image](lcd/fov.svg)
 
-Field of view(FoV) is the area that you can can see this is normally measured in degrees. This means for simple mapping I need the FoV of the camera and LCD to be the same the other issues would be aspect ratio and distortion.
+Field of view(FoV) is the area that you can can see this is normally measured in degrees. This means for simple mapping I need the FoV of the camera and LCD to be the same the other issues would be;
+
+aspect ratio
+![image](lcd/aspectration.svg)
+
+distortion
+![image](lcd/distortion.png)
 
 ### LCD
 
@@ -238,7 +244,7 @@ The other main issue is the fact this system assumes your eyes are always direct
 
 While talking to other students on the course about my project, one individual mentioned research which could add dynamic [prescription](https://www.ttp.com/case-studies/electronic_lenses). I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
-**\<>** By David Joseph Hawkins using **Atom** and **GitHub**
+**\\&lt;>** By David Joseph Hawkins using **Atom** and **GitHub**
 
 # Appendix
 
