@@ -182,3 +182,11 @@ tidy code by moving jokes, making buttons more dynamic and work on report
 # 01/05/2018
 
 work on report, poster and add try except to telegrambot
+
+# 08/05/2018
+
+add vission explinations and get mum to read thought reoprt
+
+# 09/05/2018
+
+improve wiering and work on poset and report
