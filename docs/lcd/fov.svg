@@ -148,9 +148,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="-1319.2215"
-     inkscape:cy="-657.76973"
+     inkscape:zoom="0.66384846"
+     inkscape:cx="1045.4193"
+     inkscape:cy="290.82627"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -185,7 +185,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -395,5 +395,27 @@
        y="145.3062"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.69575214px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.36739379"
+       x="-544.57623"
+       y="91.684792"
+       id="text864"><tspan
+         sodipodi:role="line"
+         id="tspan862"
+         x="-544.57623"
+         y="91.684792"
+         style="stroke-width:0.36739379">good</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.69575214px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.36739379"
+       x="-544.57617"
+       y="258.76208"
+       id="text868"><tspan
+         sodipodi:role="line"
+         id="tspan866"
+         x="-544.57617"
+         y="258.76208"
+         style="stroke-width:0.36739379">bad</tspan></text>
   </g>
 </svg>
