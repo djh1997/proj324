@@ -98,9 +98,9 @@ distortion
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
-$$ { \\frac {128} {86.05}} = 1.48 \\text{ vertical pixels per degree}$$
+$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
 
-$$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
+$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 
 ### Camera
 
@@ -108,9 +108,9 @@ $$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
 
 53.50 degrees horizontal, 41.41 degrees vertical field of view
 
-$$ { \\frac {1944} {41.41}} = 46.95 \\text{ vertical pixels per degree}$$
+$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
 
-$$ { \\frac {160} {98.8}} = 48.45 \\text{ vertical pixels per degree}$$
+$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
 
 So, this will cause issues since the dot placed on the LCD will end up in the wrong place without scaling.
 
@@ -252,9 +252,13 @@ While talking to other students on the course about my project, one individual m
 
 # Appendix
 
+##Coding languages
+
 ![code](https://wakatime.com/share/@677847e8-ed61-4250-aee6-27df12870cb2/f1bdd8d3-4423-4662-bba8-242959f8644c.svg)
 
-## telegrambot.py
+##Code
+
+### telegrambot.py
 
 ```python
 """Telegram control file."""
@@ -704,7 +708,7 @@ def telegramMain():
 telegramMain()
 ```
 
-## shades.py
+### shades.py
 
 ```python
 """Pi0to chromic control file."""
