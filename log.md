@@ -183,10 +183,14 @@ tidy code by moving jokes, making buttons more dynamic and work on report
 
 work on report, poster and add try except to telegrambot
 
+# 02/05/2018
+
+get toggle-able buttons working and add more diagrams to the poster
+
 # 08/05/2018
 
-add vission explinations and get mum to read thought reoprt
+add vision explanations and get mum to read thought report
 
 # 09/05/2018
 
-improve wiering and work on poset and report
+improve wiring and work on poster and report
