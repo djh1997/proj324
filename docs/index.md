@@ -20,9 +20,7 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 ## Inspiration
 
-[pc case](https://www.youtube.com/watch?v=E5d7ynJXiZc)
-
-I saw this pc case and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses.
+I saw this [video](https://youtu.be/E5d7ynJXiZc?t=4m32s) about this [case](https://www.ibuypower.com/Signature/Snowblind) and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses.
 
 [indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
 
