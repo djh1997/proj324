@@ -54,7 +54,7 @@ I will be using LCD's to reduce the amount of light reaching the users eyes.
 
 ![LCD workings](lcd/lcdworkings.png)
 
-In this diagram from Paul Davey's lecture on LCD's last year, you can see the inner working of an individual pixel.
+In this diagram from Paul Davey's [lecture](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5) on LCD's last year, you can see the inner working of an individual pixel.
 
 This works like so;
 
@@ -200,6 +200,8 @@ For the final design I only used three buttons since the frame was beginning to 
 
 ![buttonlocations](frame/buttonlocations.svg)
 
+I also decided that I would keep all the buttons on one side of the frame, since the capacitive touch sensitivity is a bit to high and I cant change it on this board. This means I'm less likely to have accidental readings from touching the wire.
+
 ### Capacitive Touch Control
 
 [Mode change](log/capmode.MOV)
@@ -230,7 +232,7 @@ I believe my project has meet at least technology readiness level 4, even pushin
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL.
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of [TRL](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7).
 
 ![TRL](TRLPROPODESED.png)
 
@@ -251,6 +253,16 @@ While talking to other students on the course about my project, one individual m
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
 # Appendix
+
+##External sources
+
+Paul Davey's lecture
+
+https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5
+
+TRL
+
+http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7
 
 ##Coding languages
 
