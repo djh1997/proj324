@@ -36,6 +36,14 @@ The products above, along with Paul Davey's lectures last year inspired my idea.
 
 The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually I will add a camera to make point control which will block bright spots such as projectors and the sun, and dim them to reduce squinting.
 
+### Potential issues
+
+-   IO speed, depending on the solutions used i could end up running into IO speed bottle necks affect frame rate
+-   frame rate for the active points would need to be fairly high to stop nauseating effect.
+-   camera distortion, I would like to use a camera with little to no distortion this would make image processing easier.
+-   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
+-   Aspect ratio, mismatch of aspect ratios with out use of accelerometers for predictive tracking could cause issues
+
 # Final Mock-up
 
 ![final mock-up design image](final_design_plan.svg)
@@ -254,21 +262,21 @@ While talking to other students on the course about my project, one individual m
 
 # Appendix
 
-##External sources
+## External sources
 
 Paul Davey's lecture
 
-https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5
+[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
 
 TRL
 
-http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7
+[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
 
-##Coding languages
+## Coding languages
 
 ![code](https://wakatime.com/share/@677847e8-ed61-4250-aee6-27df12870cb2/f1bdd8d3-4423-4662-bba8-242959f8644c.svg)
 
-##Code
+## Code
 
 ### telegrambot.py
 
