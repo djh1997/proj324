@@ -42,6 +42,11 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 -   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
 -   Aspect ratio, mismatch of aspect ratios with out use of accelerometers for predictive tracking could cause issues
 
+### Timeline
+
+![gantt](Gantt/gantt.png)
+
+
 # Final Mock-up
 
 ![final mock-up design image](final_design_plan.svg)
