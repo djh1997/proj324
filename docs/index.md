@@ -98,9 +98,9 @@ distortion
 
 98.8 degrees horizontal, 86.05 degrees vertical field of view
 
-$$ { \frac {128} {86.05}} = 1.48 \text{ vertical pixels per degree}$$
+$$ { \\frac {128} {86.05}} = 1.48 \\text{ vertical pixels per degree}$$
 
-$$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
+$$ { \\frac {160} {98.8}} = 1.62 \\text{ horizontal pixels per degree}$$
 
 ### Camera
 
@@ -108,9 +108,9 @@ $$ { \frac {160} {98.8}} = 1.62 \text{ horizontal pixels per degree}$$
 
 53.50 degrees horizontal, 41.41 degrees vertical field of view
 
-$$ { \frac {1944} {41.41}} = 46.95 \text{ vertical pixels per degree}$$
+$$ { \\frac {1944} {41.41}} = 46.95 \\text{ vertical pixels per degree}$$
 
-$$ { \frac {160} {98.8}} = 48.45 \text{ vertical pixels per degree}$$
+$$ { \\frac {160} {98.8}} = 48.45 \\text{ vertical pixels per degree}$$
 
 So, this will cause issues since the dot placed on the LCD will end up in the wrong place without scaling.
 
@@ -196,6 +196,10 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 | 4      | Blue   | Stop         | Start               |
 | 5      | Purple | N/A          | Exit                |
 
+For the final design I only used three buttons since the frame was beginning to get a bit cluttered with wires and boards.
+
+![buttonlocations](frame/buttonlocations.svg)
+
 ### Capacitive Touch Control
 
 [Mode change](log/capmode.MOV)
@@ -244,9 +248,11 @@ The other main issue is the fact this system assumes your eyes are always direct
 
 While talking to other students on the course about my project, one individual mentioned research which could add dynamic [prescription](https://www.ttp.com/case-studies/electronic_lenses). I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
-**\\&lt;>** By David Joseph Hawkins using **Atom** and **GitHub**
+**<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
 # Appendix
+
+![code](https://wakatime.com/share/@677847e8-ed61-4250-aee6-27df12870cb2/f1bdd8d3-4423-4662-bba8-242959f8644c.svg)
 
 ## telegrambot.py
 
