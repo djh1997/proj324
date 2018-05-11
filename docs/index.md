@@ -46,7 +46,6 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![gantt](Gantt/gantt.png)
 
-
 # Final Mock-up
 
 ![final mock-up design image](final_design_plan.svg)
@@ -61,17 +60,16 @@ Next I will add a camera to the system so that the system can detect bright poin
 
 ### VHDL/FPGA(de o nano) vs. arm(stm32 vs. RPI)
 
-
 I'm leaning towards the arm side since the camera will likely be 30-60 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
 
 After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fact the pi doesn't have analogue io so the dimming of the LCD will be harder but this should be easily worked around.
 
-component                  | quantity | price(£)        | component type | chosen
--------------------------- | -------- | --------------- | -------------- | ------
-pi zero w                  | 1        | 9.60            | compute        | yes
-pi 3                       | 1        | 35              | compute        | no
-stm32                      | 1        | 18.11           | compute        | no
-de0nano                    | 1        | 67.16 to 84.46  | compute        | no
+| component | quantity | price(£)       | component type | chosen |
+| --------- | -------- | -------------- | -------------- | ------ |
+| pi zero w | 1        | 9.60           | compute        | yes    |
+| pi 3      | 1        | 35             | compute        | no     |
+| stm32     | 1        | 18.11          | compute        | no     |
+| de0nano   | 1        | 67.16 to 84.46 | compute        | no     |
 
 ## LCD
 
