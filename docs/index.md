@@ -88,6 +88,14 @@ The options for the camera were good but I picked the pi zero camera, since it h
 
 I will be using LCD's to reduce the amount of light reaching the users eyes.
 
+| component                  | quantity | price(£)       | component type | chosen |
+| -------------------------- | -------- | -------------- | -------------- | ------ |
+| MCT0144C6W128128PML        | 2        | 7.57           | lens           | no     |
+| DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
+| AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
+
+The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers available for the raspberry pi.
+
 ### Theory
 
 
