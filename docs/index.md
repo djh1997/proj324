@@ -58,11 +58,9 @@ Next I will add a camera to the system so that the system can detect bright poin
 
 ## Compute
 
-### VHDL/FPGA(de o nano) vs. arm(stm32 vs. RPI)
+### VHDL/FPGA(de0nano) vs. arm(stm32 vs. RPI)
 
-I'm leaning towards the arm side since the camera will likely be 30-60 fps and I believe that the arm will be quick enough. Also I think it will have better support for interfacing the camera and LCD also the STM boards have analogue io for the LDR and contrast for the LCD
-
-After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. this recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible the only issue with this will be the fact the pi doesn't have analogue io so the dimming of the LCD will be harder but this should be easily worked around.
+For the compute unit the main options I have are arm or FPGA. Theoretically the FPGA will have higher parallel thought put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
 
 | component | quantity | price(£)       | component type | chosen |
 | --------- | -------- | -------------- | -------------- | ------ |
@@ -71,15 +69,31 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 | stm32     | 1        | 18.11          | compute        | no     |
 | de0nano   | 1        | 67.16 to 84.46 | compute        | no     |
 
+I'm leaning towards the arm side since the camera will likely be 30-60 fps. I believe that an arm  chip will be quick enough. Also it will have better support for interfacing the camera and LCD, the STM boards have analogue IO for the LDR and contrast for the LCD
+
+After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. This recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible. The only issue with this will be the fact the pi doesn't have analogue IO so the dimming of the LCD will be harder but this should be easily worked around.
+
+## Camera
+
+| component      | quantity | price(£)        | component type | chosen |
+| -------------- | -------- | --------------- | -------------- | ------ |
+| pi zero camera | 1        | 15              | camera         | yes    |
+| pi camera      | 1        | 24              | camera         | no     |
+| ov7670         | 1        | 5 to 10         | camera         | no     |
+| ov7720         | 1        | .50 from ps eye | camera         | no     |
+
+The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries.
+
 ## LCD
 
 I will be using LCD's to reduce the amount of light reaching the users eyes.
 
 ### Theory
 
+
 ![LCD workings](lcd/lcdworkings.png)
 
-In this diagram from Paul Davey's [lecture](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)[^1] on LCD's last year, you can see the inner working of an individual pixel.
+In this diagram from Paul Davey's lecture[^1] on LCD's last year, you can see the inner working of an individual pixel.
 
 This works like so;
 
@@ -279,7 +293,7 @@ I believe my project has meet at least technology readiness level 4, even pushin
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of [TRL](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)[^2].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^2].
 
 ![TRL](TRLPROPODESED.png)
 
