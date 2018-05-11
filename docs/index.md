@@ -86,9 +86,15 @@ I will be using this effect to reduce the amount of light reaching the users eye
 | N/A      | nc     | 21                | 22     | Blue    | reset    |
 | scl      | Green  | 23                | 24     | White   | cs       |
 
+### Testing
+
 I connected the LCD and displayed some random size and location spots of different opacity on the screen.
 
 [random point video](log/IMG_1188.TRIM.MOV)
+
+After this I set the entire screen to one tint, then changed it when I did this I could the the update "wipe" across the screen.
+
+This will cause issues since I am already at the max spi interface speed
 
 ## FOV
 
