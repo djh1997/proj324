@@ -2,12 +2,11 @@
 import os
 from time import sleep, time
 
-from PIL import Image
-
 import Adafruit_GPIO.SPI as SPI
 import ST7735 as TFT
 from gpiozero import Button
 from picamera import PiCamera  # camera
+from PIL import Image
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
 
@@ -173,7 +172,7 @@ def tintButton(buttonTint):
 
 
 def modeset(modevar):
-    """0 manual 1 tint 2 point 3 auto 4 increment."""
+    """0 manual 1 tint 2 point 3 auto 4 negative."""
     global mode, averageFps, new
     try:  # try assuming modevar is a button
         if modevar.pin.number == 3 and modevar.is_held:
@@ -284,6 +283,20 @@ def sandd():
             timer = []  # reset internal variables
             points = []
             modeinternal = mode
+
+            if modeinternal == 4:
+                camera.hflip = True
+                camera.image_effect = 'negative'
+
+                while mode == 4:
+                    camera.capture(
+                        'mode4.jpg', use_video_port=True,
+                        thumbnail=None)
+                    disp.display(Image.open('mode4.jpg').rotate(90).resize(
+                        (WIDTH, HEIGHT)))
+
+                camera.hflip = False
+                camera.image_effect = 'none'
 
             if (modeinternal == 1) or (
                     modeinternal == 3):  # if mode with auto background tint
