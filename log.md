@@ -194,3 +194,15 @@ add vision explanations and get mum to read thought report
 # 09/05/2018
 
 improve wiring and work on poster and report
+
+# 10/05/2018
+
+add button diagram to poster and add references to Appendix, gantt and budget to report also I improved the inspiration section
+
+# 11/05/2018
+
+finalize poster add compute, LCD and camera choice
+
+# 12/05/2018
+
+add negative image mode
