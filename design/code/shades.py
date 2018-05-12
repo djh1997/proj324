@@ -30,7 +30,7 @@ processpoint = [['clear', 'display'], ['autoback', 'clear', 'display'], [
 ], [
     'autoback', 'take', 'convert', 'blob find', 'blob to point', 'clear',
     'point maths', 'display'
-]]
+], ['take', 'display']]
 averageFps = []
 running = 0
 tintShade = [32, 32, 32]
@@ -184,6 +184,12 @@ def modeset(modevar):
                 modevar = mode + 1
     except AttributeError:  # catch not button error
         print 'not button'  # print warning
+    if modevar == 4:
+        camera.hflip = True
+        camera.image_effect = 'negative'
+    else:
+        camera.hflip = False
+        camera.image_effect = 'none'
     mode = modevar  # set mode
     averageFps = []  # reset average fps array
     tintBackset([256, 256, 256])
@@ -284,20 +290,6 @@ def sandd():
             points = []
             modeinternal = mode
 
-            if modeinternal == 4:
-                camera.hflip = True
-                camera.image_effect = 'negative'
-
-                while mode == 4:
-                    camera.capture(
-                        'mode4.jpg', use_video_port=True,
-                        thumbnail=None)
-                    disp.display(Image.open('mode4.jpg').rotate(90).resize(
-                        (WIDTH, HEIGHT)))
-
-                camera.hflip = False
-                camera.image_effect = 'none'
-
             if (modeinternal == 1) or (
                     modeinternal == 3):  # if mode with auto background tint
                 timer.append(time())  # add timer point
@@ -306,13 +298,19 @@ def sandd():
                 if modeinternal == 3:
                     autoshadeset(ti)
 
-            if modeinternal >= 2:  # if active point shading mode
+            if modeinternal >= 2:  # if camera mode
                 timer.append(time())  # add timer point
 
                 camera.capture(
                     'image1.jpg', use_video_port=True,
                     thumbnail=None)  # capture image
 
+            if modeinternal == 4:  # if negative mode
+                timer.append(time())  # add timer point
+                disp.display(Image.open('image1.jpg').rotate(90).resize(
+                    (WIDTH, HEIGHT)))  # display image
+
+            if (modeinternal == 2) or (modeinternal == 3):  # if point shading
                 timer.append(time())  # add timer point
                 img1 = imread('image1.jpg', as_grey=True)
 
@@ -329,12 +327,13 @@ def sandd():
                         (blobs_doh[i][1] / 3) / scaleFactor, tintShade
                     ])  # x,y,r,tint
 
-            timer.append(time())  # add timer point
+            if modeinternal <= 3:  # not negative mode
+                timer.append(time())  # add timer point
 
-            disp.clear((tintBack[2], tintBack[1],
-                        tintBack[0]))  # set background tint
+                disp.clear((tintBack[2], tintBack[1],
+                            tintBack[0]))  # set background tint
 
-            if modeinternal >= 2:  # if active point shading mode
+            if (modeinternal == 2) or (modeinternal == 3):  # if point shading
                 timer.append(time())  # add timer point
                 for i in range(0,
                                len(points)):  # convert x,y,r to bounding box
@@ -347,9 +346,9 @@ def sandd():
                         fill=(points[i][3][2], points[i][3][1],
                               points[i][3][0]))  # draw
 
-            timer.append(time())  # add timer point
-
-            disp.display()  # put the drawing on the the LCD's
+            if modeinternal <= 3:  # not negative mode
+                timer.append(time())  # add timer point
+                disp.display()  # put the drawing on the the LCD's
 
             timer.append(time())  # add timer point
 

@@ -5,12 +5,11 @@ from functools import wraps
 from random import choice, randint
 from time import strftime
 
+from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
+                    runningstateset, sandd, tintBackset, tintShadeset)
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
-
-from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
-                    runningstateset, sandd, tintBackset, tintShadeset)
 
 # program variables
 test_box_api_key = []
@@ -316,7 +315,8 @@ def pickmode(bot, update):
         InlineKeyboardButton("manual", callback_data=0),
         InlineKeyboardButton("tint", callback_data=1),
         InlineKeyboardButton("point", callback_data=2),
-        InlineKeyboardButton("full auto", callback_data=3)
+        InlineKeyboardButton("full auto", callback_data=3),
+        InlineKeyboardButton("negative", callback_data=4)
     ]]  # setup layout
 
     reply_markup = InlineKeyboardMarkup(keyboard)  # create keyboard
@@ -329,7 +329,7 @@ def button(bot, update):
     """Create handler for inline keyboard."""
     query = update.callback_query
     tint = int(query.data)  # convert button id to int
-    if tint <= 3:  # if mode button
+    if tint <= 4:  # if mode button
         modeset(tint)  # set mode
         bot.edit_message_text(
             text="mode set to {}".format(tint),
