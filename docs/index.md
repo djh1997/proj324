@@ -317,7 +317,7 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
 
-While talking to other students on the course about my project, one individual mentioned research which could add dynamic [prescription](https://www.ttp.com/case-studies/electronic_lenses). I thought this would be a good addition to my project as the glasses would be truly dynamic.
+While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription[^5]. I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
@@ -1179,3 +1179,5 @@ def sandd():
 [^3]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
 
 [^4]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+
+[^5]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
