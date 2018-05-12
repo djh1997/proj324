@@ -267,7 +267,7 @@ def help(bot, update):
     update.message.reply_text(
         'help im stuck in a box \n\r' +
         '/pickcolour - pick from list of tints\n\r' +
-        '/pickmode- manual,tint,points or full auto\n\r' +
+        '/pickmode- pick from list of modes\n\r' +
         '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
         '/start starts shades\n\r' + '/stop stop shades\n\r' +
         'for more info check the [site](git.djh1997.uk)',

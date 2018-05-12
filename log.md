@@ -205,4 +205,4 @@ finalize poster add compute, LCD and camera choice
 
 # 12/05/2018
 
-add negative image mode
+add negative image mode and work on report

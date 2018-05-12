@@ -205,25 +205,25 @@ I decided to use telegram to add remote control, so that you could adjust the co
 
 ### Commands
 
-| Command     | Parameters                           | Description                    |
-| ----------- | ------------------------------------ | ------------------------------ |
-| help        | N/A                                  | Show the help menu.            |
-| pickcolour  | Pick from list of tints              | Preset tints/colours.          |
-| pickmode    | Pick manual,tint,points or full auto | Change current mode.           |
-| tint        | Percentage                           | Sets the tint of the lenses.   |
-| image       | N/A                                  | Shows you the current image.   |
-| up          | N/A                                  | See if the bot is up.          |
-| temp        | N/A                                  | See the CPU temperature.       |
-| start       | N/A                                  | Starts shades.                 |
-| stop        | N/A                                  | Stop shades.                   |
-| exit        | Admin only                           | Exit shades.                   |
-| reboot      | Admin only                           | Reboot shades.                 |
-| halt        | Admin only                           | Shutdown shades.               |
-| uprecords   | N/A                                  | See up time.                   |
-| debug       | N/A                                  | Toggles debug.                 |
-| buttons     | Admin only                           | Toggles buttons.               |
-| colourset   | fore/back@0/255,0/255,0/255          | Sets the colour of the lenses. |
-| allowallids | Admin only                           | Toggles if admin ID is needed. |
+| Command     | Parameters                  | Description                    |
+| ----------- | --------------------------- | ------------------------------ |
+| help        | N/A                         | Show the help menu.            |
+| pickcolour  | Pick from list of tints     | Preset tints/colours.          |
+| pickmode    | Pick from list of modes     | Change current mode.           |
+| tint        | Percentage                  | Sets the tint of the lenses.   |
+| image       | N/A                         | Shows you the current image.   |
+| up          | N/A                         | See if the bot is up.          |
+| temp        | N/A                         | See the CPU temperature.       |
+| start       | N/A                         | Starts shades.                 |
+| stop        | N/A                         | Stop shades.                   |
+| exit        | Admin only                  | Exit shades.                   |
+| reboot      | Admin only                  | Reboot shades.                 |
+| halt        | Admin only                  | Shutdown shades.               |
+| uprecords   | N/A                         | See up time.                   |
+| debug       | N/A                         | Toggles debug.                 |
+| buttons     | Admin only                  | Toggles buttons.               |
+| colourset   | fore/back@0/255,0/255,0/255 | Sets the colour of the lenses. |
+| allowallids | Admin only                  | Toggles if admin ID is needed. |
 
 ## Capacitive Touch Sensor
 
@@ -253,7 +253,7 @@ For the final design I only used three buttons since the frame was beginning to 
 
 ![buttonlocations](frame/buttonlocations.svg)
 
-I also decided that I would keep all the buttons on one side of the frame, since the capacitive touch sensitivity is a bit to high and I cant change it on this board. This means I'm less likely to have accidental readings from touching the wire.
+I also decided that I would keep all the buttons on one side of the frame, since the capacitive touch sensitivity is a bit to high and I cant change it on this board. This means I'm less likely to have accidental readings from touching the wire if I can keep the wires short.
 
 ### Capacitive Touch Control
 
@@ -339,12 +339,11 @@ from functools import wraps
 from random import choice, randint
 from time import strftime
 
+from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
+                    runningstateset, sandd, tintBackset, tintShadeset)
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
-
-from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
-                    runningstateset, sandd, tintBackset, tintShadeset)
 
 # program variables
 test_box_api_key = []
@@ -602,7 +601,7 @@ def help(bot, update):
     update.message.reply_text(
         'help im stuck in a box \n\r' +
         '/pickcolour - pick from list of tints\n\r' +
-        '/pickmode- manual,tint,points or full auto\n\r' +
+        '/pickmode- pick from list of modes\n\r' +
         '/tint percentage\n\r' + '/colourset fore-back@0-255,0-255,0-255\n\r' +
         '/start starts shades\n\r' + '/stop stop shades\n\r' +
         'for more info check the [site](git.djh1997.uk)',
@@ -650,7 +649,8 @@ def pickmode(bot, update):
         InlineKeyboardButton("manual", callback_data=0),
         InlineKeyboardButton("tint", callback_data=1),
         InlineKeyboardButton("point", callback_data=2),
-        InlineKeyboardButton("full auto", callback_data=3)
+        InlineKeyboardButton("full auto", callback_data=3),
+        InlineKeyboardButton("negative", callback_data=4)
     ]]  # setup layout
 
     reply_markup = InlineKeyboardMarkup(keyboard)  # create keyboard
@@ -663,7 +663,7 @@ def button(bot, update):
     """Create handler for inline keyboard."""
     query = update.callback_query
     tint = int(query.data)  # convert button id to int
-    if tint <= 3:  # if mode button
+    if tint <= 4:  # if mode button
         modeset(tint)  # set mode
         bot.edit_message_text(
             text="mode set to {}".format(tint),
@@ -786,12 +786,11 @@ telegramMain()
 import os
 from time import sleep, time
 
-from PIL import Image
-
 import Adafruit_GPIO.SPI as SPI
 import ST7735 as TFT
 from gpiozero import Button
 from picamera import PiCamera  # camera
+from PIL import Image
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
 
@@ -815,7 +814,7 @@ processpoint = [['clear', 'display'], ['autoback', 'clear', 'display'], [
 ], [
     'autoback', 'take', 'convert', 'blob find', 'blob to point', 'clear',
     'point maths', 'display'
-]]
+], ['take', 'display']]
 averageFps = []
 running = 0
 tintShade = [32, 32, 32]
@@ -957,22 +956,30 @@ def tintButton(buttonTint):
 
 
 def modeset(modevar):
-    """0 manual 1 tint 2 point 3 auto 4 increment."""
+    """0 manual 1 tint 2 point 3 auto 4 negative."""
     global mode, averageFps, new
     try:  # try assuming modevar is a button
         if modevar.pin.number == 3 and modevar.is_held:
             modevar = 0  # reset mode to manual
         elif modevar.pin.number == 3:
-            if mode >= 3:  # if at limit the reset to manual
+            if mode >= 4:  # if at limit the reset to manual
                 modevar = 0
             else:  # else increment
                 modevar = mode + 1
     except AttributeError:  # catch not button error
         print 'not button'  # print warning
+    if modevar == 4:
+        camera.hflip = True
+        camera.image_effect = 'negative'
+    else:
+        camera.hflip = False
+        camera.image_effect = 'none'
     mode = modevar  # set mode
-    print 'mode ' + str(mode)  # display new mode
     averageFps = []  # reset average fps array
+    tintBackset([256, 256, 256])
+    tintShadeset([32, 32, 32])
     new = True
+    print 'mode ' + str(mode)  # display new mode
 
 
 def runningstateget():
@@ -1075,13 +1082,19 @@ def sandd():
                 if modeinternal == 3:
                     autoshadeset(ti)
 
-            if modeinternal >= 2:  # if active point shading mode
+            if modeinternal >= 2:  # if camera mode
                 timer.append(time())  # add timer point
 
                 camera.capture(
                     'image1.jpg', use_video_port=True,
                     thumbnail=None)  # capture image
 
+            if modeinternal == 4:  # if negative mode
+                timer.append(time())  # add timer point
+                disp.display(Image.open('image1.jpg').rotate(90).resize(
+                    (WIDTH, HEIGHT)))  # display image
+
+            if (modeinternal == 2) or (modeinternal == 3):  # if point shading
                 timer.append(time())  # add timer point
                 img1 = imread('image1.jpg', as_grey=True)
 
@@ -1098,12 +1111,13 @@ def sandd():
                         (blobs_doh[i][1] / 3) / scaleFactor, tintShade
                     ])  # x,y,r,tint
 
-            timer.append(time())  # add timer point
+            if modeinternal <= 3:  # not negative mode
+                timer.append(time())  # add timer point
 
-            disp.clear((tintBack[2], tintBack[1],
-                        tintBack[0]))  # set background tint
+                disp.clear((tintBack[2], tintBack[1],
+                            tintBack[0]))  # set background tint
 
-            if modeinternal >= 2:  # if active point shading mode
+            if (modeinternal == 2) or (modeinternal == 3):  # if point shading
                 timer.append(time())  # add timer point
                 for i in range(0,
                                len(points)):  # convert x,y,r to bounding box
@@ -1116,9 +1130,9 @@ def sandd():
                         fill=(points[i][3][2], points[i][3][1],
                               points[i][3][0]))  # draw
 
-            timer.append(time())  # add timer point
-
-            disp.display()  # put the drawing on the LCD's
+            if modeinternal <= 3:  # not negative mode
+                timer.append(time())  # add timer point
+                disp.display()  # put the drawing on the the LCD's
 
             timer.append(time())  # add timer point
 

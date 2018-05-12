@@ -178,7 +178,7 @@ def modeset(modevar):
         if modevar.pin.number == 3 and modevar.is_held:
             modevar = 0  # reset mode to manual
         elif modevar.pin.number == 3:
-            if mode >= 3:  # if at limit the reset to manual
+            if mode >= 4:  # if at limit the reset to manual
                 modevar = 0
             else:  # else increment
                 modevar = mode + 1
