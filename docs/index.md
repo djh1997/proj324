@@ -82,7 +82,7 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 | ov7670         | 1        | 5 to 10         | camera         | no     |
 | ov7720         | 1        | .50 from ps eye | camera         | no     |
 
-The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries.
+The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries[^1].
 
 ## LCD
 
@@ -94,14 +94,14 @@ I will be using LCD's to reduce the amount of light reaching the users eyes.
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers available for the raspberry pi.
+The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers[^2] available for the raspberry pi.
 
 ### Theory
 
 
 ![LCD workings](lcd/lcdworkings.png)
 
-In this diagram from Paul Davey's lecture[^1] on LCD's last year, you can see the inner working of an individual pixel.
+In this diagram from Paul Davey's lecture[^3] on LCD's last year, you can see the inner working of an individual pixel.
 
 This works like so;
 
@@ -301,7 +301,7 @@ I believe my project has meet at least technology readiness level 4, even pushin
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^2].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^4].
 
 ![TRL](TRLPROPODESED.png)
 
@@ -1171,6 +1171,11 @@ def sandd():
     deinitlcd()  # close peripherals
     deinitcamera()
 ```
-[^1]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
 
-[^2]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+[^1]:[https://picamera.readthedocs.io/](https://picamera.readthedocs.io/)
+
+[^2]:[https://github.com/cskau/Python_ST7735](https://github.com/cskau/Python_ST7735)
+
+[^3]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
+
+[^4]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
