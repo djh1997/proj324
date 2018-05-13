@@ -32,11 +32,11 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ### Potential issues
 
--   IO speed, depending on the solutions used I could end up running into IO speed bottle necks affect frame rate
--   frame rate for the active points would need to be fairly high to stop nauseating effect.
--   camera distortion, I would like to use a camera with little to no distortion this would make image processing easier.
+-   IO speed, depending on the solutions used I could end up running into IO speed bottle necks affecting frame rate.
+-   Frame rate for the active points would need to be fairly high to stop nauseating effect.
+-   Camera distortion, I would like to use a camera with little to no distortion this would make image processing easier.
 -   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
--   Aspect ratio, mismatch of aspect ratios with out use of accelerometers for predictive tracking could cause issues
+-   Aspect ratio, mismatch of aspect ratios with out use of accelerometers for predictive tracking could cause issues.
 
 ### Timeline
 
