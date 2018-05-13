@@ -20,13 +20,9 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 ## Inspiration
 
-I saw this [video](https://youtu.be/E5d7ynJXiZc?t=4m32s) about this [case](https://www.ibuypower.com/Signature/Snowblind) and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses.
+I saw this video[^1] about this case[^2] and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses glasses[^3].
 
-[indie-go-go](https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/)
-
-[ctrl-eyewear](http://www.ctrl-eyewear.com/)
-
-This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading.
+This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading. To achieve this I will need to use a LCD panel with pixels instead of a single panel. Also one of this products main unique selling points is the sub 0.1 second light to dark time[^4] which ideally I will surpass. The other advantage have will be cost since theses cost $299 and I'm aiming to make for under £100[^5].
 
 ## Plan
 
@@ -36,7 +32,7 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ### Potential issues
 
--   IO speed, depending on the solutions used i could end up running into IO speed bottle necks affect frame rate
+-   IO speed, depending on the solutions used I could end up running into IO speed bottle necks affect frame rate
 -   frame rate for the active points would need to be fairly high to stop nauseating effect.
 -   camera distortion, I would like to use a camera with little to no distortion this would make image processing easier.
 -   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
@@ -82,7 +78,7 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 | ov7670         | 1        | 5 to 10         | camera         | no     |
 | ov7720         | 1        | .50 from ps eye | camera         | no     |
 
-The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries[^1].
+The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries[^6].
 
 ## LCD
 
@@ -94,14 +90,14 @@ I will be using LCD's to reduce the amount of light reaching the users eyes.
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers[^2] available for the raspberry pi.
+The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers[^7] available for the raspberry pi.
 
 ### Theory
 
 
 ![LCD workings](lcd/lcdworkings.png)
 
-In this diagram from Paul Davey's lecture[^3] on LCD's last year, you can see the inner working of an individual pixel.
+In this diagram from Paul Davey's lecture[^8] on LCD's last year, you can see the inner working of an individual pixel.
 
 This works like so;
 
@@ -277,7 +273,9 @@ I also decided that I would keep all the buttons on one side of the frame, since
 | 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 23.95 | 1        | 23.95 |
 | total                                                                                                                           |       |          | 94.25 |
 
-# Criteria Met
+# Conclusion
+
+## Criteria Met
 
 -   [x] Make a set of smart sunglasses.
 -   [x] Add automatic of control the opacity.
@@ -286,6 +284,22 @@ I also decided that I would keep all the buttons on one side of the frame, since
 -   [ ] Auto react to headlight/safety improvements.
 
 I met all of my stage criteria, except the reacting to headlights. Which I decided wasn't a good idea, since this could interfere with the drivers sight, so I will leave that mode out. I added other safety features like resetting when you hold the mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
+
+## Existing market
+
+| component  | price |
+| ---------- | ----- |
+| pi 0 W     | 9.60  |
+| cap sensor | 0.74  |
+| LCD        | 20    |
+| camera     | 15    |
+| total      | 45.34 |
+
+This is considerably less than the existing market, so even with adding the fame and battery it will be cheaper.
+
+Although I have a lower refresh rate at the moment, I believe with a change of panel I will be able to run quicker.
+
+## Technology readiness level
 
 I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission.
 
@@ -301,7 +315,7 @@ I believe my project has meet at least technology readiness level 4, even pushin
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^4].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^9].
 
 ![TRL](TRLPROPODESED.png)
 
@@ -317,7 +331,7 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
 
-While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription[^5]. I thought this would be a good addition to my project as the glasses would be truly dynamic.
+While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription[^10]. I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
@@ -1171,13 +1185,21 @@ def sandd():
     deinitlcd()  # close peripherals
     deinitcamera()
 ```
+[^1]:[https://youtu.be/E5d7ynJXiZc?t=4m32s](https://youtu.be/E5d7ynJXiZc?t=4m32s)
 
-[^1]:[https://picamera.readthedocs.io/](https://picamera.readthedocs.io/)
+[^2]:[https://www.ibuypower.com/Signature/Snowblind](https://www.ibuypower.com/Signature/Snowblind)
+[^3]:[http://www.e-tintproducts.com](http://www.e-tintproducts.com)
 
-[^2]:[https://github.com/cskau/Python_ST7735](https://github.com/cskau/Python_ST7735)
+[^4]:[http://www.e-tintproducts.com/technology/](http://www.e-tintproducts.com/technology/)
 
-[^3]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
+[^5]:[http://www.e-tintproducts.com/ctrl-eyewear/](http://www.e-tintproducts.com/ctrl-eyewear/)
 
-[^4]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+[^6]:[https://picamera.readthedocs.io/](https://picamera.readthedocs.io/)
 
-[^5]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
+[^7]:[https://github.com/cskau/Python_ST7735](https://github.com/cskau/Python_ST7735)
+
+[^8]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
+
+[^9]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+
+[^10]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)

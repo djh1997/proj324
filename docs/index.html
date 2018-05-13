@@ -260,10 +260,8 @@ code.language-yaml {
 </table>
 <h2 class="mume-header" id="inspiration">Inspiration</h2>
 
-<p>I saw this <a href="https://youtu.be/E5d7ynJXiZc?t=4m32s">video</a> about this <a href="https://www.ibuypower.com/Signature/Snowblind">case</a> and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses.</p>
-<p><a href="https://www.indiegogo.com/projects/ctrl-one-the-smartest-lcd-tint-changing-glasses-smart#/">indie-go-go</a></p>
-<p><a href="http://www.ctrl-eyewear.com/">ctrl-eyewear</a></p>
-<p>This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading.</p>
+<p>I saw this video<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> about this case<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses glasses<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</p>
+<p>This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading. To achieve this I will need to use a LCD panel with pixels instead of a single panel. Also one of this products main unique selling points is the sub 0.1 second light to dark time<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> which ideally I will surpass. The other advantage have will be cost since theses cost $299 and I’m aiming to make for under £100<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>.</p>
 <h2 class="mume-header" id="plan">Plan</h2>
 
 <p>The products above, along with Paul Davey’s lectures last year inspired my idea.</p>
@@ -271,7 +269,7 @@ code.language-yaml {
 <h3 class="mume-header" id="potential-issues">Potential issues</h3>
 
 <ul>
-<li>IO speed, depending on the solutions used i could end up running into IO speed bottle necks affect frame rate</li>
+<li>IO speed, depending on the solutions used I could end up running into IO speed bottle necks affect frame rate</li>
 <li>frame rate for the active points would need to be fairly high to stop nauseating effect.</li>
 <li>camera distortion, I would like to use a camera with little to no distortion this would make image processing easier.</li>
 <li>Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.</li>
@@ -378,7 +376,7 @@ code.language-yaml {
 </tr>
 </tbody>
 </table>
-<p>The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<p>The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>.</p>
 <h2 class="mume-header" id="lcd">LCD</h2>
 
 <p>I will be using LCD’s to reduce the amount of light reaching the users eyes.</p>
@@ -416,11 +414,11 @@ code.language-yaml {
 </tr>
 </tbody>
 </table>
-<p>The AF 1.8&quot; TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> available for the raspberry pi.</p>
+<p>The AF 1.8&quot; TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup> available for the raspberry pi.</p>
 <h3 class="mume-header" id="theory">Theory</h3>
 
 <p><img src="lcd/lcdworkings.png" alt="LCD workings"></p>
-<p>In this diagram from Paul Davey’s lecture<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> on LCD’s last year, you can see the inner working of an individual pixel.</p>
+<p>In this diagram from Paul Davey’s lecture<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup> on LCD’s last year, you can see the inner working of an individual pixel.</p>
 <p>This works like so;</p>
 <ol>
 <li>Light enters the panel through the rear polarizer. The light becomes vertically polarized.</li>
@@ -816,7 +814,9 @@ code.language-yaml {
 </tr>
 </tbody>
 </table>
-<h1 class="mume-header" id="criteria-met">Criteria Met</h1>
+<h1 class="mume-header" id="conclusion">Conclusion</h1>
+
+<h2 class="mume-header" id="criteria-met">Criteria Met</h2>
 
 <ul>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked> Make a set of smart sunglasses.</li>
@@ -826,6 +826,42 @@ code.language-yaml {
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"> Auto react to headlight/safety improvements.</li>
 </ul>
 <p>I met all of my stage criteria, except the reacting to headlights. Which I decided wasn’t a good idea, since this could interfere with the drivers sight, so I will leave that mode out. I added other safety features like resetting when you hold the mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.</p>
+<h2 class="mume-header" id="existing-market">Existing market</h2>
+
+<table>
+<thead>
+<tr>
+<th>component</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pi 0 W</td>
+<td>9.60</td>
+</tr>
+<tr>
+<td>cap sensor</td>
+<td>0.74</td>
+</tr>
+<tr>
+<td>LCD</td>
+<td>20</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>15</td>
+</tr>
+<tr>
+<td>total</td>
+<td>45.34</td>
+</tr>
+</tbody>
+</table>
+<p>This is considerably less than the existing market, so even with adding the fame and battery it will be cheaper.</p>
+<p>Although I have a lower refresh rate at the moment, I believe with a change of panel I will be able to run quicker.</p>
+<h2 class="mume-header" id="technology-readiness-level">Technology readiness level</h2>
+
 <p>I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission.</p>
 <table>
 <thead>
@@ -873,7 +909,7 @@ code.language-yaml {
 </tr>
 </tbody>
 </table>
-<p>The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>.</p>
+<p>The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>.</p>
 <p><img src="TRLPROPODESED.png" alt="TRL"></p>
 <p>I still believe I’m level 4, with aspects of level 5 according to this scale.</p>
 <h1 class="mume-header" id="future-development">Future Development</h1>
@@ -882,7 +918,7 @@ code.language-yaml {
 <p>Because of the image processing chip I would be able to increase the communication speed, since the IO is the limiting factor on the current setup.</p>
 <p>The biggest IO limit at the moment is the LCD, this is because the only reasonably priced LCD at this size that I could find use an SPI communication link. Also the LCD driver chip is fairly slow using this link.</p>
 <p>The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.</p>
-<p>While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>. I thought this would be a good addition to my project as the glasses would be truly dynamic.</p>
+<p>While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>. I thought this would be a good addition to my project as the glasses would be truly dynamic.</p>
 <p><strong>&lt;&gt;</strong> By David Joseph Hawkins using <strong>Atom</strong> and <strong>GitHub</strong></p>
 <h1 class="mume-header" id="appendix">Appendix</h1>
 
@@ -1731,15 +1767,25 @@ buttonexit <span class="token operator">=</span> Button<span class="token punctu
 </pre><hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><a href="https://picamera.readthedocs.io/">https://picamera.readthedocs.io/</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p><a href="https://youtu.be/E5d7ynJXiZc?t=4m32s">https://youtu.be/E5d7ynJXiZc?t=4m32s</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p><a href="https://github.com/cskau/Python_ST7735">https://github.com/cskau/Python_ST7735</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p><a href="https://www.ibuypower.com/Signature/Snowblind">https://www.ibuypower.com/Signature/Snowblind</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p><a href="https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5">https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p><a href="http://www.e-tintproducts.com">http://www.e-tintproducts.com</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn4" class="footnote-item"><p><a href="http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7">http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-<em>EARTO_Recommendations</em>-_Final.pdf#page=7</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+<li id="fn4" class="footnote-item"><p><a href="http://www.e-tintproducts.com/technology/">http://www.e-tintproducts.com/technology/</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn5" class="footnote-item"><p><a href="https://www.ttp.com/case-studies/electronic_lenses">https://www.ttp.com/case-studies/electronic_lenses</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+<li id="fn5" class="footnote-item"><p><a href="http://www.e-tintproducts.com/ctrl-eyewear/">http://www.e-tintproducts.com/ctrl-eyewear/</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p><a href="https://picamera.readthedocs.io/">https://picamera.readthedocs.io/</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p><a href="https://github.com/cskau/Python_ST7735">https://github.com/cskau/Python_ST7735</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p><a href="https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5">https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p><a href="http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7">http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-<em>EARTO_Recommendations</em>-_Final.pdf#page=7</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p><a href="https://www.ttp.com/case-studies/electronic_lenses">https://www.ttp.com/case-studies/electronic_lenses</a> <a href="#fnref10" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -1797,7 +1843,13 @@ buttonexit <span class="token operator">=</span> Button<span class="token punctu
 <li><a href="#budget">Budget</a></li>
 </ul>
 </li>
+<li><a href="#conclusion">Conclusion</a>
+<ul>
 <li><a href="#criteria-met">Criteria Met</a></li>
+<li><a href="#existing-market">Existing market</a></li>
+<li><a href="#technology-readiness-level">Technology readiness level</a></li>
+</ul>
+</li>
 <li><a href="#future-development">Future Development</a></li>
 <li><a href="#appendix">Appendix</a>
 <ul>
