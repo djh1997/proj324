@@ -1,3 +1,7 @@
+---
+html:
+  embed_local_images: true
+---
 # **Final Year Project**
 
 ![pi0toChroma logo](pi0toChroma.svg)
