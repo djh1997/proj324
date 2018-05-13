@@ -301,7 +301,7 @@ Although I have a lower refresh rate at the moment, I believe with a change of p
 
 ## Technology readiness level
 
-I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission.
+I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission[^9].
 
 | Level  | Definition                                                                                                                         |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -315,7 +315,7 @@ I believe my project has meet at least technology readiness level 4, even pushin
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^9].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^10].
 
 ![TRL](TRLPROPODESED.png)
 
@@ -331,7 +331,7 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
 
-While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription[^10]. I thought this would be a good addition to my project as the glasses would be truly dynamic.
+While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription[^11]. I thought this would be a good addition to my project as the glasses would be truly dynamic.
 
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
@@ -1200,6 +1200,8 @@ def sandd():
 
 [^8]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
 
-[^9]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+[^9]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
 
-[^10]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
+[^10]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+
+[^11]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
