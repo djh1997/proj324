@@ -58,7 +58,7 @@ Next I will add a camera to the system so that the system can detect bright poin
 
 For the compute unit the main options I have are arm or FPGA. Theoretically the FPGA will have higher parallel thought put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
 
-| component | quantity | price(£)       | component type | chosen |
+| Component | Quantity | Price(£)       | Component type | Chosen |
 | --------- | -------- | -------------- | -------------- | ------ |
 | pi zero w | 1        | 9.60           | compute        | yes    |
 | pi 3      | 1        | 35             | compute        | no     |
@@ -71,7 +71,7 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 
 ## Camera
 
-| component      | quantity | price(£)        | component type | chosen |
+| Component      | Quantity | Price(£)        | Component type | Chosen |
 | -------------- | -------- | --------------- | -------------- | ------ |
 | pi zero camera | 1        | 15              | camera         | yes    |
 | pi camera      | 1        | 24              | camera         | no     |
@@ -84,7 +84,7 @@ The options for the camera were good but I picked the pi zero camera, since it h
 
 I will be using LCD's to reduce the amount of light reaching the users eyes.
 
-| component                  | quantity | price(£)       | component type | chosen |
+| Component                  | Quantity | Price(£)       | Component type | Chosen |
 | -------------------------- | -------- | -------------- | -------------- | ------ |
 | MCT0144C6W128128PML        | 2        | 7.57           | lens           | no     |
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
@@ -101,11 +101,11 @@ In this diagram from Paul Davey's lecture[^8] on LCD's last year, you can see th
 
 This works like so;
 
-1.  Light enters the panel through the rear polarizer. The light becomes vertically polarized.
+1.  Light enters the panel through the rear polariser. The light becomes vertically polarized.
 2.  The polarized light then passes through the transparent backplane electrode.
 3.  As the polarized light passes through the Liquid crystal fluid it gets twisted into the horizontal plane.
 4.  The polarized light passes through the transparent pixel electrode.
-5.  Because the light is polarized in the horizontal plane, it passes through the front horizontal polarizer.
+5.  Because the light is polarized in the horizontal plane, it passes through the front horizontal polariser.
 
 I will be using this effect to reduce the amount of light reaching the users eyes.
 
@@ -126,7 +126,7 @@ I connected the LCD and displayed some random size and location spots of differe
 
 After this I set the entire screen to one tint, then changed it when I did this I could the the update "wipe" across the screen.
 
-This will cause issues since I am already at the max spi interface speed
+This will cause issues since I am already at the max SPI interface speed
 
 ## FOV
 
@@ -259,7 +259,7 @@ I also decided that I would keep all the buttons on one side of the frame, since
 
 ## Budget
 
-| name                                                                                                                            | price | guantity | total |
+| Name                                                                                                                            | Price | Quantity | Total |
 | ------------------------------------------------------------------------------------------------------------------------------- | ----- | -------- | ----- |
 | [pi0w](https://thepihut.com/collections/raspberry-pi/products/raspberry-pi-zero-w)                                              | 9.60  | 1        | 9.60  |
 | [lcd](https://thepihut.com/collections/lcds-displays/products/adafruit-1-8-spi-tft-display-160x128-18-bit-color-st7735r-driver) | 10    | 2        | 20    |
@@ -287,7 +287,7 @@ I met all of my stage criteria, except the reacting to headlights. Which I decid
 
 ## Existing market
 
-| component  | price |
+| Component  | Price |
 | ---------- | ----- |
 | pi 0 W     | 9.60  |
 | cap sensor | 0.74  |
