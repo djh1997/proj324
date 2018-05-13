@@ -48,8 +48,8 @@ new = True
 buttonTint = Button(2)
 buttonMode = Button(3)
 buttonDebug = Button(4, hold_time=5)
-buttonReset = Button(14, hold_time=2)
-buttonexit = Button(15, hold_time=5)
+# buttonReset = Button(14, hold_time=2)
+# buttonexit = Button(15, hold_time=5)
 
 
 def initlcd():
@@ -126,15 +126,15 @@ def debugset():
 def runningstateset(state):
     """Set running state."""
     global running
-    try:  # try assuming state is a button
-        if state.pin.number == buttonReset.pin.number and state.is_held:
-            state = 1  # set state to running
-        elif state.pin.number == buttonReset.pin.number:
-            state = 0  # set state to stopped
-        elif state.pin.number == buttonexit.pin.number and state.is_held:
-            state = 2  # set state to exit
-    except AttributeError:  # catch not button error
-        print 'not button'  # print warning
+    # try:  # try assuming state is a button
+    #     if state.pin.number == buttonReset.pin.number and state.is_held:
+    #         state = 1  # set state to running
+    #     elif state.pin.number == buttonReset.pin.number:
+    #         state = 0  # set state to stopped
+    #     elif state.pin.number == buttonexit.pin.number and state.is_held:
+    #         state = 2  # set state to exit
+    # except AttributeError:  # catch not button error
+    #     print 'not button'  # print warning
     print 'state ' + str(state)  # print new state
     running = state  # set state
 
@@ -230,16 +230,16 @@ def initbuttons():
     )  # wait incase any of the buttons are locked high
     buttonMode.wait_for_release()
     buttonDebug.wait_for_release()
-    buttonReset.wait_for_release()
-    buttonexit.wait_for_release()
+    # buttonReset.wait_for_release()
+    # buttonexit.wait_for_release()
     buttonTint.when_pressed = tintButton  # set button state to function
     buttonTint.when_held = tintButton
     buttonMode.when_pressed = modeset
     buttonMode.when_held = modeset
     buttonDebug.when_pressed = debugset
     # buttonDebug.when_held = halt
-    buttonReset.when_pressed = runningstateset
-    buttonReset.when_held = runningstateset
+    # buttonReset.when_pressed = runningstateset
+    # buttonReset.when_held = runningstateset
     # buttonexit.when_held = runningstateset
     print 'buttons initialized'
 
@@ -256,8 +256,8 @@ def deinitbuttons():
     buttonMode.when_held = None
     buttonDebug.when_pressed = None
     # buttonDebug.when_held = None
-    buttonReset.when_pressed = None
-    buttonReset.when_held = None
+    # buttonReset.when_pressed = None
+    # buttonReset.when_held = None
     # buttonexit.when_held = None
     print 'Deinitilized buttons'
 
