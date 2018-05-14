@@ -10,20 +10,20 @@ from PIL import Image
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
 
-# screen variables
+"""screen variables"""
 WIDTH = 128
 HEIGHT = 160
 SPEED_HZ = 125000000
 
 scaleFactor = .25
 
-# Raspberry Pi configuration.
+"""Raspberry Pi configuration."""
 DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
 
-# program variables
+"""program variables"""
 processpoint = [['clear', 'display'], ['autoback', 'clear', 'display'], [
     'take', 'convert', 'blob find', 'blob to point', 'clear', 'point maths',
     'display'
@@ -44,12 +44,12 @@ camera = 0
 buttons = 1
 new = True
 
-# button connection
+"""button connection"""
 buttonTint = Button(2)
 buttonMode = Button(3)
 buttonDebug = Button(4, hold_time=5)
-# buttonReset = Button(14, hold_time=2)
-# buttonexit = Button(15, hold_time=5)
+"""buttonReset = Button(14, hold_time=2)
+buttonexit = Button(15, hold_time=5)"""
 
 
 def initlcd():
@@ -102,6 +102,14 @@ def deinitcamera():
     global camera
     camera.close()
     print 'camera closed'
+
+
+def scaleFactorset(newsf):
+    """Change the scake factor."""
+    global scaleFactor
+    scaleFactor = newsf
+    camera.resolution = (int(160 * scaleFactor),
+                         int(128 * scaleFactor))  # set resolution to screens
 
 
 def debugset():

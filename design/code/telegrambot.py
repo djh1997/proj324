@@ -6,12 +6,13 @@ from random import choice, randint
 from time import strftime
 
 from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
-                    runningstateset, sandd, tintBackset, tintShadeset)
+                    runningstateset, sandd, scaleFactorset, tintBackset,
+                    tintShadeset)
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
 
-# program variables
+"""program variables"""
 test_box_api_key = []
 test_box = 0
 user = False
@@ -19,7 +20,7 @@ admins = []
 allowAll = True
 jokelist = []
 
-# retrive telegram keys
+"""retrive telegram keys"""
 try:
     f = open('telegramkeys.txt', 'r')
     test_box_api_key.append(f.readline().split('\n')[0])
@@ -30,7 +31,7 @@ except IOError:
     exit()
 
 
-# retrive jokes
+"""retrive jokes"""
 try:
     f = open('jokes.txt', 'r')
     for line in f:
@@ -41,7 +42,7 @@ except IOError:
     print jokelist[0]
 
 
-# Create the EventHandler and  it your bot's token.
+"""Create the EventHandler and  it your bot's token."""
 updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
 
@@ -234,6 +235,14 @@ def debug(bot, update):
         'debug toggled')  # echo that the debug has been toggled back to user
 
 
+@restricted1
+def scalefactor(bot, update, args):
+    """Set scale factor."""
+    scaleFactorset(float(args[0]))
+    update.message.reply_text(
+        'scale factor set to {}'.format(float(args[0])))  # echo scale factor
+
+
 def uprecords(bot, update):
     """Run the uprecords command and echo results."""
     p = subprocess.Popen(
@@ -409,6 +418,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
+    dp.add_handler(CommandHandler("scalefactor", scalefactor, pass_args=True))
 
     # admins only
     dp.add_handler(CommandHandler("exit", exit, pass_args=True))

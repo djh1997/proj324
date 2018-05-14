@@ -8,7 +8,54 @@ html:
 
 By David Joseph Hawkins
 
+Student no:10526354
+
+School of Computing, Electronics and Engineering.
+
 A report submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [**Final Year Project**](#final-year-project)
+- [Stage Criteria](#stage-criteria)
+	- [Inspiration](#inspiration)
+	- [Plan](#plan)
+		- [Potential issues](#potential-issues)
+		- [Timeline](#timeline)
+- [Final Mock-up](#final-mock-up)
+- [Report](#report)
+	- [Compute](#compute)
+		- [VHDL/FPGA(de0nano) vs. arm(stm32 vs. RPI)](#vhdlfpgade0nano-vs-armstm32-vs-rpi)
+	- [Camera](#camera)
+	- [LCD](#lcd)
+		- [Theory](#theory)
+		- [Wiring](#wiring)
+		- [Testing](#testing)
+	- [FOV](#fov)
+		- [LCD](#lcd)
+		- [Camera](#camera)
+	- [Frame](#frame)
+	- [Blob Detection](#blob-detection)
+	- [Telegram](#telegram)
+		- [Commands](#commands)
+	- [Capacitive Touch Sensor](#capacitive-touch-sensor)
+		- [Wiring](#wiring)
+		- [Buttons](#buttons)
+		- [Capacitive Touch Control](#capacitive-touch-control)
+	- [Budget](#budget)
+- [Conclusion](#conclusion)
+	- [Criteria Met](#criteria-met)
+	- [Existing market](#existing-market)
+	- [Technology readiness level](#technology-readiness-level)
+- [Future Development](#future-development)
+- [Appendix](#appendix)
+	- [Coding languages](#coding-languages)
+	- [Glossary](#glossary)
+	- [Code](#code)
+		- [telegrambot.py](#telegrambotpy)
+		- [shades.py](#shadespy)
+
+<!-- /TOC -->
 
 # Stage Criteria
 
@@ -345,6 +392,12 @@ While talking to other students on the course about my project, one individual m
 
 ![code](https://wakatime.com/share/@677847e8-ed61-4250-aee6-27df12870cb2/f1bdd8d3-4423-4662-bba8-242959f8644c.svg)
 
+## Glossary
+
+| abbreviation | meaning                     |
+| ------------ | --------------------------- |
+| SPI          | serial peripheral interface |
+
 ## Code
 
 ### telegrambot.py
@@ -358,12 +411,13 @@ from random import choice, randint
 from time import strftime
 
 from shades import (buttonstoggle, debugset, getiso, modeset, runningstateget,
-                    runningstateset, sandd, tintBackset, tintShadeset)
+                    runningstateset, sandd, scaleFactorset, tintBackset,
+                    tintShadeset)
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import (CallbackQueryHandler, CommandHandler, Filters,
                           MessageHandler, Updater)
 
-# program variables
+"""program variables"""
 test_box_api_key = []
 test_box = 0
 user = False
@@ -371,7 +425,7 @@ admins = []
 allowAll = True
 jokelist = []
 
-# retrive telegram keys
+"""retrive telegram keys"""
 try:
     f = open('telegramkeys.txt', 'r')
     test_box_api_key.append(f.readline().split('\n')[0])
@@ -382,7 +436,7 @@ except IOError:
     exit()
 
 
-# retrive jokes
+"""retrive jokes"""
 try:
     f = open('jokes.txt', 'r')
     for line in f:
@@ -393,7 +447,7 @@ except IOError:
     print jokelist[0]
 
 
-# Create the EventHandler and  it your bot's token.
+"""Create the EventHandler and  it your bot's token."""
 updater = Updater(test_box_api_key[test_box])
 jbq = updater.job_queue
 
@@ -586,6 +640,14 @@ def debug(bot, update):
         'debug toggled')  # echo that the debug has been toggled back to user
 
 
+@restricted1
+def scalefactor(bot, update, args):
+    """Set scale factor."""
+    scaleFactorset(float(args[0]))
+    update.message.reply_text(
+        'scale factor set to {}'.format(float(args[0])))  # echo scale factor
+
+
 def uprecords(bot, update):
     """Run the uprecords command and echo results."""
     p = subprocess.Popen(
@@ -761,6 +823,7 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
+    dp.add_handler(CommandHandler("scalefactor", scalefactor, pass_args=True))
 
     # admins only
     dp.add_handler(CommandHandler("exit", exit, pass_args=True))
@@ -812,20 +875,20 @@ from PIL import Image
 from skimage.feature import blob_doh  # blob detection
 from skimage.io import imread  # convert jpg to np array
 
-# screen variables
+"""screen variables"""
 WIDTH = 128
 HEIGHT = 160
 SPEED_HZ = 125000000
 
 scaleFactor = .25
 
-# Raspberry Pi configuration.
+"""Raspberry Pi configuration."""
 DC = 24
 RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
 
-# program variables
+"""program variables"""
 processpoint = [['clear', 'display'], ['autoback', 'clear', 'display'], [
     'take', 'convert', 'blob find', 'blob to point', 'clear', 'point maths',
     'display'
@@ -846,12 +909,12 @@ camera = 0
 buttons = 1
 new = True
 
-# button connection
+"""button connection"""
 buttonTint = Button(2)
 buttonMode = Button(3)
 buttonDebug = Button(4, hold_time=5)
-# buttonReset = Button(14, hold_time=2)
-# buttonexit = Button(15, hold_time=5)
+"""buttonReset = Button(14, hold_time=2)
+buttonexit = Button(15, hold_time=5)"""
 
 
 def initlcd():
@@ -904,6 +967,14 @@ def deinitcamera():
     global camera
     camera.close()
     print 'camera closed'
+
+
+def scaleFactorset(newsf):
+    """Change the scake factor."""
+    global scaleFactor
+    scaleFactor = newsf
+    camera.resolution = (int(160 * scaleFactor),
+                         int(128 * scaleFactor))  # set resolution to screens
 
 
 def debugset():
