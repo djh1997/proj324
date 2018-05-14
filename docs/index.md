@@ -17,6 +17,7 @@ A report submitted to the University of Plymouth in partial fulfilment for the d
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [**Final Year Project**](#final-year-project)
+	- [Glossary](#glossary)
 - [Stage Criteria](#stage-criteria)
 	- [Inspiration](#inspiration)
 	- [Plan](#plan)
@@ -25,13 +26,13 @@ A report submitted to the University of Plymouth in partial fulfilment for the d
 - [Final Mock-up](#final-mock-up)
 - [Report](#report)
 	- [Compute](#compute)
-		- [VHDL/FPGA(de0nano) vs. arm(stm32 vs. RPI)](#vhdlfpgade0nano-vs-armstm32-vs-rpi)
+		- [VHDL/FPGA(de0nano) vs. arm(STM32 vs. RPI)](#vhdlfpgade0nano-vs-armstm32-vs-rpi)
 	- [Camera](#camera)
 	- [LCD](#lcd)
 		- [Theory](#theory)
 		- [Wiring](#wiring)
 		- [Testing](#testing)
-	- [FOV](#fov)
+	- [FoV](#fov)
 		- [LCD](#lcd)
 		- [Camera](#camera)
 	- [Frame](#frame)
@@ -50,12 +51,25 @@ A report submitted to the University of Plymouth in partial fulfilment for the d
 - [Future Development](#future-development)
 - [Appendix](#appendix)
 	- [Coding languages](#coding-languages)
-	- [Glossary](#glossary)
 	- [Code](#code)
 		- [telegrambot.py](#telegrambotpy)
 		- [shades.py](#shadespy)
 
 <!-- /TOC -->
+
+## Glossary
+
+| Abbreviation | Meaning                                                       |
+| ------------ | ------------------------------------------------------------- |
+| SPI          | Serial peripheral interface                                   |
+| LDR          | Light dependant resistor                                      |
+| LCD          | Liquid crystal display                                        |
+| FPGA         | Field programmable gate array                                 |
+| VHDL         | Very high speed integrated circuit logic description language |
+| IO           | Input output                                                  |
+| GPIO         | General purpose input output                                  |
+| FoV          | Field of view                                                 |
+| TRL          | Technology readiness level                                    |
 
 # Stage Criteria
 
@@ -105,7 +119,7 @@ Next I will add a camera to the system so that the system can detect bright poin
 
 ## Compute
 
-### VHDL/FPGA(de0nano) vs. arm(stm32 vs. RPI)
+### VHDL/FPGA(de0nano) vs. arm(STM32 vs. RPI)
 
 For the compute unit the main options I have are arm or FPGA. Theoretically the FPGA will have higher parallel thought put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
 
@@ -113,7 +127,7 @@ For the compute unit the main options I have are arm or FPGA. Theoretically the 
 | --------- | -------- | -------------- | -------------- | ------ |
 | pi zero w | 1        | 9.60           | compute        | yes    |
 | pi 3      | 1        | 35             | compute        | no     |
-| stm32     | 1        | 18.11          | compute        | no     |
+| STM32     | 1        | 18.11          | compute        | no     |
 | de0nano   | 1        | 67.16 to 84.46 | compute        | no     |
 
 I'm leaning towards the arm side since the camera will likely be 30-60 fps. I believe that an arm  chip will be quick enough. Also it will have better support for interfacing the camera and LCD, the STM boards have analogue IO for the LDR and contrast for the LCD
@@ -177,9 +191,9 @@ I connected the LCD and displayed some random size and location spots of differe
 
 After this I set the entire screen to one tint, then changed it when I did this I could the the update "wipe" across the screen.
 
-This will cause issues since I am already at the max SPI interface speed
+This will cause issues since I am already at the max SPI speed
 
-## FOV
+## FoV
 
 ![image](lcd/fov.svg)
 
@@ -391,12 +405,6 @@ While talking to other students on the course about my project, one individual m
 ## Coding languages
 
 ![code](https://wakatime.com/share/@677847e8-ed61-4250-aee6-27df12870cb2/f1bdd8d3-4423-4662-bba8-242959f8644c.svg)
-
-## Glossary
-
-| abbreviation | meaning                     |
-| ------------ | --------------------------- |
-| SPI          | serial peripheral interface |
 
 ## Code
 
