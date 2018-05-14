@@ -580,6 +580,14 @@ def addwifi(bot, update, args):
         'added {} to wifi'.format(ssid))  # echo added WiFi back to user
 
 
+@restricted2
+def scalefactor(bot, update, args):
+    """Set scale factor."""
+    scaleFactorset(float(args[0]))
+    update.message.reply_text(
+        'scale factor set to {}'.format(float(args[0])))  # echo scale factor
+
+
 @restricted1
 def image(bot, update):
     """Send most recent image from camera."""
@@ -646,14 +654,6 @@ def debug(bot, update):
     debugset()  # toggle command line debug
     update.message.reply_text(
         'debug toggled')  # echo that the debug has been toggled back to user
-
-
-@restricted1
-def scalefactor(bot, update, args):
-    """Set scale factor."""
-    scaleFactorset(float(args[0]))
-    update.message.reply_text(
-        'scale factor set to {}'.format(float(args[0])))  # echo scale factor
 
 
 def uprecords(bot, update):
@@ -831,7 +831,6 @@ def telegramMain():
     dp.add_handler(CommandHandler('pickmode', pickmode))
     dp.add_handler(CommandHandler('image', image))
     dp.add_handler(CommandHandler('debug', debug))
-    dp.add_handler(CommandHandler("scalefactor", scalefactor, pass_args=True))
 
     # admins only
     dp.add_handler(CommandHandler("exit", exit, pass_args=True))
@@ -841,6 +840,7 @@ def telegramMain():
     dp.add_handler(CommandHandler("reboot", reboot))
     dp.add_handler(CommandHandler("buttons", buttons))
     dp.add_handler(CommandHandler("addwifi", addwifi, pass_args=True))
+    dp.add_handler(CommandHandler("scalefactor", scalefactor, pass_args=True))
 
     # keyboard handler
     dp.add_handler(CallbackQueryHandler(button))
