@@ -85,9 +85,9 @@ This is the criteria that the project aims to meet, to feel as though the projec
 
 ## Inspiration
 
-The project was inspired by this video[^1] about this case[^2]??????. It was then that the idea for reactive sunglasses using LCD was formed. While researching to see if this had already been done, crtl-one glasses were discovered and have similarly been created[^3].
+The project was inspired by Linus tech tips video[^1] about the IBuyPower Snowblind case[^2]. It was then that the idea for reactive sunglasses using LCD was formed. While researching to see if this had already been done, ctrl-one glasses were discovered and have similarly been created[^3].
 
-The crtl-one product starts down the same path as this project would like to take but are binary whereas this project aims for different levels of tinting and active shading. To achieve this it will be required to use an LCD panel with pixels instead of a single panel. Also, the crtl-one products main unique selling points is the sub 0.1 second light to dark time[^4]; which will ideally be surpassed. The other advantage this product will have over crtl-one will be cost since, crtl-one costs $299, while this product aims to be priced under £100[^5] (set by the budget limit).
+The ctrl-one product starts down the same path as this project would like to take but are binary whereas this project aims for different levels of tinting and active shading. To achieve this it will be required to use an LCD panel with pixels instead of a single panel. Also, the ctrl-one products main unique selling points is the sub 0.1 second light to dark time[^4]; which will ideally be surpassed. The other advantage this product will have over ctrl-one will be cost since, ctrl-one costs $299, while this product aims to be priced under £100[^5] (set by the budget limit).
 
 ## Plan
 
@@ -143,7 +143,7 @@ After talking to supervisors and lab technicians they both recommended the raspb
 | ov7670         | 1        | 5 to 10         | camera         | no     |
 | ov7720         | 1        | .50 from ps eye | camera         | no     |
 
-The options for the camera were good but the pi zero camera was picked , since it had the best compromise between cost and libraries[^6].
+The options for the camera were good but the pi zero camera was picked, since it had the best compromise between cost and libraries[^6].
 
 ## LCD
 
@@ -155,7 +155,7 @@ LCD's will be used to reduce the amount of light reaching the users eyes.
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^7] available for the raspberry pi.
+The Ada Fruit 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^7] available for the raspberry pi.
 
 ### Theory
 
@@ -230,7 +230,7 @@ So, this will cause issues since the dot placed on the LCD will end up in the wr
 
 ## Frame
 
-The frame was cut by a laser cut since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can see the design iterations.
+The frame was cut by a laser cutter since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can see the design iterations.
 
 ![image](frame/devcycle.png)
 
@@ -247,7 +247,7 @@ The initial idea for blob detection was to import the grey scale image as a matr
 
 Installation of opencv for image processing was attempted but the install failed. After speaking to a supervisor he confirmed that opencv was too overpowered for my project.
 
-More research was then done around low power blob detection in python. Skimage (an add-on for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
+More research was then done around low power blob detection in python. Skimage (a library for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
 
 With this working an image from the camera passed to the program, which saved the image with a circle around the blob to test the accuracy of the system.
 
@@ -397,7 +397,7 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system it would be required that some form of simple eye tracking should be added to compensate for this.
 
-While talking to other students on the course about the project, one individual mentioned research which could add dynamic prescription[^11]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
+While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^11]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
 
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
