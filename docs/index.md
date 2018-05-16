@@ -73,7 +73,7 @@ A report submitted to the University of Plymouth in partial fulfilment for the d
 
 # Stage Criteria
 
-This is the criteria I would like to meet, to feel as though I have created a successful project.
+This is the criteria that the project aims to meet, to feel as though the project had succeeded.
 
 | Stage | Name                        | Description                                        |
 | ----- | --------------------------- | -------------------------------------------------- |
@@ -85,23 +85,23 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 ## Inspiration
 
-I saw this video[^1] about this case[^2] and got the idea for reactive sunglasses, while I was researching to see if this had already been done I found these glasses[^3].
+The project was inspired by this video[^1] about this case[^2]??????. It was then that the idea for reactive sunglasses using LCD was formed. While researching to see if this had already been done, crtl-one glasses were discovered and have similarly been created[^3].
 
-This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading. To achieve this I will need to use a LCD panel with pixels instead of a single panel. Also one of this products main unique selling points is the sub 0.1 second light to dark time[^4] which ideally I will surpass. The other advantage I will have will be cost since these cost $299 and I'm aiming to make for under £100[^5].
+The crtl-one product starts down the same path as this project would like to take but are binary whereas this project aims for different levels of tinting and active shading. To achieve this it will be required to use an LCD panel with pixels instead of a single panel. Also, the crtl-one products main unique selling points is the sub 0.1 second light to dark time[^4]; which will ideally be surpassed. The other advantage this product will have over crtl-one will be cost since, crtl-one costs $299, while this product aims to be priced under £100[^5] (set by the budget limit).
 
 ## Plan
 
-The products above, along with Paul Davey's lectures last year inspired my idea.
+The products above, along with Paul Davey's lectures last year inspired the idea.
 
-The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually I will add a camera to make point control which will block bright spots such as projectors and the sun, and dim them to reduce squinting.
+The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually a camera will added to create multiple point controls which will block bright spots such as projectors and sunlight thus, dimming them to reduce squinting.
 
 ### Potential issues
 
--   IO speed, depending on the solutions used I could end up running into IO speed bottle necks affecting frame rate.
--   Frame rate for the active points would need to be fairly high to stop nauseating effect.
--   Camera distortion, I would like to use a camera with little to no distortion this would make image processing easier.
+-   IO speed, depending on the solutions used in the project could end up running into IO speed bottle necks affecting frame rate.
+-   Frame rate for the active points would need to be fairly high to stop nauseating effects.
+-   Camera distortion, a camera with little to no distortion would ideally be to used since this would make image processing easier.
 -   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
--   Aspect ratio, mismatch of aspect ratios with out use of accelerometers for predictive tracking could cause issues.
+-   Aspect ratio, mismatch of aspect ratios without the use of accelerometers for predictive tracking could cause issues.
 
 ### Timeline
 
@@ -111,9 +111,9 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![final mock-up design image](final_design_plan.svg)
 
-So, once I have removed the backlight from the LCD's I can mount them in a frame. I can then begin to control the contrast/pixel density to make them dim. I will then add an LDR to automate the brightness selection, this will remove the manual adjust however I will leave the buttons to set the levels.
+So, once the backlight was removed from the LCD's they can mount them into the frame. Then they can begin to be controlled by adjusting the contrast/pixel density to make them dim using a button. After which an LDR can be added to automate the brightness selection, the manual adjust however will be left in, at which point the button can still be used to switch between the different sensitivity levels.
 
-Next I will add a camera to the system so that the system can detect bright points, hence make a matching point darker on the lens. I will then use the buttons to make it so that you can swap between the different modes. The final additional feature I would like to add is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
+Next a camera will be added to the system so that the system can detect bright points, hence make a matching point darker on the lens. At which point the buttons can be used so that you can switch between different modes. The final additional feature that will added is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
 
 # Report
 
@@ -121,7 +121,7 @@ Next I will add a camera to the system so that the system can detect bright poin
 
 ### VHDL/FPGA(de0nano) vs. arm(STM32 vs. RPI)
 
-For the compute unit the main options I have are arm or FPGA. Theoretically the FPGA will have higher parallel thought put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
+For the compute unit the main options available are arm or FPGA. Theoretically the FPGA will have higher parallel thought put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
 
 | Component | Quantity | Price(£)       | Component type | Chosen |
 | --------- | -------- | -------------- | -------------- | ------ |
@@ -130,9 +130,9 @@ For the compute unit the main options I have are arm or FPGA. Theoretically the 
 | STM32     | 1        | 18.11          | compute        | no     |
 | de0nano   | 1        | 67.16 to 84.46 | compute        | no     |
 
-I'm leaning towards the arm side since the camera will likely be 30-60 fps. I believe that an arm  chip will be quick enough. Also it will have better support for interfacing the camera and LCD, the STM boards have analogue IO for the LDR and contrast for the LCD
+I'm leaning towards the arm side since the camera will likely be 30-60 fps. I believe that an arm  chip will be quick enough. Also it will have better support for interfacing the camera and LCD; the STM boards have analogue IO for the LDR and contrast for the LCD
 
-After talking to my supervisor and lab tech they both recommended the raspberry pi as the platform. This recommendation is because of the price point of the zero w and the zero cam being so low and the large product support for the increased range of screens possible. The only issue with this will be the fact the pi doesn't have analogue IO so the dimming of the LCD will be harder but this should be easily worked around.
+After talking to supervisors and lab technicians they both recommended the raspberry pi as the platform. This recommendation is because of the price point of the zero w and the zero cam being so low as well as, the large product support for the increased range of screens possible. The only issue with this will be the fact the pi doesn't have analogue IO so the dimming of the LCD will be harder but this should be easily worked around.
 
 ## Camera
 
@@ -143,11 +143,11 @@ After talking to my supervisor and lab tech they both recommended the raspberry 
 | ov7670         | 1        | 5 to 10         | camera         | no     |
 | ov7720         | 1        | .50 from ps eye | camera         | no     |
 
-The options for the camera were good but I picked the pi zero camera, since it had the best compromise between cost and libraries[^6].
+The options for the camera were good but the pi zero camera was picked , since it had the best compromise between cost and libraries[^6].
 
 ## LCD
 
-I will be using LCD's to reduce the amount of light reaching the users eyes.
+LCD's will be used to reduce the amount of light reaching the users eyes.
 
 | Component                  | Quantity | Price(£)       | Component type | Chosen |
 | -------------------------- | -------- | -------------- | -------------- | ------ |
@@ -155,14 +155,14 @@ I will be using LCD's to reduce the amount of light reaching the users eyes.
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there is drivers[^7] available for the raspberry pi.
+The AF 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^7] available for the raspberry pi.
 
 ### Theory
 
 
 ![LCD workings](lcd/lcdworkings.png)
 
-In this diagram from Paul Davey's lecture[^8] on LCD's last year, you can see the inner working of an individual pixel.
+In this diagram from Paul Davey's lecture[^8] on LCD's last year, you can see the inner workings of an individual pixel.
 
 This works like so;
 
@@ -172,7 +172,7 @@ This works like so;
 4.  The polarized light passes through the transparent pixel electrode.
 5.  Because the light is polarized in the horizontal plane, it passes through the front horizontal polariser.
 
-I will be using this effect to reduce the amount of light reaching the users eyes.
+This is the effect that will be used reduce the amount of light reaching the users eyes.
 
 ### Wiring
 
@@ -189,20 +189,20 @@ I connected the LCD and displayed some random size and location spots of differe
 
 [random point video](log/IMG_1188.TRIM.MOV)
 
-After this I set the entire screen to one tint, then changed it when I did this I could see the update "wipe" across the screen.
+After this, the entire screen was set to one tint, then changed to a different tint. This meant you could see the update "wipe" across the screen.
 
-This will cause issues since I am already at the max SPI speed
+This will cause issues since the SPI is already at the max speed.
 
 ## FoV
 
 ![image](lcd/fov.svg)
 
-Field of view(FoV) is the area that you can can see this is normally measured in degrees. This means for simple mapping I need the FoV of the camera and LCD to be the same the other issues would be;
+Field of view(FoV) is the area that you can can see. It is normally measured in degrees. For simple mapping it is required that the FoV of the camera and LCD to be the same. Other issues include;
 
-aspect ratio
+Aspect ratio
 ![image](lcd/aspectration.svg)
 
-distortion
+Distortion
 ![image](lcd/distortion.png)
 
 ### LCD
@@ -230,27 +230,26 @@ So, this will cause issues since the dot placed on the LCD will end up in the wr
 
 ## Frame
 
-I decided to laser cut the frame since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can see the design iterations.
+The frame was cut by a laser cut since this would be more cost and time effective. Also glasses frames tend to be fairly 2-dimensional. In the following image you can see the design iterations.
 
 ![image](frame/devcycle.png)
 
-Initially my idea was to heat the acrylic and bend at the red line, meaning that you wouldn't be able to fold them.
+Initially, the acrylic was heated and bent at the red line, meaning that you wouldn't be able to fold them.
 
-The next idea I had was another fixed design, but with a simpler shape. I decided to go with this idea rather than the former so this was the first iteration that actually got cut. I found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of your nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
+The next idea was another fixed design, but with a simpler shape. It was decided to go with this idea rather than the former so this was the first iteration that actually got cut. It was found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of users nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
 
-After this I designed a hinging mechanism and readded the curves to make the glasses more comfortable. I also added a mounting bracket for the camera. This was the frame I cut and used for most of the prototyping phase of the project.
+After this, a hinging mechanism was designed and the curves re-added to make the glasses more comfortable. A mounting bracket for the camera was also added. This was the frame that cut and used for most of the prototyping phase of the project.
 
-For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. I furthered the design of the hinge by squaring off one end to make it more ridged and adding a hole to hold it together.
+For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one ends to make it more ridged and adding a hole to hold it together.
 
 ## Blob Detection
+The initial idea for blob detection was to import the grey scale image as a matrix of values. Then to iterate over it, looking for a difference in values or checking against a threshold value. However, it was difficult to get the image in as a matrix and even using an example matrix because the code wasn't running very quickly or reliably.
 
-My initial idea for blob detection was to import the grey scale image as a matrix of values. Then to iterate over it, looking for a difference in values or checking against a threshold value. However, I struggled getting the image in as a matrix and even using an example matrix because the code wasn't running very quickly or reliably.
+Installation of opencv for image processing was attempted but the install failed. After speaking to a supervisor he confirmed that opencv was too overpowered for my project.
 
-I tried to install opencv to do the image processing but the install failed. After I spoke to my supervisor he confirmed my suspicion that opencv was too overpowered for my project.
+More research was then done around low power blob detection in python. Skimage (an add-on for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
 
-So I did some more research around low power blob detection in python and found Skimage which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it should be quick enough. The only issue I had then was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
-
-With this working I passed the program an image from the camera and saved the image with a circle around the blob.
+With this working an image from the camera passed to the program, which saved the image with a circle around the blob to test the accuracy of the system.
 
 ![blob circle](log/blobbounding2.png)
 
@@ -260,9 +259,9 @@ I then connected the LCD and got blob detection working with that.
 
 ## Telegram
 
-Then I started to convert the shades.py (the file that controls the LCD and camera) and telegrambot.py (the script that enables remote control via a chat client bot). This involved more work than I had initially anticipated since passing variables around wasn't as easy as I had hoped.
+Then shades.py (the file that controls the LCD and camera) and telegrambot.py (the script that enables remote control via a chat client bot) were converted to work together. This involved more work than was initially anticipated, since passing variables around wasn't as easy as hoped.
 
-I decided to use telegram to add remote control, so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
+It was decided that telegram would be used to add remote control, so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
 
 ### Commands
 
@@ -288,7 +287,7 @@ I decided to use telegram to add remote control, so that you could adjust the co
 
 ## Capacitive Touch Sensor
 
-After I had all of the system working I bought a 5 button capacitive touch sensor. I then started adding that into the code, so that I would be able to control the glasses without having to have it connected to the internet.
+After the entire system was working a 5 button capacitive touch sensor was bought. The sensor was then added into the code, so that it would be able to control the glasses without the need for the glasses to be connected to the internet.
 
 ### Wiring
 
@@ -310,13 +309,13 @@ After I had all of the system working I bought a 5 button capacitive touch senso
 | 4      | Blue   | Stop         | Start               |
 | 5      | Purple | N/A          | Exit                |
 
-For the final design I only used three buttons since the frame was beginning to get a bit cluttered with wires and boards.
+For the final design only three buttons were used since the frame was beginning to get a bit cluttered with wires and boards.
 
 ![buttonlocations](frame/buttonlocations.svg)
 
-I also decided that I would keep all the buttons on one side of the frame, since the capacitive touch sensitivity is a bit to high and I cant change it on this board. This means I'm less likely to have accidental readings from touching the wire if I can keep the wires short.
+It was also decided that it would be best to keep all the buttons on one side of the frame, since the capacitive touch sensitivity was a bit to high and you couldn't change it on this board. This meant you're less likely to have accidental readings from touching the wire if the wires are kept short and tucked out of the way.
 
-Later Alex baron suggested that I wrap the sensor wire in thin pieces of wire to shield the wire by grounding the insulation. This worked really well.
+Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to shield the wire by grounding the insulation. This worked really well.
 
 ### Capacitive Touch Control
 
@@ -350,7 +349,7 @@ Later Alex baron suggested that I wrap the sensor wire in thin pieces of wire to
 -   [x] Add options to swap between modes.
 -   [ ] Auto react to headlight/safety improvements.
 
-I met all of my stage criteria, except the reacting to headlights. Which I decided wasn't a good idea, since this could interfere with the drivers sight, so I will leave that mode out. I added other safety features like resetting when you hold the mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
+All of the stage criteria were met except reaction to headlights. It was decided that this wasn't a good idea, since this could interfere with the drivers sight, so this mode will be left out. Other safety features added were resetting when you held any mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
 
 ## Existing market
 
@@ -364,11 +363,11 @@ I met all of my stage criteria, except the reacting to headlights. Which I decid
 
 This is considerably less than the existing market, so even with adding the fame and battery it will be cheaper.
 
-Although I have a lower refresh rate at the moment, I believe with a change of panel I will be able to run quicker.
+Although the current  refresh rate is lower at the moment, With a change of panel and main compute chip the system will be able to run considerably quicker.
 
 ## Technology readiness level
 
-I believe my project has meet at least technology readiness level 4, even pushing some level 5 criteria as defined by the European Commission[^9].
+The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^9].
 
 | Level  | Definition                                                                                                                         |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -386,19 +385,19 @@ The European Association of Research and Technology Organisations (EARTO) has a 
 
 ![TRL](TRLPROPODESED.png)
 
-I still believe I'm level 4, with aspects of level 5 according to this scale.
+The project fits this scale better and is also a level 4, with aspects of level 5 according to this scale.
 
 # Future Development
 
-My setup is mostly a proof of concept. For a full prototype/production model, I would use a chip with high IO rates like a DSLR image processing chip, with a low quality and high frame rate camera with a bare LCD.
+The current setup is mostly a proof of concept. For a full prototype/production model, A chip with high IO rates like a DSLR image processing chip, with a low quality and high frame rate camera with a bare LCD would be used to make the system run faster.
 
-Because of the image processing chip I would be able to increase the communication speed, since the IO is the limiting factor on the current setup.
+Because of the image processing chip it would be possible to increase the communication speed, since the IO is the limiting factor on the current setup.
 
-The biggest IO limit at the moment is the LCD, this is because the only reasonably priced LCD at this size that I could find use an SPI communication link. Also the LCD driver chip is fairly slow using this link.
+The biggest IO limit at the moment is the LCD, this is because the only reasonably priced LCD's at this size that were available on the market use an SPI communication link. Also the LCD driver chip is fairly slow using this link.
 
-The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system I would need to add some form of simple eye tracking to compensate for this.
+The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system it would be required that some form of simple eye tracking should be added to compensate for this.
 
-While talking to other students on the course about my project, one individual mentioned research which could add dynamic prescription[^11]. I thought this would be a good addition to my project as the glasses would be truly dynamic.
+While talking to other students on the course about the project, one individual mentioned research which could add dynamic prescription[^11]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
 
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
