@@ -59,17 +59,17 @@ A report submitted to the University of Plymouth in partial fulfilment for the d
 
 ## Glossary
 
-| Abbreviation | Meaning                                                       |
-| ------------ | ------------------------------------------------------------- |
-| SPI          | Serial peripheral interface                                   |
-| LDR          | Light dependant resistor                                      |
-| LCD          | Liquid crystal display                                        |
-| FPGA         | Field programmable gate array                                 |
-| VHDL         | Very high speed integrated circuit logic description language |
-| IO           | Input output                                                  |
-| GPIO         | General purpose input output                                  |
-| FoV          | Field of view                                                 |
-| TRL          | Technology readiness level                                    |
+| Abbreviation | Meaning                                                          |
+| ------------ | ---------------------------------------------------------------- |
+| SPI          | Serial peripheral interface                                      |
+| LDR          | Light dependant resistor                                         |
+| LCD          | Liquid crystal display                                           |
+| FPGA         | Field programmable gate array                                    |
+| VHDL         | Very high speed integrated circuit hardware description language |
+| IO           | Input output                                                     |
+| GPIO         | General purpose input output                                     |
+| FoV          | Field of view                                                    |
+| TRL          | Technology readiness level                                       |
 
 # Stage Criteria
 
@@ -85,9 +85,9 @@ This is the criteria I would like to meet, to feel as though I have created a su
 
 ## Inspiration
 
-I saw this video[^1] about this case[^2] and got the idea for reactive sunglasses while I was researching to see if this had already been done I found theses glasses[^3].
+I saw this video[^1] about this case[^2] and got the idea for reactive sunglasses, while I was researching to see if this had already been done I found these glasses[^3].
 
-This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading. To achieve this I will need to use a LCD panel with pixels instead of a single panel. Also one of this products main unique selling points is the sub 0.1 second light to dark time[^4] which ideally I will surpass. The other advantage have will be cost since theses cost $299 and I'm aiming to make for under £100[^5].
+This product starts down the path I would like to take but are binary and I would like different levels of tinting and active shading. To achieve this I will need to use a LCD panel with pixels instead of a single panel. Also one of this products main unique selling points is the sub 0.1 second light to dark time[^4] which ideally I will surpass. The other advantage I will have will be cost since these cost $299 and I'm aiming to make for under £100[^5].
 
 ## Plan
 
@@ -189,7 +189,7 @@ I connected the LCD and displayed some random size and location spots of differe
 
 [random point video](log/IMG_1188.TRIM.MOV)
 
-After this I set the entire screen to one tint, then changed it when I did this I could the the update "wipe" across the screen.
+After this I set the entire screen to one tint, then changed it when I did this I could see the update "wipe" across the screen.
 
 This will cause issues since I am already at the max SPI speed
 
@@ -315,6 +315,8 @@ For the final design I only used three buttons since the frame was beginning to 
 ![buttonlocations](frame/buttonlocations.svg)
 
 I also decided that I would keep all the buttons on one side of the frame, since the capacitive touch sensitivity is a bit to high and I cant change it on this board. This means I'm less likely to have accidental readings from touching the wire if I can keep the wires short.
+
+Later Alex baron suggested that I wrap the sensor wire in thin pieces of wire to shield the wire by grounding the insulation. This worked really well.
 
 ### Capacitive Touch Control
 
