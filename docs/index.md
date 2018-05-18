@@ -421,7 +421,7 @@ While talking to Martin Slade about the project, one individual mentioned resear
 
 ## Coding languages
 
-![code](https://wakatime.com/share/@677847e8-ed61-4250-aee6-27df12870cb2/f1bdd8d3-4423-4662-bba8-242959f8644c.svg)
+![code](wakatime.svg)
 
 ## Code
 
