@@ -15,7 +15,6 @@ School of Computing, Electronics and Engineering.
 A report submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [**Final Year Project**](#final-year-project)
 	- [Glossary](#glossary)
 - [Stage Criteria](#stage-criteria)
@@ -147,7 +146,7 @@ The options for the camera were good but the pi zero camera was picked, since it
 
 ## LCD
 
-LCD's will be used to reduce the amount of light reaching the users eyes.
+LCD's will be used to reduce the amount of light reaching the users eyes. The way an LCD works is like a stain glasses window with a frosted glasses window and bight light behind. But with an LCD you can change the colour and brightness of the stain. This is the effect that will be used do dynamically adjust the amount of light reaching the users eyes.
 
 | Component                  | Quantity | Price(£)       | Component type | Chosen |
 | -------------------------- | -------- | -------------- | -------------- | ------ |
@@ -234,7 +233,7 @@ The frame was cut by a laser cutter since this would be more cost and time effec
 
 ![image](frame/devcycle.png)
 
-Initially, the acrylic was heated and bent at the red line, meaning that you wouldn't be able to fold them.
+The initial idea was to heat the acrylic and bend at the red line, meaning that you wouldn't be able to fold them.
 
 The next idea was another fixed design, but with a simpler shape. It was decided to go with this idea rather than the former so this was the first iteration that actually got cut. It was found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of users nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
 
@@ -247,7 +246,7 @@ The initial idea for blob detection was to import the grey scale image as a matr
 
 Installation of opencv for image processing was attempted but the install failed. After speaking to a supervisor he confirmed that opencv was too overpowered for my project.
 
-More research was then done around low power blob detection in python. Skimage (a library for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
+More research was then done around low power blob detection in python. Skimage[^9] (a library for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
 
 With this working an image from the camera passed to the program, which saved the image with a circle around the blob to test the accuracy of the system.
 
@@ -351,6 +350,8 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 
 All of the stage criteria were met except reaction to headlights. It was decided that this wasn't a good idea, since this could interfere with the drivers sight, so this mode will be left out. Other safety features added were resetting when you held any mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
 
+Finally an install script was made for the dependencies so that they would all be installed an configured correctly.
+
 ## Existing market
 
 | Component  | Price |
@@ -367,7 +368,7 @@ Although the current  refresh rate is lower at the moment, With a change of pane
 
 ## Technology readiness level
 
-The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^9].
+The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^10].
 
 | Level  | Definition                                                                                                                         |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -381,7 +382,7 @@ The project as of this point has met a technology readiness level of at least le
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^10].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^11].
 
 ![TRL](TRLPROPODESED.png)
 
@@ -397,7 +398,7 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system it would be required that some form of simple eye tracking should be added to compensate for this.
 
-While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^11]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
+While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^12]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
 
 **<>** By David Joseph Hawkins using **Atom** and **GitHub**
 
@@ -1284,8 +1285,10 @@ def sandd():
 
 [^8]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
 
-[^9]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
+[^9]:[http://scikit-image.org/](http://scikit-image.org/)
 
-[^10]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+[^10]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
 
-[^11]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
+[^11]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+
+[^12]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
