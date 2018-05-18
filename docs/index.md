@@ -48,9 +48,10 @@ A special thanks go to my family, technical support staff, The Writing Cafe, Phi
 		- [Wiring](#wiring)
 		- [Buttons](#buttons)
 		- [Capacitive Touch Control](#capacitive-touch-control)
-	- [Budget](#budget)
 - [Conclusion](#conclusion)
+	- [Budget](#budget)
 	- [Criteria Met](#criteria-met)
+	- [Time management](#time-management)
 	- [Existing market](#existing-market)
 	- [Technology readiness level](#technology-readiness-level)
 - [Future Development](#future-development)
@@ -332,6 +333,8 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 [Tint change](https://git.djh1997.uk/log/tint.MOV)
 [Debug toggle](https://git.djh1997.uk/log/debug.MOV)
 
+# Conclusion
+
 ## Budget
 
 | Name                                                                                                                            | Price | Quantity | Total |
@@ -348,8 +351,6 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 | 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 23.95 | 1        | 23.95 |
 | total                                                                                                                           |       |          | 94.25 |
 
-# Conclusion
-
 ## Criteria Met
 
 -   [x] Make a set of smart sunglasses.
@@ -361,6 +362,10 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 All of the stage criteria were met except reaction to headlights. It was decided that this wasn't a good idea, since this could interfere with the drivers sight, so this mode will be left out. Other safety features added were resetting when you held any mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
 
 Finally an install script was made for the dependencies so that they would all be installed an configured correctly.
+
+## Time management
+
+The time management for the project was fairly good except the fact Christmas holidays/January exams weren't accounted for. But there was enough slack incorporated in to the timeline that the project was back on track in just over a month.
 
 ## Existing market
 
