@@ -12,7 +12,7 @@ Student no:10526354
 
 School of Computing, Electronics and Engineering.
 
-A report submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
+A report covering the theory design build and testing of a pair of dynamic sunglasses, submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 - [**Final Year Project**](#final-year-project)
@@ -110,9 +110,13 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![final mock-up design image](final_design_plan.svg)
 
-So, once the backlight was removed from the LCD's they can mount them into the frame. Then they can begin to be controlled by adjusting the contrast/pixel density to make them dim using a button. After which an LDR can be added to automate the brightness selection, the manual adjust however will be left in, at which point the button can still be used to switch between the different sensitivity levels.
+So, once the backlight was removed from the LCD's they can mount them into the frame. Then they can begin to be controlled by adjusting the contrast/pixel density to make them dim using a button.
 
-Next a camera will be added to the system so that the system can detect bright points, hence make a matching point darker on the lens. At which point the buttons can be used so that you can switch between different modes. The final additional feature that will added is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
+After which an LDR can be added to automate the brightness selection, the manual adjust however will be left in, at which point the button can still be used to switch between the different sensitivity levels.
+
+Next a camera will be added to the system so that the system can detect bright points, hence make a matching point darker on the lens.
+
+At which point the buttons can be used so that you can switch between different modes. The final additional feature that will added is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
 
 # Report
 
@@ -154,10 +158,9 @@ LCD's will be used to reduce the amount of light reaching the users eyes. The wa
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The Ada Fruit 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^7] available for the raspberry pi.
+The adafruit 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^7] available for the raspberry pi.
 
 ### Theory
-
 
 ![LCD workings](lcd/lcdworkings.png)
 
@@ -242,6 +245,7 @@ After this, a hinging mechanism was designed and the curves re-added to make the
 For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one ends to make it more ridged and adding a hole to hold it together.
 
 ## Blob Detection
+
 The initial idea for blob detection was to import the grey scale image as a matrix of values. Then to iterate over it, looking for a difference in values or checking against a threshold value. However, it was difficult to get the image in as a matrix and even using an example matrix because the code wasn't running very quickly or reliably.
 
 Installation of opencv for image processing was attempted but the install failed. After speaking to a supervisor he confirmed that opencv was too overpowered for my project.
@@ -332,8 +336,8 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 | [pi0 pibow](http://cpc.farnell.com/pimoroni/pim258/pibow-zero-w-case/dp/SC14550?st=pibow%20cases)                               | 4.19  | 1        | 4.19  |
 | [pi0 metal case](http://cpc.farnell.com/kksb/110221b/metal-case-for-raspberry-pi-zero/dp/SC14486)                               | 3.99  | 1        | 3.99  |
 | [hdmi to dvi-d](http://cpc.farnell.com/pro-signal/psg04003/lead-hdmi-m-dvi-24-1-m-1m/dp/AV25309?st=hdmi%20to%20dvi)             | 2.87  | 1        | 2.87  |
-| [usb ampmeter](https://www.rapidonline.com/voltcraft-pm-37-digital-usb-power-meter-64-2822)                                     | 7.26  | 1        | 7.26  |
-| [capacitve sensor](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337)         | 7.48  | 1        | 7.48  |
+| [usb ammeter](https://www.rapidonline.com/voltcraft-pm-37-digital-usb-power-meter-64-2822)                                     | 7.26  | 1        | 7.26  |
+| [capacitive sensor](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337)         | 7.48  | 1        | 7.48  |
 | veroboard                                                                                                                       | 3.60  | 1/4      | .90   |
 | 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 23.95 | 1        | 23.95 |
 | total                                                                                                                           |       |          | 94.25 |
@@ -354,13 +358,13 @@ Finally an install script was made for the dependencies so that they would all b
 
 ## Existing market
 
-| Component  | Price |
-| ---------- | ----- |
-| pi 0 W     | 9.60  |
-| cap sensor | 0.74  |
-| LCD        | 20    |
-| camera     | 15    |
-| total      | 45.34 |
+| Component         | Price |
+| ----------------- | ----- |
+| pi 0 W            | 9.60  |
+| capacitive sensor | 0.74  |
+| LCD               | 20    |
+| camera            | 15    |
+| total             | 45.34 |
 
 This is considerably less than the existing market, so even with adding the fame and battery it will be cheaper.
 
