@@ -14,15 +14,21 @@ School of Computing, Electronics and Engineering.
 
 A report covering the theory design build and testing of a pair of dynamic sunglasses, submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
 
+## Acknowledgements
+
+A special thanks go to my family, technical support staff, The Writing Cafe, Philip Culverhouse and Nicholas Outram.
+
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
 - [**Final Year Project**](#final-year-project)
+	- [Acknowledgements](#acknowledgements)
 	- [Glossary](#glossary)
 - [Stage Criteria](#stage-criteria)
 	- [Inspiration](#inspiration)
 	- [Plan](#plan)
 		- [Potential issues](#potential-issues)
 		- [Timeline](#timeline)
-- [Final Mock-up](#final-mock-up)
+- [Design Mock-up](#design-mock-up)
 - [Report](#report)
 	- [Compute](#compute)
 		- [VHDL/FPGA(de0nano) vs. arm(STM32 vs. RPI)](#vhdlfpgade0nano-vs-armstm32-vs-rpi)
@@ -106,7 +112,7 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![gantt](Gantt/gantt.png)
 
-# Final Mock-up
+# Design Mock-up
 
 ![final mock-up design image](final_design_plan.svg)
 
@@ -189,7 +195,7 @@ This is the effect that will be used reduce the amount of light reaching the use
 
 I connected the LCD and displayed some random size and location spots of different opacity on the screen.
 
-[random point video](log/IMG_1188.TRIM.MOV)
+[random point video](https://git.djh1997.uk/log/IMG_1188.TRIM.MOV)
 
 After this, the entire screen was set to one tint, then changed to a different tint. This meant you could see the update "wipe" across the screen.
 
@@ -322,9 +328,9 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 
 ### Capacitive Touch Control
 
-[Mode change](log/capmode.MOV)
-[Tint change](log/tint.MOV)
-[Debug toggle](log/debug.MOV)
+[Mode change](https://git.djh1997.uk/log/capmode.MOV)
+[Tint change](https://git.djh1997.uk/log/tint.MOV)
+[Debug toggle](https://git.djh1997.uk/log/debug.MOV)
 
 ## Budget
 
