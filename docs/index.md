@@ -49,8 +49,8 @@ A special thanks go to my family, technical support staff, The Writing Cafe, Phi
 		- [Buttons](#buttons)
 		- [Capacitive Touch Control](#capacitive-touch-control)
 - [Conclusion](#conclusion)
-	- [Budget](#budget)
 	- [Criteria Met](#criteria-met)
+	- [Budget](#budget)
 	- [Time management](#time-management)
 	- [Existing market](#existing-market)
 	- [Technology readiness level](#technology-readiness-level)
@@ -335,6 +335,18 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 
 # Conclusion
 
+## Criteria Met
+
+-   [x] Make a set of smart sunglasses.
+-   [x] Add automatic of control the opacity.
+-   [x] Add camera to make dark points over bright points.
+-   [x] Add options to swap between modes.
+-   [ ] Auto react to headlight/safety improvements.
+
+All of the stage criteria were met except reaction to headlights. It was decided that this wasn't a good idea, since this could interfere with the drivers sight, so this mode will be left out. Other safety features added were resetting when you held any mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
+
+Finally an install script was made for the dependencies so that they would all be installed an configured correctly.
+
 ## Budget
 
 | Name                                                                                                                            | Price | Quantity | Total |
@@ -350,18 +362,6 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 | veroboard                                                                                                                       | 3.60  | 1/4      | .90   |
 | 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 23.95 | 1        | 23.95 |
 | total                                                                                                                           |       |          | 94.25 |
-
-## Criteria Met
-
--   [x] Make a set of smart sunglasses.
--   [x] Add automatic of control the opacity.
--   [x] Add camera to make dark points over bright points.
--   [x] Add options to swap between modes.
--   [ ] Auto react to headlight/safety improvements.
-
-All of the stage criteria were met except reaction to headlights. It was decided that this wasn't a good idea, since this could interfere with the drivers sight, so this mode will be left out. Other safety features added were resetting when you held any mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
-
-Finally an install script was made for the dependencies so that they would all be installed an configured correctly.
 
 ## Time management
 
