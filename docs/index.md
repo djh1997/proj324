@@ -18,7 +18,7 @@ A report covering the theory, design, build and testing of a pair of dynamic sun
 
 A special thanks go to my family, technical support staff, The Writing Cafe,  Philip Culverhouse and Nicholas Outram.
 
-A thanks also goes to the makers of GitHub, GitGuardian, Telegram, Atom, GanttProject, Scikit-image and Inksacpe for there great services/software.
+A thanks also goes to the makers of GitHub, GitGuardian, Telegram, Atom, GanttProject, Scikit-image and Inksacpe for their great services/software.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -101,13 +101,13 @@ The ctrl-one product starts down the same path as this project would like to tak
 
 The products above, along with Paul Davey's lectures last year inspired the idea.
 
-The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually a camera will added to create multiple point controls which will block bright spots such as projectors and sunlight thus, dimming them to reduce squinting.
+The plan is to use two LCD's with the backlight removed, to create dimmable panels in front of the users eyes. Then eventually a camera will be added to create multiple point controls which will block bright spots such as projectors and sunlight thus, dimming them to reduce squinting.
 
 ### Potential issues
 
 -   IO speed, depending on the solutions used in the project could end up running into IO speed bottle necks affecting frame rate.
 -   Frame rate for the active points would need to be fairly high to stop nauseating effects.
--   Camera distortion, a camera with little to no distortion would ideally be to used since this would make image processing easier.
+-   Camera distortion, a camera with little to no distortion would ideally be used since this would make image processing easier.
 -   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
 -   Aspect ratio, mismatch of aspect ratios without the use of accelerometers for predictive tracking could cause issues.
 
@@ -127,7 +127,7 @@ After which an LDR can be added to automate the brightness selection, the manual
 
 Next a camera will be added to the system so that the system can detect bright points, hence make a matching point darker on the lens.
 
-At which point the buttons can be used so that you can switch between different modes. The final additional feature that will added is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
+At which point the buttons can be used so that you can switch between different modes. The final additional feature that will be added is some intelligence on the camera side to ignore certain circumstances such as car tail/headlights.
 
 # Report
 
@@ -135,7 +135,7 @@ At which point the buttons can be used so that you can switch between different 
 
 ### VHDL/FPGA(de0nano) vs. arm(STM32 vs. RPI)
 
-For the compute unit the main options available are arm or FPGA. Theoretically the FPGA will have higher parallel thought put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
+For the compute unit the main options available are arm or FPGA. Theoretically the FPGA will have higher parallel though put for the camera to LCD interface. Although arm will have image processing libraries which will expedite the prototyping process. The other main advantage with arm is the reduced cost.
 
 | Component | Quantity | Price(£)       | Component type | Chosen |
 | --------- | -------- | -------------- | -------------- | ------ |
@@ -148,7 +148,7 @@ I'm leaning towards the arm side since the camera will likely be 30-60 fps. I be
 
 After talking to supervisors and lab technicians they both recommended the raspberry pi as the platform. This recommendation is because of the price point of the zero w and the zero cam being so low as well as, the large product support for the increased range of screens possible. The only issue with this will be the fact the pi doesn't have analogue IO so the dimming of the LCD will be harder but this should be easily worked around.
 
-The other advantage of the raspberry pi 0 is it has a file system and wifi so code can be remote deployed once it is connected. This will make development cycle much quicker.
+The other advantage of the raspberry pi 0 is it has a file system and wifi so code can be remotely deployed once it is connected. This will make the development cycle much quicker.
 
 ## Camera
 
@@ -163,7 +163,7 @@ The options for the camera were good but the pi zero camera was picked, since it
 
 ## LCD
 
-LCD's will be used to reduce the amount of light reaching the users eyes. The way an LCD works is like a stain glasses window with a frosted glasses window and bight light behind. But with an LCD you can change the colour and brightness of the stain. This is the effect that will be used do dynamically adjust the amount of light reaching the users eyes.
+LCD's will be used to reduce the amount of light reaching the users eyes. The way an LCD works is like a stain glasses window with a frosted glasses window and bright light behind. But with an LCD you can change the colour and brightness of the stain. This is the effect that will be used to dynamically adjust the amount of light reaching the users eyes.
 
 | Component                  | Quantity | Price(£)       | Component type | Chosen |
 | -------------------------- | -------- | -------------- | -------------- | ------ |
@@ -171,7 +171,7 @@ LCD's will be used to reduce the amount of light reaching the users eyes. The wa
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The adafruit 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^8] available for the raspberry pi.
+The adafruit 1.8" TFT ST7735R is going to be the best option since it's the best size for the lenses. Also there are drivers[^8] available for the raspberry pi.
 
 ### Theory
 
@@ -187,7 +187,7 @@ This works like so;
 4.  The polarized light passes through the transparent pixel electrode.
 5.  Because the light is polarized in the horizontal plane, it passes through the front horizontal polariser.
 
-This is the effect that will be used reduce the amount of light reaching the users eyes.
+This is the effect that will be used to reduce the amount of light reaching the users eyes.
 
 ### Wiring
 
@@ -214,7 +214,7 @@ It was also tried to consolidate/disconnect the grounds of the LCD but this caus
 
 ![image](lcd/fov.svg)
 
-Field of view(FoV) is the area that you can can see. It is normally measured in degrees. For simple mapping it is required that the FoV of the camera and LCD to be the same. Other issues include;
+Field of view(FoV) is the area that you can see. It is normally measured in degrees. For simple mapping it is required that the FoV of the camera and LCD to be the same. Other issues include;
 
 Aspect ratio
 ![image](lcd/aspectration.svg)
@@ -255,7 +255,7 @@ The initial idea was to heat the acrylic and bend at the red line, meaning that 
 
 The next idea was another fixed design, but with a simpler shape. It was decided to go with this idea rather than the former so this was the first iteration that actually got cut. It was found that the lens was going to be too close to the eye and the ribbon cable from the lens was going to dig in to the brow of users nose. This was solved in the third iteration by making the increasing distance between the top of the frame and the top of the nose support. This forced the user to wear the glasses further down their nose.
 
-After this, a hinging mechanism was designed and the curves re-added to make the glasses more comfortable. A mounting bracket for the camera was also added. This was the frame that cut and used for most of the prototyping phase of the project.
+After this, a hinging mechanism was designed and the curves re-added to make the glasses more comfortable. A mounting bracket for the camera was also added. This was the frame that was cut and used for most of the prototyping phase of the project.
 
 For the next two designs the plan was to add a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one ends to make it more rigid, adding a hole to hold it together this also serves to adjust the resistance of the arms.
 
@@ -355,7 +355,7 @@ Later Alex Baron suggested wrapping the sensor wire in thin pieces of wire to sh
 
 All of the stage criteria were met except reaction to headlights. It was decided that this wasn't a good idea, since this could interfere with the drivers sight, so this mode will be left out. Other safety features added were resetting when you held any mode button. Except for a catastrophic error, the system is fail safe not deadly meaning it clears the LCD before exiting.
 
-Finally an install script was made for the dependencies so that they would all be installed an configured correctly.
+Finally an install script was made for the dependencies so that they would all be installed and configured correctly.
 
 ## Budget
 
@@ -387,9 +387,9 @@ The time management for the project was fairly good except the fact Christmas ho
 | camera            | 15    |
 | total             | 45.34 |
 
-This is considerably less than the existing market, so even with adding the fame and battery it will be cheaper.
+This is considerably less than the existing market, so even with adding the frame and battery it will be cheaper.
 
-Although the current  refresh rate is lower at the moment, With a change of panel and main compute chip the system will be able to run considerably quicker.
+Although the current  refresh rate is lower at the moment, with a change of panel and main compute chip the system will be able to run considerably quicker.
 
 ## Technology readiness level
 
@@ -415,7 +415,7 @@ The project fits this scale better and is also a level 4, with aspects of level 
 
 # Future Development
 
-The current setup is mostly a proof of concept. For a full prototype/production model, A chip with high IO rates like a DSLR image processing chip, with a low quality and high frame rate camera with a bare LCD would be used to make the system run faster.
+The current setup is mostly a proof of concept. For a full prototype/production model, a chip with high IO rates like a DSLR image processing chip, with a low quality and high frame rate camera with a bare LCD would be used to make the system run faster.
 
 Because of the image processing chip it would be possible to increase the communication speed, since the IO is the limiting factor on the current setup.
 
