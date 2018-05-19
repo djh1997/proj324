@@ -366,12 +366,12 @@ Finally an install script was made for the dependencies so that they would all b
 | [pi0 camera](https://thepihut.com/collections/raspberry-pi-camera/products/zerocam-camera-for-raspberry-pi-zero)                | 15    | 1        | 15    |
 | [pi0 pibow](http://cpc.farnell.com/pimoroni/pim258/pibow-zero-w-case/dp/SC14550?st=pibow%20cases)                               | 4.19  | 1        | 4.19  |
 | [pi0 metal case](http://cpc.farnell.com/kksb/110221b/metal-case-for-raspberry-pi-zero/dp/SC14486)                               | 3.99  | 1        | 3.99  |
-| [hdmi to dvi-d](http://cpc.farnell.com/pro-signal/psg04003/lead-hdmi-m-dvi-24-1-m-1m/dp/AV25309?st=hdmi%20to%20dvi)             | 2.87  | 1        | 2.87  |
-| [usb ammeter](https://www.rapidonline.com/voltcraft-pm-37-digital-usb-power-meter-64-2822)                                     | 7.26  | 1        | 7.26  |
-| [capacitive sensor](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337)         | 7.48  | 1        | 7.48  |
+| [hdmi to dvi-d](http://cpc.farnell.com/pro-signal/psg04003/lead-hdmi-m-dvi-24-1-m-1m/dp/AV25309?st=hdmi%20to%20dvi)             | 2.35  | 1        | 2.35  |
+| [usb ammeter](https://www.rapidonline.com/voltcraft-pm-37-digital-usb-power-meter-64-2822)                                      | 7.26  | 1        | 7.26  |
+| [capacitive sensor](https://www.rapidonline.com/adafruit-1362-standalone-5-pad-capacitive-touch-sensor-breakout-73-5337)        | 7.48  | 1        | 7.48  |
 | veroboard                                                                                                                       | 3.60  | 1/4      | .90   |
-| 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 23.95 | 1        | 23.95 |
-| total                                                                                                                           |       |          | 94.25 |
+| 64GB Class 10 MicroSDXC UHS-1 Memory Card & SD Adaptor                                                                          | 24.95 | 1        | 24.95 |
+| total                                                                                                                           |       |          | 95.72 |
 
 ## Time management
 
