@@ -16,7 +16,9 @@ A report covering the theory design build and testing of a pair of dynamic sungl
 
 ## Acknowledgements
 
-A special thanks go to my family, technical support staff, The Writing Cafe, Philip Culverhouse and Nicholas Outram.
+A special thanks go to my family, technical support staff, The Writing Cafe,  Philip Culverhouse and Nicholas Outram.
+
+A thanks also goes to the makers of GitHub, GitGuardian, Atom, GanttProject, Scikit-image and Inksacpe for there great services/software.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -113,6 +115,8 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ![gantt](Gantt/gantt.png)
 
+A gantt chart was made using GanttProject[^6]
+
 # Design Mock-up
 
 ![final mock-up design image](final_design_plan.svg)
@@ -153,7 +157,7 @@ After talking to supervisors and lab technicians they both recommended the raspb
 | ov7670         | 1        | 5 to 10         | camera         | no     |
 | ov7720         | 1        | .50 from ps eye | camera         | no     |
 
-The options for the camera were good but the pi zero camera was picked, since it had the best compromise between cost and libraries[^6].
+The options for the camera were good but the pi zero camera was picked, since it had the best compromise between cost and libraries[^7].
 
 ## LCD
 
@@ -165,13 +169,13 @@ LCD's will be used to reduce the amount of light reaching the users eyes. The wa
 | DD-12864YO-3A              | 2        | 16.12          | lens           | no     |
 | AF 1.8" TFT ST7735R driver | 2        | 10             | lens           | yes    |
 
-The adafruit 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^7] available for the raspberry pi.
+The adafruit 1.8" TFT ST7735R is going to be the best option since its the best size for the lenses. Also there are drivers[^8] available for the raspberry pi.
 
 ### Theory
 
 ![LCD workings](lcd/lcdworkings.png)
 
-In this diagram from Paul Davey's lecture[^8] on LCD's last year, you can see the inner workings of an individual pixel.
+In this diagram from Paul Davey's lecture[^9] on LCD's last year, you can see the inner workings of an individual pixel.
 
 This works like so;
 
@@ -257,7 +261,7 @@ The initial idea for blob detection was to import the grey scale image as a matr
 
 Installation of opencv for image processing was attempted but the install failed. After speaking to a supervisor he confirmed that opencv was too overpowered for my project.
 
-More research was then done around low power blob detection in python. Skimage[^9] (a library for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
+More research was then done around low power blob detection in python. Skimage[^10] (a library for python) was then found which has a function for Determinant of Hessian(DoH) blob detection. This was lightweight, meaning it would be quick enough for image processing. The only remaining issue was getting the image from the camera into the right format. Skimage has a built in numpy array converter which was fortunate since the DoH blob detection needs a numpy array to function.
 
 With this working an image from the camera passed to the program, which saved the image with a circle around the blob to test the accuracy of the system.
 
@@ -383,7 +387,7 @@ Although the current  refresh rate is lower at the moment, With a change of pane
 
 ## Technology readiness level
 
-The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^10].
+The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^11].
 
 | Level  | Definition                                                                                                                         |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -397,7 +401,7 @@ The project as of this point has met a technology readiness level of at least le
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^11].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^12].
 
 ![TRL](TRLPROPODESED.png)
 
@@ -413,9 +417,9 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system it would be required that some form of simple eye tracking should be added to compensate for this.
 
-While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^12]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
+While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^13]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
 
-**<>** By David Joseph Hawkins using **Atom** and **GitHub**
+**<>** By David Joseph Hawkins using **Atom** and [**GitHub**](https://github.com/djh1997/proj324)
 
 # Appendix
 
@@ -1294,16 +1298,18 @@ def sandd():
 
 [^5]:[http://www.e-tintproducts.com/ctrl-eyewear/](http://www.e-tintproducts.com/ctrl-eyewear/)
 
-[^6]:[https://picamera.readthedocs.io/](https://picamera.readthedocs.io/)
+[^6]:[http://www.ganttproject.biz/](http://www.ganttproject.biz/)
 
-[^7]:[https://github.com/cskau/Python_ST7735](https://github.com/cskau/Python_ST7735)
+[^7]:[https://picamera.readthedocs.io/](https://picamera.readthedocs.io/)
 
-[^8]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
+[^8]:[https://github.com/cskau/Python_ST7735](https://github.com/cskau/Python_ST7735)
 
-[^9]:[http://scikit-image.org/](http://scikit-image.org/)
+[^9]:[https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5](https://dle.plymouth.ac.uk/mod/resource/view.php?id=328795#page=5)
 
-[^10]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
+[^10]:[http://scikit-image.org/](http://scikit-image.org/)
 
-[^11]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+[^11]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
 
-[^12]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
+[^12]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+
+[^13]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
