@@ -12,7 +12,7 @@ Student no:10526354
 
 School of Computing, Electronics and Engineering.
 
-A report covering the theory design build and testing of a pair of dynamic sunglasses, submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
+A report covering the theory, design, build and testing of a pair of dynamic sunglasses. Submitted to the University of Plymouth in partial fulfilment for the degree of BEng(Hons) Electrical and Electronic Engineering.
 
 ## Acknowledgements
 
