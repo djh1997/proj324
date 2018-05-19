@@ -148,6 +148,8 @@ I'm leaning towards the arm side since the camera will likely be 30-60 fps. I be
 
 After talking to supervisors and lab technicians they both recommended the raspberry pi as the platform. This recommendation is because of the price point of the zero w and the zero cam being so low as well as, the large product support for the increased range of screens possible. The only issue with this will be the fact the pi doesn't have analogue IO so the dimming of the LCD will be harder but this should be easily worked around.
 
+The other advantage of the raspberry pi 0 is it has a file system and wifi so code can be remote deployed once it is connected. This will make development cycle much quicker.
+
 ## Camera
 
 | Component      | Quantity | Price(£)        | Component type | Chosen |
@@ -253,7 +255,7 @@ The next idea was another fixed design, but with a simpler shape. It was decided
 
 After this, a hinging mechanism was designed and the curves re-added to make the glasses more comfortable. A mounting bracket for the camera was also added. This was the frame that cut and used for most of the prototyping phase of the project.
 
-For the next two designs I was contemplating adding a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one ends to make it more ridged and adding a hole to hold it together.
+For the next two designs the plan was to add a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one ends to make it more rigid, adding a hole to hold it together this also serves to adjust the resistance of the arms.
 
 ## Blob Detection
 
@@ -270,6 +272,8 @@ With this working an image from the camera passed to the program, which saved th
 I then connected the LCD and got blob detection working with that.
 
 ![blob LCD](log/IMG_1190.JPG)
+
+Next the code was optimised, by reducing the resolution of the camera feed and adjusting the sensitivity of the blob detection. This improved the blob finding time from 25-30 seconds down to 0.03 seconds.
 
 ## Telegram
 
