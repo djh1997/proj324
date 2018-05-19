@@ -208,6 +208,8 @@ After this, the entire screen was set to one tint, then changed to a different t
 
 This will cause issues since the SPI is already at the max speed.
 
+It was also tried to consolidate/disconnect the grounds of the LCD but this caused issues so the wiring was returned to the original configuration.
+
 ## FoV
 
 ![image](lcd/fov.svg)
