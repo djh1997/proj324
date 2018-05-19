@@ -38,7 +38,7 @@ looking thought the code the ST7735-micro seems cleaner and looks like I will be
 
 # 02/02/2018
 
-start working on project again after exams/coursework and Christmas break but WiFi has stopped working possibly because of certification update but even reslashing the board and rerunning the cat installer didn't work will try to connect when I get home to check the WiFi chip is still working talked to Jake and said he should be able to put it on Plymouth humanoids humanoid5
+start working on project again after exams/coursework and Christmas break but WiFi has stopped working possibly because of certification update but even reslashing the board and rerunning the cat installer didn't work will try to connect when I get home to check the WiFi chip is still working talked to Jake and said he should be able to put it on Plymouth humanoids
 
 # 05/02/2018
 
@@ -206,3 +206,19 @@ finalize poster add compute, LCD and camera choice
 # 12/05/2018
 
 add negative image mode and work on report
+
+# 13/05/2018
+
+embed images add existing market and relevant references
+
+# 14/05/2018
+
+add toc and glossary
+
+# 16/05/2018
+
+get report checked at writing cafe
+
+# 18/05/2018
+
+add more references and add abstract, acknowledgements improve general formatting
