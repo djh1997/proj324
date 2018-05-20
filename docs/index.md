@@ -18,7 +18,7 @@ A report covering the theory, design, build and testing of a pair of dynamic sun
 
 A special thanks goes to my family, technical support staff, The Writing Cafe,  Philip Culverhouse and Nicholas Outram.
 
-A thanks also goes to the makers of GitHub, GitGuardian, Telegram, Atom, GanttProject, Scikit-image and Inkscape for their great services/software.
+A thanks also goes to the makers of GitHub, GitGuardian, Telegram, Draw.io, Atom, GanttProject, Scikit-image, Etcher.io and Inkscape for their great services/software.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
