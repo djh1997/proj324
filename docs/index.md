@@ -105,7 +105,7 @@ The plan is to use two LCD's with the backlight removed, to create dimmable pane
 
 ### Potential issues
 
--   IO speed, depending on the solutions used in the project could end up running into IO speed bottle necks affecting frame rate.
+-   IO speed, depending on the solutions used in the project, could end up being an issue with bottle necks affecting frame rate.
 -   Frame rate for the active points would need to be fairly high to stop nauseating effects.
 -   Camera distortion, a camera with little to no distortion would ideally be used since this would make image processing easier.
 -   Field of view, having a similar FoV would be useful since a camera with smaller FoV would end up wasting the edge of the LCD.
@@ -121,7 +121,7 @@ A gantt chart was made using GanttProject[^6]
 
 ![final mock-up design image](final_design_plan.svg)
 
-So, once the backlight was removed from the LCD's they can mount them into the frame. Then they can begin to be controlled by adjusting the contrast/pixel density to make them dim using a button.
+So, once the backlight was removed from the LCD's they can mount them into the frame. Then the LCDs can begin to be controlled by adjusting the contrast/pixel density to make them dim using a button.
 
 After which an LDR can be added to automate the brightness selection, the manual adjust however will be left in, at which point the button can still be used to switch between the different sensitivity levels.
 
@@ -139,12 +139,12 @@ For the compute unit the main options available are arm or FPGA. Theoretically t
 
 | Component | Quantity | Price(£)       | Component type | Chosen |
 | --------- | -------- | -------------- | -------------- | ------ |
-| pi zero w | 1        | 9.60           | compute        | yes    |
+| pi 0 w    | 1        | 9.60           | compute        | yes    |
 | pi 3      | 1        | 35             | compute        | no     |
 | STM32     | 1        | 18.11          | compute        | no     |
 | de0nano   | 1        | 67.16 to 84.46 | compute        | no     |
 
-I'm leaning towards the arm side since the camera will likely be 30-60 fps. I believe that an arm  chip will be quick enough. Also it will have better support for interfacing the camera and LCD; the STM boards have analogue IO for the LDR and contrast for the LCD
+I'm leaning towards the arm side since the camera will likely be 30-60 fps. I believe that an arm  chip will be quick enough. Also it will have better support for interfacing the camera and LCD; the STM boards have analogue IO for the LDR and contrast for the LCD.
 
 After talking to supervisors and lab technicians they both recommended the raspberry pi as the platform. This recommendation is because of the price point of the zero w and the zero cam being so low as well as, the large product support for the increased range of screens possible. The only issue with this will be the fact the pi doesn't have analogue IO so the dimming of the LCD will be harder but this should be easily worked around.
 
@@ -152,14 +152,14 @@ The other advantage of the raspberry pi 0 is it has a file system and wifi so co
 
 ## Camera
 
-| Component      | Quantity | Price(£)        | Component type | Chosen |
-| -------------- | -------- | --------------- | -------------- | ------ |
-| pi zero camera | 1        | 15              | camera         | yes    |
-| pi camera      | 1        | 24              | camera         | no     |
-| ov7670         | 1        | 5 to 10         | camera         | no     |
-| ov7720         | 1        | .50 from ps eye | camera         | no     |
+| Component   | Quantity | Price(£)        | Component type | Chosen |
+| ----------- | -------- | --------------- | -------------- | ------ |
+| pi 0 camera | 1        | 15              | camera         | yes    |
+| pi camera   | 1        | 24              | camera         | no     |
+| ov7670      | 1        | 5 to 10         | camera         | no     |
+| ov7720      | 1        | .50 from ps eye | camera         | no     |
 
-The options for the camera were good but the pi zero camera was picked, since it had the best compromise between cost and libraries[^7].
+The options for the camera were good but the pi 0 camera was picked, since it had the best compromise between cost and libraries[^7].
 
 ## LCD
 
@@ -257,7 +257,7 @@ The next idea was another fixed design, but with a simpler shape. It was decided
 
 After this, a hinging mechanism was designed and the curves re-added to make the glasses more comfortable. A mounting bracket for the camera was also added. This was the frame that was cut and used for most of the prototyping phase of the project.
 
-For the next two designs the plan was to add a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one ends to make it more rigid, adding a hole to hold it together this also serves to adjust the resistance of the arms.
+For the next two designs the plan was to add a backing plate to the pi mount and also adding a mount for the capacitive touch sensor. This design was never cut since the pi 0 needs clearance for the solder of the pin headers. Also the backing might have added too much weight. The design of the hinge was furthered by squaring off one of the ends to make it more rigid, adding a hole to hold it together this also serves to adjust the resistance of the arms.
 
 ## Blob Detection
 
