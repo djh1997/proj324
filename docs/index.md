@@ -283,6 +283,8 @@ Then shades.py (the file that controls the LCD and camera) and telegrambot.py (t
 
 It was decided that telegram would be used to add remote control, so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
 
+After telegram was integrated the security on an open chat bot was a big concern but after some looking through the documentation admin only access was found.[^11] This was then implemented using a list of admin id's and a toggle for less important settings.
+
 ### Commands
 
 | Command     | Parameters                  | Description                    |
@@ -395,7 +397,7 @@ Although the current  refresh rate is lower at the moment, with a change of pane
 
 ## Technology readiness level
 
-The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^11].
+The project as of this point has met a technology readiness level of at least level 4, even pushing some level 5 criteria as defined by the European Commission[^12].
 
 | Level  | Definition                                                                                                                         |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -409,7 +411,7 @@ The project as of this point has met a technology readiness level of at least le
 | TRL 8. | System complete and qualified.                                                                                                     |
 | TRL 9. | Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies; or in space). |
 
-The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^12].
+The European Association of Research and Technology Organisations (EARTO) has a slightly more relevant scale of TRL[^13].
 
 ![TRL](TRLPROPODESED.png)
 
@@ -425,7 +427,7 @@ The biggest IO limit at the moment is the LCD, this is because the only reasonab
 
 The other main issue is the fact this system assumes your eyes are always directly behind the LCD. So, for a fully fledged system it would be required that some form of simple eye tracking should be added to compensate for this.
 
-While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^13]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
+While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^14]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
 
 **<>** By David Joseph Hawkins using **Atom** and [**GitHub**](https://github.com/djh1997/proj324)
 
@@ -1316,8 +1318,10 @@ def sandd():
 
 [^10]:[http://scikit-image.org/](http://scikit-image.org/)
 
-[^11]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
+[^11]:[https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator)
 
-[^12]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+[^12]:[https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/wp/2014_2015/annexes/h2020-wp1415-annex-g-trl_en.pdf)
 
-[^13]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
+[^13]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
+
+[^14]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
