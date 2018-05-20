@@ -221,4 +221,12 @@ get report checked at writing cafe
 
 # 18/05/2018
 
-add more references and add abstract, acknowledgements improve general formatting ,add licence
+add more references and add abstract, acknowledgements
+
+# 19/05/2018
+
+improve general formatting ,add licence
+
+# 20/05/2018
+
+work on report
