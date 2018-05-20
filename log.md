@@ -229,4 +229,4 @@ improve general formatting ,add licence
 
 # 20/05/2018
 
-work on report
+work on report add flowchart and correct gantt
