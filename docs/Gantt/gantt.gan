@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-01" view-index="0" gantt-divider-location="471" resource-divider-location="300" version="2.8.5" locale="en_GB">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-01" view-index="0" gantt-divider-location="471" resource-divider-location="300" version="2.8.7" locale="en_GB">
     <description/>
     <view zooming-state="default:9" id="gantt-chart">
         <field id="tpd3" name="Name" width="237" order="0"/>
@@ -37,13 +37,13 @@
         <task id="20" name="project" meeting="false" start="2017-09-28" duration="158" complete="75" expand="true">
             <depend id="8" type="2" difference="0" hardness="Rubber"/>
             <depend id="10" type="2" difference="0" hardness="Rubber"/>
-            <task id="0" name="inital plan" color="#8cb6ce" meeting="false" start="2017-09-28" duration="20" complete="100" expand="true">
+            <task id="0" name="initial plan" color="#8cb6ce" meeting="false" start="2017-09-28" duration="20" complete="100" expand="true">
                 <depend id="14" type="2" difference="0" hardness="Rubber"/>
-                <task id="29" name="inital ideas" color="#8cb6ce" meeting="false" start="2017-09-28" duration="19" complete="100" expand="true"/>
+                <task id="29" name="initial ideas" color="#8cb6ce" meeting="false" start="2017-09-28" duration="19" complete="100" thirdDate="2017-09-28" thirdDate-constraint="0" expand="true"/>
                 <task id="5" name="initial designs" color="#8cb6ce" meeting="false" start="2017-09-29" duration="19" complete="100" expand="true"/>
-                <task id="3" name="inital research" color="#8cb6ce" meeting="false" start="2017-10-02" duration="18" complete="100" expand="true"/>
+                <task id="3" name="initial research" color="#8cb6ce" meeting="false" start="2017-10-02" duration="18" complete="100" thirdDate="2017-10-02" thirdDate-constraint="0" expand="true"/>
             </task>
-            <task id="73" name="inital proposal submission" color="#8cb6ce" meeting="true" start="2017-10-25" duration="0" complete="0" expand="true"/>
+            <task id="73" name="initial proposal submission" color="#8cb6ce" meeting="true" start="2017-10-25" duration="0" complete="0" expand="true"/>
             <task id="14" name="final plan" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="100" expand="true">
                 <depend id="52" type="2" difference="0" hardness="Strong"/>
                 <task id="17" name="gannt" color="#8cb6ce" meeting="false" start="2017-10-26" duration="10" complete="100" expand="true"/>
