@@ -283,7 +283,7 @@ Then shades.py (the file that controls the LCD and camera) and telegrambot.py (t
 
 It was decided that telegram would be used to add remote control, so that you could adjust the colour of the tint [remote control](https://t.me/smartsheadsfypbot).
 
-After telegram was integrated the security on an open chat bot was a big concern but after some looking through the documentation admin only access was found.[^11] This was then implemented using a list of admin id's and a toggle for less important settings.
+After telegram was integrated, the security on an open chat bot was a big concern but after some looking through the documentation, admin only access was found.[^11] This was then implemented using a list of admin id's and a toggle for less important settings.
 
 ### Commands
 
