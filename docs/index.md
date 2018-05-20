@@ -357,7 +357,7 @@ All of the stage criteria were met except reaction to headlights. It was decided
 
 Finally an install script was made for the dependencies so that they would all be installed and configured correctly.
 
-![final flowchart](https://git.djh1997.uk/flowchart.svg)
+![final flowchart](flowchart.svg)
 
 ## Budget
 
