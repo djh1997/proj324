@@ -433,6 +433,8 @@ The other main issue is the fact this system assumes your eyes are always direct
 
 While talking to Martin Slade about the project, one individual mentioned research which could add dynamic prescription[^15]. This would be a good addition to the project as this would make the glasses truly dynamic in the sense of not needing to buy another pair of glasses in the future as, the tint and prescription can be adjusted for users.
 
+![open day](openday.JPG)
+
 **<>** By David Joseph Hawkins using **Atom** and [**GitHub**](https://github.com/djh1997/proj324)
 
 # Appendix

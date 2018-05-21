@@ -230,3 +230,7 @@ improve general formatting ,add licence
 # 20/05/2018
 
 work on report add flowchart and correct gantt
+
+# 21/05/2018
+
+add telegram inline keyboard screen shot and open day photo
