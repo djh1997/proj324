@@ -285,7 +285,7 @@ It was decided that telegram[^11] would be used to add remote control, so that y
 
 After telegram was integrated, the security on an open chat bot was a big concern but after some looking through the documentation, admin only access was found.[^12] This was then implemented using a list of admin id's and a toggle for less important settings.
 
-An inline keyboard was also added for picking between a set of options
+An inline keyboard was also added for picking between a set of options.
 
 ![telegram](telegram.png)
 
