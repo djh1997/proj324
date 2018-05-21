@@ -95,7 +95,7 @@ This is the criteria that the project aims to meet, to feel as though the projec
 
 The project was inspired by Linus tech tips video[^1] about the IBuyPower Snowblind case[^2]. It was then that the idea for reactive sunglasses using LCD was formed. While researching to see if this had already been done, ctrl-one glasses were discovered and have similarly been created[^3].
 
-The ctrl-one product starts down the same path as this project would like to take but are binary whereas this project aims for different levels of tinting and active shading. To achieve this it will be required to use an LCD panel with pixels instead of a single panel. Also, the ctrl-one products main unique selling points is the sub 0.1 second light to dark time[^4]; which will ideally be surpassed. The other advantage this product will have over ctrl-one will be cost since, ctrl-one costs $299, while this product aims to be priced under £100[^5] (set by the budget limit).
+The ctrl-one product starts down the same path as this project would like to take but are binary whereas this project aims for different levels of tinting and active shading. To achieve this it will be required to use an LCD panel with pixels instead of a single panel. Also, one of the ctrl-one products main unique selling points is the sub 0.1 second light to dark time[^4]; which will ideally be surpassed. The other advantage this product will have over ctrl-one will be cost since, ctrl-one costs $299, while this product aims to be priced under £100[^5] (set by the budget limit).
 
 ## Plan
 
