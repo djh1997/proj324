@@ -1332,4 +1332,4 @@ def sandd():
 
 [^14]:[http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-\_Final.pdf#page=7](http://www.earto.eu/fileadmin/content/03_Publications/The_TRL_Scale_as_a_R_I_Policy_Tool_-_EARTO_Recommendations_-_Final.pdf#page=7)
 
-[^15]:[https://www.ttp.com/case-studies/electronic_lenses](https://www.ttp.com/case-studies/electronic_lenses)
+[^15]:[https://www.ttp.com/case-studies/electronic-lenses](https://www.ttp.com/case-studies/electronic-lenses)
